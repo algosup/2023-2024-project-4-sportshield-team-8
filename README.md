@@ -21,6 +21,7 @@ Our focus will be on:
 - [Functional Specifications](./documents/functionalSpecifications.md)
 - [User Manual](./documents/userManual.md)
 - [Technical Specifications](./documents/technicalSpecifications.md)
+- [Test Plan](./documents/testPlan.md)
 - [Management Artefacts](./documents/management/)
 
 ## Contributors
