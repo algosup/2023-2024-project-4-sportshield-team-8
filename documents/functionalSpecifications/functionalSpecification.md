@@ -12,7 +12,8 @@ This project aims to complete and optimize the existing software given by CORIS 
   - [Other stakeholders](#other-stakeholders)
 - [Project scope](#project-scope)
 - [Functional requirements](#functional-requirements)
-- [Deliverables and milestones](#deliverables-and-milestones)
+- [Non-functional requirements](#non-functional-requirements)
+- [Solution overview](#solution-overview)
 - [Personas and use cases](#personas-and-use-cases)
   - [Persona 1 -](#persona-1--)
     - [Goals](#goals)
@@ -23,9 +24,11 @@ This project aims to complete and optimize the existing software given by CORIS 
   - [Persona 3 -](#persona-3--)
     - [Goals](#goals-2)
     - [Challenges](#challenges-2)
-- [Acceptance criteria](#acceptance-criteria)
+- [Evaluation criteria](#evaluation-criteria)
 - [Risks and assumptions](#risks-and-assumptions)
+- [Timeline](#timeline)
 - [Future improvements](#future-improvements)
+- [Deliverables and milestones](#deliverables-and-milestones)
 - [Glossary](#glossary)
 </summary></details>
 
@@ -44,13 +47,98 @@ This project aims to complete and optimize the existing software given by CORIS 
 
 ### Other stakeholders
 
-| Name           | Occupation                               | Links                                            |
-| -------------- | ---------------------------------------- | ------------------------------------------------ |
-| Florent ANON | Client (Head of the Innovation Department) | [LinkedIn](https://linkedin.com/in/florentanon/) |
+| Name           | Occupation                                 | Links                                            |
+| -------------- | ------------------------------------------ | ------------------------------------------------ |
+| Florent ANON   | Client (Head of the Innovation Department) | [LinkedIn](https://linkedin.com/in/florentanon/) |
 
 ## Project scope
 
+This project is moreofa maintenance project because we don't start it from scratch.
+
+As a matter of fact, we were asked to optimize an existing code of the product given by CORIS Innovation but also to add more features such as the NFC or ... 
+
+All these improvements should be done in the short amount of time given by the school and respecting the criteria of battery consumption which is really important.
+
 ## Functional requirements
+
+In brief, the main requirements for this project are:
+
+- Optimize the actual code;
+- Add a feature for the NFC;
+- Check the buzzer's noise's level according to the impact;
+- Managing the battery consumption for it to hold 7 days in cold conditions (6 hours of active mode and 18 in sleep mode).
+
+## Non-functional requirements
+
+## Solution overview
+
+## Personas and use cases
+
+### Persona 1 - Georges Michael
+
+Georges Michael is a 50-years-old man working as a ski instructor during the season.
+
+#### Goals
+
+- Georges wants to secure all the skis of his students when they are doing theorical courses in the school.
+- He also wants to be informed every fifteen minutes of their location to reassure himself.
+
+#### Challenges
+
+- Georges is looking for a simple device allowing him to secure the skis.
+- He searches for a device capable to send him the actual position of the skis during the class.
+- He needs a device lasting more than six hours in snowy conditions.
+
+### Persona 2 - Jane Hamilton
+
+Jane Hamilton is a young 24-years-old woman eager to see new landscapes such as mountains.
+
+#### Goals
+
+- Jane wants to go downhill but also to visit the town. She then needs a device to secure her snowboard when she goes in an etablishement.
+- She is not an enthusiast of smartphone while doing tourism, she wants a, audio signal if her snowboard is stolen.
+
+#### Challenges
+
+- Jane needs a device capable of tracking the movement of her snowboard while she doesn't use it.
+- She wants to activate and desactivate the security easily.
+- She is looking for a sonor security included in a device.
+
+### Persona 3 -
+
+#### Goals
+
+#### Challenges
+
+## Evaluation criteria
+
+## Risks and assumptions
+
+## Timeline
+
+- Planning and Research
+  - Learning bout the project and preparing it.
+  - Week 1
+  - 5 half days
+
+- Adding features
+  - Adding the NFC, the different level of noises.
+  - Week 2 to 4
+  - half days
+
+- Tests & Optimizing
+  - Reducing the battery consumption and doing the test cases.
+  - Week 5
+  - half days
+
+- pitch and support preparation
+  - Time reserved for the reharsing of the final presentation and the creation of the support.
+  - Week 6
+  - half days
+
+The complete timeline and tasks can be found in the [managing folder](). <!-- TODO -->
+
+## Future improvements
 
 ## Deliverables and milestones
 
@@ -61,31 +149,5 @@ This project aims to complete and optimize the existing software given by CORIS 
 | 10 April 2024, 5 PM | Test plan                |
 | 10 April 2024, 5 PM | User Manual              |
 | 10 April 2024, 5 PM | Code                     |
-
-## Personas and use cases
-
-### Persona 1 - 
-
-#### Goals
-
-#### Challenges
-
-### Persona 2 - 
-
-#### Goals
-
-#### Challenges
-
-### Persona 3 -
-
-#### Goals
-
-#### Challenges
-
-## Acceptance criteria
-
-## Risks and assumptions
-
-## Future improvements
 
 ## Glossary
