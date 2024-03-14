@@ -1,6 +1,6 @@
 <h1 align="center"> Code of Conduct </h1>
 
-<p align="center"> 
+<p align="center">
 Created by: Quentin CLÉMENT <br> Creation Date: 14/03/2024 <br> Last update: 14/03/2024
 </p>
 
@@ -26,22 +26,22 @@ This document is a management artefact that will define the way the team will wo
 
 ## 2. Workload
 
-Because of the short amount of time given between each deadline, workload during project time will be paramount. For each project time, each member will receive an assignement on what he will have to do. \
+Because of the short amount of time given between each deadline, workload during project time will be paramount. For each project time, each member will receive an assignment on what they will have to do. \
 The goal is to optimise the time given to each member and to make sure that everyone is working on the project.
 
-The strategy will be to prioritise pair programming as well as document writing in group to mix the points of view and end up with more complete and accurate work.
+The strategy will be to prioritise pair programming as well as document writing in groups to mix the points of view and end up with more complete and accurate work.
 
 Everyone will be assigned tasks corresponding to their skills and will be encouraged to ask for help if they encounter difficulties.
 
 ## 3. Communication
 
-Communication during project time and online will exclusively be in English. 
+Communication during project time and online will exclusively be in English.
 
 ## 4. Absenteeism
 
-Absence and lateness can happen as long as they are not recurrent and anticipated or at least warned of. As soon as a member knows that he will be absent or late, he will have to warn the team at school or online as soon as possible.
+Absence and lateness can happen as long as they are not recurrent and anticipated or at least warned of. As soon as a member knows that they will be absent or late, they will have to warn the team at school or online as soon as possible.
 
 ## 5. Sanctions
 
-Those rules are essential to ensure the well progress of the project. If they are not respected, measures will be taken on individual or collective basis. \
-In case of a lack of work, the first step will be a warning, then a report on the work done during the day will be required at the end of each day. If further sanctions need to be taken, the third step will be a report and a meeting with the school. 
+Those rules are essential to ensure the good progress of the project. If they are not respected, measures will be taken on individual or collective basis. \
+In case of a lack of work, the first step will be a warning, and then a report on the work done during the day will be required at the end of each day. If further sanctions need to be taken, the third step will be a report and a meeting with the school.
