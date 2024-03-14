@@ -96,11 +96,15 @@ The complete timeline and tasks can be found in the [managing folder](). <!-- TO
 | --------------------| ------------------------ |
 | 18 March 2024, 5 PM | Functional specification |
 | 26 March 2024, 5 PM | Technical specification  |
+| 30 March 2024, 5 PM | MVP                      |
 | 10 April 2024, 5 PM | Test plan                |
-| 10 April 2024, 5 PM | User Manual              |
-| 10 April 2024, 5 PM | Code                     |
+| 10 April 2024, 5 PM | User manual              |
+| 10 April 2024, 5 PM | Final product            |
 
 ### Budget
+
+We would probably need some budget in case of impredicatble issues with the software (burning, breaking, etc).
+Moreover we would potentially search for new hardware if we estimate that it could obstruct the good progress of the project.
 
 ## Evaluation framework
 
@@ -111,6 +115,10 @@ The complete timeline and tasks can be found in the [managing folder](). <!-- TO
 #### Risks
 
 #### Assumptions
+
+During this project we would assume:
+- The 2G work as expected as CORIS Innovation told us because we will not be able to test it in our environment.
+- The bluetooth can be connected to the application as expected, we can not check it since we have not access to the application.
 
 ## Personas and use cases
 
@@ -158,6 +166,10 @@ The main requirements for this project are:
 - Add a feature for the NFC;
 - Check the buzzer's noise level according to the impact;
 - Managing the battery consumption so it can last 7 days in cold conditions (6 hours of active mode and 18 in sleep mode).
+
+### Battery consumption
+
+- 
 
 ## Non-functional requirements
 
