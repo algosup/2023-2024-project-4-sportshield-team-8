@@ -12,6 +12,7 @@ This project aims to complete and optimize the existing software given by CORIS 
         - [Project members](#project-members)
         - [Other stakeholders](#other-stakeholders)
     - [Project scope](#project-scope)
+    - [Out of scope](#out-of-scope)
     - [Timeline](#timeline)
     - [Deliverables and milestones](#deliverables-and-milestones)
     - [Budget](#budget)
@@ -38,7 +39,6 @@ This project aims to complete and optimize the existing software given by CORIS 
         - [➭ Low battery management](#➭-low-battery-management)
 - [Non-functional requirements](#non-functional-requirements)
 - [Future improvements](#future-improvements)
-- [Out of scope](#out-of-scope)
 - [Glossary](#glossary)
 </summary></details>
 
@@ -70,6 +70,8 @@ This project is more of a maintenance project because we aren't starting from sc
 As a matter of fact, we were asked to optimize an existing code of the product given by CORIS Innovation but also to add more features such as the NFC or ... 
 
 All these improvements should be done within the deadlines set by the school and respecting the criteria of battery consumption which is really important.
+
+### Out of scope
 
 ### Timeline
 
@@ -166,9 +168,9 @@ The main requirements for this project are:
 
 #### ➭ **Modes**
 Three different modes are being set for the device:
-  - The first mode is the actif mode, it turns on all the modules inside the device;
-  - The second one is the anti-thief mode, it consist of switching on only the movement sensor and the NFC one, allowing us to economise energy in the battery. However if a movement is detected it will automatically switch on the needed module;
-  - Finally we would have the off mode which will be used when you don't need to use the device, like this it would not consume energy.
+  - The first mode is the lock mode, it will turn on the motion detector, the NFC and the bluetooth, other modules could be activate depending on the situation such as the alarm if impact has been detected;
+  - The second one is the unlock mode, it consist of switching on only the bluetooth and the NFC one, allowing us to economise energy in the battery;
+  - Finally we would have the sleep mode which will be used when you don't need to use the device, like this it would not activate the alarm accidentally, only the NFC would be activated.
 
 #### ➭ **GPS removal**
 The decision has been made to remove the GPS features from the device, as they were deemed unnecessary for the project and consumed excessive energy.
@@ -188,8 +190,8 @@ The sound would also become more frequent when the battery level would be under 
 #### ➭ **Undervolting**
 Undervolting would be used to lower the energy consumption in specific mode such as the actif one and the anti-thieft.
 
-#### ➭ **Notification reduction**
-The fifteen minutes' notifications during the actual sleeping mode has been estimated too high and irrevelant. They would be changed as one notification every forty-five minutes. However, the user will be able to request the notification via the application.
+#### ➭ **Notifications**
+The fifteen minutes' notifications during the actual sleeping mode has been estimated too high and irrevelant. They would be removed. However two kinds of notification will be set. One for the battery level and another for the impact detection.
 
 ### GPRS management
 
@@ -200,7 +202,7 @@ The decicison was made to change the GPRS notifications. Henceforth, they will c
 
 ### Buzzer
 
-When considering the accidental impact against the device, someone who fell on it for example. It has been decide to implement a crescendo sound and not an important one from the beginning. It would start with a ... dB for two seconds before increasing it at ... dB to finally had the intense signal of ... dB at the fourth second.
+When considering the accidental impact against the device, someone who fell on it for example. It has been decide to implement a crescendo sound and not an important one from the beginning. It would start with a 70 dB sound for three seconds before increasing to the intense signal of 95 dB.
 
 ### NFC
 
@@ -210,10 +212,10 @@ It has been found relevant to implement a system to cut the alarm with a NFC suc
 #### ➭ **Device unlocking**
 It has been decided to add an other features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. Moreover this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor during two seconds.
 
-## Non-functional requirements
+<!-- ## Non-functional requirements -->
 
 ## Future improvements
 
-## Out of scope
+
 
 ## Glossary
