@@ -130,18 +130,7 @@ During this project we would assume:
 
 ### Persona 1 - Georges Michael
 
-Georges Michael is a 50-years-old man working as a ski instructor during the season.
-
-#### Goals
-
-- Georges wants to secure all the skis of his students when they are doing theoretical courses in the school.
-- He also wants to be informed every fifteen minutes of their location to reassure himself.
-
-#### Challenges
-
-- Georges is looking for a simple device allowing him to secure the skis.
-- He is searching for a device capable to send him the actual position of the skis during the class.
-- He needs a device lasting more than six hours in snowy conditions.
+![Georges Michael](/documents/images/persona/persona1.png)
 
 ### Persona 2 - Jane Hamilton
 
