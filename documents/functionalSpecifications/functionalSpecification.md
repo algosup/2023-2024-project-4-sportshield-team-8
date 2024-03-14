@@ -31,6 +31,11 @@ This project aims to complete and optimize the existing software given by CORIS 
     - [Goals](#goals-2)
     - [Challenges](#challenges-2)
 - [Functional requirements](#functional-requirements)
+    - [Battery consumption](#battery-consumption)
+        - [➭ Modes](#➭-modes)
+        - [➭ GPS removal](#➭-gps-removal)
+        - [➭ LED implementation](#➭-led-implementation)
+        - [➭ Low battery management](#➭-low-battery-management)
 - [Non-functional requirements](#non-functional-requirements)
 - [Future improvements](#future-improvements)
 - [Out of scope](#out-of-scope)
@@ -169,7 +174,23 @@ The main requirements for this project are:
 
 ### Battery consumption
 
-- 
+#### ➭ **Modes**
+Three different modes are being set for the device:
+  - The first mode is the actif mode, it turns on all the modules inside the device;
+  - The second one is the anti-thief mode, it consist of switching on only the movement sensor and the NFC one, allowing us to economise energy in the battery. However if a movement is detected it will automatically switch on the needed module;
+  - Finally we would have the off mode which will be used when you don't need to use the device, like this it would not consume energy.
+
+#### ➭ **GPS removal**
+The decision has been made to remove the GPS features from the device, as they were deemed unnecessary for the project and consumed excessive energy.
+
+#### ➭ **LED implementation**
+However, consideration has been given to incorporating a small light at the bottom of the device to provide visual information regarding the battery level. It would be set like this:
+  - The LED is green if the battery level is above 60%;
+  - The LED is orange when the battery consumption lies between 59 and 20%;
+  - The LED is red when the battery is above 20%.
+
+#### ➭ **Low battery management**
+Additionally, we have decided to had an other security in the device by implementing a sonorous signal when the battery state is at 10% after 
 
 ## Non-functional requirements
 
