@@ -108,8 +108,9 @@ The complete timeline and tasks can be found in the [managing folder](). <!-- TO
 
 ### Budget
 
-We would probably need some budget in case of impredicatble issues with the software (burning, breaking, etc).
-Moreover we would potentially search for new hardware if we estimate that it could obstruct the good progress of the project.
+In term of budget, there's no budget that has been set by the client nor by the team. However, we should keep in mind that the hardware is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn via many ways, get broken etc... \
+Moreover, the project can be impeded by the hardware limitation of the product. We reserve the right to give suggestion to the client in order to improve the hardware in the future. \
+There are no budget set, but some expenses could happen in the future. It should be kept in mind.
 
 ## Evaluation framework
 
@@ -187,10 +188,38 @@ The decision has been made to remove the GPS features from the device, as they w
 However, consideration has been given to incorporating a small light at the bottom of the device to provide visual information regarding the battery level. It would be set like this:
   - The LED is green if the battery level is above 60%;
   - The LED is orange when the battery consumption lies between 59 and 20%;
-  - The LED is red when the battery is above 20%.
+  - The LED is red when the battery is under 20%.
 
 #### ➭ **Low battery management**
-Additionally, we have decided to had an other security in the device by implementing a sonorous signal when the battery state is at 10% after 
+Additionally, a further security measure is being implemented in the device by:
+- implementing a sonorous signal when the battery state is at 10%;
+- sending a notification informing of the state.
+The sound would also become more frequent when the battery level would be under 5%.
+
+#### ➭ **Undervolting**
+Undervolting would be used to lower the energy consumption in specific mode such as the actif one and the anti-thieft.
+
+#### ➭ **Notification reduction**
+The fifteen minutes' notifications during the actual sleeping mode has been estimated too high and irrevelant. They would be changed as one notification every forty-five minutes. However, the user will be able to request the notification via the application.
+
+### GPRS management
+
+The decicison was made to change the GPRS notifications. Henceforth, they will contain:
+  - The current mode of the device;
+  - The battery level;
+  - The state of the device (lock or not).
+
+### Buzzer
+
+When considering the accidental impact against the device, someone who fell on it for example. It has been decide to implement a crescendo sound and not an important one from the beginning. It would start with a ... dB for two seconds before increasing it at ... dB to finally had the intense signal of ... dB at the fourth second.
+
+### NFC
+
+#### ➭ **Alarm turning off**
+It has been found relevant to implement a system to cut the alarm with a NFC such as a little card or a badge and not necessarly the application. It would be quickier to stop the alarm than taking the phone, opening the application and deactivate the alarm.
+
+#### ➭ **Device unlocking**
+It has been decided to add an other features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. Moreover this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor during two seconds.
 
 ## Non-functional requirements
 
