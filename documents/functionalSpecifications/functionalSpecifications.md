@@ -153,16 +153,17 @@ There are no budget set, but some expenses could happen in the future. It should
 
 This section goes down the various modules and electronics that the client has provided to us. It doesn't directly enter into the budget of the team, but might if any of those breaks down.
 
-| Hardware                | Details                                                                                 |
-|-------------------------|-----------------------------------------------------------------------------------------|
-| Xiao BLE Sense nrf52840 | Small Bluetooth programmable card with a built-in antenna. <br>  Bluetooth Low Energy.  |
-| GNSS PA1010D            | GPS Module with a built-in antenna. <br> Gives real-time location.                      |
-| GSM/2G SIM800L Module   | Mini GSM Module. <br> Provides 2G data.                                                 |
-| 1NCE SIM Card           | Multi-network and multi-mode SIM card. <br>                                             |
-| Electromagnet           | Is used to unlock the device.                                                           |
-| Piezoelectric buzzer    | Buzzer with oscillator control circuit.                                                 |
-| Lithium-Polymer battery |                                                                                         |
-| NFC Antenna             | NFC module. Provides NFC compatibility.                                                 |
+
+| Hardware                | Details                                                                                 | Picture |
+|-------------------------|-----------------------------------------------------------------------------------------|---------|
+| Xiao BLE Sense nrf52840 | Small Bluetooth programmable card with a built-in antenna. <br>  Bluetooth Low Energy.  | <img src="../images/hardware/xiaoBLESense.png" alt="drawing" width="75"/>|
+| GNSS PA1010D            | GPS Module with a built-in antenna. <br> Gives real-time location.                      |<img src="../images/hardware/GNSSPA1010D.png" alt="drawing" width="90"/>|
+| GSM/2G SIM800L Module   | Mini GSM Module. <br> Provides 2G data.                                                 |<img src="../images/hardware/SIM800L.png" alt="drawing" width="100"/>|
+| 1NCE SIM Card           | Multi-network and multi-mode SIM card. <br>                                             |<img src="../images/hardware/SIMCard.png" alt="drawing" width="100"/>|
+| Electromagnet           | Is used to unlock the device.                                                           |<img src="../images/hardware/electromagnet.png" alt="drawing" width="75"/>|
+| Piezoelectric buzzer    | Buzzer with oscillator control circuit.                                                 |<img src="../images/hardware/piezoelectricBuzzerCircuit.png" alt="drawing" width="100"/>|
+| Lithium-Polymer battery |                                                                                         |<img src="../images/hardware/lithiumPolymerBattery.png" alt="drawing" width="100"/>
+| NFC Antenna             | NFC module. Provides NFC compatibility.                                                 |<img src="../images/hardware/NFCAntennaCompatibility.png" alt="drawing" width="75"/>|
 
 ## Evaluation framework
 
