@@ -2,7 +2,7 @@
 
 This project was requested by [ALGOSUP](https://algosup.com), a French computer science school, in partnership with [CORIS Innovation](https://www.corisinnovation.com/), a French consulting firm.
 
-This project aims to complete and optimize the existing software given by CORIS Innovation[^1].
+This project aims to complete and optimize the existing software given by **CORIS Innovation**[^1].
 
 <details>
 <summary>Table of Contents</summary>
@@ -240,9 +240,4 @@ However, these tasks have been planned to be done as future improvements in the 
 
 ## Glossary
 
-[^1] Coris Innovation:  an European company based in France and Switzerland. The compnay focuses on systems engineering and process engineering .Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges.
-
-**virtual processor**[^1]
-
-
-[^1]: **Virtual Processor**: A virtual processor refers to a simulated or emulated computing unit designed to execute instructions and perform operations, typically in a software environment. It mimics the behavior of a physical processor, allowing for testing and development without the need for actual hardware.
+[^1]: **Coris Innovation**: an European company based in France and Switzerland. The compnay focuses on systems engineering and process engineering .Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges.

@@ -28,7 +28,7 @@ Created by: MARLIER Thibaud <br> Creation Date: 14/03/2024 <br> Last update: 15/
 ## 1. Introduction
 
 On Thursday the 14th of March 2024, the team took an hour to discuss and brainstorm on the project. Many ideas, information and decisions were taken during this brainstorming session. \
-This document is used to keep track of this session. You'll find all the information that seemed relevant to be kept into account.
+This document will be used to keep track of this session. You'll find all the information that seemed relevant to be kept into account.
 
 ## 2. Ideas
 
@@ -38,11 +38,11 @@ This part will summarize all the ideas that we've kept after the brainstorming s
 
 - We noticed that the device constantly loops through the whole code, it doesn't seem relevant to us. Moreover, it consumes a consequent amount of energy and time to execute. To improve this, instead of looping the whole program constantly, we have decided to only execute the motion detection and the NFC scanning.
 
-- We decided to implement multithreading. As of right now, the hardware is not able of executing multiple operations at the same time and it is a waste of time.
+- We decided to implement multithreading. As of right now, the hardware is not able to execute multiple operations at the same time and it is a waste of time.
 
 - Whenever the device is in locked mode, we thought about putting the system in an undervoltage stage, to save battery. It will make the battery last longer without being recharged and improve the lifespan of the battery.
 
-- In an effort to save battery power, we decided to remove the GPS, as its usefulness/energy consumption ratio seems to us to be completely unfavourable.
+- To save battery power, we decided to remove the GPS, as its usefulness/energy consumption ratio seems to us to be completely unfavourable.
 
 - Considering the magnet, the fact that it heats up easily, shows that it consumes a lot of energy. And has a high rate of waste of energy (apparently the battery doesn't provide enough power to make the magnet work).
 
@@ -54,8 +54,8 @@ This part will summarize all the ideas that we've kept after the brainstorming s
 
 - 3 Different modes:
   - Sleep mode: The board and the NFC are still running, but the rest of the device is off. Scanning the NFC will wake the device up.
-  - Locked mode: The device is locked, the alarm is activated, the magnet is on. The board, the motion detection, the NFC and the bluetooth are always running.
-  If the motion system is triggered, it will activate the alarm and the GPRS to send the information of the device being moved.
+  - Locked mode: The device is locked, the alarm is activated, and the magnet is on. The board, the motion detection, the NFC and the Bluetooth are always running.
+  If the motion system is triggered, it will activate the alarm and the GPRS to send the information about the device being moved.
 
 - We found out that the board runs 24/24 7/7, even in sleep mode. Which is not always necessary.
 
@@ -73,7 +73,7 @@ This part will summarize all the ideas that we've kept after the brainstorming s
 
 - Shock detection is quite effective as shown by the KPIs provided by the client. Unfortunately, it seems to be a bit too sensible. It is a great starting point.
 
-- To prevent from a mistake when the user is moving the device, the beeps intensity will increase until the reaching of the maximum intensity. It still shouldn't be too long to reach the maximum intensity because otherwise it would get easier to steal.
+- To prevent a mistake when the user is moving the device, the beep intensity will increase until the reaches the maximum intensity. It still shouldn't be too long to reach the maximum intensity because otherwise, it would get easier to steal.
 
 ### 2.5 Alarm
 
