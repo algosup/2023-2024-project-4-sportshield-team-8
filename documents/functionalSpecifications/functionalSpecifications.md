@@ -19,11 +19,13 @@ This project aims to complete and optimize the existing software given by **CORI
     - [Other stakeholders](#other-stakeholders)
   - [Project scope](#project-scope)
   - [Out of scope](#out-of-scope)
-      <!-- - [➭ Additional key](#➭-additional-key) -->
+    - [➭ Application improvement](#➭-application-improvement)
+    - [➭ Market analysis](#➭-market-analysis)
     - [➭ Refurbish hardware](#➭-refurbish-hardware)
   - [Timeline](#timeline)
   - [Deliverables and milestones](#deliverables-and-milestones)
   - [Budget](#budget)
+    - [➭ Hardware](#➭-hardware)
 - [Evaluation framework](#evaluation-framework)
   - [Evaluation criteria](#evaluation-criteria)
     - [Acceptance criteria](#acceptance-criteria)
@@ -34,7 +36,7 @@ This project aims to complete and optimize the existing software given by **CORI
 - [Personas and use cases](#personas-and-use-cases)
   - [Persona 1 - Georges Michael](#persona-1---georges-michael)
   - [Persona 2 - Jane Hamilton](#persona-2---jane-hamilton)
-  - [Persona 3 - Patric Jackson](#persona-3---patric-jackson)
+  - [Persona 3 - Patrick Broussard](#persona-3---patrick-broussard)
 - [Functional requirements](#functional-requirements)
   - [Battery consumption](#battery-consumption)
     - [➭ Modes](#➭-modes)
@@ -49,7 +51,6 @@ This project aims to complete and optimize the existing software given by **CORI
     - [➭ Alarm turning off](#➭-alarm-turning-off)
     - [➭ Device unlocking](#➭-device-unlocking)
   - [Undervolting](#undervolting)
-<!-- - [Non-functional requirements](#non-functional-requirements) -->
 - [Future improvements](#future-improvements)
   - [➭ Battery consumption](#➭-battery-consumption)
   - [➭ Forfait & paring](#➭-forfait--paring)
@@ -91,8 +92,15 @@ All these improvements should be done within the deadlines set by the school and
 
 This project also has some features that could be implemented but are not in our area of expertise and are not feasible in the amount of time given by the school for the SportShield project.
 
-<!-- #### ➭ **Additional key**
-Considering the potential issue of empty battery while the device is locked, the decision of adding a little key in the device could be a great idea as an additional security.  -->
+#### ➭ **Application improvement**
+
+The application software is not at its final states and could be improve in many ways. \
+However, the team was specially ask to only work on the product's software which doesn't include the application. It would be done by the company's client and not by the school's team.
+
+#### ➭ **Market analysis**
+
+The market analysis is not to be define, it was already done by the company's client. \
+Moreover, this doesn't feat the SportShield project's requirements given at the beginning of it.
 
 #### ➭ **Refurbish hardware**
 
@@ -110,19 +118,19 @@ However, the team was precisely asked to focus only on the software, the researc
 - Adding features
   - Adding the NFC, the different level of noises.
   - Week 2 to 4
-  - half days
+  - 4 half days (these are not up to date considering that our schedule isn't complete yet)
 
 - Tests & Optimizing
   - Reducing the battery consumption and doing the test cases.
   - Week 5
-  - half days
+  - some half days (these are not up to date considering that our schedule isn't complete yet)
 
 - Pitch and support preparation
   - Time reserved for the rehearsal of the final presentation and the creation of the support.
   - Week 6
-  - half days
+  - 4 half days (these are not up to date considering that our schedule isn't complete yet)
 
-The complete timeline and tasks can be found in the [managing folder](/documents/management/).
+The complete timeline and tasks can be found in the [Roadmap](https://github.com/orgs/algosup/projects/24/views/6) in the github project.
 
 ### Deliverables and milestones
 
@@ -141,7 +149,7 @@ In term of budget, there's no budget that has been set by the client nor by the 
 Moreover, the project can be impeded by the hardware limitation of the product. We reserve the right to give suggestion to the client in order to improve the hardware in the future. \
 There are no budget set, but some expenses could happen in the future. It should be kept in mind.
 
-#### Hardware
+#### ➭ **Hardware**
 
 This section goes down the various modules and electronics that the client has provided to us. It doesn't directly enter into the budget of the team, but might if any of those breaks down.
 
@@ -189,15 +197,15 @@ The risks would principally concern the hardware part for this project, as the t
 
 The risks are the following:
 
-*➭ Communication issue*
+*➭ Communication issues*
 - Impact:
-  - Having communication issues with the client could fetch a misunderstood and by consequence a final code and product not suitable to the client's requirements and need.
+  - Having communication issues with the client could fetch a misunderstanding and consequently a final code and product not suitable to the client's requirements and their needs.
 - Solution:
-  - Having constant and regular communication with the client by mail exchange for example. Another solution to avoid these issues is to have regular meetings, they are more difficult to implement but allow a better exchange between the two sides.
+  - Having constant and regular communication with the client by mail exchange for example. Another solution to avoid these issues is to have regular meetings, they are more difficult to organise but allow a better exchange between the two sides.
 
 *➭ 2G shutdown*
 - Impact:
-  - A 2G shutdown would break an enormous part of the project whereas all the notifications pass by this system. In other words, a 2G shutdown would break the principle utility of the application if the skis are being robbed.
+  - A 2G shutdown would break an enormous part of the project whereas all the notifications pass by this system. In other words, a 2G shutdown would break the main utility of the application if the skis are being robbed.
 - Solution:
   - There is no real solution to avoid the 2G shutdown. However we can think about changing the 2G to a most recent version, like 3G, and the module link to it.
 
@@ -207,17 +215,19 @@ The risks are the following:
 - Solution:
   - Be careful with the board and avoid to break or burn it at all cost. In either way, the best choice would be to borrow some hardware to the other teams but it would imply having less testing time on the hardware. The other choice would be to purchase a new board, which bring an other issue: the delivery time.
 
-*➭ delivery time*
+*➭ Delivery time*
 - Impact:
-  - In case the team wanted new hardware modules and considering the delivery time and the short amount of time for this project, they would probably not arrived in time.
+  - In case the team wanted new hardware modules and considering the delivery time and the short amount of time for this project, they would probably not arrive in time.
 - Solution:
-  - The better solution would be to command them the earlier in the project or to avoid breaking anything.
+  - The best solution would be to command them the earliest in the project or to sipmly avoid breaking anything.
 
 #### Assumptions
 
 During this project we would assume:
 
 - The 2G work as expected as CORIS Innovation told us because we will not be able to test it in our environment.
+- The 2G network would not be shutdown during the project.
+- No extra-material would be needed since it was provided by the client ad the school.
 - The **Bluetooth**[^4] can be connected to the application as expected, we can not check it since we have not access to the application.
 
 ## Personas and use cases
@@ -315,8 +325,6 @@ Moreover this feature will override the previous one. In the case of an alarm ri
 **Undervolting**[^9] would be used to lower the energy consumption in specific mode such as the lock one and the unlock. \
 However, after a second look on it, it has been decided not to implement it due to the risk of damaging the product in itself.
 
-<!-- ## Non-functional requirements -->
-
 ## Future improvements
 
 Considering the short amount of time given and the important amount of tasks and requirements the project have. It has been decided to postpone some of then, deemed non-critical to the completion of the SportShield project in the short term. \
@@ -332,7 +340,7 @@ However, considering the difficulty of the task and the amount of time, it has b
 ### ➭ Forfait & paring
 
 Searching for an improvement of the system and an optimization, it has been agreeed to implement a system forfait with ski station or the feature of pairing more than one device at a time such as badges for example. \
-This system would be implemented in a brief delay after the release of the product as an update.*
+This system would be implemented in a brief delay after the release of the product as an update.
 
 ### ➭ Changing phone
 
