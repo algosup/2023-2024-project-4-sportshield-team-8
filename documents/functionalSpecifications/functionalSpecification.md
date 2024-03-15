@@ -31,8 +31,18 @@ This project aims to complete and optimize the existing software given by CORIS 
         - [➭ GPS removal](#➭-gps-removal)
         - [➭ LED implementation](#➭-led-implementation)
         - [➭ Low battery management](#➭-low-battery-management)
-- [Non-functional requirements](#non-functional-requirements)
+        - [➭ Notifications](#➭-notifications)
+    - [GPRS management](#gprs-management)
+    - [Motion detection](#motion-detection)
+    - [Buzzer](#buzzer)
+    - [NFC](#nfc)
+        - [➭ Alarm turning off](#➭-alarm-turning-off)
+        - [➭ Device unlocking](#➭-device-unlocking)
+    - [Undervolting](#undervolting)
+<!-- - [Non-functional requirements](#non-functional-requirements) -->
 - [Future improvements](#future-improvements)
+    - [Battery consumption](#battery-consumption-1)
+    - [Forfait & paring](#forfait--paring)
 - [Glossary](#glossary)
 </summary></details>
 
@@ -67,6 +77,16 @@ All these improvements should be done within the deadlines set by the school and
 
 ### Out of scope
 
+This project also has some features that could be implemented but are not in our area of expertise and are not feasible in the amount of time given by the school for the SportShield project.
+
+<!-- #### ➭ **Additional key**
+Considering the potential issue of empty battery while the device is locked, the decision of adding a little key in the device could be a great idea as an additional security.  -->
+
+#### ➭ **Refurbish hardware**
+The hardware should be refurbish as it is not exactly corresponding to the project. It posses some problems in a lot of aspects and or not optimal. \
+For example, the electro-magnet consumes way too much energy for the battery and can not be deacticate with the actual layout. \
+However, the team was precisely asked to focus only on the software, the research and purchase of better hardware are consequently not our task.
+
 ### Timeline
 
 - Planning and Research
@@ -89,7 +109,7 @@ All these improvements should be done within the deadlines set by the school and
   - Week 6
   - half days
 
-The complete timeline and tasks can be found in the [managing folder](). <!-- TODO -->
+The complete timeline and tasks can be found in the [managing folder](/documents/management/).
 
 ### Deliverables and milestones
 
@@ -134,9 +154,7 @@ During this project we would assume:
 
 ### Persona 3 - Patric Jackson
 
-#### Goals
 
-#### Challenges
 
 ## Functional requirements
 
@@ -170,11 +188,9 @@ Additionally, a further security measure is being implemented in the device by:
 - sending a notification informing of the state.
 The sound would also become more frequent when the battery level would be under 5%.
 
-#### ➭ **Undervolting**
-Undervolting would be used to lower the energy consumption in specific mode such as the actif one and the anti-thieft.
-
 #### ➭ **Notifications**
-The fifteen minutes' notifications during the actual sleeping mode has been estimated too high and irrevelant. They would be removed. However two kinds of notification will be set. One for the battery level and another for the impact detection.
+The fifteen minutes' notifications during the actual sleeping mode has been estimated too high and irrevelant. They would be removed. \
+However two kinds of notification will be set. One for the battery level and another for the impact detection.
 
 ### GPRS management
 
@@ -185,25 +201,42 @@ The decicison was made to change the GPRS notifications. Henceforth, they will c
 
 ### Motion detection
 
-The motion detection has been considered as too sensitive and would then be imroved in a way taht parasytemovement such as the wind should not be detected as motion and then not activate the alarm system.
+The motion detection has been considered as too sensitive and would then be imroved in a way that parasyte movements such as the wind should not be detected as motion and then not activate the alarm system. \
+To be more precise, all the motion detected by the hardware under five mm/s for the translations and under ten deg/s for the roation would be considered as parasyte and not activate the alarm. \
+Regarding the important impact, they would be detected above ten mm/s for the translation and twenty deg/s for the rotation.
 
 ### Buzzer
 
-When considering the accidental impact against the device, someone who fell on it for example. It has been decide to implement a crescendo sound and not an important one from the beginning. It would start with a 70 dB sound for three seconds before increasing to the intense signal of 95 dB.
+When considering the accidental impact against the device, someone who fell on it for example. \
+It has been decided to implement a crescendo sound and not an important one from the beginning. \
+It would start with a 70 dB sound for three seconds before increasing to the intense signal of 95 dB.
 
 ### NFC
 
 #### ➭ **Alarm turning off**
-It has been found relevant to implement a system to cut the alarm with a NFC such as a little card or a badge and not necessarly the application. It would be quickier to stop the alarm than taking the phone, opening the application and deactivate the alarm.
+It has been found relevant to implement a system to cut the alarm with a NFC such as a little card or a badge and not necessarly the application. \
+It would be quickier to stop the alarm than taking the phone, opening the application and deactivate the alarm.
 
 #### ➭ **Device unlocking**
-It has been decided to add an other features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. Moreover this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor during two seconds.
+It has been decided to add an other features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. \
+Moreover this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor during two seconds.
+
+### Undervolting
+Undervolting would be used to lower the energy consumption in specific mode such as the lock one and the un-lock. \
+However, after a second look on it, it has been decided not to implement it due to the risk of damaging the product in itself.
 
 <!-- ## Non-functional requirements -->
 
 ## Future improvements
 
-## Out of scope
+Considering the short amount of time given and the important amount of tasks and requirements the project have. It has been decided to postpone some of then, deemed non-critical to the completion of the SportShield project in the short terme. \
+However, these tasks have been planned to be done as future improvements in the long terme.
+
+### Battery consumption
+
+
+
+### Forfait & paring
 
 ## Glossary
 
