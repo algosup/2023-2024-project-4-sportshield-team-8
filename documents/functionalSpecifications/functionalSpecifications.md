@@ -20,14 +20,14 @@ This project aims to complete and optimize the existing software given by **CORI
   - [Project scope](#project-scope)
   - [Out of scope](#out-of-scope)
       <!-- - [➭ Additional key](#➭-additional-key) -->
-      - [➭ Refurbish hardware](#➭-refurbish-hardware)
+    - [➭ Refurbish hardware](#➭-refurbish-hardware)
   - [Timeline](#timeline)
   - [Deliverables and milestones](#deliverables-and-milestones)
   - [Budget](#budget)
 - [Evaluation framework](#evaluation-framework)
   - [Evaluation criteria](#evaluation-criteria)
-      - [Acceptance criteria](#acceptance-criteria)
-      - [Performance requirements](#performance-requirements)
+    - [Acceptance criteria](#acceptance-criteria)
+    - [Performance requirements](#performance-requirements)
   - [Risks and assumptions](#risks-and-assumptions)
     - [Risks](#risks)
     - [Assumptions](#assumptions)
@@ -141,6 +141,21 @@ In term of budget, there's no budget that has been set by the client nor by the 
 Moreover, the project can be impeded by the hardware limitation of the product. We reserve the right to give suggestion to the client in order to improve the hardware in the future. \
 There are no budget set, but some expenses could happen in the future. It should be kept in mind.
 
+#### Hardware
+
+This section goes down the various modules and electronics that the client has provided to us. It doesn't directly enter into the budget of the team, but might if any of those breaks down.
+
+| Hardware                | Details                                                                                 |
+|-------------------------|-----------------------------------------------------------------------------------------|
+| Xiao BLE Sense nrf52840 | Small Bluetooth programmable card with a built-in antenna. <br>  Bluetooth Low Energy.  |
+| GNSS PA1010D            | GPS Module with a built-in antenna. <br> Gives real-time location.                      |
+| GSM/2G SIM800L Module   | Mini GSM Module. <br> Provides 2G data.                                                 |
+| 1NCE SIM Card           | Multi-network and multi-mode SIM card. <br>                                             |
+| Electromagnet           | Is used to unlock the device.                                                           |
+| Piezoelectric buzzer    | Buzzer with oscillator control circuit.                                                 |
+| Lithium-Polymer battery |                                                                                         |
+| NFC Antenna             | NFC module. Provides NFC compatibility.                                                 |
+
 ## Evaluation framework
 
 ### Evaluation criteria
@@ -151,6 +166,7 @@ The evaluation criteria are set principally by the stakeholders, they are the on
 
 The product will be accepted only if all the requirements given by the client are fulfilled by our team. \
 The main requirements according to the document given by the client are:
+
 - Battery consumption management: improvement of the battery efficiency, low battery management and improvement of the battery lifespan;
 - Device management with NFC;
 - Alarm Management and simultaneous actions: stop the alarm when it rings, even if the cycle isn't finished. Ring and send information to the server at the same time;
@@ -159,6 +175,7 @@ The main requirements according to the document given by the client are:
 #### Performance requirements
 
 The product needs to be more efficient than it was before in term of energy consumption. We need to find ways to reduce the energy consumption of the device. Such ways are:
+
 - Battery management;
 - Remove unecessary features: GPS;
 - Run-time optimization (code optimization);
@@ -306,16 +323,19 @@ Considering the short amount of time given and the important amount of tasks and
 However, these tasks have been planned to be done as future improvements in the long term.
 
 ### ➭ Battery consumption
+
 One of the requirements given by the company was to use the battery only between 20 and 80%. \
 Estinating the Apple's battery management with the intelligent battery system, consisted on charging just before the average time usage and stoping it at 80%. \
 The team thought it is what the device needs. \
 However, considering the difficulty of the task and the amount of time, it has been decided to do it later on.
 
 ### ➭ Forfait & paring
+
 Searching for an improvement of the system and an optimization, it has been agreeed to implement a system forfait with ski station or the feature of pairing more than one device at a time such as badges for example. \
 This system would be implemented in a brief delay after the release of the product as an update.*
 
 ### ➭ Changing phone
+
 One issue stood out, the pairing of the phone if it has to be change.
 A feature would be added, comporting an option to unpair the actual device an could only be activated on the application if the bluetooth is activated (lock and un-lock modes only).
 
