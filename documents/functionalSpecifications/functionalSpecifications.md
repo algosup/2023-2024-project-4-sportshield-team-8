@@ -13,6 +13,8 @@ This project aims to complete and optimize the existing software given by **CORI
     - [Other stakeholders](#other-stakeholders)
   - [Project scope](#project-scope)
   - [Out of scope](#out-of-scope)
+      <!-- - [➭ Additional key](#➭-additional-key) -->
+      - [➭ Refurbish hardware](#➭-refurbish-hardware)
   - [Timeline](#timeline)
   - [Deliverables and milestones](#deliverables-and-milestones)
   - [Budget](#budget)
@@ -41,8 +43,9 @@ This project aims to complete and optimize the existing software given by **CORI
   - [Undervolting](#undervolting)
 <!-- - [Non-functional requirements](#non-functional-requirements) -->
 - [Future improvements](#future-improvements)
-  - [Battery consumption](#battery-consumption-1)
-  - [Forfait & paring](#forfait--paring)
+  - [➭ Battery consumption](#➭-battery-consumption)
+  - [➭ Forfait & paring](#➭-forfait--paring)
+  - [➭ Changing phone](#➭-changing-phone)
 - [Glossary](#glossary)
 
 </summary></details>
@@ -245,9 +248,19 @@ However, after a second look on it, it has been decided not to implement it due 
 Considering the short amount of time given and the important amount of tasks and requirements the project have. It has been decided to postpone some of then, deemed non-critical to the completion of the SportShield project in the short term. \
 However, these tasks have been planned to be done as future improvements in the long term.
 
-### Battery consumption
+### ➭ Battery consumption
+One of the requirements given by the company was to use the battery only between 20 and 80%. \
+Estinating the Apple's battery management with the intelligent battery system, consisted on charging just before the average time usage and stoping it at 80%. \
+The team thought it is what the device needs. \
+However, considering the difficulty of the task and the amount of time, it has been decided to do it later on.
 
-### Forfait & paring
+### ➭ Forfait & paring
+Searching for an improvement of the system and an optimization, it has been agreeed to implement a system forfait with ski station or the feature of pairing more than one device at a time such as badges for example. \
+This system would be implemented in a brief delay after the release of the product as an update.*
+
+### ➭ Changing phone
+One issue stood out, the pairing of the phone if it has to be change.
+A feature would be added, comporting an option to unpair the actual device an could only be activated on the application if the bluetooth is activated (lock and un-lock modes only).
 
 ## Glossary
 
