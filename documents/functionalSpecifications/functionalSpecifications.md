@@ -350,9 +350,9 @@ A feature would be added, comporting an option to unpair the actual device and c
 
 ## Glossary
 
-[^1]: **Coris Innovation**: an European company based in France and Switzerland. The compnay focuses on systems engineering and process engineering .Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [Coris Innovation's website](https://www.corisinnovation.com)
+[^1]: **Coris Innovation**: a European company based in France and Switzerland. The company focuses on systems engineering and process engineering. Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [Coris Innovation's website](https://www.corisinnovation.com)
 
-[^2]: **NFC**: stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It has the ability to rapidly establish a connection, taking only one tenth of the time Bluetooth requires to complete pairing. [More information](https://www.corisinnovation.com)
+[^2]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing. [More information](https://www.corisinnovation.com)
 
 [^3]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
 
@@ -360,10 +360,10 @@ A feature would be added, comporting an option to unpair the actual device and c
 
 [^5]: **Motion Detector**: is an electronic device that is designed to detect and measure movement. Motion sensors can be customized to perform highly specific functions. For example, motion sensors can be used to activate floodlights, trigger audible alarms, activate switches, and even alert the police. [Motion Detector](https://www.fierceelectronics.com/sensors/what-a-motion-sensor)
 
-[^6]: **Modules**:  module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc.. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
+[^6]: **Modules**: A module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
 
 [^7]: **GPS**: Global Positioning System (GPS), is a satellite-based radio navigation system owned by the United States government. It is a satellite constellation supporting highly accurate positioning, navigation and timing (PNT) measurements worldwide. [GPS](https://novatel.com/support/knowledge-and-learning/what-is-gps-gnss)
 
-[^8]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It is make for good battery life but limits online activity.  It is a packet oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
+[^8]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It makes for good battery life but limits online activity.  It is a packet-oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
 
-[^9]: **Undervoltage**: The undervoltage-lockout (UVLO) is an electronic circuit used to turn off the power of an electronic device in the event of the voltage dropping below the operational value that could cause unpredictable system behavior. [Undervoltage](https://en.wikipedia.org/wiki/Undervoltage-lockout)
+[^9]: **Undervoltage**: The Undervoltage-lockout (UVLO) is an electronic circuit used to turn off the power of an electronic device in the event of the voltage dropping below the operational value that could cause unpredictable system behavior. [Undervoltage](https://en.wikipedia.org/wiki/Undervoltage-lockout)
