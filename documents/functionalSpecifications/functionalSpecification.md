@@ -208,3 +208,8 @@ It has been decided to add an other features with the NFC such as an unlock one.
 ## Glossary
 
 [^1] Coris Innovation:  an European company based in France and Switzerland. The compnay focuses on systems engineering and process engineering .Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges.
+
+**virtual processor**[^1]
+
+
+[^1]: **Virtual Processor**: A virtual processor refers to a simulated or emulated computing unit designed to execute instructions and perform operations, typically in a software environment. It mimics the behavior of a physical processor, allowing for testing and development without the need for actual hardware.
