@@ -109,7 +109,7 @@ void setup() {
   Serial.begin(115200);
   if (!Serial) delay(1000);
   Serial.println("BLE Antivol Peripheral");
-}
+
 
   // Timer
   if (ITimer.attachInterruptInterval(HW_TIMER_INTERVAL_MS * 1000, TimerHandler))  // Interval in microsecs
@@ -123,8 +123,69 @@ void setup() {
   ble_setup();
   Serial.println(" ble_setup");
   imu_setup();
+  Serial.println(" imu_setup");
+  Serial2.begin(9600);
+  delay(100);
+  sim800l = new SIM800L((Stream*)&Serial2, SIM800_RST_PIN, 200, 512);
+  pinMode(SIM800_DTR_PIN, OUTPUT);
+  delay(1000);
+  sim_setup();
+  Serial.println(" sim_setup");
+
+  analogReadResolution(ADC_RESOLUTION);  //setup battery reading
+  pinMode(PIN_VBAT, INPUT);
+  pinMode(VBAT_ENABLE, OUTPUT);
+  digitalWrite(VBAT_ENABLE, LOW);
+
+  Serial.println("fin setup ");
+  digitalWrite(LEDR, HIGH);
+  digitalWrite(LEDG, LOW);
+  Temps();
 
 
+  Serial.print("V Bat: ");
+  Serial.println(getBatteryVoltage());
+  Serial.print("Battery Level: ");
+  Serial.println(getBatteryLevel());
+}
+
+//----------------- LOOP -----------------
+
+void loop(){
+
+    MotionData = getMogtionData();
+    RotationData = getRotationData();
+    static String message = "";
+    
+    if (Serial.availible() > 0){
+        char c = Serial.read();
+        if (c == '\n' || c == '\r'){
+            message.trim();
+            if (message.equalsIgnoreCase == "shutdown"){
+                Serial.println("Shutting down");
+                shutdown();
+            } else if (message == "unlock"){
+                Serial.println("Unlocking");
+                unlock();
+            } else if (message == "lock"){
+                lock();
+            } else if (message == "battery"){
+                Serial.print("V Bat: ");
+                Serial.println(getBatteryVoltage());
+                Serial.print("Battery Level: ");
+                Serial.println(getBatteryLevel());
+            } else {
+                Serial.println("Unknown command");
+            }
+            message = "";
+        } else {
+            message += c;
+        }
+    }
+
+    
+
+}
 
 
 
@@ -195,8 +256,64 @@ void setup() {
     imu.writeAccelODR(LSM6DS3::ODR_52Hz);
     imu.writeGyroODR(LSM6DS3::ODR_52Hz);
     Serial.println("IMU initialized");
- }
+ } 
 
+ void sim_setup(void){
+    while (!sim800l->init()) {
+    Serial.println("Failed to detect and initialize SIM800L!");
+    while (1){
+        digitalWrite(LEDR, HIGH);
+        delay(500);
+        digitalWrite(LEDR, LOW);
+        delay(500);
+        }
+    }
+    Serial.println("SIM800L started");
+    sim800l->enableNetLight();
+    Serial.println("SIM800L initialized");
+}   
+
+void Temps(void) {
+  unsigned long millisPassed = millis();
+  unsigned int seconds = (millisPassed / 1000) % 60;
+  unsigned int minutes = (millisPassed / (1000 * 60)) % 60;
+  unsigned int hours = (millisPassed / (1000 * 60 * 60)) % 24;
+  Serial.print("Détecté a : ");
+  Serial.print(hours);
+  Serial.print("h");
+  Serial.print(minutes);
+  Serial.print("mn");
+  Serial.print(seconds);
+  Serial.println("s");
+}
+
+float getMotionData() {
+  static float previousAcceleration = 0;
+  //r
+  float accelX = imu.readFloatAccelX();
+  float accelY = imu.readFloatAccelY();
+  float accelZ = imu.readFloatAccelZ();
+
+  float currentAcceleration = sqrt(accelX * accelX + accelY * accelY + accelZ * accelZ) * 100;
+  float MotionDataerence = currentAcceleration - previousAcceleration;  // Calculate the acceleration difference
+  previousAcceleration = currentAcceleration;
+
+  return fabs(MotionDataerence);  //returns a value always positive
+}
+
+float getRotationData() {
+  static float previousRotation = 0;
+  //r
+  float gyroX = imu.readFloatGyroX();
+  float gyroY = imu.readFloatGyroY();
+  float gyroZ = imu.readFloatGyroZ();
+
+  float currentRotation = sqrt(gyroX * gyroX + gyroY * gyroY + gyroZ * gyroZ) * 100;
+  float RotationDataerence = currentRotation - previousRotation;  // Calculate the rotation difference
+  previousRotation = currentRotation;
+
+  return fabs(RotationDataerence);  //returns a value always positive
+}
 
 
 
