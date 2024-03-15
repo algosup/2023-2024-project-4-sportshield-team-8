@@ -164,7 +164,9 @@ During this project we would assume:
 
 ![Jane Hamilton](/documents/images/persona/persona2.png)
 
-### Persona 3 - Patric Jackson
+### Persona 3 - Patrick Broussard
+
+![Patrick Broussard](/documents/images/persona/persona3.png)
 
 ## Functional requirements
 
