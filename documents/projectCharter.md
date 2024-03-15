@@ -72,4 +72,4 @@ In this case, we will try to borrow the device of another team.
 ## 7. Conclusion
 
 This document should be approved by us the team, the client, and the school to all move in the same direction. \
-If some of the parties disagree with some points of this document, we will have to discuss it and make the necessary changes to make sure that everyone is aligned.
+If some of the parties disagree with some points of this document, we will have to discuss it by mail and make the necessary changes to make sure that everyone is aligned.
