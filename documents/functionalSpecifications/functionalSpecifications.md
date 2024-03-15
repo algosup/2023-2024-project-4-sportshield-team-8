@@ -26,6 +26,8 @@ This project aims to complete and optimize the existing software given by **CORI
   - [Budget](#budget)
 - [Evaluation framework](#evaluation-framework)
   - [Evaluation criteria](#evaluation-criteria)
+      - [Acceptance criteria](#acceptance-criteria)
+      - [Performance requirements](#performance-requirements)
   - [Risks and assumptions](#risks-and-assumptions)
     - [Risks](#risks)
     - [Assumptions](#assumptions)
@@ -143,9 +145,38 @@ There are no budget set, but some expenses could happen in the future. It should
 
 ### Evaluation criteria
 
+The evaluation criteria are set principally by the stakeholders, they are the one that will assess whether the product fulfills expectations or not. The goal of this project is to improve the current state of the device into a refurbished version that will be more efficient, faster, more user-friendly and secured.
+
+#### Acceptance criteria
+
+The product will be accepted only if all the requirements given by the client are fulfilled by our team. \
+The main requirements according to the document given by the client are:
+- Battery consumption management: improvement of the battery efficiency, low battery management and improvement of the battery lifespan;
+- Device management with NFC;
+- Alarm Management and simultaneous actions: stop the alarm when it rings, even if the cycle isn't finished. Ring and send information to the server at the same time;
+- Security improvements.
+
+#### Performance requirements
+
+The product needs to be more efficient than it was before in term of energy consumption. We need to find ways to reduce the energy consumption of the device. Such ways are:
+- Battery management;
+- Remove unecessary features: GPS;
+- Run-time optimization (code optimization);
+- NFC (being less energy consuming than Bluetooth).
+
 ### Risks and assumptions
 
 #### Risks
+
+The risks would principally concern the hardware part for this project, as the team concerned about the software part it is our role to find potential against them.
+
+The risks are the following:
+
+<!-- *➭ Empty battery*
+- Impact:
+  - p
+- Solution:
+  - p  -->
 
 #### Assumptions
 
