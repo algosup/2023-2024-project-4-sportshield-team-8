@@ -20,7 +20,7 @@ Created by: Quentin CLÉMENT <br> Creation Date: 15/03/2024 <br> Last update: 15
 - [4. Project Schedule](#4-project-schedule)
 - [5. Budget](#5-budget)
 - [6. Risks](#6-risks)
-- [8. Conclusion](#8-conclusion)
+- [7. Conclusion](#7-conclusion)
 
 </details>
 
@@ -70,7 +70,7 @@ In this case, we will have to find a workaround or change the scope of the proje
 - **Hardware breakdown**: We could break the hardware while working on it. \
 In this case, we will try to work with the hardware of another team.
 
-## 8. Conclusion
+## 7. Conclusion
 
 This document should be approved by us the team, the client and the school in order to all move in the same direction. \
 If some of the parties disagree with some points of this document, we will have to discuss it and make the necessary changes to make sure that everyone is aligned.
