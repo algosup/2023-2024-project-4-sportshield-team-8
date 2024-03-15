@@ -172,11 +172,29 @@ The risks would principally concern the hardware part for this project, as the t
 
 The risks are the following:
 
-<!-- *➭ Empty battery*
+*➭ Communication issue*
 - Impact:
-  - p
+  - Having communication issues with the client could fetch a misunderstood and by consequence a final code and product not suitable to the client's requirements and need.
 - Solution:
-  - p  -->
+  - Having constant and regular communication with the client by mail exchange for example. Another solution to avoid these issues is to have regular meetings, they are more difficult to implement but allow a better exchange between the two sides.
+
+*➭ 2G shutdown*
+- Impact:
+  - A 2G shutdown would break an enormous part of the project whereas all the notifications pass by this system. In other words, a 2G shutdown would break the principle utility of the application if the skis are being robbed.
+- Solution:
+  - There is no real solution to avoid the 2G shutdown. However we can think about changing the 2G to a most recent version, like 3G, and the module link to it.
+
+*➭ Board breaking*
+- Impact:
+  - A board breaking would be the worst scenario for us considering that no other board would be provided by the school.
+- Solution:
+  - Be careful with the board and avoid to break or burn it at all cost. In either way, the best choice would be to borrow some hardware to the other teams but it would imply having less testing time on the hardware. The other choice would be to purchase a new board, which bring an other issue: the delivery time.
+
+*➭ delivery time*
+- Impact:
+  - In case the team wanted new hardware modules and considering the delivery time and the short amount of time for this project, they would probably not arrived in time.
+- Solution:
+  - The better solution would be to command them the earlier in the project or to avoid breaking anything.
 
 #### Assumptions
 
@@ -272,7 +290,7 @@ It would be quickier to stop the alarm than taking the phone, opening the applic
 
 #### ➭ **Device unlocking**
 
-It has been decided to add an other features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. \
+It has been decided to add another features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. \
 Moreover this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor during two seconds.
 
 ### Undervolting
