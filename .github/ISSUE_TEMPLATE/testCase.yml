@@ -1,7 +1,7 @@
 name: "Test Case"
 description: "Create a test case for future tests"
 title: "XXXXX"
-labels: ["Test Case"]
+labels: ["test case"]
 body:
   - type: textarea
     id: description
