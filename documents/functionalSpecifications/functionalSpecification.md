@@ -8,42 +8,43 @@ This project aims to complete and optimize the existing software given by **CORI
 <summary>Table of Contents</summary>
 
 - [Project overview](#project-overview)
-    - [Stakeholders](#stakeholders)
-        - [Project members](#project-members)
-        - [Other stakeholders](#other-stakeholders)
-    - [Project scope](#project-scope)
-    - [Out of scope](#out-of-scope)
-    - [Timeline](#timeline)
-    - [Deliverables and milestones](#deliverables-and-milestones)
-    - [Budget](#budget)
+  - [Stakeholders](#stakeholders)
+    - [Project members](#project-members)
+    - [Other stakeholders](#other-stakeholders)
+  - [Project scope](#project-scope)
+  - [Out of scope](#out-of-scope)
+  - [Timeline](#timeline)
+  - [Deliverables and milestones](#deliverables-and-milestones)
+  - [Budget](#budget)
 - [Evaluation framework](#evaluation-framework)
-    - [Evaluation criteria](#evaluation-criteria)
-    - [Risks and assumptions](#risks-and-assumptions)
-        - [Risks](#risks)
-        - [Assumptions](#assumptions)
+  - [Evaluation criteria](#evaluation-criteria)
+  - [Risks and assumptions](#risks-and-assumptions)
+    - [Risks](#risks)
+    - [Assumptions](#assumptions)
 - [Personas and use cases](#personas-and-use-cases)
   - [Persona 1 - Georges Michael](#persona-1---georges-michael)
   - [Persona 2 - Jane Hamilton](#persona-2---jane-hamilton)
   - [Persona 3 - Patric Jackson](#persona-3---patric-jackson)
 - [Functional requirements](#functional-requirements)
-    - [Battery consumption](#battery-consumption)
-        - [➭ Modes](#➭-modes)
-        - [➭ GPS removal](#➭-gps-removal)
-        - [➭ LED implementation](#➭-led-implementation)
-        - [➭ Low battery management](#➭-low-battery-management)
-        - [➭ Notifications](#➭-notifications)
-    - [GPRS management](#gprs-management)
-    - [Motion detection](#motion-detection)
-    - [Buzzer](#buzzer)
-    - [NFC](#nfc)
-        - [➭ Alarm turning off](#➭-alarm-turning-off)
-        - [➭ Device unlocking](#➭-device-unlocking)
-    - [Undervolting](#undervolting)
+  - [Battery consumption](#battery-consumption)
+    - [➭ Modes](#➭-modes)
+    - [➭ GPS removal](#➭-gps-removal)
+    - [➭ LED implementation](#➭-led-implementation)
+    - [➭ Low battery management](#➭-low-battery-management)
+    - [➭ Notifications](#➭-notifications)
+  - [GPRS management](#gprs-management)
+  - [Motion detection](#motion-detection)
+  - [Buzzer](#buzzer)
+  - [NFC](#nfc)
+    - [➭ Alarm turning off](#➭-alarm-turning-off)
+    - [➭ Device unlocking](#➭-device-unlocking)
+  - [Undervolting](#undervolting)
 <!-- - [Non-functional requirements](#non-functional-requirements) -->
 - [Future improvements](#future-improvements)
-    - [Battery consumption](#battery-consumption-1)
-    - [Forfait & paring](#forfait--paring)
+  - [Battery consumption](#battery-consumption-1)
+  - [Forfait & paring](#forfait--paring)
 - [Glossary](#glossary)
+
 </summary></details>
 
 ## Project overview
@@ -71,7 +72,7 @@ This project aims to complete and optimize the existing software given by **CORI
 
 This project is more of a maintenance project because we aren't starting from scratch.
 
-As a matter of fact, we were asked to optimize an existing code of the product given by CORIS Innovation but also to add more features such as the NFC. 
+As a matter of fact, we were asked to optimize an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^2].
 
 All these improvements should be done within the deadlines set by the school and respecting the criteria of battery consumption which is really important but also the expected requirements given by the company.
 
@@ -83,6 +84,7 @@ This project also has some features that could be implemented but are not in our
 Considering the potential issue of empty battery while the device is locked, the decision of adding a little key in the device could be a great idea as an additional security.  -->
 
 #### ➭ **Refurbish hardware**
+
 The hardware should be refurbish as it is not exactly corresponding to the project. It posses some problems in a lot of aspects and or not optimal. \
 For example, the electro-magnet consumes way too much energy for the battery and can not be deacticate with the actual layout. \
 However, the team was precisely asked to focus only on the software, the research and purchase of better hardware are consequently not our task.
@@ -124,7 +126,7 @@ The complete timeline and tasks can be found in the [managing folder](/documents
 
 ### Budget
 
-In term of budget, there's no budget that has been set by the client nor by the team. However, we should keep in mind that the hardware is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn via many ways, get broken etc... \
+In term of budget, there's no budget that has been set by the client nor by the team. However, we should keep in mind that the **hardware**[^3] is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn via many ways, get broken etc... \
 Moreover, the project can be impeded by the hardware limitation of the product. We reserve the right to give suggestion to the client in order to improve the hardware in the future. \
 There are no budget set, but some expenses could happen in the future. It should be kept in mind.
 
@@ -139,8 +141,9 @@ There are no budget set, but some expenses could happen in the future. It should
 #### Assumptions
 
 During this project we would assume:
+
 - The 2G work as expected as CORIS Innovation told us because we will not be able to test it in our environment.
-- The bluetooth can be connected to the application as expected, we can not check it since we have not access to the application.
+- The **Bluetooth**[^4] can be connected to the application as expected, we can not check it since we have not access to the application.
 
 ## Personas and use cases
 
@@ -154,8 +157,6 @@ During this project we would assume:
 
 ### Persona 3 - Patric Jackson
 
-
-
 ## Functional requirements
 
 The main requirements for this project are:
@@ -168,36 +169,45 @@ The main requirements for this project are:
 ### Battery consumption
 
 #### ➭ **Modes**
+
 Three different modes are being set for the device:
-  - The first mode is the lock mode, it will turn on the motion detector, the NFC and the bluetooth, other modules could be activate depending on the situation such as the alarm if impact has been detected;
-  - The second one is the unlock mode, it consist of switching on only the bluetooth and the NFC one, allowing us to economise energy in the battery;
-  - Finally we would have the sleep mode which will be used when you don't need to use the device, like this it would not activate the alarm accidentally, only the NFC would be activated.
+
+- The first mode is the lock mode, it will turn on the **motion detector**[^5], the NFC and the bluetooth, other **modules**[^6] could be activate depending on the situation such as the alarm if impact has been detected;
+- The second one is the unlock mode, it consist of switching on only the bluetooth and the NFC one, allowing us to economise energy in the battery;
+- Finally we would have the sleep mode which will be used when you don't need to use the device, like this it would not activate the alarm accidentally, only the NFC would be activated.
 
 #### ➭ **GPS removal**
-The decision has been made to remove the GPS features from the device, as they were deemed unnecessary for the project and consumed excessive energy.
+
+The decision has been made to remove the **GPS**[^7] features from the device, as they were deemed unnecessary for the project and consumed excessive energy.
 
 #### ➭ **LED implementation**
+
 However, consideration has been given to incorporating a small light at the bottom of the device to provide visual information regarding the battery level. It would be set like this:
-  - The LED is green if the battery level is above 60%;
-  - The LED is orange when the battery consumption lies between 59 and 20%;
-  - The LED is red when the battery is under 20%.
+
+- The LED is green if the battery level is above 60%;
+- The LED is orange when the battery consumption lies between 59 and 20%;
+- The LED is red when the battery is under 20%.
 
 #### ➭ **Low battery management**
+
 Additionally, a further security measure is being implemented in the device by:
+
 - implementing a sonorous signal when the battery state is at 10%;
 - sending a notification informing of the state.
 The sound would also become more frequent when the battery level would be under 5%.
 
 #### ➭ **Notifications**
+
 The fifteen minutes' notifications during the actual sleeping mode has been estimated too high and irrevelant. They would be removed. \
 However two kinds of notification will be set. One for the battery level and another for the impact detection.
 
 ### GPRS management
 
-The decicison was made to change the GPRS notifications. Henceforth, they will contain:
-  - The current mode of the device;
-  - The battery level;
-  - The state of the device (lock or not).
+The decicison was made to change the **GPRS**[^8] notifications. Henceforth, they will contain:
+
+- The current mode of the device;
+- The battery level;
+- The state of the device (lock or not).
 
 ### Motion detection
 
@@ -214,30 +224,47 @@ It would start with a 70 dB sound for three seconds before increasing to the int
 ### NFC
 
 #### ➭ **Alarm turning off**
+
 It has been found relevant to implement a system to cut the alarm with a NFC such as a little card or a badge and not necessarly the application. \
 It would be quickier to stop the alarm than taking the phone, opening the application and deactivate the alarm.
 
 #### ➭ **Device unlocking**
+
 It has been decided to add an other features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. \
 Moreover this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor during two seconds.
 
 ### Undervolting
-Undervolting would be used to lower the energy consumption in specific mode such as the lock one and the un-lock. \
+
+**Undervolting**[^9] would be used to lower the energy consumption in specific mode such as the lock one and the unlock. \
 However, after a second look on it, it has been decided not to implement it due to the risk of damaging the product in itself.
 
 <!-- ## Non-functional requirements -->
 
 ## Future improvements
 
-Considering the short amount of time given and the important amount of tasks and requirements the project have. It has been decided to postpone some of then, deemed non-critical to the completion of the SportShield project in the short terme. \
-However, these tasks have been planned to be done as future improvements in the long terme.
+Considering the short amount of time given and the important amount of tasks and requirements the project have. It has been decided to postpone some of then, deemed non-critical to the completion of the SportShield project in the short term. \
+However, these tasks have been planned to be done as future improvements in the long term.
 
 ### Battery consumption
-
-
 
 ### Forfait & paring
 
 ## Glossary
 
-[^1]: **Coris Innovation**: an European company based in France and Switzerland. The compnay focuses on systems engineering and process engineering .Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges.
+[^1]: **Coris Innovation**: an European company based in France and Switzerland. The compnay focuses on systems engineering and process engineering .Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [Coris Innovation's website](https://www.corisinnovation.com)
+
+[^2]: **NFC**: stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It has the ability to rapidly establish a connection, taking only one tenth of the time Bluetooth requires to complete pairing. [More information](https://www.corisinnovation.com)
+
+[^3]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
+
+[^4]: **Bluetooth**: is a short-range wireless technology standard that is used for exchanging data between fixed and mobile devices over short distances. It is mainly used as an alternative to wired connections to exchange files between nearby portable devices and connect cell phones and music players with wireless headphones. [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth)
+
+[^5]: **Motion Detector**: is an electronic device that is designed to detect and measure movement. Motion sensors can be customized to perform highly specific functions. For example, motion sensors can be used to activate floodlights, trigger audible alarms, activate switches, and even alert the police. [Motion Detector](https://www.fierceelectronics.com/sensors/what-a-motion-sensor)
+
+[^6]: **Modules**:  module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc.. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
+
+[^7]: **GPS**: Global Positioning System (GPS), is a satellite-based radio navigation system owned by the United States government. It is a satellite constellation supporting highly accurate positioning, navigation and timing (PNT) measurements worldwide. [GPS](https://novatel.com/support/knowledge-and-learning/what-is-gps-gnss)
+
+[^8]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It is make for good battery life but limits online activity.  It is a packet oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
+
+[^9]: **Undervoltage**: The undervoltage-lockout (UVLO) is an electronic circuit used to turn off the power of an electronic device in the event of the voltage dropping below the operational value that could cause unpredictable system behavior. [Undervoltage](https://en.wikipedia.org/wiki/Undervoltage-lockout)
