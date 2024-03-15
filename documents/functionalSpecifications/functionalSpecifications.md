@@ -1,4 +1,10 @@
-# SportShield - Functional specifications
+<h1 align="center"> SportShield - Functional specifications </h1>
+
+<p align="center">
+Created by: Maxime THIZEAU <br> Creation Date: 11/03/2024 <br> Last update: 15/03/2024
+</p>
+
+___
 
 This project was requested by [ALGOSUP](https://algosup.com), a French computer science school, in partnership with [CORIS Innovation](https://www.corisinnovation.com/), a French consulting firm.
 
