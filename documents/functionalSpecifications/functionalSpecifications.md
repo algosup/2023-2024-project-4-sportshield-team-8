@@ -105,7 +105,7 @@ Moreover, this doesn't fit the SportShield project's requirements given at the b
 #### ➭ **Refurbish Hardware**
 
 The hardware should be refurbished as it does not exactly correspond to the project. It poses some problems in a lot of aspects and is not optimal. \
-For example, the electro-magnet consumes way too much energy for the battery and can not be deactivate with the actual layout. \
+For example, the electro-magnet consumes way too much energy for the battery and can not be deactivated with the actual layout. \
 However, the team was precisely asked to focus only on the software, the research and purchase of better hardware are consequently not our task.
 
 ### Timeline
@@ -146,7 +146,7 @@ The complete timeline and tasks can be found in the [Roadmap](https://github.com
 ### Budget
 
 In terms of budget, no budget has been set by the client nor by the team. However, we should keep in mind that the **hardware**[^3] is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn in many ways, get broken etc... \
-Moreover, the project can be impeded by the hardware limitation of the product. We reserve the right to give suggestion to the client in order to improve the hardware in the future. \
+Moreover, the project can be impeded by the hardware limitation of the product. We reserve the right to suggest changes to the client, to improve the hardware in the future. \
 There is no budget set, but some expenses could happen in the future. It should be kept in mind.
 
 #### ➭ **Hardware**
@@ -169,7 +169,7 @@ This section goes down the various modules and electronics that the client has p
 
 ### Evaluation Criteria
 
-The evaluation criteria are set principally by the stakeholders, they are the ones that will assess whether the product fulfills expectations or not. The goal of this project is to improve the current state of the device into a refurbished version that will be more efficient, faster, more user-friendly and secure.
+The evaluation criteria are set principally by the stakeholders, they are the ones that will assess whether the product fulfills expectations or not. The goal of this project is to improve the current state of the device into a refurbished version that will be more efficient, faster, more user-friendly and more secure.
 
 #### Acceptance Criteria
 
@@ -194,7 +194,7 @@ The product needs to be more efficient than it was before in terms of energy con
 
 #### Risks
 
-The risks would principally concern the hardware part of this project, as the team is concerned the software part it is our role to find potential against them.
+The risks would principally concern the hardware part of this project, as the team is concerned with the software part it is our role to find potential against them.
 
 The risks are the following:
 
@@ -208,13 +208,13 @@ The risks are the following:
 - Impact:
   - A 2G shutdown would break an enormous part of the project whereas all the notifications pass by this system. In other words, a 2G shutdown would break the main utility of the application if the skis are being robbed.
 - Solution:
-  - There is no real solution to avoid the 2G shutdown. However we can think about changing the 2G to the most recent version, like 3G, and the module link to it.
+  - There is no real solution to avoid the 2G shutdown. However, we can think about changing the 2G to the most recent version, like 3G, and the module link to it.
 
 *➭ Board Breaking*
 - Impact:
   - A board breaking would be the worst scenario for us considering that no other board would be provided by the school.
 - Solution:
-  - Be careful with the board and avoid breaking or burning at all costs. In either way, the best choice would be to borrow some hardware from the other teams but it would imply having less testing time on the hardware. The other choice would be to purchase a new board, which brings another issue: the delivery time.
+  - Be careful with the board and avoid breaking or burning at all costs. Either way, the best choice would be to borrow some hardware from the other teams but it would imply having less testing time on the hardware. The other choice would be to purchase a new board, which brings another issue: the delivery time.
 
 *➭ Delivery Time*
 - Impact:
@@ -228,7 +228,7 @@ During this project, we would assume:
 
 - The 2G works as expected as CORIS Innovation told us because we will not be able to test it in our environment.
 - The 2G network would not be shut down during the project.
-- No extra-material would be needed since it was provided by the client and the school.
+- No extra material would be needed since it was provided by the client and the school.
 - The **Bluetooth**[^4] can be connected to the application as expected, we can not check it since we have no access to the application.
 
 ## Personas And Use Cases
@@ -261,7 +261,7 @@ The main requirements for this project are:
 Three different modes are being set for the device:
 
 - The first mode is the lock mode, which will turn on the **motion detector**[^5], the NFC and the Bluetooth, other **modules**[^6] could be activated depending on the situation such as the alarm if an impact has been detected;
-- The second one is the unlock mode, whiwh consist of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
+- The second one is the unlock mode, which consists of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
 - Finally, we would have the sleep mode which will be used when you don't need to use the device, it would not activate the alarm accidentally, only the NFC would be activated.
 
 #### ➭ **GPS Removal**
@@ -286,8 +286,8 @@ The sound would also become more frequent when the battery level would be under 
 
 #### ➭ **Notifications**
 
-The fifteen minutes' notifications during the actual sleeping mode have been estimated as too high and irrelevant. They would be removed. \
-However two kinds of notification will be set. One for the battery level and another for the impact detection.
+The fifteen minutes notifications during the actual sleeping mode have been estimated as too high and irrelevant. They would be removed. \
+However, two kinds of notification will be set. One for the battery level and another for the impact detection.
 
 ### GPRS Management
 
@@ -299,8 +299,8 @@ The decision was made to change the **GPRS**[^8] notifications. Henceforth, they
 
 ### Motion Detection
 
-Motion detection has been considered as too sensitive and would then be improved in a way that parasite movements such as the wind should not be detected as motion and then not activate the alarm system. \
-To be more precise, all the motion detected by the hardware under five mm/s for the translations and under ten deg/s for the rotation would be considered as parasite and not activate the alarm. \
+Motion detection has been considered too sensitive and would then be improved in a way that parasite movements such as the wind should not be detected as motion and then not activate the alarm system. \
+To be more precise, all the motion detected by the hardware under five mm/s for the translations and under ten deg/s for the rotation would be considered a parasite and not activate the alarm. \
 Regarding the important impact, they would be detected above ten mm/s for the translation and twenty deg/s for the rotation.
 
 ### Buzzer
@@ -318,7 +318,7 @@ It would be quicker to stop the alarm than to take the phone, open the applicati
 
 #### ➭ **Device Unlocking**
 
-It has been decided to add another features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. \
+It has been decided to add another feature with the NFC such as an unlock one. After pressing the NFC against the device for two seconds it would unlock it. \
 Moreover, this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor for two seconds.
 
 ### Undervolting
@@ -334,7 +334,7 @@ However, these tasks have been planned to be done as future improvements in the 
 ### ➭ Battery Consumption
 
 One of the requirements given by the company was to use the battery only between 20 and 80%. \
-Estinating the Apple's battery management with the intelligent battery system, consisted on charging just before the average time usage and stoping it at 80%. \
+Estimating Apple's battery management with the intelligent battery system, consisted of charging just before the average time usage and stopping it at 80%. \
 The team thought it was what the device needed. \
 However, considering the difficulty of the task and the amount of time, it has been decided to do it later on.
 
