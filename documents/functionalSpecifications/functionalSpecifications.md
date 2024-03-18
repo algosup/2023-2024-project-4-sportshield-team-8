@@ -13,7 +13,7 @@ This project aims to complete and optimise the existing software given by **CORI
 <details>
 <summary><b>📖 Table of Contents</b></summary>
 
-- [Project Overview 🔎](#project-overview-🔎)
+- [Project Overview 🔎](#project-overview-)
   - [Stakeholders](#stakeholders)
     - [Project Members](#project-members)
     - [Other Stakeholders](#other-stakeholders)
@@ -275,9 +275,9 @@ Three different modes are being set for the device:
 
 The decision has been made to remove the **GPS**[^7] features from the device, as they were deemed unnecessary for the project and consumed excessive energy. -->
 
-| Pros       | Cons |
+<!-- | Pros       | Cons |
 ----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| The battery will last longer. | The device will not be able to locate itself. |
+| The battery will last longer. | The device will not be able to locate itself. | -->
 
 
 #### ➭ **LED Implementation**
