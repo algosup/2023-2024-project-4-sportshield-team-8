@@ -8,7 +8,7 @@ ___
 
 This project was requested by [ALGOSUP](https://algosup.com), a French computer science school, in partnership with [CORIS Innovation](https://www.corisinnovation.com/), a French consulting firm.
 
-This project aims to complete and optimise the existing software given by **CORIS Innovation**[^1].
+This project aims to complete and optimise the existing **software**[] given by **CORIS Innovation**[^1].
 
 <details>
 <summary><b>📖 Table of Contents</b></summary>
@@ -45,7 +45,7 @@ This project aims to complete and optimise the existing software given by **CORI
     - [➭ **Notifications**](#-notifications)
   - [4.2. GPRS Management](#42-gprs-management)
   - [4.3. Motion Detection](#43-motion-detection)
-  - [4.4. Buzzer](#44-buzzer)
+  - [4.4. Bluetooth](#44-bluetooth)
   - [4.5. NFC](#45-nfc)
     - [➭ **Alarm Turning Off**](#-alarm-turning-off)
     - [➭ **Device Unlocking**](#-device-unlocking)
@@ -85,7 +85,7 @@ This project is more of a maintenance project because we aren't starting from sc
 
 Our team is retrieving an actual project from CORIS Innovation. \
 It is called SportShield and it is a device capable of securing your skis or snowboard by roping them with the device. \
-The device is composed of an alarm, a motion sensor, a GPS, a cable and an electric magnet. It is also provided with an application to change mode and get notifications in real-time of the device. \
+The device is composed of an alarm, a motion detector, a GPS, a cable and an electric magnet. It is also provided with an application to change mode and get notifications in real-time of the device. \
 In the end, this device is meant to be used in other sports fields such as bicycle or skateboard.
 
 As a matter of fact, the team was asked to optimise an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^2].
@@ -299,9 +299,9 @@ However, consideration has been given to incorporating a small light at the bott
 
 Additionally, a further security measure is being implemented in the device by:
 
-- implementing a sonorous signal when the battery state is at 15%, to notify the user the battery state is criticaly low;
+- implementing a sonorous signal when the battery state is at 15%, to notify the user the battery state is critically low;
 - sending a notification informing of the state of the device.
-The sound would also become more frequent when the battery level would be under 5%.
+The sound would also become more frequent when the battery level would be under 5%, there will be a sound of 0.5 seconds separated by 0.5 seconds of blank.
 
 | Pros       | Cons |
 ----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
@@ -341,15 +341,13 @@ Regarding the important impact, they would be detected above 10 mm/s for the tra
 |-------------------------------------------------|----------------------------------------|
 | The product won't be too sensitive to parasite movement.<br> Offers a precise and effective shock detection. | May reduce the current KPIs shock and motion dection given by the client (if we change this, we need to be as efficient as the previous product). |
 
-### 4.4. Buzzer
+### 4.4. Bluetooth
 
-When considering the accidental impact against the device, someone who fell on it for example. \
-It has been decided to implement a crescendo sound and not an important one from the beginning. \
-It would start with a 70 dB sound for three seconds before increasing to an intense signal of 95 dB.
+It has been decided to reduce the Bluetooth range of the device to reduce battery consumption. The team has set this range to 3 meters.
 
 | Pros       | Cons |
-|-------------------------------------------------|----------------------------------------|
-| Avoid hurting the audition of users and pedestrians. <br> Allowed to cut the alarm before it gets to noisy. | Hearing impaired could not hear the sound during the first four seconds, it could bring some complication to catch the robber. |
+|-----------------------------------------|----------------------------------------|
+| Consumes less energy. | Can't connect to the device while walking to the device. |
 
 ### 4.5. NFC
 
