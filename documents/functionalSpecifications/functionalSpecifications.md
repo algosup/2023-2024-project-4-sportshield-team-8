@@ -275,6 +275,11 @@ Three different modes are being set for the device:
 
 The decision has been made to remove the **GPS**[^7] features from the device, as they were deemed unnecessary for the project and consumed excessive energy. -->
 
+| Pros       | Cons |
+----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| The battery will last longer. | The device will not be able to locate itself. |
+
+
 #### ➭ **LED Implementation**
 
 However, consideration has been given to incorporating a small light at the bottom of the device to provide visual information regarding the battery level. It would be set like this:
@@ -282,6 +287,10 @@ However, consideration has been given to incorporating a small light at the bott
 - The LED is green if the battery level is above 60%;
 - The LED is orange when the battery consumption lies between 59 and 20%;
 - The LED is red when the battery is under 20%.
+
+| Pros       | Cons |
+----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| The user will be able to know the battery level without having to open the application. | The LED will consume energy. |
 
 #### ➭ **Low Battery Management**
 
@@ -291,12 +300,20 @@ Additionally, a further security measure is being implemented in the device by:
 - sending a notification informing of the state.
 The sound would also become more frequent when the battery level would be under 5%.
 
+| Pros       | Cons |
+----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| The user will be informed of the battery level. | The sound will consume energy. |
+
 #### ➭ **Notifications**
 
 The fifteen-minute notifications during the actual sleeping mode have been estimated as too high and irrelevant. \
 However, two kinds of notification will be set. One for the battery level, a notification will be sent whenever the device reaches a battery level of about 10%. \
 A notification will be sent to the user, whenever the device is unlocked/locked using NFC, giving the battery level and current mode. \
 Another for impact detection, if an impact has been detected, a notification will be sent to the user, providing the information a break-in attempt is ongoing.
+
+| Pros       | Cons |
+----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| The user will be informed of the battery level. | The notifications will consume energy. |
 
 ### GPRS Management
 
