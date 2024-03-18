@@ -6,7 +6,7 @@ body:
   - type: input
     id: title
     attributes:
-      label: "Title"
+      label: "Title Of The Document"
       description: "Please provide the name of the document you are refering to."
       placeholder: "Write the name of the document..."
   - type: textarea
