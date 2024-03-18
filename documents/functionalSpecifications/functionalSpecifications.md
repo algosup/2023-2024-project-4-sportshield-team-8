@@ -392,7 +392,7 @@ A feature would be added, comporting an option to unpair the actual device and c
 
 [^5]: **Electromagnet**: a type of magnet in which the magnetic field is produced by the flow of electric current. Unlike permanent magnets, which generate a constant magnetic field, electromagnets can be turned on and off by controlling the flow of electricity to them. Electromagnets are widely used in various applications where the ability to control the magnetic field is important.
 
-[^6]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing. [More information](https://www.corisinnovation.com)
+[^6]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing.
 
 [^7]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
 
