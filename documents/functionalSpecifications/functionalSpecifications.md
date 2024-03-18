@@ -153,7 +153,7 @@ This section goes down the various **modules**[^9] and electronics that the clie
 | GSM/2G SIM800L Module   | Mini GSM Module. <br> Provides 2G data.                                                 |<img src="../images/hardware/SIM800L.png" alt="drawing" width="100"/>|
 | 1NCE SIM Card           | Multi-network and multi-mode SIM card. <br>                                             |<img src="../images/hardware/SIMCard.png" alt="drawing" width="100"/>|
 | Electromagnet           | Is used to unlock the device.                                                           |<img src="../images/hardware/electromagnet.png" alt="drawing" width="75"/>|
-| Piezoelectric buzzer    | Buzzer with oscillator control circuit.                                                 |<img src="../images/hardware/piezoelectricBuzzerCircuit.png" alt="drawing" width="100"/>|
+| Piezoelectric buzzer    | Buzzer with an oscillator control circuit.                                                 |<img src="../images/hardware/piezoelectricBuzzerCircuit.png" alt="drawing" width="100"/>|
 | Lithium-Polymer battery | A 3.7V, 1100mAh, 4.1Wh Lithium-Polymer powered battery. It has an estimated lifespan of around 300 to 500 charge cycles.|<img src="../images/hardware/lithiumPolymerBattery.png" alt="drawing" width="100"/>
 | NFC Antenna             | NFC module. Provides NFC compatibility.                                                 |<img src="../images/hardware/NFCAntennaCompatibility.png" alt="drawing" width="75"/>|
 
@@ -161,7 +161,7 @@ This section goes down the various **modules**[^9] and electronics that the clie
 
 ### 2.1. Evaluation Criteria
 
-The evaluation criteria are set principally by the stakeholders, they are the ones that will assess whether the product fulfills expectations or not.
+The evaluation criteria are set principally by the stakeholders, they are the ones that will assess whether the product fulfils expectations or not.
 
 #### ➭ **Acceptance Criteria**
 
@@ -267,8 +267,8 @@ When using this mode, the motion sensor will be turned off as well as the alarm,
 
 | Mode         | Pros       | Cons |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| Locked Mode:   | Safest mode available, provides dection of shocks and break-in alerts. <br> NFC and Bluetooth are activated for the user to connect to the device.  | The most consuming mode (less consuming than the actual active mode which was provided by the client).  |
-| Unlocked Mode: | Capable of changing mode by the NFC and the Bluetooth, allowing to change mode with the application.                                               | Consume more than the sleep mode.                                                                       |
+| Locked Mode:   | Safest mode available, provides detection of shocks and break-in alerts. <br> NFC and Bluetooth are activated for the user to connect to the device.  | The most consuming mode (less consuming than the actual active mode which was provided by the client).  |
+| Unlocked Mode: | Capable of changing mode by the NFC and Bluetooth, allowing to change mode with the application.                                               | Consume more than the sleep mode.                                                                       |
 | Trigger Mode:| Disuasive | Make a lot of noises |
 | Sleep Mode:  | The less consuming mode of the three. Activates only the NFC to switch the device on.                                                              | This mode only exists since there is no button to turn on/off the device.                               |
 
@@ -282,7 +282,7 @@ However, consideration has been given to incorporating a small light at the bott
 
 | Pros       | Cons |
 ----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| The user will be able to know the battery level without having to open the application. | The LED will consume energy, however, it is negligible as LEDs are not consuming a lot. |
+| The user will be able to know the battery level without having to open the application. | The LED will consume energy, however, it is negligible as LEDs do not consume a lot. |
 
 #### ➭ **Low Battery Management**
 
@@ -290,7 +290,7 @@ Additionally, a further security measure is being implemented in the device by:
 
 - implementing a sonorous signal when the battery state is at 15%, to notify the user the battery state is critically low;
 - sending a notification informing of the state of the device.
-The sound would also become more frequent when the battery level would be under 5%, there will be a sound of 0.5 seconds separated by 0.5 seconds of blank.
+The sound would also become more frequent when the battery level is under 5%, there will be a sound of 0.5 seconds separated by 0.5 seconds of blank.
 
 | Pros       | Cons |
 ----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
@@ -318,7 +318,7 @@ The decision was made to change the notifications sent by the **GPRS**[^12]. Hen
 
 | Pros       | Cons |
 |-------------------------------------------------|----------------------------------------|
-| The user will be get useful information about the device. | The notifications will consume energy. |
+| The user will get useful information about the device. | The notifications will consume energy. |
 
 ### 4.3. Motion Detection
 
@@ -328,7 +328,7 @@ Regarding the important impact, they would be detected above 10 mm/s for the tra
 
 | Pros       | Cons |
 |-------------------------------------------------|----------------------------------------|
-| The product won't be too sensitive to parasite movement.<br> Offers a precise and effective shock detection. | May reduce the current KPIs shock and motion dection given by the client (if we change this, we need to be as efficient as the previous product). |
+| The product won't be too sensitive to parasite movement.<br> Offers precise and effective shock detection. | May reduce the current KPIs shock and motion detection given by the client (if we change this, we need to be as efficient as the previous product). |
 
 ### 4.4. Bluetooth
 
