@@ -1,7 +1,7 @@
 name: "Document Issue"
 description: "Create an issue for a document"
 title: "XXXXX"
-labels: ["documentation"], ["typo"], ["enhancement"]
+labels: ["document"], ["typo"], ["enhancement"]
 body: 
   - type: input
     id: title
@@ -25,5 +25,4 @@ body:
     attributes:
       label: "Other"
       description: "If you have anything else to say."
-  
-  
+
