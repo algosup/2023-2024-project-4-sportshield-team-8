@@ -1,71 +1,71 @@
 <h1 align="center"> SportShield - Functional specifications </h1>
 
 <p align="center">
-Created by: Maxime THIZEAU <br> Creation Date: 11/03/2024 <br> Last update: 15/03/2024
+Created by: Maxime THIZEAU <br> Creation Date: 11/03/2024 <br> Last update: 18/03/2024
 </p>
 
 ___
 
 This project was requested by [ALGOSUP](https://algosup.com), a French computer science school, in partnership with [CORIS Innovation](https://www.corisinnovation.com/), a French consulting firm.
 
-This project aims to complete and optimize the existing software given by **CORIS Innovation**[^1].
+This project aims to complete and optimise the existing software given by **CORIS Innovation**[^1].
 
 <details>
-<summary>Table of Contents</summary>
+<summary><b>📖 Table of Contents</b></summary>
 
-- [Project overview](#project-overview)
+- [Project Overview](#project-overview)
   - [Stakeholders](#stakeholders)
-    - [Project members](#project-members)
-    - [Other stakeholders](#other-stakeholders)
-  - [Project scope](#project-scope)
-  - [Out of scope](#out-of-scope)
-    - [➭ Application improvement](#➭-application-improvement)
-    - [➭ Market analysis](#➭-market-analysis)
-    - [➭ Refurbish hardware](#➭-refurbish-hardware)
+    - [Project Members](#project-members)
+    - [Other Stakeholders](#other-stakeholders)
+  - [Project Scope](#project-scope)
+  - [Out Of Scope](#out-of-scope)
+    - [➭ Application Improvement](#➭-application-improvement)
+    - [➭ Market Analysis](#➭-market-analysis)
+    - [➭ Refurbish Hardware](#➭-refurbish-hardware)
   - [Timeline](#timeline)
-  - [Deliverables and milestones](#deliverables-and-milestones)
+  - [Deliverables And Milestones](#deliverables-and-milestones)
   - [Budget](#budget)
     - [➭ Hardware](#➭-hardware)
-- [Evaluation framework](#evaluation-framework)
-  - [Evaluation criteria](#evaluation-criteria)
-    - [Acceptance criteria](#acceptance-criteria)
-    - [Performance requirements](#performance-requirements)
-  - [Risks and assumptions](#risks-and-assumptions)
+- [Evaluation Framework](#evaluation-framework)
+  - [Evaluation Criteria](#evaluation-criteria)
+    - [Acceptance Criteria](#acceptance-criteria)
+    - [Performance Requirements](#performance-requirements)
+  - [Risks And Assumptions](#risks-and-assumptions)
     - [Risks](#risks)
     - [Assumptions](#assumptions)
-- [Personas and use cases](#personas-and-use-cases)
+- [Personas And Use Cases](#personas-and-use-cases)
   - [Persona 1 - Georges Michael](#persona-1---georges-michael)
   - [Persona 2 - Jane Hamilton](#persona-2---jane-hamilton)
   - [Persona 3 - Patrick Broussard](#persona-3---patrick-broussard)
-- [Functional requirements](#functional-requirements)
-  - [Battery consumption](#battery-consumption)
+- [Functional Requirements](#functional-requirements)
+  - [Battery Consumption](#battery-consumption)
     - [➭ Modes](#➭-modes)
-    - [➭ GPS removal](#➭-gps-removal)
-    - [➭ LED implementation](#➭-led-implementation)
-    - [➭ Low battery management](#➭-low-battery-management)
+    - [➭ GPS Removal](#➭-gps-removal)
+    - [➭ LED Implementation](#➭-led-implementation)
+    - [➭ Low Battery Management](#➭-low-battery-management)
     - [➭ Notifications](#➭-notifications)
-  - [GPRS management](#gprs-management)
-  - [Motion detection](#motion-detection)
+  - [GPRS Management](#gprs-management)
+  - [Motion Detection](#motion-detection)
   - [Buzzer](#buzzer)
   - [NFC](#nfc)
-    - [➭ Alarm turning off](#➭-alarm-turning-off)
-    - [➭ Device unlocking](#➭-device-unlocking)
+    - [➭ Alarm Turning Off](#➭-alarm-turning-off)
+    - [➭ Device Unlocking](#➭-device-unlocking)
   - [Undervolting](#undervolting)
-- [Future improvements](#future-improvements)
-  - [➭ Battery consumption](#➭-battery-consumption)
-  - [➭ Forfait & paring](#➭-forfait--paring)
-  - [➭ Changing phone](#➭-changing-phone)
+- [Future Improvements](#future-improvements)
+  - [➭ Battery Consumption](#➭-battery-consumption)
+  - [➭ Forfait And Paring](#➭-forfait--paring)
+  - [➭ Changing Phone](#➭-changing-phone)
 - [Glossary](#glossary)
 
 </summary></details>
 
-## Project overview
+## Project Overview
 
 ### Stakeholders
 
-#### Project members
+#### Project Members
 
-| Full name        | Occupation               | Links                                                               |
+| Full Name        | Occupation               | Links                                                               |
 | ---------------- | ------------------------ | ------------------------------------------------------------------- |
 | Quentin CLEMENT  | Project manager          | [LinkedIn](https://linkedin.com/in/quentin-cl%C3%A9ment-939110221/) |
 | Maxime THIZEAU   | Program manager          | [LinkedIn](https://linkedin.com/in/maxime-thizeau-0b311a293)        |
@@ -74,74 +74,74 @@ This project aims to complete and optimize the existing software given by **CORI
 | Thibaud MARLIER  | Quality assurance        | [LinkedIn](https://linkedin.com/in/thibaud-marlier/)                |
 | Victor LEROY     | Technical writer         | [LinkedIn](https://linkedin.com/in/victor-leroy-64baa3229/)         |
 
-#### Other stakeholders
+#### Other Stakeholders
 
 | Name           | Occupation                                 | Links                                            |
 | -------------- | ------------------------------------------ | ------------------------------------------------ |
 | Florent ANON   | Client (Head of the Innovation Department) | [LinkedIn](https://linkedin.com/in/florentanon/) |
 
-### Project scope
+### Project Scope
 
 This project is more of a maintenance project because we aren't starting from scratch.
 
-As a matter of fact, we were asked to optimize an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^2].
+As a matter of fact, we were asked to optimise an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^2].
 
 All these improvements should be done within the deadlines set by the school and respecting the criteria of battery consumption which is important but also the expected requirements given by the company.
 
-### Out of scope
+### Out Of Scope
 
 This project also has some features that could be implemented but are not in our area of expertise and are not feasible in the amount of time given by the school for the SportShield project.
 
-#### ➭ **Application improvement**
+#### ➭ **Application Improvement**
 
 The application software is not in its final state and could be improved in many ways. \
-However, the team was specially asked to only work on the product's software which doesn't include the application. It would be done by the company's client and not by the school's team.
+However, the team was specially asked to only work on the product's software which doesn't include the application. It would be done by the client company and not by the school's team.
 
-#### ➭ **Market analysis**
+#### ➭ **Market Analysis**
 
-The market analysis is not to be defined, it was already done by the company's client. \
+The market analysis is not to be defined, it was already done by the client company. \
 Moreover, this doesn't fit the SportShield project's requirements given at the beginning of it.
 
-#### ➭ **Refurbish hardware**
+#### ➭ **Refurbish Hardware**
 
-The hardware should be refurbished as it does not exactly correspond to the project. It poses some problems in a lot of aspects and or is not optimal. \
+The hardware should be refurbished as it does not exactly correspond to the project. It poses some problems in a lot of aspects and is not optimal. \
 For example, the electro-magnet consumes way too much energy for the battery and can not be deactivate with the actual layout. \
 However, the team was precisely asked to focus only on the software, the research and purchase of better hardware are consequently not our task.
 
 ### Timeline
 
-- Planning and Research
+- Planning And Research
   - Learning about the project and preparing it.
   - Week 1
   - 5 half days
 
-- Adding features
+- Adding Features
   - Adding the NFC, the different levels of noise.
   - Week 2 to 4
   - 4 half days (these are not up to date considering that our schedule isn't complete yet)
 
-- Tests & Optimizing
+- Tests And Optimising
   - Reducing the battery consumption and doing the test cases.
   - Week 5
   - some half days (these are not up to date considering that our schedule isn't complete yet)
 
-- Pitch and support preparation
+- Pitch And Support Preparation
   - Time is reserved for the rehearsal of the final presentation and the creation of the support.
   - Week 6
   - 4 half days (these are not up to date considering that our schedule isn't complete yet)
 
 The complete timeline and tasks can be found in the [Roadmap](https://github.com/orgs/algosup/projects/24/views/6) in the GitHub project.
 
-### Deliverables and milestones
+### Deliverables And Milestones
 
-| Date and time       | Deliverable              |
+| Date And Time       | Deliverables             |
 | --------------------| ------------------------ |
-| 18 March 2024, 5 PM | Functional specification |
-| 26 March 2024, 5 PM | Technical specification  |
+| 18 March 2024, 5 PM | Functional Specifications|
+| 26 March 2024, 5 PM | Technical Specifications |
 | 30 March 2024, 5 PM | MVP                      |
-| 10 April 2024, 5 PM | Test plan                |
-| 10 April 2024, 5 PM | User manual              |
-| 10 April 2024, 5 PM | Final product            |
+| 10 April 2024, 5 PM | Test Plan                |
+| 10 April 2024, 5 PM | User Manual              |
+| 10 April 2024, 5 PM | Final Product            |
 
 ### Budget
 
@@ -165,13 +165,13 @@ This section goes down the various modules and electronics that the client has p
 | Lithium-Polymer battery |                                                                                         |<img src="../images/hardware/lithiumPolymerBattery.png" alt="drawing" width="100"/>
 | NFC Antenna             | NFC module. Provides NFC compatibility.                                                 |<img src="../images/hardware/NFCAntennaCompatibility.png" alt="drawing" width="75"/>|
 
-## Evaluation framework
+## Evaluation Framework
 
-### Evaluation criteria
+### Evaluation Criteria
 
 The evaluation criteria are set principally by the stakeholders, they are the ones that will assess whether the product fulfills expectations or not. The goal of this project is to improve the current state of the device into a refurbished version that will be more efficient, faster, more user-friendly and secure.
 
-#### Acceptance criteria
+#### Acceptance Criteria
 
 The product will be accepted only if all the requirements given by the client are fulfilled by our team. \
 The main requirements according to the document given by the client are:
@@ -181,7 +181,7 @@ The main requirements according to the document given by the client are:
 - Alarm Management and simultaneous actions: stop the alarm when it rings, even if the cycle isn't finished. Ring and send information to the server at the same time;
 - Security improvements.
 
-#### Performance requirements
+#### Performance Requirements
 
 The product needs to be more efficient than it was before in terms of energy consumption. We need to find ways to reduce the energy consumption of the device. Such ways are:
 
@@ -190,7 +190,7 @@ The product needs to be more efficient than it was before in terms of energy con
 - Run-time optimization (code optimization);
 - NFC (being less energy-consuming than Bluetooth).
 
-### Risks and assumptions
+### Risks And Assumptions
 
 #### Risks
 
@@ -198,25 +198,25 @@ The risks would principally concern the hardware part of this project, as the te
 
 The risks are the following:
 
-*➭ Communication issues*
+*➭ Communication Issues*
 - Impact:
   - Having communication issues with the client could fetch a misunderstanding and consequently a final code and product not suitable to the client's requirements and needs.
 - Solution:
   - Having constant and regular communication with the client by mail exchange for example. Another solution to avoid these issues is to have regular meetings, they are more difficult to organise but allow a better exchange between the two sides.
 
-*➭ 2G shutdown*
+*➭ 2G Shutdown*
 - Impact:
   - A 2G shutdown would break an enormous part of the project whereas all the notifications pass by this system. In other words, a 2G shutdown would break the main utility of the application if the skis are being robbed.
 - Solution:
   - There is no real solution to avoid the 2G shutdown. However we can think about changing the 2G to the most recent version, like 3G, and the module link to it.
 
-*➭ Board breaking*
+*➭ Board Breaking*
 - Impact:
   - A board breaking would be the worst scenario for us considering that no other board would be provided by the school.
 - Solution:
   - Be careful with the board and avoid breaking or burning at all costs. In either way, the best choice would be to borrow some hardware from the other teams but it would imply having less testing time on the hardware. The other choice would be to purchase a new board, which brings another issue: the delivery time.
 
-*➭ Delivery time*
+*➭ Delivery Time*
 - Impact:
   - In case the team wanted new hardware modules and considering the delivery time and the short amount of time for this project, they would probably not arrive in time.
 - Solution:
@@ -231,7 +231,7 @@ During this project, we would assume:
 - No extra-material would be needed since it was provided by the client and the school.
 - The **Bluetooth**[^4] can be connected to the application as expected, we can not check it since we have no access to the application.
 
-## Personas and use cases
+## Personas And Use Cases
 
 ### Persona 1 - Georges Michael
 
@@ -245,16 +245,16 @@ During this project, we would assume:
 
 ![Patrick Broussard](/documents/images/persona/persona3.png)
 
-## Functional requirements
+## Functional Requirements
 
 The main requirements for this project are:
 
-- Optimize the actual code;
+- Optimise the actual code;
 - Add a feature for the NFC;
 - Check the buzzer's noise level according to the impact;
 - Managing the battery consumption so it can last 7 days in cold conditions (6 hours of active mode and 18 in sleep mode).
 
-### Battery consumption
+### Battery Consumption
 
 #### ➭ **Modes**
 
@@ -264,11 +264,11 @@ Three different modes are being set for the device:
 - The second one is the unlock mode, whiwh consist of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
 - Finally, we would have the sleep mode which will be used when you don't need to use the device, it would not activate the alarm accidentally, only the NFC would be activated.
 
-#### ➭ **GPS removal**
+#### ➭ **GPS Removal**
 
 The decision has been made to remove the **GPS**[^7] features from the device, as they were deemed unnecessary for the project and consumed excessive energy.
 
-#### ➭ **LED implementation**
+#### ➭ **LED Implementation**
 
 However, consideration has been given to incorporating a small light at the bottom of the device to provide visual information regarding the battery level. It would be set like this:
 
@@ -276,7 +276,7 @@ However, consideration has been given to incorporating a small light at the bott
 - The LED is orange when the battery consumption lies between 59 and 20%;
 - The LED is red when the battery is under 20%.
 
-#### ➭ **Low battery management**
+#### ➭ **Low Battery Management**
 
 Additionally, a further security measure is being implemented in the device by:
 
@@ -289,7 +289,7 @@ The sound would also become more frequent when the battery level would be under 
 The fifteen minutes' notifications during the actual sleeping mode have been estimated as too high and irrelevant. They would be removed. \
 However two kinds of notification will be set. One for the battery level and another for the impact detection.
 
-### GPRS management
+### GPRS Management
 
 The decision was made to change the **GPRS**[^8] notifications. Henceforth, they will contain:
 
@@ -297,7 +297,7 @@ The decision was made to change the **GPRS**[^8] notifications. Henceforth, they
 - The battery level;
 - The state of the device (lock or not).
 
-### Motion detection
+### Motion Detection
 
 Motion detection has been considered as too sensitive and would then be improved in a way that parasite movements such as the wind should not be detected as motion and then not activate the alarm system. \
 To be more precise, all the motion detected by the hardware under five mm/s for the translations and under ten deg/s for the rotation would be considered as parasite and not activate the alarm. \
@@ -311,12 +311,12 @@ It would start with a 70 dB sound for three seconds before increasing to an inte
 
 ### NFC
 
-#### ➭ **Alarm turning off**
+#### ➭ **Alarm Turning Off**
 
 It has been found relevant to implement a system to cut the alarm with a NFC such as a little card or a badge and not necessarily the application. \
 It would be quicker to stop the alarm than to take the phone, open the application and deactivate the alarm.
 
-#### ➭ **Device unlocking**
+#### ➭ **Device Unlocking**
 
 It has been decided to add another features with the NFC such as an unlock one. After pressing the NFC against the device during two seconds it would unlock it. \
 Moreover, this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor for two seconds.
@@ -326,24 +326,24 @@ Moreover, this feature will override the previous one. In the case of an alarm r
 **Undervolting**[^9] would be used to lower the energy consumption in specific modes such as the lock and the unlock. \
 However, after a second look at it, it has been decided not to implement it due to the risk of damaging the product in itself.
 
-## Future improvements
+## Future Improvements
 
 Considering the short amount of time given and the important amount of tasks and requirements the project has. It has been decided to postpone some of them, deemed non-critical to the completion of the SportShield project in the short term. \
 However, these tasks have been planned to be done as future improvements in the long term.
 
-### ➭ Battery consumption
+### ➭ Battery Consumption
 
 One of the requirements given by the company was to use the battery only between 20 and 80%. \
 Estinating the Apple's battery management with the intelligent battery system, consisted on charging just before the average time usage and stoping it at 80%. \
 The team thought it was what the device needed. \
 However, considering the difficulty of the task and the amount of time, it has been decided to do it later on.
 
-### ➭ Forfait & paring
+### ➭ Forfait And Paring
 
 Searching for an improvement of the system and an optimization, it has been agreed to implement a system package with the ski stations or the feature of pairing more than one device at a time such as badges for example. \
 This system would be implemented in a brief delay after the release of the product as an update.
 
-### ➭ Changing phone
+### ➭ Changing Phone
 
 One issue stood out, the pairing of the phone if it has to be changed.
 A feature would be added, comporting an option to unpair the actual device and could only be activated on the application if the Bluetooth is activated (lock and un-lock modes only).
