@@ -153,7 +153,6 @@ There is no budget set, but some expenses could happen in the future. It should 
 
 This section goes down the various modules and electronics that the client has provided to us. It doesn't directly enter into the budget of the team, but might if any of those breaks down.
 
-
 | Hardware                | Details                                                                                 | Picture |
 |-------------------------|-----------------------------------------------------------------------------------------|---------|
 | Xiao BLE Sense nrf52840 | Small Bluetooth programmable card with a built-in antenna. <br>  Bluetooth Low Energy.  | <img src="../images/hardware/xiaoBLESense.png" alt="drawing" width="75"/>|
@@ -199,24 +198,28 @@ The risks would principally concern the hardware part of this project, as the te
 The risks are the following:
 
 *➭ Communication Issues*
+
 - Impact:
   - Having communication issues with the client could fetch a misunderstanding and consequently a final code and product not suitable to the client's requirements and needs.
 - Solution:
   - Having constant and regular communication with the client by mail exchange for example. Another solution to avoid these issues is to have regular meetings, they are more difficult to organise but allow a better exchange between the two sides.
 
 *➭ 2G Shutdown*
+
 - Impact:
   - A 2G shutdown would break an enormous part of the project whereas all the notifications pass by this system. In other words, a 2G shutdown would break the main utility of the application if the skis are being robbed.
 - Solution:
   - There is no real solution to avoid the 2G shutdown. However, we can think about changing the 2G to the most recent version, like 3G, and the module link to it.
 
 *➭ Board Breaking*
+
 - Impact:
   - A board breaking would be the worst scenario for us considering that no other board would be provided by the school.
 - Solution:
   - Be careful with the board and avoid breaking or burning at all costs. Either way, the best choice would be to borrow some hardware from the other teams but it would imply having less testing time on the hardware. The other choice would be to purchase a new board, which brings another issue: the delivery time.
 
 *➭ Delivery Time*
+
 - Impact:
   - In case the team wanted new hardware modules and considering the delivery time and the short amount of time for this project, they would probably not arrive in time.
 - Solution:
@@ -286,7 +289,7 @@ The sound would also become more frequent when the battery level would be under 
 
 #### ➭ **Notifications**
 
-The fifteen minutes notifications during the actual sleeping mode have been estimated as too high and irrelevant. They would be removed. \
+The fifteen-minute notifications during the actual sleeping mode have been estimated as too high and irrelevant. They would be removed. \
 However, two kinds of notification will be set. One for the battery level and another for the impact detection.
 
 ### GPRS Management
