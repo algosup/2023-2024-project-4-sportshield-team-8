@@ -104,7 +104,7 @@ However, the team was specially asked to only work on the product's software whi
 #### ➭ **Market Analysis**
 
 The market analysis is not to be defined, it was already done by the client company. \
-Moreover, a market analysis wouldn't make any sense there, it is not in our field of expertise.
+Moreover, a market analysis wouldn't make any sense there.
 
 #### ➭ **Refurbish Hardware**
 
