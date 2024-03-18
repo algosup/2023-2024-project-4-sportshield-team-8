@@ -85,30 +85,30 @@ This project is more of a maintenance project because we aren't starting from sc
 
 Our team is retrieving an actual project from CORIS Innovation. \
 It is called SportShield and it is a device capable of securing your skis or snowboard by roping them with the device. \
-The device is composed of an alarm, a **motion detector**[^3], a **GPS**[^4], a cable and an **electromagnet**[^5]. It is also provided with an application to change mode and get notifications in real-time of the device. \
+The device is composed of an alarm, a **motion detector**[^3], a **GPS**[^4], a cable, an **electromagnet**[^5], a small **Bluetooth**[^6] antenna and a **programmable card**[^7]. It is also provided with an application to change mode and get notifications in real-time of the device. \
 In the end, this device is meant to be used in other sports fields such as bicycle or skateboard.
 
-As a matter of fact, the team was asked to optimise an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^6].
+As a matter of fact, the team was asked to optimise an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^8].
 
 All these improvements should be done within the deadlines set by the school and respecting the criteria of battery consumption which is important but also the expected requirements given by the company.
 
 ### 1.3. Out Of Scope
 
-This project also has some features that could be implemented but are not in our area of expertise and are not feasible within the deadlines set by the school for the SportShield project.
+This project also has some features that could be implemented but are not in our area of expertise and are not feasible within the time given to us by the school for the SportShield project.
 
 #### ➭ **Application Improvement**
 
 The application software is not in its final state and could be improved in many ways. \
-However, the team was specially asked to only work on the product's software which doesn't include the application. It would be done by the client company and not by the school's team.
+However, the team was specially asked to only work on the product's software which doesn't include the application. It will be done by the client's company and not by the school's team.
 
 #### ➭ **Market Analysis**
 
 The market analysis is not to be defined, it was already done by the client company. \
-Moreover, a market analysis wouldn't make any sense there, it is not in our field of expertise and we won't be able to do it effectively.
+Moreover, a market analysis wouldn't make any sense there, it is not in our field of expertise.
 
 #### ➭ **Refurbish Hardware**
 
-The **hardware**[^7] should be refurbished as it does not exactly correspond to the project. We have found out that the hardware doesn't work as intended, as the product is a prototype, it is no surprise to us. It poses some problems in a lot of aspects and is not optimal. Meaning, that we are quite limited by the hardware and its flaws. \
+The **hardware**[^9] should be refurbished as it does not exactly correspond to the project. We have found out that the hardware doesn't work as intended, as the product is a prototype, it is no surprise to us. It poses some problems in a lot of aspects and is not optimal. Meaning, that we are quite limited by the hardware and its flaws. \
 For example, the electro-magnet consumes way too much energy for the battery and can not be deactivated with the actual layout. \
 However, the team was precisely asked to focus only on the software, the research and purchase of better hardware are consequently not our task.
 
@@ -130,7 +130,7 @@ The complete timeline and tasks can be found in the [Roadmap](https://github.com
 | --------------------| ------------------------ |
 | 18 March 2024, 5 PM | Functional Specifications|
 | 26 March 2024, 5 PM | Technical Specifications |
-| 30 March 2024, 5 PM | **MVP**[^8]             |
+| 30 March 2024, 5 PM | **MVP**[^10]             |
 | 10 April 2024, 5 PM | Test Plan                |
 | 10 April 2024, 5 PM | User Manual              |
 | 10 April 2024, 5 PM | Final Product            |
@@ -144,11 +144,11 @@ There is no budget set, but some expenses could happen in the future. It should 
 
 #### ➭ **Hardware**
 
-This section goes down the various **modules**[^9] and electronics that the client has provided to us. It doesn't directly enter into the budget of the team, but might if any of those breaks down.
+This section goes down the various **modules**[^11] and electronics that the client has provided to us. It doesn't directly enter into the budget of the team, but might if any of those breaks down.
 
 | Hardware                | Details                                                                                 | Picture |
 |-------------------------|-----------------------------------------------------------------------------------------|---------|
-| Xiao BLE Sense nrf52840 | Small **Bluetooth**[^10] **programmable card**[^11] with a built-in antenna. <br>  Bluetooth Low Energy.  | <img src="../images/hardware/xiaoBLESense.png" alt="drawing" width="75"/>|
+| Xiao BLE Sense nrf52840 | Small Bluetooth programmable card with a built-in antenna. <br>  Bluetooth Low Energy.  | <img src="../images/hardware/xiaoBLESense.png" alt="drawing" width="75"/>|
 | GNSS PA1010D            | GPS Module with a built-in antenna. <br> Gives real-time location. <br> **Power Supply:** VCC：3.0V to 4.3V；VBACKUP：2.0V to 4.3V,  <br> **Consumption:** Acquisition: 36mA, Tracking: 28mA                      |<img src="../images/hardware/GNSSPA1010D.png" alt="drawing" width="90"/>|
 | GSM/2G SIM800L Module   | Mini GSM Module. <br> Provides 2G data.                                                 |<img src="../images/hardware/SIM800L.png" alt="drawing" width="100"/>|
 | 1NCE SIM Card           | Multi-network and multi-mode SIM card. <br>                                             |<img src="../images/hardware/SIMCard.png" alt="drawing" width="100"/>|
@@ -294,7 +294,7 @@ The sound would also become more frequent when the battery level is under 5%, th
 
 | Pros       | Cons |
 ----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| The user will be informed of the battery level. | The sound will consume energy. |
+| The user will be informed of the battery level. | The buzzer will consume energy. |
 
 #### ➭ **Notifications**
 
@@ -392,16 +392,16 @@ A feature would be added, comporting an option to unpair the actual device and c
 
 [^5]: **Electromagnet**: a type of magnet in which the magnetic field is produced by the flow of electric current. Unlike permanent magnets, which generate a constant magnetic field, electromagnets can be turned on and off by controlling the flow of electricity to them. Electromagnets are widely used in various applications where the ability to control the magnetic field is important.
 
-[^6]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing.
+[^6]: **Bluetooth**: is a short-range wireless technology standard that is used for exchanging data between fixed and mobile devices over short distances. It is mainly used as an alternative to wired connections to exchange files between nearby portable devices and connect cell phones and music players with wireless headphones. [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth)
 
-[^7]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
+[^7]: **Programmable card**: a small electronic device that is capable of being programmed to perform various functions or tasks.
 
-[^8]: **MVP**: minimum viable product is a version of a product with just enough features to be usable by early customers who can then provide feedback for future product development.
+[^8]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing.
 
-[^9]: **Modules**: A module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
+[^9]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
 
-[^10]: **Bluetooth**: is a short-range wireless technology standard that is used for exchanging data between fixed and mobile devices over short distances. It is mainly used as an alternative to wired connections to exchange files between nearby portable devices and connect cell phones and music players with wireless headphones. [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth)
+[^10]: **MVP**: minimum viable product is a version of a product with just enough features to be usable by early customers who can then provide feedback for future product development.
 
-[^11]: **Programmable card**: a small electronic device that is capable of being programmed to perform various functions or tasks.
+[^11]: **Modules**: A module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
 
 [^12]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It makes for good battery life but limits online activity.  It is a packet-oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
