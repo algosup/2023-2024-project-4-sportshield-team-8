@@ -1,28 +1,27 @@
----
-name: Document Issue
-description: Create an issue for a document
-title: XXXXX
+name: "Document Issue"
+description: "Create an issue for a document"
+title: "XXXXX"
 labels: ["document"]
 body:
   - type: input
     id: title
     attributes:
-      label: Title
-      description: Please provide the name of the document you are refering to.
-      placeholder: Write the name of the document...
+      label: "Title"
+      description: "Please provide the name of the document you are refering to."
+      placeholder: "Write the name of the document..."
   - type: textarea
     id: description
     attributes:
-      label: description
-      description: Please provide a clear description of what you think should be changed/what you've noticed
-      placeholder: Write a clear description of your issue...
+      label: "description"
+      description: "Please provide a clear description of what you think should be changed/what you've noticed"
+      placeholder: "Write a clear description of your issue..."
   - type: textarea
     id: proposed
     attributes:
-      label: Proposed change
-      description: What do you think should be changed?
+      label: "Proposed change"
+      description: "What do you think should be changed?"
   - type: textarea
     id: other
     attributes:
-      label: Other
-      description: If you have anything else to say.
+      label: "Other"
+      description: "If you have anything else to say."
