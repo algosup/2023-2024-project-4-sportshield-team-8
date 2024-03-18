@@ -13,20 +13,20 @@ This project aims to complete and optimise the existing software given by **CORI
 <details>
 <summary><b>📖 Table of Contents</b></summary>
 
-- [Project Overview](#project-overview)
+- [Project Overview 🔎](#project-overview-🔎)
   - [Stakeholders](#stakeholders)
     - [Project Members](#project-members)
     - [Other Stakeholders](#other-stakeholders)
   - [Project Scope](#project-scope)
   - [Out Of Scope](#out-of-scope)
-    - [➭ Application Improvement](#➭-application-improvement)
-    - [➭ Market Analysis](#➭-market-analysis)
-    - [➭ Refurbish Hardware](#➭-refurbish-hardware)
+    - [➭ **Application Improvement**](#-application-improvement)
+    - [➭ **Market Analysis**](#-market-analysis)
+    - [➭ **Refurbish Hardware**](#-refurbish-hardware)
   - [Timeline](#timeline)
   - [Deliverables And Milestones](#deliverables-and-milestones)
   - [Budget](#budget)
-    - [➭ Hardware](#➭-hardware)
-- [Evaluation Framework](#evaluation-framework)
+    - [➭ **Hardware**](#-hardware)
+- [Evaluation Framework 📈](#evaluation-framework-📈)
   - [Evaluation Criteria](#evaluation-criteria)
     - [Acceptance Criteria](#acceptance-criteria)
     - [Performance Requirements](#performance-requirements)
@@ -34,31 +34,31 @@ This project aims to complete and optimise the existing software given by **CORI
     - [Risks](#risks)
     - [Assumptions](#assumptions)
 - [Personas And Use Cases](#personas-and-use-cases)
-  - [Persona 1 - Georges Michael](#persona-1---georges-michael)
-  - [Persona 2 - Jane Hamilton](#persona-2---jane-hamilton)
-  - [Persona 3 - Patrick Broussard](#persona-3---patrick-broussard)
-- [Functional Requirements](#functional-requirements)
+  - [Persona 1 - Georges Michael ⛷️](#persona-1---georges-michael-⛷️)
+  - [Persona 2 - Jane Hamilton 🏂🏽](#persona-2---jane-hamilton-🏂🏽)
+  - [Persona 3 - Patrick Broussard ♨](#persona-3---patrick-broussard-♨)
+- [Functional Requirements ✔](#functional-requirements-✔)
   - [Battery Consumption](#battery-consumption)
-    - [➭ Modes](#➭-modes)
-    - [➭ GPS Removal](#➭-gps-removal)
-    - [➭ LED Implementation](#➭-led-implementation)
-    - [➭ Low Battery Management](#➭-low-battery-management)
-    - [➭ Notifications](#➭-notifications)
+    - [➭ **Modes**](#-modes)
+    - [➭ **GPS Removal**](#-gps-removal)
+    - [➭ **LED Implementation**](#-led-implementation)
+    - [➭ **Low Battery Management**](#-low-battery-management)
+    - [➭ **Notifications**](#-notifications)
   - [GPRS Management](#gprs-management)
   - [Motion Detection](#motion-detection)
   - [Buzzer](#buzzer)
   - [NFC](#nfc)
-    - [➭ Alarm Turning Off](#➭-alarm-turning-off)
-    - [➭ Device Unlocking](#➭-device-unlocking)
-- [Future Improvements](#future-improvements)
-  - [➭ Battery Consumption](#➭-battery-consumption)
-  - [➭ Forfait And Paring](#➭-forfait--paring)
-  - [➭ Changing Phone](#➭-changing-phone)
-- [Glossary](#glossary)
+    - [➭ **Alarm Turning Off**](#-alarm-turning-off)
+    - [➭ **Device Unlocking**](#-device-unlocking)
+- [Future Improvements 🚀](#future-improvements-🚀)
+  - [➭ Battery Consumption](#-battery-consumption)
+  - [➭ Forfait And Paring](#-forfait-and-paring)
+  - [➭ Changing Phone](#-changing-phone)
+- [Glossary 📓](#glossary-📓)
 
 </summary></details>
 
-## Project Overview
+## Project Overview 🔎
 
 ### Stakeholders
 
@@ -155,7 +155,7 @@ This section goes down the various modules and electronics that the client has p
 | Hardware                | Details                                                                                 | Picture |
 |-------------------------|-----------------------------------------------------------------------------------------|---------|
 | Xiao BLE Sense nrf52840 | Small Bluetooth programmable card with a built-in antenna. <br>  Bluetooth Low Energy.  | <img src="../images/hardware/xiaoBLESense.png" alt="drawing" width="75"/>|
-| GNSS PA1010D            | GPS Module with a built-in antenna. <br> Gives real-time location.                      |<img src="../images/hardware/GNSSPA1010D.png" alt="drawing" width="90"/>|
+| GNSS PA1010D            | GPS Module with a built-in antenna. <br> Gives real-time location. <br> **Power Supply:** VCC：3.0V to 4.3V；VBACKUP：2.0V to 4.3V,  <br> **Consumption:** Acquisition: 36mA, Tracking: 28mA                      |<img src="../images/hardware/GNSSPA1010D.png" alt="drawing" width="90"/>|
 | GSM/2G SIM800L Module   | Mini GSM Module. <br> Provides 2G data.                                                 |<img src="../images/hardware/SIM800L.png" alt="drawing" width="100"/>|
 | 1NCE SIM Card           | Multi-network and multi-mode SIM card. <br>                                             |<img src="../images/hardware/SIMCard.png" alt="drawing" width="100"/>|
 | Electromagnet           | Is used to unlock the device.                                                           |<img src="../images/hardware/electromagnet.png" alt="drawing" width="75"/>|
@@ -163,7 +163,7 @@ This section goes down the various modules and electronics that the client has p
 | Lithium-Polymer battery | A 3.7V, 1100mAh, 4.1Wh Lithium-Polymer powered battery. It has an estimated lifespan of around 300 to 500 charge cycles.|<img src="../images/hardware/lithiumPolymerBattery.png" alt="drawing" width="100"/>
 | NFC Antenna             | NFC module. Provides NFC compatibility.                                                 |<img src="../images/hardware/NFCAntennaCompatibility.png" alt="drawing" width="75"/>|
 
-## Evaluation Framework
+## Evaluation Framework 📈
 
 ### Evaluation Criteria
 
@@ -235,19 +235,19 @@ During this project, we would assume:
 
 ## Personas And Use Cases
 
-### Persona 1 - Georges Michael
+### Persona 1 - Georges Michael ⛷️
 
 ![Georges Michael](/documents/images/persona/persona1.png)
 
-### Persona 2 - Jane Hamilton
+### Persona 2 - Jane Hamilton 🏂🏽
 
 ![Jane Hamilton](/documents/images/persona/persona2.png)
 
-### Persona 3 - Patrick Broussard
+### Persona 3 - Patrick Broussard ♨
 
 ![Patrick Broussard](/documents/images/persona/persona3.png)
 
-## Functional Requirements
+## Functional Requirements ✔
 
 The main requirements for this project are:
 
@@ -265,6 +265,12 @@ Three different modes are being set for the device:
 - The first mode is the lock mode, which will turn on the **motion detector**[^5], the NFC and the Bluetooth, other **modules**[^6] could be activated depending on the situation such as the alarm if an impact has been detected;
 - The second one is the unlock mode, which consists of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
 - Finally, we would have the sleep mode which will be used when you don't need to use the device, it would not activate the alarm accidentally, only the NFC would be activated.
+
+| Mode         | Pros       | Cons |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| Lock Mode:   | Safest mode available, provides dection of shocks and break-in alerts. <br> NFC and Bluetooth are activated for the user to connect to the device.  | The most consuming mode (less consuming than the actual active mode which was provided by the client).  |
+| Unlock Mode: | Capable of changing mode by the NFC and the Bluetooth, allowing to change mode with the application.                                               | Consume more than the sleep mode.                                                                       |
+| Sleep Mode:  | The less consuming mode of the three. Activates only the NFC to switch the device on.                                                              | This mode only exists since there is no button to turn on/off the device.                               |
 
 #### ➭ **GPS Removal**
 
@@ -288,8 +294,10 @@ The sound would also become more frequent when the battery level would be under 
 
 #### ➭ **Notifications**
 
-The fifteen-minute notifications during the actual sleeping mode have been estimated as too high and irrelevant. They would be removed. \
-However, two kinds of notification will be set. One for the battery level and another for the impact detection.
+The fifteen-minute notifications during the actual sleeping mode have been estimated as too high and irrelevant. \
+However, two kinds of notification will be set. One for the battery level, a notification will be sent whenever the device reaches a battery level of about 10%. \
+A notification will be sent to the user, whenever the device is unlocked/locked using NFC, giving the battery level and current mode. \
+Another for impact detection, if an impact has been detected, a notification will be sent to the user, providing the information a break-in attempt is ongoing.
 
 ### GPRS Management
 
@@ -323,7 +331,7 @@ It would be quicker to stop the alarm than to take the phone, open the applicati
 It has been decided to add another feature with the NFC such as an unlock one. After pressing the NFC against the device for two seconds it would unlock it. \
 Moreover, this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor for two seconds.
 
-## Future Improvements
+## Future Improvements 🚀
 
 Considering the short amount of time given and the important amount of tasks and requirements the project has. It has been decided to postpone some of them, deemed non-critical to the completion of the SportShield project in the short term. \
 However, these tasks have been planned to be done as future improvements in the long term.
@@ -345,7 +353,7 @@ This system would be implemented in a brief delay after the release of the produ
 One issue stood out, the pairing of the phone if it has to be changed.
 A feature would be added, comporting an option to unpair the actual device and could only be activated on the application if the Bluetooth is activated (lock and un-lock modes only).
 
-## Glossary
+## Glossary 📓
 
 [^1]: **Coris Innovation**: a European company based in France and Switzerland. The company focuses on systems engineering and process engineering. Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [Coris Innovation's website](https://www.corisinnovation.com)
 
