@@ -26,7 +26,7 @@ Created by: Quentin CLÉMENT <br> Creation Date: 18/03/2024 <br> Last update: 18
 
 ## 1. Overall project status summary
 
-The first week allowed us to create a group dynamic. We have defined the project's scope and the first steps to take. Even if monday was a bit chaotic, we managed to get back on track since thursday and progressed a lot during the last two days.
+The first week allowed us to create a group dynamic. We have defined the project's scope and the first steps to take. Even if Monday was a bit chaotic, we managed to get back on track since Thursday and progressed a lot during the last two days.
 
 ## 2. Milestones met this week
 
@@ -36,7 +36,7 @@ The first week allowed us to create a group dynamic. We have defined the project
 
 ## 3. Timeline status
 
-For the moment, we are on schedule. We have to be careful to keep this pace. Tuesday the 19th is the deadline for the functional specfications v1.0 delivery. We should be on time. \
+For the moment, we are on schedule. We have to be careful to keep this pace. Tuesday the 19th is the deadline for the functional specifications v1.0 delivery. We should be on time. \
 Nevertheless, we are worried about the hardware part of the project. Some modules are not working yet and we are not sure we will be able to make them work in time.
 
 ## 4. Resources status
@@ -50,8 +50,9 @@ The project's scope is defined in a project charter. The scope might evolve depe
 ## 6. Work accomplished
 
 ➭ <ins> Project setup<ins>:
-- ✅ Project scope defined via a brainstorming: **The whole team**
-- ✅ Introduce the team to the client and discussing the project's scope as well as our ideas: **Maxime THIZEAU**
+
+- ✅ Project scope defined via a brainstorming session: **The whole team**
+- ✅ Introduce the team to the client and discuss the project's scope as well as our ideas: **Maxime THIZEAU**
 
 - ✅ Initialisation of the project's repository:
   - branches creation: **Max BERNARD**
@@ -61,6 +62,7 @@ The project's scope is defined in a project charter. The scope might evolve depe
 <br>
 
 ➭ <ins> Documents<ins>:
+
 - ✅ Project charter: **Quentin CLÉMENT**
 - ✅ Brainstorming report: **Thibaud MARLIER, Quentin CLÉMENT**
 - ✅ Functional specifications v0.1: **Maxime THIZEAU, Victor LEROY, Thibaud MARLIER**
@@ -92,4 +94,4 @@ The project's scope is defined in a project charter. The scope might evolve depe
 
 ## 9. Team feedback
 
-We feel we have made good progress in this first week. The project seems difficult even though we think it's achievable. The time between each deadline is very short and this is causing stress and a feeling of haste among some members of the team.
+We feel like we have made good progress in this first week. The project seems difficult even though we think it's achievable. The time between each deadline is very short and this is causing stress and a feeling of haste among some members of the team.
