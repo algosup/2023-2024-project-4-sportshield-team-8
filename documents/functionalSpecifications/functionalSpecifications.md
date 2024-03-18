@@ -8,7 +8,7 @@ ___
 
 This project was requested by [ALGOSUP](https://algosup.com), a French computer science school, in partnership with [CORIS Innovation](https://www.corisinnovation.com/), a French consulting firm.
 
-This project aims to complete and optimise the existing **software**[] given by **CORIS Innovation**[^1].
+This project aims to complete and optimise the existing **software**[^1] given by **CORIS Innovation**[^2].
 
 <details>
 <summary><b>📖 Table of Contents</b></summary>
@@ -85,10 +85,10 @@ This project is more of a maintenance project because we aren't starting from sc
 
 Our team is retrieving an actual project from CORIS Innovation. \
 It is called SportShield and it is a device capable of securing your skis or snowboard by roping them with the device. \
-The device is composed of an alarm, a motion detector, a GPS, a cable and an electric magnet. It is also provided with an application to change mode and get notifications in real-time of the device. \
+The device is composed of an alarm, a **motion detector**[^3], a **GPS**[^4], a cable and an **electromagnet**[^5]. It is also provided with an application to change mode and get notifications in real-time of the device. \
 In the end, this device is meant to be used in other sports fields such as bicycle or skateboard.
 
-As a matter of fact, the team was asked to optimise an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^2].
+As a matter of fact, the team was asked to optimise an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^6].
 
 All these improvements should be done within the deadlines set by the school and respecting the criteria of battery consumption which is important but also the expected requirements given by the company.
 
@@ -104,11 +104,11 @@ However, the team was specially asked to only work on the product's software whi
 #### ➭ **Market Analysis**
 
 The market analysis is not to be defined, it was already done by the client company. \
-Moreover, a market analysis wouldn't make any sense there, it is not in our field of expertise and we won't be able to do effectively.
+Moreover, a market analysis wouldn't make any sense there, it is not in our field of expertise and we won't be able to do it effectively.
 
 #### ➭ **Refurbish Hardware**
 
-The hardware should be refurbished as it does not exactly correspond to the project. We have found out that the hardware doesn't work as intended, as the product is a prototype, it is no surprise to us. It poses some problems in a lot of aspects and is not optimal. Meaning, we are quite limited by the hardware and its flaws. \
+The **hardware**[^7] should be refurbished as it does not exactly correspond to the project. We have found out that the hardware doesn't work as intended, as the product is a prototype, it is no surprise to us. It poses some problems in a lot of aspects and is not optimal. Meaning, that we are quite limited by the hardware and its flaws. \
 For example, the electro-magnet consumes way too much energy for the battery and can not be deactivated with the actual layout. \
 However, the team was precisely asked to focus only on the software, the research and purchase of better hardware are consequently not our task.
 
@@ -130,7 +130,7 @@ The complete timeline and tasks can be found in the [Roadmap](https://github.com
 | --------------------| ------------------------ |
 | 18 March 2024, 5 PM | Functional Specifications|
 | 26 March 2024, 5 PM | Technical Specifications |
-| 30 March 2024, 5 PM | **MVP**[^3]              |
+| 30 March 2024, 5 PM | **MVP**[^8]             |
 | 10 April 2024, 5 PM | Test Plan                |
 | 10 April 2024, 5 PM | User Manual              |
 | 10 April 2024, 5 PM | Final Product            |
@@ -138,17 +138,17 @@ The complete timeline and tasks can be found in the [Roadmap](https://github.com
 
 ### 1.6. Budget
 
-In terms of budget, no budget has been set by the client nor by the team. However, we should keep in mind that the **hardware**[^4] is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn in many ways, get broken etc... \
-Moreover, the project can be impeded by the hardware limitation of the product. We will be giving suggestions to the client to improve the hardware if we think it is needed for the project well-being. \
+In terms of budget, no budget has been set by the client nor by the team. However, we should keep in mind that the hardware is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn in many ways, get broken etc... \
+Moreover, the project can be impeded by the hardware limitation of the product. We will be giving suggestions to the client to improve the hardware if we think it is needed for the project's well-being. \
 There is no budget set, but some expenses could happen in the future. It should be kept in mind.
 
 #### ➭ **Hardware**
 
-This section goes down the various modules and electronics that the client has provided to us. It doesn't directly enter into the budget of the team, but might if any of those breaks down.
+This section goes down the various **modules**[^9] and electronics that the client has provided to us. It doesn't directly enter into the budget of the team, but might if any of those breaks down.
 
 | Hardware                | Details                                                                                 | Picture |
 |-------------------------|-----------------------------------------------------------------------------------------|---------|
-| Xiao BLE Sense nrf52840 | Small Bluetooth programmable card with a built-in antenna. <br>  Bluetooth Low Energy.  | <img src="../images/hardware/xiaoBLESense.png" alt="drawing" width="75"/>|
+| Xiao BLE Sense nrf52840 | Small **Bluetooth**[^10] **programmable card**[^11] with a built-in antenna. <br>  Bluetooth Low Energy.  | <img src="../images/hardware/xiaoBLESense.png" alt="drawing" width="75"/>|
 | GNSS PA1010D            | GPS Module with a built-in antenna. <br> Gives real-time location. <br> **Power Supply:** VCC：3.0V to 4.3V；VBACKUP：2.0V to 4.3V,  <br> **Consumption:** Acquisition: 36mA, Tracking: 28mA                      |<img src="../images/hardware/GNSSPA1010D.png" alt="drawing" width="90"/>|
 | GSM/2G SIM800L Module   | Mini GSM Module. <br> Provides 2G data.                                                 |<img src="../images/hardware/SIM800L.png" alt="drawing" width="100"/>|
 | 1NCE SIM Card           | Multi-network and multi-mode SIM card. <br>                                             |<img src="../images/hardware/SIMCard.png" alt="drawing" width="100"/>|
@@ -175,10 +175,9 @@ The main requirements according to the document given by the client are:
 
 #### ➭ **Performance Requirements**
 
-The product needs to be more efficient than it was before in terms of energy consumption. Our team discovered ways to improve the overall performance of the pruduct, such ways are:
+The product needs to be more efficient than it was before in terms of energy consumption. Our team discovered ways to improve the overall performance of the product, such ways are:
 
 - Battery management;
-<!-- - Remove unnecessary features such as GPS; -->
 - Run-time optimization (code optimization);
 - NFC (being less energy-consuming than Bluetooth).
 
@@ -225,9 +224,9 @@ During this project, we would assume:
 - The 2G works as expected as CORIS Innovation told us because we will not be able to test it in our environment.
 - The 2G network would not be shut down during the project.
 - No extra material would be needed since it was provided by the client and the school.
-- The **Bluetooth**[^5] can be connected to the application as expected, we can not check it since we have no access to the application.
-- The NFC device would not cease to function.*
-- We assume that the school will alocate us enough time to work on the project.
+- The Bluetooth can be connected to the application as expected, we can not check it since we have no access to the application.
+- The NFC device would not cease to function.
+- We assume that ALGOSUP will allocate us enough time to work on the project.
 
 ## 3. Personas And Use Cases
 
@@ -258,11 +257,11 @@ The main requirements for this project are:
 
 Four different modes are being set for the device:
 
-- The first mode is the locked mode, which will turn on the **motion detector**[^6], the NFC and the Bluetooth, other **modules**[^6] could be activated depending on the situation such as the alarm if an impact has been detected;
+- The first mode is the locked mode, which will turn on the motion detector, the NFC and the Bluetooth, other modules could be activated depending on the situation such as the alarm if an impact has been detected;
 - The second one is the unlocked mode, which consists of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
 - The third one is called the trigger mode, which is the mode when the alarm is ringing. Depending on the kind of shock it will ring differently. At the end of the ringings, it will turn the locked mode again.
   - For a small shock, it will have 3 ringings, 1 second each;
-  - For a big shock, it will have 5 ringings, 1 second each; 
+  - For a big shock, it will have 5 ringings, 1 second each;
 - Finally, we would have the sleep mode which will be used when you don't need to use the device. \
 When using this mode, the motion sensor will be turned off as well as the alarm, only the NFC would be activated.
 
@@ -273,14 +272,6 @@ When using this mode, the motion sensor will be turned off as well as the alarm,
 | Trigger Mode:| Disuasive | Make a lot of noises |
 | Sleep Mode:  | The less consuming mode of the three. Activates only the NFC to switch the device on.                                                              | This mode only exists since there is no button to turn on/off the device.                               |
 
-<!-- #### ➭ **GPS Removal**
-
-The decision has been made to remove the **GPS**[^7] features from the device, as they were deemed unnecessary for the project and consumed excessive energy. -->
-
-<!-- | Pros       | Cons |
-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| The battery will last longer. | The device will not be able to locate itself. | -->
-
 #### ➭ **LED Implementation**
 
 However, consideration has been given to incorporating a small light at the bottom of the device to provide visual information regarding the battery level. It would be set like this:
@@ -288,8 +279,6 @@ However, consideration has been given to incorporating a small light at the bott
 - The LED is green if the battery level is above 60%;
 - The LED is orange when the battery consumption lies between 59 and 20%;
 - The LED is red when the battery is under 20%.
-
-
 
 | Pros       | Cons |
 ----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
@@ -320,12 +309,12 @@ Another for impact detection, if an impact has been detected, a notification wil
 
 ### 4.2. GPRS Management
 
-The decision was made to change the notifications sent by the **GPRS**[^9]. Henceforth, they will contain:
+The decision was made to change the notifications sent by the **GPRS**[^12]. Henceforth, they will contain:
 
 - The current mode of the device (trigger, lock, unlock and sleep);
 - The battery level;
 - The state of the device (locked or unlocked).
-<!-- - The device's location -->
+- The device's location
 
 | Pros       | Cons |
 |-------------------------------------------------|----------------------------------------|
@@ -383,7 +372,7 @@ However, considering the difficulty of the task and the amount of time, it has b
 
 ### 5.2. Pass And Pairing
 
-Searching for an improvement of the system and an optimization, it has been agreed to implement a system pass with the ski stations or the feature of pairing more than one device at a time such as badges for example. \
+Searching for an improvement of the system and optimisation, it has been agreed to implement a system pass with the ski stations or the feature of pairing more than one device at a time such as badges for example. \
 This system would be implemented in a brief delay after the release of the product as an update.
 
 ### 5.3. Changing Phone
@@ -393,20 +382,26 @@ A feature would be added, comporting an option to unpair the actual device and c
 
 ## 6. Glossary 📓
 
-[^]: **CORIS Innovation**: a European company based in France and Switzerland. The company focuses on systems engineering and process engineering. Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [CORIS Innovation's website](https://www.corisinnovation.com)
+[^1]: **Software**: a collection of instructions, data, or programs used to operate computers and perform specific tasks. It encompasses all the programs, applications, and operating systems that run on computers and other digital devices.
 
-[^]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing. [More information](https://www.corisinnovation.com)
+[^2]: **CORIS Innovation**: a European company based in France and Switzerland. The company focuses on systems engineering and process engineering. Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [CORIS Innovation's website](https://www.corisinnovation.com)
 
-[^]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
+[^6]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing. [More information](https://www.corisinnovation.com)
 
-[^]: **Bluetooth**: is a short-range wireless technology standard that is used for exchanging data between fixed and mobile devices over short distances. It is mainly used as an alternative to wired connections to exchange files between nearby portable devices and connect cell phones and music players with wireless headphones. [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth)
+[^7]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
 
-[^]: **Motion Detector**: is an electronic device that is designed to detect and measure movement. Motion sensors can be customized to perform highly specific functions. For example, motion sensors can be used to activate floodlights, trigger audible alarms, activate switches, and even alert the police. [Motion Detector](https://www.fierceelectronics.com/sensors/what-a-motion-sensor)
+[^10]: **Bluetooth**: is a short-range wireless technology standard that is used for exchanging data between fixed and mobile devices over short distances. It is mainly used as an alternative to wired connections to exchange files between nearby portable devices and connect cell phones and music players with wireless headphones. [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth)
 
-[^]: **Modules**: A module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
+[^3]: **Motion Detector**: is an electronic device that is designed to detect and measure movement. Motion sensors can be customized to perform highly specific functions. For example, motion sensors can be used to activate floodlights, trigger audible alarms, activate switches, and even alert the police. [Motion Detector](https://www.fierceelectronics.com/sensors/what-a-motion-sensor)
 
-[^]: **GPS**: Global Positioning System (GPS), is a satellite-based radio navigation system owned by the United States government. It is a satellite constellation supporting highly accurate positioning, navigation and timing (PNT) measurements worldwide. [GPS](https://novatel.com/support/knowledge-and-learning/what-is-gps-gnss)
+[^9]: **Modules**: A module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
 
-[^]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It makes for good battery life but limits online activity.  It is a packet-oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
+[^4]: **GPS**: Global Positioning System (GPS), is a satellite-based radio navigation system owned by the United States government. It is a satellite constellation supporting highly accurate positioning, navigation and timing (PNT) measurements worldwide. [GPS](https://novatel.com/support/knowledge-and-learning/what-is-gps-gnss)
 
-[^]: **MVP**: minimum viable product is a version of a product with just enough features to be usable by early customers who can then provide feedback for future product development.
+[^12]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It makes for good battery life but limits online activity.  It is a packet-oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
+
+[^8]: **MVP**: minimum viable product is a version of a product with just enough features to be usable by early customers who can then provide feedback for future product development.
+
+[^11]: **Programmable card**: a small electronic device that is capable of being programmed to perform various functions or tasks.
+
+[^5]: **electromagnet**: a type of magnet in which the magnetic field is produced by the flow of electric current. Unlike permanent magnets, which generate a constant magnetic field, electromagnets can be turned on and off by controlling the flow of electricity to them. Electromagnets are widely used in various applications where the ability to control the magnetic field is important.
