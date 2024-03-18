@@ -51,7 +51,7 @@ This project aims to complete and optimise the existing software given by **CORI
     - [➭ **Device Unlocking**](#-device-unlocking)
 - [Future Improvements 🚀](#future-improvements-)
   - [➭ Battery Consumption](#-battery-consumption)
-  - [➭ Package And Pairing](#-package-and-pairing)
+  - [➭ Pass And Pairing](#-pass-and-pairing)
   - [➭ Changing Phone](#-changing-phone)
 - [Glossary 📓](#glossary-)
 
@@ -98,35 +98,23 @@ However, the team was specially asked to only work on the product's software whi
 #### ➭ **Market Analysis**
 
 The market analysis is not to be defined, it was already done by the client company. \
-Moreover, this doesn't fit the SportShield project's requirements given at the beginning.
+Moreover, a market analysis wouldn't make any sense there, it is not in our field of expertise and we won't be able to do effectively.
 
 #### ➭ **Refurbish Hardware**
 
-The hardware should be refurbished as it does not exactly correspond to the project. It poses some problems in a lot of aspects and is not optimal. \
+The hardware should be refurbished as it does not exactly correspond to the project. We have found out that the hardware doesn't work as intended, as the product is a prototype, it is no surprise to us. It poses some problems in a lot of aspects and is not optimal. Meaning, we are quite limited by the hardware and its flaws. \
 For example, the electro-magnet consumes way too much energy for the battery and can not be deactivated with the actual layout. \
 However, the team was precisely asked to focus only on the software, the research and purchase of better hardware are consequently not our task.
 
 ### Timeline
 
-- Planning And Research
-  - Learning about the project and preparing it.
-  - Week 1
-  - 5 half days
-
-- Adding Features
-  - Adding the NFC, the different levels of noise.
-  - Week 2 to 4
-  - 10 half days (these are not up to date considering that our schedule isn't complete yet)
-
-- Tests And Optimising
-  - Reducing the battery consumption and doing the test cases.
-  - Week 5
-  - 2 half days (these are not up to date considering that our schedule isn't complete yet)
-
-- Pitch And Support Preparation
-  - Time is reserved for the rehearsal of the final presentation and the creation of the support.
-  - Week 6
-  - 2 half days (these are not up to date considering that our schedule isn't complete yet)
+| Main Subjects                 | Time allocated (These are not up-to-date as our schedule is not complete yet) | Description                                                                     |
+|-------------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| Planning and Research         | 1 week<br>5 half days                                                         | Learning about the project and preparing it.                                    |
+| Adding Features               | week 2 to 4<br>10 half days                                                   | Adding the NFC, the different levels of noise.                                  |
+| Tests                         | week 3 to 5 <br>5 half days                                                   | Creating the test strategy,<br>Doing the Test cases,<br>Fixing them.            |
+| Optimisation                  | week 5<br>2 half days                                                         | Reducing the battery consumption as much as possible.                           |
+| Pitch and Support Preparation | week 6<br>3 half days                                                         | Preparing the final presentation to the client and providing the final product. |
 
 The complete timeline and tasks can be found in the [Roadmap](https://github.com/orgs/algosup/projects/24/views/6) in the GitHub project.
 
@@ -136,15 +124,15 @@ The complete timeline and tasks can be found in the [Roadmap](https://github.com
 | --------------------| ------------------------ |
 | 18 March 2024, 5 PM | Functional Specifications|
 | 26 March 2024, 5 PM | Technical Specifications |
-| 30 March 2024, 5 PM | MVP                      |
+| 30 March 2024, 5 PM | **MVP**[^3]              |
 | 10 April 2024, 5 PM | Test Plan                |
 | 10 April 2024, 5 PM | User Manual              |
 | 10 April 2024, 5 PM | Final Product            |
 
 ### Budget
 
-In terms of budget, no budget has been set by the client nor by the team. However, we should keep in mind that the **hardware**[^3] is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn in many ways, get broken etc... \
-Moreover, the project can be impeded by the hardware limitation of the product. We reserve the right to suggest changes to the client, to improve the hardware in the future. \
+In terms of budget, no budget has been set by the client nor by the team. However, we should keep in mind that the **hardware**[^4] is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn in many ways, get broken etc... \
+Moreover, the project can be impeded by the hardware limitation of the product. We will be giving suggestions to the client to improve the hardware if we think it is needed for the project well-being. \
 There is no budget set, but some expenses could happen in the future. It should be kept in mind.
 
 #### ➭ **Hardware**
@@ -166,21 +154,21 @@ This section goes down the various modules and electronics that the client has p
 
 ### Evaluation Criteria
 
-The evaluation criteria are set principally by the stakeholders, they are the ones that will assess whether the product fulfills expectations or not. The goal of this project is to improve the current state of the device into a refurbished version that will be more efficient, faster, more user-friendly and more secure.
+The evaluation criteria are set principally by the stakeholders, they are the ones that will assess whether the product fulfills expectations or not.
 
 #### Acceptance Criteria
 
 The product will be accepted only if all the requirements given by the client are fulfilled by our team. \
 The main requirements according to the document given by the client are:
 
-- Battery consumption management: improvement of the battery efficiency, low battery management and improvement of the battery lifespan;
-- Device management with NFC;
+- Battery consumption management: at least 7 days of battery without recharging;
+- Device management with NFC: unlock/lock the device with NFC;
 - Alarm Management and simultaneous actions: stop the alarm when it rings, even if the cycle isn't finished. Ring and send information to the server at the same time;
-- Security improvements.
+- Security improvements: prevent the battery from running out while the product is in use, LED to show the battery state, lock the device when it runs out of battery.
 
 #### Performance Requirements
 
-The product needs to be more efficient than it was before in terms of energy consumption. We need to find ways to reduce the energy consumption of the device. Such ways are:
+The product needs to be more efficient than it was before in terms of energy consumption. Our team discovered ways to improve the overall performance of the pruduct, such ways are:
 
 - Battery management;
 <!-- - Remove unnecessary features such as GPS; -->
@@ -214,7 +202,7 @@ The risks are the following:
 - Impact:
   - A board breaking would be the worst scenario for us considering that no other board would be provided by the school.
 - Solution:
-  - Be careful with the board and avoid breaking or burning at all costs. Either way, the best choice would be to borrow some hardware from the other teams but it would imply having less testing time on the hardware. The other choice would be to purchase a new board, which brings another issue: the delivery time.
+  - Be careful with the board and avoid breaking or burning it at all costs. Either way, the best choice would be to borrow some hardware from the other teams but it would imply having less testing time on the hardware. The other choice would be to purchase a new board, which brings another issue: the delivery time.
 
 *➭ Delivery Time*
 
@@ -230,8 +218,9 @@ During this project, we would assume:
 - The 2G works as expected as CORIS Innovation told us because we will not be able to test it in our environment.
 - The 2G network would not be shut down during the project.
 - No extra material would be needed since it was provided by the client and the school.
-- The **Bluetooth**[^4] can be connected to the application as expected, we can not check it since we have no access to the application.
-- The NFC device would not cease to function.
+- The **Bluetooth**[^5] can be connected to the application as expected, we can not check it since we have no access to the application.
+- The NFC device would not cease to function.*
+- We assume that the school will alocate us enough time to work on the project.
 
 ## Personas And Use Cases
 
@@ -260,11 +249,12 @@ The main requirements for this project are:
 
 #### ➭ **Modes**
 
-Three different modes are being set for the device:
+Four different modes are being set for the device:
 
-- The first mode is the locked mode, which will turn on the **motion detector**[^5], the NFC and the Bluetooth, other **modules**[^6] could be activated depending on the situation such as the alarm if an impact has been detected;
+- The first mode is the locked mode, which will turn on the **motion detector**[^6], the NFC and the Bluetooth, other **modules**[^6] could be activated depending on the situation such as the alarm if an impact has been detected;
 - The second one is the unlocked mode, which consists of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
-- Finally, we would have the sleep mode which will be used when you don't need to use the device, it would not activate the alarm accidentally, only the NFC would be activated.
+- Thirdly, we would have the sleep mode which will be used when you don't need to use the device, it would not activate the alarm accidentally, only the NFC would be activated.
+- Lastly, 
 
 | Mode         | Pros       | Cons |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
@@ -280,7 +270,6 @@ The decision has been made to remove the **GPS**[^7] features from the device, a
 ----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | The battery will last longer. | The device will not be able to locate itself. | -->
 
-
 #### ➭ **LED Implementation**
 
 However, consideration has been given to incorporating a small light at the bottom of the device to provide visual information regarding the battery level. It would be set like this:
@@ -289,16 +278,18 @@ However, consideration has been given to incorporating a small light at the bott
 - The LED is orange when the battery consumption lies between 59 and 20%;
 - The LED is red when the battery is under 20%.
 
+
+
 | Pros       | Cons |
 ----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| The user will be able to know the battery level without having to open the application. | The LED will consume energy. |
+| The user will be able to know the battery level without having to open the application. | The LED will consume energy, however, it is negligible as LEDs are not consuming a lot. |
 
 #### ➭ **Low Battery Management**
 
 Additionally, a further security measure is being implemented in the device by:
 
-- implementing a sonorous signal when the battery state is at 10%;
-- sending a notification informing of the state.
+- implementing a sonorous signal when the battery state is at 15%, to notify the user the battery state is criticaly low;
+- sending a notification informing of the state of the device.
 The sound would also become more frequent when the battery level would be under 5%.
 
 | Pros       | Cons |
@@ -308,7 +299,7 @@ The sound would also become more frequent when the battery level would be under 
 #### ➭ **Notifications**
 
 The fifteen-minute notifications during the actual sleeping mode have been estimated as too high and irrelevant. \
-However, two kinds of notification will be set. One for the battery level, a notification will be sent whenever the device reaches a battery level of about 10%. \
+However, two kinds of notification will be set. One for the battery level, a critical notification will be sent whenever the device reaches a battery level of about 15%. \
 A notification will be sent to the user, whenever the device is unlocked/locked using NFC, giving the battery level and current mode. \
 Another for impact detection, if an impact has been detected, a notification will be sent to the user, providing the information a break-in attempt is ongoing.
 
@@ -318,11 +309,11 @@ Another for impact detection, if an impact has been detected, a notification wil
 
 ### GPRS Management
 
-The decision was made to change the **GPRS**[^8] notifications. Henceforth, they will contain:
+The decision was made to change the notifications sent by the **GPRS**[^9]. Henceforth, they will contain:
 
-- The current mode of the device;
+- The current mode of the device (trigger, lock, unlock and sleep);
 - The battery level;
-- The state of the device (locked or not).
+- The state of the device (locked or unlocked).
 <!-- - The device's location -->
 
 | Pros       | Cons |
@@ -347,7 +338,7 @@ It would start with a 70 dB sound for three seconds before increasing to an inte
 
 | Pros       | Cons |
 |-------------------------------------------------|----------------------------------------|
-| Avoid breaking ears accidentally. <br> Allowed to cut the alarm before it gets to noisy. | Hearing impaired could not hear the sound during the first four seconds, it could bring some complication to catch the robber. |
+| Avoid hurting the audition of users and pedestrians. <br> Allowed to cut the alarm before it gets to noisy. | Hearing impaired could not hear the sound during the first four seconds, it could bring some complication to catch the robber. |
 
 ### NFC
 
@@ -358,7 +349,7 @@ It would be quicker to stop the alarm than to take the phone, open the applicati
 
 | Pros       | Cons |
 |-------------------------------------------------|----------------------------------------|
-| Allows to deactivate the alarm without waiting for the end of the cycle. | If someone robs the card/badge, can deactivate the device. |    
+| Allows to deactivate the alarm without waiting for the end of the cycle. | If someone robs the card/badge, can deactivate the device. |
 
 #### ➭ **Device Unlocking**
 
@@ -381,9 +372,9 @@ Estimating Apple's battery management with the intelligent battery system, consi
 The team thought it was what the device needed. \
 However, considering the difficulty of the task and the amount of time, it has been decided to do it later on.
 
-### ➭ Package And Pairing
+### ➭ Pass And Pairing
 
-Searching for an improvement of the system and an optimization, it has been agreed to implement a system package with the ski stations or the feature of pairing more than one device at a time such as badges for example. \
+Searching for an improvement of the system and an optimization, it has been agreed to implement a system pass with the ski stations or the feature of pairing more than one device at a time such as badges for example. \
 This system would be implemented in a brief delay after the release of the product as an update.
 
 ### ➭ Changing Phone
@@ -393,19 +384,20 @@ A feature would be added, comporting an option to unpair the actual device and c
 
 ## Glossary 📓
 
-[^1]: **Coris Innovation**: a European company based in France and Switzerland. The company focuses on systems engineering and process engineering. Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [Coris Innovation's website](https://www.corisinnovation.com)
+[^]: **CORIS Innovation**: a European company based in France and Switzerland. The company focuses on systems engineering and process engineering. Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [CORIS Innovation's website](https://www.corisinnovation.com)
 
-[^2]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing. [More information](https://www.corisinnovation.com)
+[^]: **NFC**: which stands for Near Field Communication, is a set of short-range wireless technologies. It lets you share small payloads of data between an NFC tag and an Android-powered device. It can rapidly establish a connection, taking only one-tenth of the time Bluetooth requires to complete pairing. [More information](https://www.corisinnovation.com)
 
-[^3]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
+[^]: **Hardware**: the machines, wiring, and other physical components of a computer or other electronic system. The physical and electronic parts of a computer or other piece of equipment, rather than its software. [Definition](https://dictionary.cambridge.org/dictionary/english/hardware)
 
-[^4]: **Bluetooth**: is a short-range wireless technology standard that is used for exchanging data between fixed and mobile devices over short distances. It is mainly used as an alternative to wired connections to exchange files between nearby portable devices and connect cell phones and music players with wireless headphones. [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth)
+[^]: **Bluetooth**: is a short-range wireless technology standard that is used for exchanging data between fixed and mobile devices over short distances. It is mainly used as an alternative to wired connections to exchange files between nearby portable devices and connect cell phones and music players with wireless headphones. [Bluetooth](https://en.wikipedia.org/wiki/Bluetooth)
 
-[^5]: **Motion Detector**: is an electronic device that is designed to detect and measure movement. Motion sensors can be customized to perform highly specific functions. For example, motion sensors can be used to activate floodlights, trigger audible alarms, activate switches, and even alert the police. [Motion Detector](https://www.fierceelectronics.com/sensors/what-a-motion-sensor)
+[^]: **Motion Detector**: is an electronic device that is designed to detect and measure movement. Motion sensors can be customized to perform highly specific functions. For example, motion sensors can be used to activate floodlights, trigger audible alarms, activate switches, and even alert the police. [Motion Detector](https://www.fierceelectronics.com/sensors/what-a-motion-sensor)
 
-[^6]: **Modules**: A module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
+[^]: **Modules**: A module is an assembly of parts designed to be added and removed from a larger system easily. In this project, modules are for instance: the battery, the buzzer, the NFC scanner etc. [Modules](https://www.techtarget.com/whatis/definition/module#:~:text=A%20module%20is%20a%20distinct,is%20designed%20for%20easy%20replacement.)
 
-[^7]: **GPS**: Global Positioning System (GPS), is a satellite-based radio navigation system owned by the United States government. It is a satellite constellation supporting highly accurate positioning, navigation and timing (PNT) measurements worldwide. [GPS](https://novatel.com/support/knowledge-and-learning/what-is-gps-gnss)
+[^]: **GPS**: Global Positioning System (GPS), is a satellite-based radio navigation system owned by the United States government. It is a satellite constellation supporting highly accurate positioning, navigation and timing (PNT) measurements worldwide. [GPS](https://novatel.com/support/knowledge-and-learning/what-is-gps-gnss)
 
-[^8]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It makes for good battery life but limits online activity.  It is a packet-oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
+[^]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It makes for good battery life but limits online activity.  It is a packet-oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
 
+[^]: **MVP**: minimum viable product is a version of a product with just enough features to be usable by early customers who can then provide feedback for future product development.
