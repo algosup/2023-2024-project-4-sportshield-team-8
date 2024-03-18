@@ -13,55 +13,55 @@ This project aims to complete and optimise the existing software given by **CORI
 <details>
 <summary><b>📖 Table of Contents</b></summary>
 
-- [Project Overview 🔎](#project-overview-)
-  - [Stakeholders](#stakeholders)
-    - [Project Members](#project-members)
-    - [Other Stakeholders](#other-stakeholders)
-  - [Project Scope](#project-scope)
-  - [Out Of Scope](#out-of-scope)
+- [1. Project Overview 🔎](#1-project-overview-)
+  - [1.1. Stakeholders](#11-stakeholders)
+    - [➭ **Project Members**](#-project-members)
+    - [➭ **Other Stakeholders**](#-other-stakeholders)
+  - [1.2. Project Scope](#12-project-scope)
+  - [1.3. Out Of Scope](#13-out-of-scope)
     - [➭ **Application Improvement**](#-application-improvement)
     - [➭ **Market Analysis**](#-market-analysis)
     - [➭ **Refurbish Hardware**](#-refurbish-hardware)
-  - [Timeline](#timeline)
-  - [Deliverables And Milestones](#deliverables-and-milestones)
-  - [Budget](#budget)
+  - [1.4. Timeline](#14-timeline)
+  - [1.5. Deliverables And Milestones](#15-deliverables-and-milestones)
+  - [1.6. Budget](#16-budget)
     - [➭ **Hardware**](#-hardware)
-- [Evaluation Framework 📈](#evaluation-framework-)
-  - [Evaluation Criteria](#evaluation-criteria)
-    - [Acceptance Criteria](#acceptance-criteria)
-    - [Performance Requirements](#performance-requirements)
-  - [Risks And Assumptions](#risks-and-assumptions)
-    - [Risks](#risks)
-    - [Assumptions](#assumptions)
-- [Personas And Use Cases](#personas-and-use-cases)
-  - [Persona 1 - Georges Michael ⛷️](#persona-1---georges-michael-️)
-  - [Persona 2 - Jane Hamilton 🏂🏽](#persona-2---jane-hamilton-)
-  - [Persona 3 - Patrick Broussard ♨](#persona-3---patrick-broussard-)
-- [Functional Requirements ✔](#functional-requirements-)
-  - [Battery Consumption](#battery-consumption)
+- [2. Evaluation Framework 📈](#2-evaluation-framework-)
+  - [2.1. Evaluation Criteria](#21-evaluation-criteria)
+    - [➭ **Acceptance Criteria**](#-acceptance-criteria)
+    - [➭ **Performance Requirements**](#-performance-requirements)
+  - [2.2. Risks And Assumptions](#22-risks-and-assumptions)
+    - [➭ **Risks**](#-risks)
+    - [➭ **Assumptions**](#-assumptions)
+- [3. Personas And Use Cases](#3-personas-and-use-cases)
+  - [3.1. Persona 1 - Georges Michael ⛷️](#31-persona-1---georges-michael-️)
+  - [3.2. Persona 2 - Jane Hamilton 🏂🏽](#32-persona-2---jane-hamilton-)
+  - [3.3. Persona 3 - Patrick Broussard ♨](#33-persona-3---patrick-broussard-)
+- [4. Functional Requirements ✔](#4-functional-requirements-)
+  - [4.1. Battery Consumption](#41-battery-consumption)
     - [➭ **Modes**](#-modes)
     - [➭ **LED Implementation**](#-led-implementation)
     - [➭ **Low Battery Management**](#-low-battery-management)
     - [➭ **Notifications**](#-notifications)
-  - [GPRS Management](#gprs-management)
-  - [Motion Detection](#motion-detection)
-  - [Buzzer](#buzzer)
-  - [NFC](#nfc)
+  - [4.2. GPRS Management](#42-gprs-management)
+  - [4.3. Motion Detection](#43-motion-detection)
+  - [4.4. Buzzer](#44-buzzer)
+  - [4.5. NFC](#45-nfc)
     - [➭ **Alarm Turning Off**](#-alarm-turning-off)
     - [➭ **Device Unlocking**](#-device-unlocking)
-- [Future Improvements 🚀](#future-improvements-)
-  - [➭ Battery Consumption](#-battery-consumption)
-  - [➭ Pass And Pairing](#-pass-and-pairing)
-  - [➭ Changing Phone](#-changing-phone)
-- [Glossary 📓](#glossary-)
+- [5. Future Improvements 🚀](#5-future-improvements-)
+  - [5.1. Battery Consumption](#51-battery-consumption)
+  - [5.2. Pass And Pairing](#52-pass-and-pairing)
+  - [5.3. Changing Phone](#53-changing-phone)
+- [6. Glossary 📓](#6-glossary-)
 
 </summary></details>
 
-## Project Overview 🔎
+## 1. Project Overview 🔎
 
-### Stakeholders
+### 1.1. Stakeholders
 
-#### Project Members
+#### ➭ **Project Members**
 
 | Full Name        | Occupation               | Links                                                               |
 | ---------------- | ------------------------ | ------------------------------------------------------------------- |
@@ -72,21 +72,27 @@ This project aims to complete and optimise the existing software given by **CORI
 | Thibaud MARLIER  | Quality assurance        | [LinkedIn](https://linkedin.com/in/thibaud-marlier/)                |
 | Victor LEROY     | Technical writer         | [LinkedIn](https://linkedin.com/in/victor-leroy-64baa3229/)         |
 
-#### Other Stakeholders
+#### ➭ **Other Stakeholders**
 
-| Name           | Occupation                                 | Links                                            |
-| -------------- | ------------------------------------------ | ------------------------------------------------ |
-| Florent ANON   | Client (Head of the Innovation Department) | [LinkedIn](https://linkedin.com/in/florentanon/) |
+|Name              | Representative | Occupation                                 | Links                                            |
+| ---------------- | -------------- | ------------------------------------------ | ------------------------------------------------ |
+| CORIS Innovation | Florent ANON   | Client (Head of the Innovation Department) | [LinkedIn](https://linkedin.com/in/florentanon/) |
+| ALGOSUP          | Franck JEANNIN | Third party                                | [Website](https://algosup.com)                   |
 
-### Project Scope
+### 1.2. Project Scope
 
 This project is more of a maintenance project because we aren't starting from scratch.
 
-As a matter of fact, we were asked to optimise an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^2].
+Our team is retrieving an actual project from CORIS Innovation. \
+It is called SportShield and it is a device capable of securing your skis or snowboard by roping them with the device. \
+The device is composed of an alarm, a motion sensor, a GPS, a cable and an electric magnet. It is also provided with an application to change mode and get notifications in real-time of the device. \
+In the end, this device is meant to be used in other sports fields such as bicycle or skateboard.
+
+As a matter of fact, the team was asked to optimise an existing code of the product given by CORIS Innovation but also to add more features such as the **NFC**[^2].
 
 All these improvements should be done within the deadlines set by the school and respecting the criteria of battery consumption which is important but also the expected requirements given by the company.
 
-### Out Of Scope
+### 1.3. Out Of Scope
 
 This project also has some features that could be implemented but are not in our area of expertise and are not feasible within the deadlines set by the school for the SportShield project.
 
@@ -106,7 +112,7 @@ The hardware should be refurbished as it does not exactly correspond to the proj
 For example, the electro-magnet consumes way too much energy for the battery and can not be deactivated with the actual layout. \
 However, the team was precisely asked to focus only on the software, the research and purchase of better hardware are consequently not our task.
 
-### Timeline
+### 1.4. Timeline
 
 | Main Subjects                 | Time allocated (These are not up-to-date as our schedule is not complete yet) | Description                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
@@ -118,7 +124,7 @@ However, the team was precisely asked to focus only on the software, the researc
 
 The complete timeline and tasks can be found in the [Roadmap](https://github.com/orgs/algosup/projects/24/views/6) in the GitHub project.
 
-### Deliverables And Milestones
+### 1.5. Deliverables And Milestones
 
 | Date And Time       | Deliverables             |
 | --------------------| ------------------------ |
@@ -128,8 +134,9 @@ The complete timeline and tasks can be found in the [Roadmap](https://github.com
 | 10 April 2024, 5 PM | Test Plan                |
 | 10 April 2024, 5 PM | User Manual              |
 | 10 April 2024, 5 PM | Final Product            |
+| 19 April 2024, 9 AM | Oral Presentation        |
 
-### Budget
+### 1.6. Budget
 
 In terms of budget, no budget has been set by the client nor by the team. However, we should keep in mind that the **hardware**[^4] is fragile. We could probably break hardware unintentionally, but it would be our responsibility. It can burn in many ways, get broken etc... \
 Moreover, the project can be impeded by the hardware limitation of the product. We will be giving suggestions to the client to improve the hardware if we think it is needed for the project well-being. \
@@ -150,13 +157,13 @@ This section goes down the various modules and electronics that the client has p
 | Lithium-Polymer battery | A 3.7V, 1100mAh, 4.1Wh Lithium-Polymer powered battery. It has an estimated lifespan of around 300 to 500 charge cycles.|<img src="../images/hardware/lithiumPolymerBattery.png" alt="drawing" width="100"/>
 | NFC Antenna             | NFC module. Provides NFC compatibility.                                                 |<img src="../images/hardware/NFCAntennaCompatibility.png" alt="drawing" width="75"/>|
 
-## Evaluation Framework 📈
+## 2. Evaluation Framework 📈
 
-### Evaluation Criteria
+### 2.1. Evaluation Criteria
 
 The evaluation criteria are set principally by the stakeholders, they are the ones that will assess whether the product fulfills expectations or not.
 
-#### Acceptance Criteria
+#### ➭ **Acceptance Criteria**
 
 The product will be accepted only if all the requirements given by the client are fulfilled by our team. \
 The main requirements according to the document given by the client are:
@@ -166,7 +173,7 @@ The main requirements according to the document given by the client are:
 - Alarm Management and simultaneous actions: stop the alarm when it rings, even if the cycle isn't finished. Ring and send information to the server at the same time;
 - Security improvements: prevent the battery from running out while the product is in use, LED to show the battery state, lock the device when it runs out of battery.
 
-#### Performance Requirements
+#### ➭ **Performance Requirements**
 
 The product needs to be more efficient than it was before in terms of energy consumption. Our team discovered ways to improve the overall performance of the pruduct, such ways are:
 
@@ -175,9 +182,9 @@ The product needs to be more efficient than it was before in terms of energy con
 - Run-time optimization (code optimization);
 - NFC (being less energy-consuming than Bluetooth).
 
-### Risks And Assumptions
+### 2.2. Risks And Assumptions
 
-#### Risks
+#### ➭ **Risks**
 
 The main risks are related to the hardware part of the project, but the team is also worried about the software aspect. It's our job to address these concerns and find solutions.
 
@@ -211,7 +218,7 @@ The risks are the following:
 - Solution:
   - The best solution would be to order them earlier during the project or to simply avoid breaking anything.
 
-#### Assumptions
+#### ➭ **Assumptions**
 
 During this project, we would assume:
 
@@ -222,21 +229,21 @@ During this project, we would assume:
 - The NFC device would not cease to function.*
 - We assume that the school will alocate us enough time to work on the project.
 
-## Personas And Use Cases
+## 3. Personas And Use Cases
 
-### Persona 1 - Georges Michael ⛷️
+### 3.1. Persona 1 - Georges Michael ⛷️
 
 ![Georges Michael](/documents/images/persona/persona1.png)
 
-### Persona 2 - Jane Hamilton 🏂🏽
+### 3.2. Persona 2 - Jane Hamilton 🏂🏽
 
 ![Jane Hamilton](/documents/images/persona/persona2.png)
 
-### Persona 3 - Patrick Broussard ♨
+### 3.3. Persona 3 - Patrick Broussard ♨
 
 ![Patrick Broussard](/documents/images/persona/persona3.png)
 
-## Functional Requirements ✔
+## 4. Functional Requirements ✔
 
 The main requirements for this project are:
 
@@ -245,7 +252,7 @@ The main requirements for this project are:
 - Check the buzzer's noise level according to the impact;
 - Managing the battery consumption so it can last 7 days in cold conditions (6 hours of active mode and 18 in sleep mode).
 
-### Battery Consumption
+### 4.1. Battery Consumption
 
 #### ➭ **Modes**
 
@@ -253,13 +260,17 @@ Four different modes are being set for the device:
 
 - The first mode is the locked mode, which will turn on the **motion detector**[^6], the NFC and the Bluetooth, other **modules**[^6] could be activated depending on the situation such as the alarm if an impact has been detected;
 - The second one is the unlocked mode, which consists of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
-- Thirdly, we would have the sleep mode which will be used when you don't need to use the device, it would not activate the alarm accidentally, only the NFC would be activated.
-- Lastly, 
+- The third one is called the trigger mode, which is the mode when the alarm is ringing. Depending on the kind of shock it will ring differently. At the end of the ringings, it will turn the locked mode again.
+  - For a small shock, it will have 3 ringings, 1 second each;
+  - For a big shock, it will have 5 ringings, 1 second each; 
+- Finally, we would have the sleep mode which will be used when you don't need to use the device. \
+When using this mode, the motion sensor will be turned off as well as the alarm, only the NFC would be activated.
 
 | Mode         | Pros       | Cons |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | Locked Mode:   | Safest mode available, provides dection of shocks and break-in alerts. <br> NFC and Bluetooth are activated for the user to connect to the device.  | The most consuming mode (less consuming than the actual active mode which was provided by the client).  |
 | Unlocked Mode: | Capable of changing mode by the NFC and the Bluetooth, allowing to change mode with the application.                                               | Consume more than the sleep mode.                                                                       |
+| Trigger Mode:| Disuasive | Make a lot of noises |
 | Sleep Mode:  | The less consuming mode of the three. Activates only the NFC to switch the device on.                                                              | This mode only exists since there is no button to turn on/off the device.                               |
 
 <!-- #### ➭ **GPS Removal**
@@ -307,7 +318,7 @@ Another for impact detection, if an impact has been detected, a notification wil
 |-------------------------------------------------|----------------------------------------|
 | The user will be informed of the battery level. | The frequency of the notifications can be annoying. |
 
-### GPRS Management
+### 4.2. GPRS Management
 
 The decision was made to change the notifications sent by the **GPRS**[^9]. Henceforth, they will contain:
 
@@ -320,7 +331,7 @@ The decision was made to change the notifications sent by the **GPRS**[^9]. Henc
 |-------------------------------------------------|----------------------------------------|
 | The user will be get useful information about the device. | The notifications will consume energy. |
 
-### Motion Detection
+### 4.3. Motion Detection
 
 Motion detection has been considered too sensitive and would then be improved in a way that parasite movements such as the wind should not be detected as motion and then not activate the alarm system. \
 To be more precise, all the motion detected by the hardware under 5 mm/s for the translations and under 10 deg/s for the rotation would be considered a parasite and not activate the alarm. \
@@ -330,7 +341,7 @@ Regarding the important impact, they would be detected above 10 mm/s for the tra
 |-------------------------------------------------|----------------------------------------|
 | The product won't be too sensitive to parasite movement.<br> Offers a precise and effective shock detection. | May reduce the current KPIs shock and motion dection given by the client (if we change this, we need to be as efficient as the previous product). |
 
-### Buzzer
+### 4.4. Buzzer
 
 When considering the accidental impact against the device, someone who fell on it for example. \
 It has been decided to implement a crescendo sound and not an important one from the beginning. \
@@ -340,7 +351,7 @@ It would start with a 70 dB sound for three seconds before increasing to an inte
 |-------------------------------------------------|----------------------------------------|
 | Avoid hurting the audition of users and pedestrians. <br> Allowed to cut the alarm before it gets to noisy. | Hearing impaired could not hear the sound during the first four seconds, it could bring some complication to catch the robber. |
 
-### NFC
+### 4.5. NFC
 
 #### ➭ **Alarm Turning Off**
 
@@ -360,29 +371,29 @@ Moreover, this feature will override the previous one. In the case of an alarm r
 |-------------------------------------------------|----------------------------------------|
 | Quicker to deactivate with a card. <br> Allows different ways to deactivate the same device. <br> You can leave your phone at home and still deactivate the device. | If someone robs the card/badge, can unlock the device. |
 
-## Future Improvements 🚀
+## 5. Future Improvements 🚀
 
 Considering the short amount of time given and the important amount of tasks and requirements the project has. It has been decided to postpone some of them, deemed non-critical to the completion of the SportShield project in the short term. \
 However, these tasks have been planned to be done as future improvements in the long term.
 
-### ➭ Battery Consumption
+### 5.1. Battery Consumption
 
 One of the requirements given by the company was to use the battery only between 20 and 80%. \
 Estimating Apple's battery management with the intelligent battery system, consisted of charging just before the average time usage and stopping it at 80%. \
 The team thought it was what the device needed. \
 However, considering the difficulty of the task and the amount of time, it has been decided to do it later on.
 
-### ➭ Pass And Pairing
+### 5.2. Pass And Pairing
 
 Searching for an improvement of the system and an optimization, it has been agreed to implement a system pass with the ski stations or the feature of pairing more than one device at a time such as badges for example. \
 This system would be implemented in a brief delay after the release of the product as an update.
 
-### ➭ Changing Phone
+### 5.3. Changing Phone
 
 One issue stood out, the pairing of the phone if it has to be changed.
 A feature would be added, comporting an option to unpair the actual device and could only be activated on the application if the Bluetooth is activated (locked and unlocked modes only).
 
-## Glossary 📓
+## 6. Glossary 📓
 
 [^]: **CORIS Innovation**: a European company based in France and Switzerland. The company focuses on systems engineering and process engineering. Their ambition is to support European industrial players in their innovation,  R&D, digitalization and production challenges. [CORIS Innovation's website](https://www.corisinnovation.com)
 
