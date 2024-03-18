@@ -35,7 +35,7 @@ This document aims to align the vision of the client and the team. The goal of t
 Several improvements have been identified by the client. Because of the short period dedicated to this project, the team decided to focus on the following points:
 1. Increase the battery autonomy as well as its lifespan
 2. Implement NFC detection
-3. Optimize movement detection to make it less sensible but still efficient
+3. Optimise movement detection to make it less sensible but still efficient
 4. Change the alarm system to prevent false alarms and use it to alert the user of low-battery
 5. Add LEDs for battery level (nice to have)
 
