@@ -50,7 +50,6 @@ This project aims to complete and optimise the existing software given by **CORI
   - [NFC](#nfc)
     - [➭ Alarm Turning Off](#➭-alarm-turning-off)
     - [➭ Device Unlocking](#➭-device-unlocking)
-  - [Undervolting](#undervolting)
 - [Future Improvements](#future-improvements)
   - [➭ Battery Consumption](#➭-battery-consumption)
   - [➭ Forfait And Paring](#➭-forfait--paring)
@@ -321,11 +320,6 @@ It would be quicker to stop the alarm than to take the phone, open the applicati
 It has been decided to add another feature with the NFC such as an unlock one. After pressing the NFC against the device for two seconds it would unlock it. \
 Moreover, this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor for two seconds.
 
-### Undervolting
-
-**Undervolting**[^9] would be used to lower the energy consumption in specific modes such as the lock and the unlock. \
-However, after a second look at it, it has been decided not to implement it due to the risk of damaging the product in itself.
-
 ## Future Improvements
 
 Considering the short amount of time given and the important amount of tasks and requirements the project has. It has been decided to postpone some of them, deemed non-critical to the completion of the SportShield project in the short term. \
@@ -365,5 +359,3 @@ A feature would be added, comporting an option to unpair the actual device and c
 [^7]: **GPS**: Global Positioning System (GPS), is a satellite-based radio navigation system owned by the United States government. It is a satellite constellation supporting highly accurate positioning, navigation and timing (PNT) measurements worldwide. [GPS](https://novatel.com/support/knowledge-and-learning/what-is-gps-gnss)
 
 [^8]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It makes for good battery life but limits online activity.  It is a packet-oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
-
-[^9]: **Undervoltage**: The Undervoltage-lockout (UVLO) is an electronic circuit used to turn off the power of an electronic device in the event of the voltage dropping below the operational value that could cause unpredictable system behavior. [Undervoltage](https://en.wikipedia.org/wiki/Undervoltage-lockout)
