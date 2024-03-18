@@ -26,7 +26,7 @@ This project aims to complete and optimise the existing software given by **CORI
   - [Deliverables And Milestones](#deliverables-and-milestones)
   - [Budget](#budget)
     - [➭ **Hardware**](#-hardware)
-- [Evaluation Framework 📈](#evaluation-framework-📈)
+- [Evaluation Framework 📈](#evaluation-framework-)
   - [Evaluation Criteria](#evaluation-criteria)
     - [Acceptance Criteria](#acceptance-criteria)
     - [Performance Requirements](#performance-requirements)
@@ -34,13 +34,12 @@ This project aims to complete and optimise the existing software given by **CORI
     - [Risks](#risks)
     - [Assumptions](#assumptions)
 - [Personas And Use Cases](#personas-and-use-cases)
-  - [Persona 1 - Georges Michael ⛷️](#persona-1---georges-michael-⛷️)
-  - [Persona 2 - Jane Hamilton 🏂🏽](#persona-2---jane-hamilton-🏂🏽)
-  - [Persona 3 - Patrick Broussard ♨](#persona-3---patrick-broussard-♨)
-- [Functional Requirements ✔](#functional-requirements-✔)
+  - [Persona 1 - Georges Michael ⛷️](#persona-1---georges-michael-️)
+  - [Persona 2 - Jane Hamilton 🏂🏽](#persona-2---jane-hamilton-)
+  - [Persona 3 - Patrick Broussard ♨](#persona-3---patrick-broussard-)
+- [Functional Requirements ✔](#functional-requirements-)
   - [Battery Consumption](#battery-consumption)
     - [➭ **Modes**](#-modes)
-    - [➭ **GPS Removal**](#-gps-removal)
     - [➭ **LED Implementation**](#-led-implementation)
     - [➭ **Low Battery Management**](#-low-battery-management)
     - [➭ **Notifications**](#-notifications)
@@ -50,11 +49,11 @@ This project aims to complete and optimise the existing software given by **CORI
   - [NFC](#nfc)
     - [➭ **Alarm Turning Off**](#-alarm-turning-off)
     - [➭ **Device Unlocking**](#-device-unlocking)
-- [Future Improvements 🚀](#future-improvements-🚀)
+- [Future Improvements 🚀](#future-improvements-)
   - [➭ Battery Consumption](#-battery-consumption)
-  - [➭ Forfait And Paring](#-forfait-and-paring)
+  - [➭ Package And Pairing](#-package-and-pairing)
   - [➭ Changing Phone](#-changing-phone)
-- [Glossary 📓](#glossary-📓)
+- [Glossary 📓](#glossary-)
 
 </summary></details>
 
@@ -89,7 +88,7 @@ All these improvements should be done within the deadlines set by the school and
 
 ### Out Of Scope
 
-This project also has some features that could be implemented but are not in our area of expertise and are not feasible in the amount of time given by the school for the SportShield project.
+This project also has some features that could be implemented but are not in our area of expertise and are not feasible within the deadlines set by the school for the SportShield project.
 
 #### ➭ **Application Improvement**
 
@@ -99,7 +98,7 @@ However, the team was specially asked to only work on the product's software whi
 #### ➭ **Market Analysis**
 
 The market analysis is not to be defined, it was already done by the client company. \
-Moreover, this doesn't fit the SportShield project's requirements given at the beginning of it.
+Moreover, this doesn't fit the SportShield project's requirements given at the beginning.
 
 #### ➭ **Refurbish Hardware**
 
@@ -184,7 +183,7 @@ The main requirements according to the document given by the client are:
 The product needs to be more efficient than it was before in terms of energy consumption. We need to find ways to reduce the energy consumption of the device. Such ways are:
 
 - Battery management;
-- Remove unnecessary features: GPS;
+<!-- - Remove unnecessary features such as GPS; -->
 - Run-time optimization (code optimization);
 - NFC (being less energy-consuming than Bluetooth).
 
@@ -192,7 +191,7 @@ The product needs to be more efficient than it was before in terms of energy con
 
 #### Risks
 
-The risks would principally concern the hardware part of this project, as the team is concerned with the software part it is our role to find potential against them.
+The main risks are related to the hardware part of the project, but the team is also worried about the software aspect. It's our job to address these concerns and find solutions.
 
 The risks are the following:
 
@@ -208,7 +207,7 @@ The risks are the following:
 - Impact:
   - A 2G shutdown would break an enormous part of the project whereas all the notifications pass by this system. In other words, a 2G shutdown would break the main utility of the application if the skis are being robbed.
 - Solution:
-  - There is no real solution to avoid the 2G shutdown. However, we can think about changing the 2G to the most recent version, like 3G, and the module link to it.
+  - There is no real solution to avoid the 2G shutdown. However, we can think about changing the 2G to the most recent version, like 3G, and the module linked to it.
 
 *➭ Board Breaking*
 
@@ -222,7 +221,7 @@ The risks are the following:
 - Impact:
   - In case the team wanted new hardware modules and considering the delivery time and the short amount of time for this project, they would probably not arrive in time.
 - Solution:
-  - The best solution would be to command them the earliest in the project or to simply avoid breaking anything.
+  - The best solution would be to order them earlier during the project or to simply avoid breaking anything.
 
 #### Assumptions
 
@@ -262,19 +261,19 @@ The main requirements for this project are:
 
 Three different modes are being set for the device:
 
-- The first mode is the lock mode, which will turn on the **motion detector**[^5], the NFC and the Bluetooth, other **modules**[^6] could be activated depending on the situation such as the alarm if an impact has been detected;
-- The second one is the unlock mode, which consists of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
+- The first mode is the locked mode, which will turn on the **motion detector**[^5], the NFC and the Bluetooth, other **modules**[^6] could be activated depending on the situation such as the alarm if an impact has been detected;
+- The second one is the unlocked mode, which consists of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
 - Finally, we would have the sleep mode which will be used when you don't need to use the device, it would not activate the alarm accidentally, only the NFC would be activated.
 
 | Mode         | Pros       | Cons |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| Lock Mode:   | Safest mode available, provides dection of shocks and break-in alerts. <br> NFC and Bluetooth are activated for the user to connect to the device.  | The most consuming mode (less consuming than the actual active mode which was provided by the client).  |
-| Unlock Mode: | Capable of changing mode by the NFC and the Bluetooth, allowing to change mode with the application.                                               | Consume more than the sleep mode.                                                                       |
+| Locked Mode:   | Safest mode available, provides dection of shocks and break-in alerts. <br> NFC and Bluetooth are activated for the user to connect to the device.  | The most consuming mode (less consuming than the actual active mode which was provided by the client).  |
+| Unlocked Mode: | Capable of changing mode by the NFC and the Bluetooth, allowing to change mode with the application.                                               | Consume more than the sleep mode.                                                                       |
 | Sleep Mode:  | The less consuming mode of the three. Activates only the NFC to switch the device on.                                                              | This mode only exists since there is no button to turn on/off the device.                               |
 
-#### ➭ **GPS Removal**
+<!-- #### ➭ **GPS Removal**
 
-The decision has been made to remove the **GPS**[^7] features from the device, as they were deemed unnecessary for the project and consumed excessive energy.
+The decision has been made to remove the **GPS**[^7] features from the device, as they were deemed unnecessary for the project and consumed excessive energy. -->
 
 #### ➭ **LED Implementation**
 
@@ -305,13 +304,13 @@ The decision was made to change the **GPRS**[^8] notifications. Henceforth, they
 
 - The current mode of the device;
 - The battery level;
-- The state of the device (lock or not).
+- The state of the device (locked or not).
 
 ### Motion Detection
 
 Motion detection has been considered too sensitive and would then be improved in a way that parasite movements such as the wind should not be detected as motion and then not activate the alarm system. \
-To be more precise, all the motion detected by the hardware under five mm/s for the translations and under ten deg/s for the rotation would be considered a parasite and not activate the alarm. \
-Regarding the important impact, they would be detected above ten mm/s for the translation and twenty deg/s for the rotation.
+To be more precise, all the motion detected by the hardware under 5 mm/s for the translations and under 10 deg/s for the rotation would be considered a parasite and not activate the alarm. \
+Regarding the important impact, they would be detected above 10 mm/s for the translation and 20 deg/s for the rotation.
 
 ### Buzzer
 
@@ -323,12 +322,12 @@ It would start with a 70 dB sound for three seconds before increasing to an inte
 
 #### ➭ **Alarm Turning Off**
 
-It has been found relevant to implement a system to cut the alarm with a NFC such as a little card or a badge and not necessarily the application. \
+It has been found relevant to implement a system to cut the alarm using NFC with a card or a badge and not necessarily the application. \
 It would be quicker to stop the alarm than to take the phone, open the application and deactivate the alarm.
 
 #### ➭ **Device Unlocking**
 
-It has been decided to add another feature with the NFC such as an unlock one. After pressing the NFC against the device for two seconds it would unlock it. \
+It has been decided to implement an unlocking feature using NFC. After pressing the NFC against the device for two seconds it would unlock it. \
 Moreover, this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor for two seconds.
 
 ## Future Improvements 🚀
@@ -343,7 +342,7 @@ Estimating Apple's battery management with the intelligent battery system, consi
 The team thought it was what the device needed. \
 However, considering the difficulty of the task and the amount of time, it has been decided to do it later on.
 
-### ➭ Forfait And Paring
+### ➭ Package And Pairing
 
 Searching for an improvement of the system and an optimization, it has been agreed to implement a system package with the ski stations or the feature of pairing more than one device at a time such as badges for example. \
 This system would be implemented in a brief delay after the release of the product as an update.
