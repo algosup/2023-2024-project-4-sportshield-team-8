@@ -116,17 +116,17 @@ However, the team was precisely asked to focus only on the software, the researc
 - Adding Features
   - Adding the NFC, the different levels of noise.
   - Week 2 to 4
-  - 4 half days (these are not up to date considering that our schedule isn't complete yet)
+  - 10 half days (these are not up to date considering that our schedule isn't complete yet)
 
 - Tests And Optimising
   - Reducing the battery consumption and doing the test cases.
   - Week 5
-  - some half days (these are not up to date considering that our schedule isn't complete yet)
+  - 2 half days (these are not up to date considering that our schedule isn't complete yet)
 
 - Pitch And Support Preparation
   - Time is reserved for the rehearsal of the final presentation and the creation of the support.
   - Week 6
-  - 4 half days (these are not up to date considering that our schedule isn't complete yet)
+  - 2 half days (these are not up to date considering that our schedule isn't complete yet)
 
 The complete timeline and tasks can be found in the [Roadmap](https://github.com/orgs/algosup/projects/24/views/6) in the GitHub project.
 
@@ -231,6 +231,7 @@ During this project, we would assume:
 - The 2G network would not be shut down during the project.
 - No extra material would be needed since it was provided by the client and the school.
 - The **Bluetooth**[^4] can be connected to the application as expected, we can not check it since we have no access to the application.
+- The NFC device would not cease to function.
 
 ## Personas And Use Cases
 
@@ -312,8 +313,8 @@ A notification will be sent to the user, whenever the device is unlocked/locked 
 Another for impact detection, if an impact has been detected, a notification will be sent to the user, providing the information a break-in attempt is ongoing.
 
 | Pros       | Cons |
-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| The user will be informed of the battery level. | The notifications will consume energy. |
+|-------------------------------------------------|----------------------------------------|
+| The user will be informed of the battery level. | The frequency of the notifications can be annoying. |
 
 ### GPRS Management
 
@@ -322,6 +323,11 @@ The decision was made to change the **GPRS**[^8] notifications. Henceforth, they
 - The current mode of the device;
 - The battery level;
 - The state of the device (locked or not).
+<!-- - The device's location -->
+
+| Pros       | Cons |
+|-------------------------------------------------|----------------------------------------|
+| The user will be get useful information about the device. | The notifications will consume energy. |
 
 ### Motion Detection
 
@@ -329,11 +335,19 @@ Motion detection has been considered too sensitive and would then be improved in
 To be more precise, all the motion detected by the hardware under 5 mm/s for the translations and under 10 deg/s for the rotation would be considered a parasite and not activate the alarm. \
 Regarding the important impact, they would be detected above 10 mm/s for the translation and 20 deg/s for the rotation.
 
+| Pros       | Cons |
+|-------------------------------------------------|----------------------------------------|
+| The product won't be too sensitive to parasite movement.<br> Offers a precise and effective shock detection. | May reduce the current KPIs shock and motion dection given by the client (if we change this, we need to be as efficient as the previous product). |
+
 ### Buzzer
 
 When considering the accidental impact against the device, someone who fell on it for example. \
 It has been decided to implement a crescendo sound and not an important one from the beginning. \
 It would start with a 70 dB sound for three seconds before increasing to an intense signal of 95 dB.
+
+| Pros       | Cons |
+|-------------------------------------------------|----------------------------------------|
+| Avoid breaking ears accidentally. <br> Allowed to cut the alarm before it gets to noisy. | Hearing impaired could not hear the sound during the first four seconds, it could bring some complication to catch the robber. |
 
 ### NFC
 
@@ -342,10 +356,18 @@ It would start with a 70 dB sound for three seconds before increasing to an inte
 It has been found relevant to implement a system to cut the alarm using NFC with a card or a badge and not necessarily the application. \
 It would be quicker to stop the alarm than to take the phone, open the application and deactivate the alarm.
 
+| Pros       | Cons |
+|-------------------------------------------------|----------------------------------------|
+| Allows to deactivate the alarm without waiting for the end of the cycle. | If someone robs the card/badge, can deactivate the device. |    
+
 #### ➭ **Device Unlocking**
 
 It has been decided to implement an unlocking feature using NFC. After pressing the NFC against the device for two seconds it would unlock it. \
 Moreover, this feature will override the previous one. In the case of an alarm ringing it could stop the alarm and unlock the device if you press the NFC against the sensor for two seconds.
+
+| Pros       | Cons |
+|-------------------------------------------------|----------------------------------------|
+| Quicker to deactivate with a card. <br> Allows different ways to deactivate the same device. <br> You can leave your phone at home and still deactivate the device. | If someone robs the card/badge, can unlock the device. |
 
 ## Future Improvements 🚀
 
@@ -367,7 +389,7 @@ This system would be implemented in a brief delay after the release of the produ
 ### ➭ Changing Phone
 
 One issue stood out, the pairing of the phone if it has to be changed.
-A feature would be added, comporting an option to unpair the actual device and could only be activated on the application if the Bluetooth is activated (lock and un-lock modes only).
+A feature would be added, comporting an option to unpair the actual device and could only be activated on the application if the Bluetooth is activated (locked and unlocked modes only).
 
 ## Glossary 📓
 
@@ -386,3 +408,4 @@ A feature would be added, comporting an option to unpair the actual device and c
 [^7]: **GPS**: Global Positioning System (GPS), is a satellite-based radio navigation system owned by the United States government. It is a satellite constellation supporting highly accurate positioning, navigation and timing (PNT) measurements worldwide. [GPS](https://novatel.com/support/knowledge-and-learning/what-is-gps-gnss)
 
 [^8]: **GPRS**: abbreviation for general packet radio service: a system for sending and receiving images and other information using mobile phones. It makes for good battery life but limits online activity.  It is a packet-oriented mobile data standard on the 2G cellular communication network's global system for mobile communications.
+
