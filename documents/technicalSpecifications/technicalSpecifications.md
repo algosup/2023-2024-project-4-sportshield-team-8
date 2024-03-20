@@ -59,7 +59,7 @@ The alarm is trigger upon detecting movement.
 ### Software
 - C++ 11
 - nRF52 Assembly
-- Arduino Compiler
+- Arduino IDE & Compiler v2.3.3
 - list of dependency :
     - *NRF52_MBED_TimerInterrupt V1.4.1*
     - *adafruit-nrfutil 0.5.3* (for linux)
@@ -70,7 +70,81 @@ The alarm is trigger upon detecting movement.
     
 Those choices where made for hardware reason.
 
+## Conventions
+
+### Files & Folder
+
+##### *Naming*
+
+All files and folders should be named in *camelCase*.
+
+##### *organization*
+
+- Images should be in an *./image* subfolder from where they are called.
+- Technical, Functional and Management documents should be in their own folder in a *./documents* folder.
+- The code should be in an *./src* folder from the root.
+
+### GitHub
+
+##### *Naming*
+
+GitHub branches should be named in *Pascal_Snake_Case*.
+
+##### *organization*
+
+- Working version of the project go to the *Release* branch.
+- The main should be updated at least once a week.
+- Release should be made from the main.
+- There can't be any direct push to the main.
+- A new branch should be made for each feature.
+- Only push code that compile (exception for Error related to the SIM800L)
+- Issues should only be opened for problems in the *main* or *Release* branches.
+
+### Coding
+
+When in doubt follow [this document](https://google.github.io/styleguide/cppguide.htm) as this part only highlight the most relevant parts.
+
+##### *Naming*
+
+Use clear name that describe the purpose of the object. Avoid abbreviations. Everything should be done in english.
+
+- Variables : 
+  - snake_case in a function. 
+  - snake_case_ with an underscore at the end when in the scope of a class.
+- Types and concepts (class, struct, alias, enum and type aliases) : PascalCamelCase
+- Const and enum : prefixed with ``k`` then camelCase eg. ``kConstVariable``
+- Functions : camelCase
+- Namespaces : snake_case. Top level namespace should be the project name.
+- Macro : UPPERCASE_SNAKE
+
+##### *Comments*
+
+Do not comment things that are obvious and easily readable. Focus more on the Why than the what.
+
+All file should start with an overview of the abstraction provided in the file. 
+Class comments should describe when and how to use the class
+If a function use is not obvious it should explain it's use case. If the operation is not obvious it should be explained in the definition.
+Global variable should have an explanation.
+
+##### *formatting*
+
+- tab are 4 spaces long
+- lines should be at most 80 characters long.
+- avoid non ASCII character
+- If function parameter don't fit on a line they should wrap around
+- open curly brackets on the same line as you end parameter declaration
+
+example :
+```cpp
+int example(string word, int number,
+            Type parameter3){
+    //do something
+}
+```
+
 ## Key Functions
+
+Those key function are independents from one an other and can be developed assuming the others works. 
 
 ### Motion Detection
 
@@ -106,13 +180,21 @@ The only value we are interested in is ``INT1_TILT`` from the ``MD1_CFG``<sub>[p
 The NFC antenna needs to be in active mode as we need it to power a passive device (in this case an NFC card). This has the inconvenience of increasing power draw, and means that the CPU can not be turned off while listening for an input.
 Unfortunately [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per seed studio.
 
-A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work.
+A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work. 
 
 ##### *reference and resources*
 
 - [nRF52840 Product Specification - NFC](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)
 - [Seeed Studio XIAO nRF52840 - Github Wiki](https://github.com/Seeed-Studio/wiki-documents/discussions/214)
 - [Seeed Studio XIAO nRF52840 - Seeed Studio Wiki](https://wiki.seeedstudio.com/XIAO-BLE-Sense-NFC-Usage/)
+
+<!--https://forum.seeedstudio.com/t/xiao-ble-nfc-doesnt-work/264543/14 -->>
+
+### Bluetooth
+
+### GPRS
+
+### Battery Optimization
 
 
 <!-- LSM6DS3Core imu(I2C_MODE, 0x6A); 
