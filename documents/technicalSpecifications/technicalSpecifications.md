@@ -27,7 +27,7 @@ The alarm is trigger upon detecting movement.
 
 - Should run for 7 day without charging
 - NFC should only accept one signal
-- Bluetooth should only recognize the a paired phone.
+- Bluetooth should only recognize a paired phone.
 - Has to run on a nRF52840 CPU.
 - Has to be programed in Arduino C++.
 - NFC should always be active
@@ -102,7 +102,7 @@ GitHub branches should be named in *Pascal_Snake_Case*.
 
 ### Coding
 
-When in doubt follow [this document](https://google.github.io/styleguide/cppguide.htm) as this part only highlight the most relevant parts.
+When in doubt follow [this document](https://google.github.io/styleguide/cppguide.html) as this part only highlight the most relevant parts.
 
 ##### *Naming*
 
@@ -188,11 +188,24 @@ A solution would be to use assembly assembly registers<sub>[p.208](https://infoc
 - [Seeed Studio XIAO nRF52840 - Github Wiki](https://github.com/Seeed-Studio/wiki-documents/discussions/214)
 - [Seeed Studio XIAO nRF52840 - Seeed Studio Wiki](https://wiki.seeedstudio.com/XIAO-BLE-Sense-NFC-Usage/)
 
-<!--https://forum.seeedstudio.com/t/xiao-ble-nfc-doesnt-work/264543/14 -->>
+<!--https://forum.seeedstudio.com/t/xiao-ble-nfc-doesnt-work/264543/14 -->
 
 ### Bluetooth
 
 ### GPRS
+
+The GSM/2G SIM800L Module can be set to send or get messages only, even on sleep mode, which allows to put the device constantly in these modes without risking missing a message. It also has a power-down command when the device is not used.
+
+##### *initialisation*
+
+To initialise the device the ``PWRKEY button``<sub>[p.22](https://www.scribd.com/document/700531402/SIM800L-datasheet)</sub> should touch the ground through a resistor. The power could be down with the AT command ``AT+CPOWD=1``<sub>[p.24](https://www.scribd.com/document/700531402/SIM800L-datasheet)</sub>&<sub>[p.146](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf)</sub> and renewed by sending a 1 sec high, followed by 2 seconds low and then 1 second high. \
+To initialise the sleeping mode of the device you should use AT command as well. However there is two different modes, each one activated by ``AT+CSCLK=1``<sub>[p.27](https://www.scribd.com/document/700531402/SIM800L-datasheet)</sub>and ``AT+CSCLK=2``<sub>[p.27](https://www.scribd.com/document/700531402/SIM800L-datasheet)</sub>. They both turn on to normal mode again when receiving message.
+
+##### *reference and resources*
+
+- [GMS Library - Arduino docs](https://docs.arduino.cc/retired/archived-libraries/GSM/)
+- [SIM800H&SIM800L_Hardware Design_V2.02](https://www.scribd.com/document/700531402/SIM800L-datasheet)
+- [SIM800 Series_AT Command Manual_V1.09](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf)
 
 ### Battery Optimization
 
