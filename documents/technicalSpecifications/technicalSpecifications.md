@@ -237,14 +237,12 @@ According to this forum user
 
 ### Bluetooth
 
-#### Initial Researches Made On BLE
-
-##### What's BLE?
+##### *What's BLE?*
 
 Same as bluetooth, only limiting data transfer, but it's fine in this project. It consumes 1/10th of Bluetooth's energy. \
 Thus, BLE is always in "sleep mode" until a connection is established.
 
-##### Linked to MAC adresses
+##### *Linked to MAC adresses*
 
 A bluetooth connectivity is made via a MAC adress, meaning that it is bound to a device. Such MAC adress can be extracted. \
 I think that a simple checking program can make so that only one specific MAC address can connect. \
@@ -252,7 +250,7 @@ I think that a simple checking program can make so that only one specific MAC ad
 Moreover, it is possible in some way (no clue how yet), to generate a password to pair two devices, we need to dig more into that to specify how it works. \
 The security manager (SM) architecture, Two roles defined in SM are an initiator and a responder. The initiator’s role corresponds to the master link layer and a responder always corresponds to the slave link layer. The initiator usually initiates the start of a procedure in most cases, although the responder can request the beginning of a procedure asynchronously.
 
-##### Protocol
+##### *Protocol*
 
 IEEE 802.15.4-2006
 
@@ -261,7 +259,7 @@ We have a 2.4GHz transceiver.
 With the MODE=Ieee802154_250kbit the radio module will comply with the IEEE 802.15.4-2006 standard
 (BLE mode basically).
 
-##### Sources
+##### *Sources*
 
 [Arduino Blueprints](https://ecs-pw-facweb.ecs.csus.edu/~dahlquid/eee174/S2016/handouts/Labs/ArduinoLab/ArduinoInfo/Arduino%20Android%20Blueprints.pdf)
 
