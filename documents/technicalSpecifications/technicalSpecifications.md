@@ -111,7 +111,7 @@ Use clear name that describe the purpose of the object. Avoid abbreviations. Eve
 - Variables : 
   - snake_case in a function. 
   - snake_case_ with an underscore at the end when in the scope of a class.
-- Types and concepts (class, struct, alias, enum and type aliases) : PascalCamelCase
+- Types and concepts (class, struct, alias, enum and type aliases) : PascalCase
 - Const and enum : prefixed with ``k`` then camelCase eg. ``kConstVariable``
 - Functions : camelCase
 - Namespaces : snake_case. Top level namespace should be the project name.
@@ -142,14 +142,49 @@ int example(string word, int number,
 }
 ```
 
-## Key Functions
+##### *misc*
 
-Those key function are independents from one an other and can be developed assuming the others works. 
+- don't use use ``using std;`` instead do ``std::`` when needed to avoid naming conflict
+- always use namespace
+- create header files for module that can work on their own
+- all classes should follow encapsulation. 
+
+## Key Functionality
+
+Those key Functionality are independents from one an other and can be developed assuming the others works. Each part should be worked on as their separate classes.
 
 ### Motion Detection
 
 The LSM6DS3 motion detection module can be set to send data only when detecting movement that exceed a certain threshold thanks to it's interrupt control registers. The accelerometer should only return a signal to the GPIO pin if the movement go past a certain threshold. This way the CPU can be kept in sleep mode the rest of the time.
 The *LSM6DS3Core* class in the *Seeed Arduino LSM6DS3* library allow writing to the motion detection module's registers.
+
+##### *Organization*
+
+The class should follow this organization
+```cpp
+class MotionDetection{
+    float wakeup_threshold_;
+    float large_movement_threshold_;
+    struct Acceleration{
+        float x, float y, float z,
+        bool large_movement
+    }
+
+public:
+    //return a success or failure
+    int initialization()
+
+    //change threshold on the motion detection module
+    int setWakeupThreshold(float threshold)
+
+    // the movement above which it is considered a large movement (can't be negative)
+    int setLargeMovementThreshold(float threshold)
+
+    //constantly get the acceleration of the device to know the amplitude
+    //set large_movement to true if above threshold
+    Acceleration getMovement()
+}
+```
 
 ##### *initialization*
 
@@ -175,7 +210,7 @@ The only value we are interested in is ``INT1_TILT`` from the ``MD1_CFG``<sub>[p
 - [LSM6DS3 documentation](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf)
 - [Seeed Arduino LSM6DS3 Github](https://github.com/Seeed-Studio/Seeed_Arduino_LSM6DS3): Take inspiration from the low level example
 
-### NFC
+### NFC (temp)
 
 The NFC antenna needs to be in active mode as we need it to power a passive device (in this case an NFC card). This has the inconvenience of increasing power draw, and means that the CPU can not be turned off while listening for an input.
 Unfortunately [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per seed studio.
@@ -188,7 +223,18 @@ A solution would be to use assembly assembly registers<sub>[p.208](https://infoc
 - [Seeed Studio XIAO nRF52840 - Github Wiki](https://github.com/Seeed-Studio/wiki-documents/discussions/214)
 - [Seeed Studio XIAO nRF52840 - Seeed Studio Wiki](https://wiki.seeedstudio.com/XIAO-BLE-Sense-NFC-Usage/)
 
-<!--https://forum.seeedstudio.com/t/xiao-ble-nfc-doesnt-work/264543/14 -->
+<!--https://forum.seeedstudio.com/t/xiao-ble-nfc-doesnt-work/264543/12 -->>
+
+### NFC (new)
+
+The NFC antenna needs to be in active mode as we need it to power a passive device (in this case an NFC card). This has the inconvenience of increasing power draw, and means that the CPU can not be turned off while listening for an input.
+
+##### *making the library work*
+
+The NFC library that is supposedly provided by seeed studio isn't actually implemented for nfr52840. The solution is to use the [Adafruit nRF52 Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader). Since this bootloader doesn't support our XIAO BLE board we have to modify it and rebuild the bootloader.
+
+According to this forum user 
+
 
 ### Bluetooth
 
