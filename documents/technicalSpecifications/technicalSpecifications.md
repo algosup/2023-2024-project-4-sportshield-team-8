@@ -216,7 +216,7 @@ The only value we are interested in is ``INT1_TILT`` from the ``MD1_CFG``<sub>[p
 The NFC antenna needs to be in active mode as we need it to power a passive device (in this case an NFC card). This has the inconvenience of increasing power draw, and means that the CPU can not be turned off while listening for an input.
 Unfortunately [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per seed studio.
 
-A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work. 
+A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work.
 
 ##### *reference and resources*
 
@@ -227,27 +227,32 @@ A solution would be to use assembly assembly registers<sub>[p.208](https://infoc
 
 ### Bluetooth
 
-##### *What's BLE?*
+##### *Bluetooth Low Energy*
 
-Same as bluetooth, only limiting data transfer, but it's fine in this project. It consumes 1/10th of Bluetooth's energy. \
-Thus, BLE is always in "sleep mode" until a connection is established.
+To communicate, the hardware uses the Bluetooth Low Energy technology, which consumes 1/10th of the original Bluetooth's energy.
+The Bluetooth connection is always in sleep mode, except once a connection is established.
+
+To initialize the BLE, we use:
+
+```
+MODE=Ieee802154_250kbit 
+```
+
+The radio module will comply with the [IEEE 802.15.4-2006 standard](https://en.wikipedia.org/wiki/IEEE_802.15.4).
 
 ##### *Linked to MAC adresses*
 
-A bluetooth connectivity is made via a MAC adress, meaning that it is bound to a device. Such MAC adress can be extracted. \
-I think that a simple checking program can make so that only one specific MAC address can connect. \
+After pairing two devices, the connectivity is made via linking the MAC adress of both devices, meaning that they are bound together. Such MAC adress can be queried by the and kept in memory by the hardware.
 
-Moreover, it is possible in some way (no clue how yet), to generate a password to pair two devices, we need to dig more into that to specify how it works. \
-The security manager (SM) architecture, Two roles defined in SM are an initiator and a responder. The initiator’s role corresponds to the master link layer and a responder always corresponds to the slave link layer. The initiator usually initiates the start of a procedure in most cases, although the responder can request the beginning of a procedure asynchronously.
+```
+bleDevice.address() // Query the Bluetooth® address of the Bluetooth® Low Energy device.
+```
+And then can be stored into a variable.
 
-##### *Protocol*
 
-IEEE 802.15.4-2006
+<!-- Moreover, it is possible in some way (no clue how yet), to generate a password to pair two devices, we need to dig more into that to specify how it works.  -->
 
-We have a 2.4GHz transceiver.
 
-With the MODE=Ieee802154_250kbit the radio module will comply with the IEEE 802.15.4-2006 standard
-(BLE mode basically).
 
 ##### *Sources*
 
@@ -257,7 +262,7 @@ With the MODE=Ieee802154_250kbit the radio module will comply with the IEEE 802.
 
 [BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
 
-Various other random PDF.
+[Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
 
 ### GPRS
 
