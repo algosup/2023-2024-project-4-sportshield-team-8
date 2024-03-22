@@ -148,6 +148,7 @@ int example(string word, int number,
 - always use namespace
 - create header files for module that can work on their own
 - all classes should follow encapsulation. 
+- favor using smartPointers rather than the new keyword as it is safer
 
 ## Key Functionality
 
@@ -223,17 +224,6 @@ A solution would be to use assembly assembly registers<sub>[p.208](https://infoc
 - [Seeed Studio XIAO nRF52840 - Github Wiki](https://github.com/Seeed-Studio/wiki-documents/discussions/214)
 - [Seeed Studio XIAO nRF52840 - Seeed Studio Wiki](https://wiki.seeedstudio.com/XIAO-BLE-Sense-NFC-Usage/)
 
-<!--https://forum.seeedstudio.com/t/xiao-ble-nfc-doesnt-work/264543/12 -->>
-
-### NFC (new)
-
-The NFC antenna needs to be in active mode as we need it to power a passive device (in this case an NFC card). This has the inconvenience of increasing power draw, and means that the CPU can not be turned off while listening for an input.
-
-##### *making the library work*
-
-The NFC library that is supposedly provided by seeed studio isn't actually implemented for nfr52840. The solution is to use the [Adafruit nRF52 Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader). Since this bootloader doesn't support our XIAO BLE board we have to modify it and rebuild the bootloader.
-
-According to this forum user
 
 ### Bluetooth
 
@@ -271,18 +261,106 @@ Various other random PDF.
 
 ### GPRS
 
-The GSM/2G SIM800L Module can be set to send or get messages only, even on sleep mode, which allows to put the device constantly in these modes without risking missing a message. It also has a power-down command when the device is not used.
+The GSM/2G SIM800L Module will be used to send messages over the 2G network in html. When not in use this module will be in power down mode to save battery. As we are unable to test this module's functionality for hardware reason we will reuse the existing code for 2G communication.
 
-##### *initialisation*
+##### *class organization*
 
-To initialise the device the ``PWRKEY button``<sub>[p.22](https://www.scribd.com/document/700531402/SIM800L-datasheet)</sub> should touch the ground through a resistor. The power could be down with the AT command ``AT+CPOWD=1``<sub>[p.24](https://www.scribd.com/document/700531402/SIM800L-datasheet)</sub>&<sub>[p.146](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf)</sub> and renewed by sending a 1 sec high, followed by 2 seconds low and then 1 second high. \
-To initialise the sleeping mode of the device you should use AT command as well. However there is two different modes, each one activated by ``AT+CSCLK=1``<sub>[p.27](https://www.scribd.com/document/700531402/SIM800L-datasheet)</sub>and ``AT+CSCLK=2``<sub>[p.27](https://www.scribd.com/document/700531402/SIM800L-datasheet)</sub>. They both turn on to normal mode again when receiving message.
+```cpp
+class SIM{
+    //if the board is turned on or off
+    bool board_status_;
+
+    //return a string formatted as the message should be
+    string formatMessage(float battery, float latitude, float longitude);
+
+    //setup the SIM800L module return success
+    bool setup();
+
+    //turn on the board
+    bool turnOn(){
+        //send use GPIO to turn on the SIM800 board
+    };
+
+    //turn off the board
+    bool turnOff(){
+        //send AT command to turn off the SIM800 board
+    };
+
+public:
+
+    //send a message
+    bool sendMessage(float battery, float latitude, float longitude){
+        turnOn();
+        setup();
+        formatMessage();
+
+        //send the formatted message
+
+        turnOff();
+    }
+}
+```
+
+##### *power down/up*
+
+The AT command ``AT+CPOWD=1``<sub>[p.24](https://datasheetspdf.com/pdf-down/S/I/M/SIM800H-SIMCom.pdf#page=24)</sub>&<sub>[p.146](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf#page=146)</sub> is used to power down the board when not in use. The module can then be turned back on by sending a 1 sec high, followed by 2 seconds low and then 1 second high on a GPIO pin.
+
+##### *communication*
+
+When a large motion is detected the GPS position is sent over HTML. This message should be formatted as follow to be understood by the server ``{"latitude": LATITUDE, "longitude": LONGITUDE, "batterie": BATTERY LEVEL}``. ``LATITUDE`` and ``LONGITUDE`` are float we get from the GPS library. ``BATTERY LEVEL`` is a float between 0 & 1. This this should also be sent if the battery gets bellow 20%.
+
+"batterie" is not a typo, this is a french company that named their variable in french.
+
+As we have no way to try the SIM800L as our hardware is non functional. as such we should keep the original setup and protocol:
+
+Setup
+```cpp
+sim800l = new SIM800L((Stream*)&Serial2, SIM800_RST_PIN, 200, 512);
+pinMode(SIM800_DTR_PIN, OUTPUT);
+delay(1000);
+sim_setup();
+Serial.println("SIM SETUP");
+```
+
+Send a message
+```cpp
+sim800l->setupGPRS("iot.1nce.net");
+sim800l->connectGPRS();
+String Route = "http://141.94.244.11:2000/sendNotfication/" + BLE.address();
+String RouteCoord = "http://141.94.244.11:2000/updateCoordinate/" + BLE.address();
+String str = "{\"latitude\": \" " + convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + convertDMMtoDD(String(float(GPS.longitude), 4)) + "\"}";
+String bat = "{\"latitude\": \" " + convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + convertDMMtoDD(String(float(GPS.longitude), 4)) + "\", \"batterie\":\"" + String(getBatteryVoltage()) + "\"}";
+char position[200];
+char posbat[200];
+str.toCharArray(position, str.length() + 1);
+//Serial.println(str);
+bat.toCharArray(posbat, bat.length() + 1);
+Serial.println(posbat);
+char direction[200];
+char directionCoord[200];
+Route.toCharArray(direction, Route.length() + 1);
+RouteCoord.toCharArray(directionCoord, RouteCoord.length() + 1);
+sim800l->doPost(direction, "application/json", position, 10000, 10000);
+sim800l->doPost(directionCoord, "application/json", posbat, 10000, 10000);
+sim800l->disconnectGPRS();
+```
+
+##### *parallel tasking*
+
+While the nrf52 CPU does not support multithreading, the message should still be sent while other operation continue. This can be done using freeRTOS which is supported by the nrf52 SDK. Managing RTOS should be done from outside the class. 
+
+Go to [FreeRTOS](#FreeRTOS) for more detail.
 
 ##### *reference and resources*
 
 - [GMS Library - Arduino docs](https://docs.arduino.cc/retired/archived-libraries/GSM/)
 - [SIM800H&SIM800L_Hardware Design_V2.02](https://www.scribd.com/document/700531402/SIM800L-datasheet)
 - [SIM800 Series_AT Command Manual_V1.09](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf)
+
+<a id="FreeRTOS"></a>
+### FreeRTOS
+
+
 
 ### Battery Optimization
 
