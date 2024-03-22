@@ -249,10 +249,14 @@ bleDevice.address() // Query the Bluetooth® address of the Bluetooth® Low Ener
 ```
 And then can be stored into a variable.
 
+##### *Security*
+
+Security shall be initiated by the Security Manager in the device in the master
+role. The device in the slave role shall be the responding device. The slave
+device may request the master device to initiate pairing or other security
+procedures.
 
 <!-- Moreover, it is possible in some way (no clue how yet), to generate a password to pair two devices, we need to dig more into that to specify how it works.  -->
-
-
 
 ##### *Sources*
 
@@ -263,6 +267,8 @@ And then can be stored into a variable.
 [BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
 
 [Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
+
+[Bluetooth Documentation](https://github.com/fanqh/document/blob/master/Core_v5.0.pdf)
 
 ### GPRS
 
