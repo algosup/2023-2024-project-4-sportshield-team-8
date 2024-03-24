@@ -150,6 +150,7 @@ int example(string word, int number,
 - create header files for module that can work on their own
 - all classes should follow encapsulation. 
 - avoid dynamic memory allocation if possible
+- never have two task write to the same object to avoid race condition
 
 ## Key Functionality
 
@@ -168,11 +169,6 @@ class MotionDetection{
     float wakeup_threshold_;
     float large_movement_threshold_;
     bool active_;
-    struct Acceleration{
-        float x, float y, float z,
-        bool large_movement
-    }
-
 
 public:
     //make it so the motion detector goes back to passive get.
@@ -190,9 +186,16 @@ public:
 
     //constantly get the acceleration of the device to know the amplitude
     //set large_movement to true if above threshold
-    Acceleration getMovement()
+    uint8_t getMovement()
 }
 ```
+
+``getMovement`` returns are :
+- 0 for a movement smaller than the ``wakeup_threshold_``
+- 1 for a movement smaller than the ``large_movement_threshold_``
+- 2 for a movement larger than the ``large_movement_threshold_``
+
+use an enum to make it easier to maintain
 
 ##### *initialization*
 
@@ -227,14 +230,9 @@ The motion detection module can be set to actively send data with ``LSM6DS3.begi
 
 ### NFC
 
-The NFC antenna needs to be in active mode as we need it to power a passive device (in this case an NFC card). This has the inconvenience of increasing power draw, and means that the CPU can not be turned off while listening for an input.
 Unfortunately [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per seed studio.
 
-<<<<<<< Updated upstream
-A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work.
-=======
 A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work. This is not a priority.
->>>>>>> Stashed changes
 
 ##### *reference and resources*
 
@@ -297,15 +295,25 @@ class SIM{
     //if the board is turned on or off
     bool board_status_;
 
-    //return a string formatted as the message should be
-    string formatMessage(float battery, float latitude, float longitude);
+    //return a string formatted as {latitude, longitude, battery level}
+    string writeMessage(){
+        float battery; //do an analog read of PIN_VBAT
+
+        //get data GPS from the GPS Class
+        float latitude;
+        float longitude;
+
+        return "{\"latitude\": xxxx,
+                \"longitude\": xxxx,
+                \"batterie\": xx}"
+    }
 
     //setup the SIM800L module return success
     bool setup();
 
     //turn on the board
     bool turnOn(){
-        //send use GPIO to turn on the SIM800 board
+        //use GPIO digitalWrite to turn on the SIM800 board
     };
 
     //turn off the board
@@ -313,13 +321,19 @@ class SIM{
         //send AT command to turn off the SIM800 board
     };
 
+    TaskHandle_t digital_write_task_handle = NULL;
+
 public:
+    //no constructor
+    //no setters
+
+    TaskHandle_t getDigitalWriteTaskHandle();
 
     //send a message
-    bool sendMessage(float battery, float latitude, float longitude){
+    void sendMessageTask(){
         turnOn();
         setup();
-        formatMessage();
+        writeMessage();
 
         //send the formatted message
 
@@ -330,7 +344,7 @@ public:
 
 ##### *power down/up*
 
-The AT command ``AT+CPOWD=1``<sub>[p.24](https://datasheetspdf.com/pdf-down/S/I/M/SIM800H-SIMCom.pdf#page=24)</sub>&<sub>[p.146](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf#page=146)</sub> is used to power down the board when not in use. The module can then be turned back on by sending a 1 sec high, followed by 2 seconds low and then 1 second high on a GPIO pin.
+The AT command ``AT+CPOWD=1``<sub>[p.24](https://datasheetspdf.com/pdf-down/S/I/M/SIM800H-SIMCom.pdf#page=24) & [p.146](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf#page=146)</sub> is used to power down the board when not in use. The module can then be turned back on by sending a 1 sec high, followed by 2 seconds low and then 1 second high on a GPIO pin.
 
 ##### *communication*
 
@@ -338,7 +352,7 @@ When a large motion is detected the GPS position is sent over HTML. This message
 
 "batterie" is not a typo, this is a french company that named their variable in french.
 
-We have no way to try the SIM800L as our hardware is non functional. as such we should keep the original setup and protocol:
+We have no way to try the SIM800L as our hardware is non functional. as such we should mostly keep the original setup and protocol:
 
 Setup
 ```cpp
@@ -374,9 +388,29 @@ sim800l->disconnectGPRS();
 
 ##### *parallel tasking*
 
-While the nrf52 CPU does not support multithreading, the message should still be sent while other operation continue. This can be done using freeRTOS which is supported by the nrf52 SDK. Managing RTOS should be done from outside the class. 
+While the nrf52 CPU does not support multithreading, the message should still be sent while other operation continue. This can be done using freeRTOS which is supported by the nrf52 SDK.
 
-Go to [FreeRTOS](#FreeRTOS) for more detail.
+The task should be handled following this pseudocode
+
+```cpp
+sendMessageTask(){
+    while(true){
+        //wait for a message notification indefinitely using portMAX_DELAY
+        if (xTaskNotifyWait(portMAX_DELAY) == true){
+            //if a notification is recieved the condition is true
+
+            turnOn();
+            setup();
+            writeMessage();
+            //send the formatted message
+            turnOff();
+        }
+        //if the xTaskNotifyWait times out, the loop restart
+    }
+}
+```
+
+The notification value doesn't mater
 
 ##### *reference and resources*
 
@@ -386,64 +420,130 @@ Go to [FreeRTOS](#FreeRTOS) for more detail.
 
 ### Buzzer
 
+##### *small motion*
+If a small motion is detected (bigger than the wakeup threshold, lower than the large motion threshold), the buzzer should sound for 0.1s every 2s. This should stop on it's own if the movement stops for 10s.
+
+##### *large motion*
+When a large movement is detected, the alarm should bee for 0.1s ever 0.5s. This should not stop after 10s if no large or small movement is detected. The bluetooth should also have the option to stop the alarm by unlocking the device.
+
 ##### *class organization*
+
+the input from the motion detection to soundControlTask looks like this :
+- small movement : ``0b01``
+- large movement : ``0b11``
+- no movement : no notification sent
+
+the input from soundControlTask to digitalWriteTask looks like :
+- small movement : ``0b00``
+- large movement : ``0b10``
+- no movement : ``0b01``
 
 ```cpp
 class Buzzer{
     const float kBuzzerPin_ = D2;
     //time in s when sound is emitted in a cycle
-    float time_up_;
+    float large_movement_high_time_
+    float small_movement_high_time_
+    
     //time in s when there is no sound in a cycle
-    float time_down_;
+    float large_movement_low_time_
+    float small_movement_low_time_
+
+    //how long should 
+    float cycle_time_ 
+
+    //the task handle for 
+    TaskHandle_t digital_write_task_handle = NULL;
+    TaskHandle_t sound_control_task_handle = NULL;
 
 public:
-    bool setTimeUp(int time_up){
-        //check if time_up is valid
+    //constructor
+    Buzzer()
+    //setter functions for movement_time and cycle_time
+    setX()//...
 
-        this->time_up_ = time_up;
-    }
+    //getter functions for the taskHandle
+    getXTaskHandle()//...
 
-    bool setTimeDown(int time_down){
-        //check if time_down is valid
-
-        this->time_down_ = time_down;
-    }
-
-    bool startSoundCycle();
+    void digitalWriteTask();
+    void soundControlTask();
 }
 ```
 ##### *sound loop*
-The [electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png) the buzzer is wired to the D2 pin. ``digitalWrite()`` is used to set the pin to High or low. The function looks something like :
+The [electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png) the buzzer is wired to the D2 pin. ``digitalWrite()`` is used to set the pin to High or low.
+
+Making the time last 10s can be done using freeRTOS. This is a pseudocode of how this could be implemented:
 
 ```cpp
-bool startSoundCycle(){
-    //loop should last 10s
-    while(time < 10s){
-        digitalWrite(D2, HIGH);
-        sleep(time_up_)
-        digitalWrite(D2, LOW);
-        sleep(time_up_)
+//the function loops the sound until it receive the notification to stop
+void digitalWriteTask(){
+    large_movement = false
+    float low_time, high_time
+    while(true){
+        //store the byte passed by the notification
+        //clear bits on exit
+        uint32_t notification = xTaskNotifyWait()
+
+        //check if the rest of the loop should be skipped
+        if(notification & 0b01 == true){
+            continue
+        }else{
+            //check if this was a large or small movement
+            if((notification & 0b10 == true) || large_movement ){
+                //change the time 
+                low_time = this->large_movement_low_time_
+                high_time = this->large_movement_high_time_
+                large_movement = true
+            }else{
+                low_time = this->small_movement_low_time_
+                high_time = this->small_movement_high_time_
+            }
+        }
+
+        // Toggle the digital pin HIGH
+        digitalWrite(D2, HIGH)
+        vTaskDelay(high_time)
+
+        // Toggle the digital pin LOW
+        digitalWrite(D2, LOW)
+        vTaskDelay(low_time)
+    }
+}
+
+//a function controlling the the 10s loop and when it should be reset
+void soundControlTask(){
+    while(true){
+        //if a notification was returned in the last 10s 
+        //check if there was movement
+        uint32_t notification = xTaskNotifyWait(cycle_time_)
+        if(notification & 0b01 == true){
+            //only send the 2nd bit as the 1st bit stop the loop
+            uint32_t sentValue = notification & 0b10;
+            xTaskNotify(digitalWriteTaskHandle, sentValue)
+            continue; //skip the rest of the loop
+        }
+
+        //if xTaskNotifyWait times out break, the digitalWriteTask loop
+        xTaskNotify(digitalWriteTaskHandle, 0b01)
+    }
+}
+
+//function for example
+void motionDetection(){
+    if(large movement){
+        xTaskNotify(soundControlTaskHandle, 0b11)
+    }else if(small movement){
+        xTaskNotify(soundControlTaskHandle, 0b01)
+    }else{
+        //don't send a notification let the function timeout
     }
 }
 ```
 
-Making the time last 10s can be done using RTOS :
-- Create a FreeRTOS Timer Callback which does the digital write when called
-- create a ``TimerHandle_t`` that last ``time_up_`` or ``time_down_`` and call the Timer Callback
-
-##### *small motion*
-If a small motion is detected (bigger than the wakeup threshold, lower than the large motion threshold), the buzzer should sound for 0.1s every 2s. This should stop on it's own if the movement stops for 10s. Those time have to be set using the seter function for ``time_up_`` and ``time_down_``. 
-
-##### *large motion*
-When a large movement is detected, the alarm should bee for 0.1s ever 0.5s. This should not stop after 10s if no large or medium movement is detected. The bluetooth should also have the option to stop the alarm by unlocking the device.
-
-##### *do
+##### *reference and resources*
 - [nRF5 FreeRTOS support](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fsdk_nrf5_v17.0.2%2Ffreertos.html)
-- [](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
-
-<a id="FreeRTOS"></a>
-### FreeRTOS
-
+- [FreeRTOS documentation](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
+- [SportShield's electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png)
 
 
 ### Battery
