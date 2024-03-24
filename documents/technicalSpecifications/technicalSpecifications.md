@@ -67,6 +67,7 @@ The alarm is trigger upon detecting movement.
     - *Sim800L http connector V1.14.0*
     - *Seeed Arduino LSM6DS3 V2.0.3*
     - *OneWire V2.3.7*
+    - *FreeRTOS V11.0.1-5*
     
 Those choices where made for hardware reason.
 
@@ -148,7 +149,7 @@ int example(string word, int number,
 - always use namespace
 - create header files for module that can work on their own
 - all classes should follow encapsulation. 
-- favor using smartPointers rather than the new keyword as it is safer
+- avoid dynamic memory allocation if possible
 
 ## Key Functionality
 
@@ -166,20 +167,26 @@ The class should follow this organization
 class MotionDetection{
     float wakeup_threshold_;
     float large_movement_threshold_;
+    bool active_;
     struct Acceleration{
         float x, float y, float z,
         bool large_movement
     }
 
+
 public:
+    //make it so the motion detector goes back to passive get.
     //return a success or failure
-    int initialization()
+    bool setPassive()
+
+    //Setup the motion detector to constantly send acceleration information
+    bool setActive()
 
     //change threshold on the motion detection module
-    int setWakeupThreshold(float threshold)
+    bool setWakeupThreshold(float threshold)
 
     // the movement above which it is considered a large movement (can't be negative)
-    int setLargeMovementThreshold(float threshold)
+    bool setLargeMovementThreshold(float threshold)
 
     //constantly get the acceleration of the device to know the amplitude
     //set large_movement to true if above threshold
@@ -189,7 +196,7 @@ public:
 
 ##### *initialization*
 
-The setup should be done at the initialization of the CPU and whenever the motion detector is being started up.
+The setup should be done at the initialization of the CPU and whenever the motion detector is being switched to passive.
 - The FIFO should be set in bypass with the ``FIFO_CTRL5`` <sub>[p.50](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=50) & [p.31](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=31)</sub> register.
 - ``INT2_CTRL``<sub>[p.53](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=53)</sub> should be set to 0
 - If the gyroscope ends up being ignored it should be turned off with by setting ``CTRL2_G``<sub>[p.55](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=55)</sub> to ``0b0000``
@@ -206,17 +213,28 @@ The output should be sent via the ``INT1`` pin. The interrupt 1 registers can be
 The ``INT1`` pin does a ``OR`` of the different output from ``MD1_CFG`` and ``INT1_CTRL`` to output a boolean.
 The only value we are interested in is ``INT1_TILT`` from the ``MD1_CFG``<sub>[p.80](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=80)</sub> register. So it should be set to ``0b00000010``. And ``INT1_SIGN_MOT`` from ``INT1_CTRL``<sub>[p.52](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=52)</sub> which should accordingly be set to ``0b01000000``.
 
+##### *get movement*
+
+When the CPU is active, it should constantly pull data from the motion detection module using the non core LSM6DS3 library.
+The motion detection module can be set to actively send data with ``LSM6DS3.begin()`` which change the read mode of motion sensor to be active.
+
+``readFloatAccelX()`` is used to read these acceleration data from the motion detector. X can be changed to Y or Z to get different axis. The axis are added together before being compared to the threshold. 
+
 ##### *reference and resources*
 
 - [LSM6DS3 documentation](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf)
 - [Seeed Arduino LSM6DS3 Github](https://github.com/Seeed-Studio/Seeed_Arduino_LSM6DS3): Take inspiration from the low level example
 
-### NFC (temp)
+### NFC
 
 The NFC antenna needs to be in active mode as we need it to power a passive device (in this case an NFC card). This has the inconvenience of increasing power draw, and means that the CPU can not be turned off while listening for an input.
 Unfortunately [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per seed studio.
 
+<<<<<<< Updated upstream
 A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work.
+=======
+A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work. This is not a priority.
+>>>>>>> Stashed changes
 
 ##### *reference and resources*
 
@@ -260,11 +278,9 @@ procedures.
 
 ##### *Sources*
 
-[Arduino Blueprints](https://ecs-pw-facweb.ecs.csus.edu/~dahlquid/eee174/S2016/handouts/Labs/ArduinoLab/ArduinoInfo/Arduino%20Android%20Blueprints.pdf)
-
-[Bluetooth Core Specs](https://books.google.fr/books?hl=fr&lr=&id=3nCuDgAAQBAJ&oi=fnd&pg=PR7&dq=Bluetooth+Core+specification+Version+4.0&ots=rNT4oZsbn9&sig=SK5aTwJ0tB2Mz4RHhEvGAyDLYtM&redir_esc=y#v=onepage&q&f=true)
-
-[BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
+- [Arduino Blueprints](https://ecs-pw-facweb.ecs.csus.edu/~dahlquid/eee174/S2016/handouts/Labs/ArduinoLab/ArduinoInfo/Arduino%20Android%20Blueprints.pdf)
+- [Bluetooth Core Specs](https://books.google.fr/books?hl=fr&lr=&id=3nCuDgAAQBAJ&oi=fnd&pg=PR7&dq=Bluetooth+Core+specification+Version+4.0&ots=rNT4oZsbn9&sig=SK5aTwJ0tB2Mz4RHhEvGAyDLYtM&redir_esc=y#v=onepage&q&f=true)
+- [BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
 
 [Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
 
@@ -322,7 +338,7 @@ When a large motion is detected the GPS position is sent over HTML. This message
 
 "batterie" is not a typo, this is a french company that named their variable in french.
 
-As we have no way to try the SIM800L as our hardware is non functional. as such we should keep the original setup and protocol:
+We have no way to try the SIM800L as our hardware is non functional. as such we should keep the original setup and protocol:
 
 Setup
 ```cpp
@@ -368,12 +384,69 @@ Go to [FreeRTOS](#FreeRTOS) for more detail.
 - [SIM800H&SIM800L_Hardware Design_V2.02](https://www.scribd.com/document/700531402/SIM800L-datasheet)
 - [SIM800 Series_AT Command Manual_V1.09](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf)
 
+### Buzzer
+
+##### *class organization*
+
+```cpp
+class Buzzer{
+    const float kBuzzerPin_ = D2;
+    //time in s when sound is emitted in a cycle
+    float time_up_;
+    //time in s when there is no sound in a cycle
+    float time_down_;
+
+public:
+    bool setTimeUp(int time_up){
+        //check if time_up is valid
+
+        this->time_up_ = time_up;
+    }
+
+    bool setTimeDown(int time_down){
+        //check if time_down is valid
+
+        this->time_down_ = time_down;
+    }
+
+    bool startSoundCycle();
+}
+```
+##### *sound loop*
+The [electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png) the buzzer is wired to the D2 pin. ``digitalWrite()`` is used to set the pin to High or low. The function looks something like :
+
+```cpp
+bool startSoundCycle(){
+    //loop should last 10s
+    while(time < 10s){
+        digitalWrite(D2, HIGH);
+        sleep(time_up_)
+        digitalWrite(D2, LOW);
+        sleep(time_up_)
+    }
+}
+```
+
+Making the time last 10s can be done using RTOS :
+- Create a FreeRTOS Timer Callback which does the digital write when called
+- create a ``TimerHandle_t`` that last ``time_up_`` or ``time_down_`` and call the Timer Callback
+
+##### *small motion*
+If a small motion is detected (bigger than the wakeup threshold, lower than the large motion threshold), the buzzer should sound for 0.1s every 2s. This should stop on it's own if the movement stops for 10s. Those time have to be set using the seter function for ``time_up_`` and ``time_down_``. 
+
+##### *large motion*
+When a large movement is detected, the alarm should bee for 0.1s ever 0.5s. This should not stop after 10s if no large or medium movement is detected. The bluetooth should also have the option to stop the alarm by unlocking the device.
+
+##### *do
+- [nRF5 FreeRTOS support](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fsdk_nrf5_v17.0.2%2Ffreertos.html)
+- [](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
+
 <a id="FreeRTOS"></a>
 ### FreeRTOS
 
 
 
-### Battery Optimization
+### Battery
 
 
 <!-- LSM6DS3Core imu(I2C_MODE, 0x6A); 
