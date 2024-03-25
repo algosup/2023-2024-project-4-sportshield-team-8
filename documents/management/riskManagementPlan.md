@@ -1,7 +1,7 @@
 <h1 align="center"> Risk Management Plan </h1>
 
 <p align="center">
-Created by: Quentin CLÉMENT <br> Creation Date: 20/03/2024 <br> Last update: 21/03/2024
+Created by: Quentin CLÉMENT <br> Creation Date: 20/03/2024 <br> Last update: 22/03/2024
 </p>
 
 <details>
@@ -17,12 +17,9 @@ Created by: Quentin CLÉMENT <br> Creation Date: 20/03/2024 <br> Last update: 21
 - [3. Risk Identification](#3-risk-identification)
 - [4. Risk Analysis and Assessment](#4-risk-analysis-and-assessment)
 - [5. Risk Mitigation Strategies](#5-risk-mitigation-strategies)
-- [6. Liability Management and Financial Risk Management](#6-liability-management-and-financial-risk-management)
 - [7. Operational Risk Management](#7-operational-risk-management)
 - [8. Continuous Monitoring and Reporting](#8-continuous-monitoring-and-reporting)
 - [9. Review and Update Process](#9-review-and-update-process)
-- [10. Appendices](#10-appendices)
-- [11. Approval and Revision History](#11-approval-and-revision-history)
 
 </details>
 
@@ -40,31 +37,57 @@ For each phase of the project, a meeting will be held to identify the risks that
 ## 3. Risk Identification
 
 To identify the risks that could occur during the project, we will use the following methods:
-- Brainstorming sessions with the project team and stakeholders.
+- Brainstorming sessions with the ROCC and stakeholders.
 - Review of historical data from similar projects.
-- Research into market competitors
-- Search for known previous problems with the hardware supplied
-- Search on forum for potential user 
+- Research into market competitors.
+- Put ourselves in the potential customer's shoes by consulting forums or discussing the product with them.
+- Search for known previous problems with the hardware supplied.
+
+The risks will be classified into 
+ categories:
+- School risks: risks related to the school.
+- Team members risks: risks related to the team members.
+- Communication risks: risks related to the communication with the client.
+- Confidentiality risks: risks related to information leaks about the project.
+- Technical risks: risks related to the technical aspect of the project.
+- Security risks: risks related to the security of the product.
+- Financial risks: risks related to the purchase of hardware aspect of the project.
 
 ## 4. Risk Analysis and Assessment
-- Methodology for assessing and prioritizing risks based on their likelihood and potential impact.
-- Use of qualitative and quantitative analysis tools, including risk matrices or scoring systems.
+
+A [risk matrix](https://docs.google.com/spreadsheets/d/15Px0PwHy_TG3o0VkdEeP_r_7hwcLDHzp/edit?usp=sharing&ouid=106192134047636225563&rtpof=true&sd=true) will be used to list and assess the risks. It will take into account the probability of each risk occurring (from 1 to 10), the impact it would have on the project (from 1 to 10) and the risk severity score (probability multiplied by impact). This score will allow us to prioritize the risks and to know which ones to focus on first.
+
 ## 5. Risk Mitigation Strategies
-- Strategies for mitigating identified risks, including risk avoidance, reduction, sharing/transfer, and acceptance.
-- Process for developing and implementing risk mitigation plans, including setting risk appetite and tolerance levels.
-## 6. Liability Management and Financial Risk Management
-- Approaches to managing financial risks, including liability management strategies and the use of derivative contracts for hedging interest rate risks.
-- Guidelines for assessing the performance and cost of financial risk mitigation measures.
+
+For each identified risk, a mitigation strategy will be developed between the four following strategies:
+- Avoidance: eliminate the risk by considering alternative that meet project requirements with lower risks.
+- Reduction: reduce the probability or impact of the risk.
+- Transfer: transfer the risk to a third party.
+- Acceptance: accept the risk and develop a contingency plan.
+
 ## 7. Operational Risk Management
-- Processes for managing operational risks, including transaction processing, system failures, fraud, and external threats.
-- Integration of operational risk management into daily business operations and decision-making.
+
+Operational risk encompasses a broad range of potential issues, from process failures to system outages. Managing these risks is critical to maintaining the integrity and continuity of project operations. \
+To address these risks, we have implemented the following measures:
+
+- Regular Back-Ups: we currently upload our work on a GitHub repository as frequently as possible to prevent computer failures that could lead to data loss. \
+We also pull from the repository at the start of each project session to ensure that if GitHub goes down, we always have the latest version of the project on our computers.
+
+- Project Privacy: even if the GitHub repository is public, this is a private project ordered by a company. It means that we have to be careful about the information we share outside of the repository. We can't talk about the project on social media or with people who are not part of the project.
+
 ## 8. Continuous Monitoring and Reporting
-- Framework for continuous monitoring of risk exposures and the effectiveness of mitigation strategies.
-- Reporting structure, including regular updates to the ROCC, RMCBs, and relevant executive teams.
+
+➭ <ins> Monitoring Framework: <ins>
+
+- **Regular Risk Assessments**: Schedule periodic risk assessments to re-evaluate existing risks and identify new ones as the project progresses.
+- **Stakeholder Communication**: Ensure regular communication with stakeholders regarding risk status and mitigation efforts, maintaining transparency and trust.
+
+➭ <ins> Reporting Structure: <ins>
+
+- **Incident Reporting**: Establish a protocol for immediate reporting of risk incidents to enable swift response and mitigation of potential impacts.
+- **Review Meetings**: Hold quarterly review meetings with the ROCC, project teams, and stakeholders to discuss the risk management plan’s effectiveness and make necessary adjustments.
+
 ## 9. Review and Update Process
-- Procedures for the regular review and updating of the risk management plan to reflect changes in the organizational environment, risk landscape, and lessons learned from risk incidents.
-## 10. Appendices
-- Relevant templates, checklists, and forms used in the risk management process.
-- Glossary of terms and definitions related to risk management.
-## 11. Approval and Revision History
-- Documentation of plan approval by the Corporate Executive Team and any subsequent revisions or updates.
+
+This document will be reviewed and updated every week to ensure that it remains relevant and effective in managing project risks. \
+The [risk matrix](https://docs.google.com/spreadsheets/d/15Px0PwHy_TG3o0VkdEeP_r_7hwcLDHzp/edit?usp=sharing&ouid=106192134047636225563&rtpof=true&sd=true) will be updated pretty frequently to reflect the current state of the project and the risks that have been identified.
