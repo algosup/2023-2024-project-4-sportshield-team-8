@@ -150,11 +150,14 @@ int example(string word, int number,
 ##### *Miscellaneous*
 
 - don't use ``using std;`` instead do ``std::`` when needed to avoid naming conflict.
+- use the ``#pragma once`` macro "include guard" on all header files
 - always use namespace.
+- favor pass by reference over pass by pointer
 - create header files for modules that can work on their own.
 - all classes should follow encapsulation.
 - avoid dynamic memory allocation if possible.
 - never have two tasks writing to the same object to avoid race conditions.
+- never use ``sleep``, use ``vTaskDelay`` or ``vTaskDelayUntil`` in tasks. This program makes use of concurrent programming and sleep would block the CPU for all tasks.
 
 ## Key Functionality
 
@@ -240,7 +243,7 @@ The motion detection module can be set to actively send data with ``LSM6DS3.begi
 
 Unfortunately, [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per Seed Studio.
 
-A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work. This is not a priority.
+A solution would be to use assembly and registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work. This is not a priority.
 
 ##### *Reference and resources*
 
@@ -292,6 +295,90 @@ procedures.
 
 [Bluetooth Documentation](https://github.com/fanqh/document/blob/master/Core_v5.0.pdf)
 
+### GPS
+
+There is a GPS module on the board. It can be turned on to give the user the position of the device in low battery situation or in cases of theft. Otherwise this module should be turned off as to minimize battery consumption.
+The provided GPS module is the [CD-PA1010D](https://www.mouser.com/pdfDocs/CD_PA1010D_Datasheet_v03.pdf) GNSS antenna. This antena is supported by the [Adafruit GPS library](https://github.com/adafruit/Adafruit_GPS).
+
+##### *Organization*
+
+Although the time to send a message could be reduced if the start up of the SIM and GPS query were done concurrently, this would be minimal as the CPU does concurrent programming through RTOS and there are already 3 or more task running on a single core CPU at that moment in the execution. Code simplicity is favored instead in this instance.
+
+```cpp
+class GPS{
+    Adafruit_GPS adafruit_gps_(&Serial1);
+    gps_wakeup_pin_;
+    gps_serial_pin_;
+
+    latitude_;
+    Longitude_;
+
+    activateGPS();
+    convertDMMtoDD();
+
+    public:
+    GPS(){
+        //setup the GPS
+    }
+
+    //should return formated GPS data
+    getLatitude(){
+        convertDMMtoDD()
+    };
+    getLongitude(){
+        convertDMMtoDD()
+    };
+
+    updateCoordinate(){
+        activateGPS()
+        //update coordinate
+
+        //turn of GPS after use
+        digitalWrite(GPS_WKUP_PIN, LOW);
+    };
+}
+```
+
+##### *re-used code*
+For the sake of simplicity, a large part of the existing GPS interface will be reused as is or with very little direct modification. Notably replacing the macro and global variable with private variable and putting all the GPS related function in the GPS class. The ISR related functionality are also removed as they are either no longer relevant or handled by *freeRTOS*
+
+the existing function from ``SS_05-03_anglais-batterycontrol.ino`` should be moved to GPS :
+- ``gps_setup()`` which becomes the constructor of the class.
+- ``activateGPS()`` which is called to wakeup the GPS module should be private
+- ``convertDMMtoDD()`` is used to translate GPS return into the corect format for the server. should be private
+
+The objects in this code snipet should be declared in private in the ``GPS`` class instead of as global variable as they are in the original code.
+```cpp
+Adafruit_GPS GPS(&Serial1);
+#define GPS_WKUP_PIN D8
+```
+
+The ``position_acquired`` and ``start_gps`` variables are removed as they are no longer relevant to the code organization. This means that the logic checking for them should be removed from the following snipets
+
+this code snipet from the loop becomes the ``getGPSdata()`` private function. Note that the ``GPS`` object in this snipet and the one after is the ``Adafruit_GPS`` class.
+
+This should become the ``updateCoordinate()`` function
+```cpp
+GPS.read();
+if (GPS.newNMEAreceived()) {
+Serial.print(GPS.lastNMEA());    // this also sets the newNMEAreceived() flag to false
+if (!GPS.parse(GPS.lastNMEA()))  // this also sets the newNMEAreceived() flag to false
+    Serial.println("fail to parse");// we can fail to parse a   sentence in which case we should just wait for another
+}
+
+if (GPS.fix && position_acquired == false) {  // if location detected
+Serial.println("fix + false");
+position_acquired = true;
+GPS.fix = 0;
+digitalWrite(GPS_WKUP_PIN, LOW);
+GPS.sendCommand("$PMTK225,4*2F");  // send to backup mode
+}
+```
+
+##### *reference and resources*
+- [GNSS module Data Sheet](https://www.mouser.com/pdfDocs/CD_PA1010D_Datasheet_v03.pdf)
+- [Adafruit GPS library](https://github.com/adafruit/Adafruit_GPS)
+
 ### GPRS
 
 The GSM/2G SIM800L Module will be used to send messages over the 2G network in HTML. When not in use this module will be in power down mode to save battery. As we are unable to test this module's functionality for hardware reasons we will reuse the existing code for 2G communication.
@@ -316,9 +403,6 @@ class SIM{
                 \"batterie\": xx}"
     }
 
-    //setup the SIM800L module return success
-    bool setup();
-
     //turn on the board
     bool turnOn(){
         //use GPIO digitalWrite to turn on the SIM800 board
@@ -332,7 +416,8 @@ class SIM{
     TaskHandle_t digital_write_task_handle = NULL;
 
 public:
-    //no constructor
+    SIM()
+
     //no setters
 
     TaskHandle_t getDigitalWriteTaskHandle();
@@ -340,7 +425,6 @@ public:
     //send a message
     void sendMessageTask(){
         turnOn();
-        setup();
         writeMessage();
 
         //send the formatted message
@@ -360,27 +444,25 @@ When a large motion is detected the GPS position is sent over HTML. This message
 
 "batterie" is not a typo, this is a French company that named their variable in French.
 
-We have no way to try the SIM800L as our hardware is non-functional. As such we should mostly keep the original setup and protocol:
+##### *re-using legacy code*
 
-Setup
+We have no way to try the SIM800L as our hardware is non-functional. as such we should mostly keep the original setup and protocol:
 
+This code snipet needs to be added at the start of the class constructor.
 ```cpp
 sim800l = new SIM800L((Stream*)&Serial2, SIM800_RST_PIN, 200, 512);
 pinMode(SIM800_DTR_PIN, OUTPUT);
-delay(1000);
-sim_setup();
-Serial.println("SIM SETUP");
 ```
 
-Send a message
+``sim_setup()`` needs to be added after that in the constructor. The delay can be kept in place as the setup should be done before any RTOS task is scheduled.
 
+Sending a message looks like this in the original code and should be kept as is:
 ```cpp
 sim800l->setupGPRS("iot.1nce.net");
 sim800l->connectGPRS();
 String Route = "http://141.94.244.11:2000/sendNotfication/" + BLE.address();
 String RouteCoord = "http://141.94.244.11:2000/updateCoordinate/" + BLE.address();
-String str = "{\"latitude\": \" " + convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + convertDMMtoDD(String(float(GPS.longitude), 4)) + "\"}";
-String bat = "{\"latitude\": \" " + convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + convertDMMtoDD(String(float(GPS.longitude), 4)) + "\", \"batterie\":\"" + String(getBatteryVoltage()) + "\"}";
+String str = "Message"
 char position[200];
 char posbat[200];
 str.toCharArray(position, str.length() + 1);
@@ -398,7 +480,7 @@ sim800l->disconnectGPRS();
 
 ##### *Parallel tasking*
 
-While the nrf52 CPU does not support multithreading, the message should still be sent while other operations continue. This can be done using freeRTOS which is supported by the nrf52 SDK.
+While the nrf52 CPU does not support multithreading, the message should still be sent while other operation continue. This can be done using *freeRTOS* which is supported by the *nrf52 SDK*.
 
 The task should be handled following this pseudocode
 
@@ -420,7 +502,7 @@ sendMessageTask(){
 }
 ```
 
-The notification value doesn't mater
+The notification value doesn't mater.
 
 ##### *Reference and resources*
 
@@ -562,7 +644,6 @@ void motionDetection(){
 - [FreeRTOS documentation](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
 - [SportShield's electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png)
 
-### Battery
 
 <!-- LSM6DS3Core imu(I2C_MODE, 0x6A); 
 
