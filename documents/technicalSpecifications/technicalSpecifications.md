@@ -5,37 +5,39 @@
 # Audience
 
 **This document is primarily intended for :**
-- Software developer : to understand the user and technical requirements, and to guide decision-making and planning. Help them understand risks and challenges, customer requirements, and additional technical requirements and choices made.
+
+- Software developer: to understand the user and technical requirements, and to guide decision-making and planning. Help them understand risks and challenges, customer requirements, additional technical requirements and choices made.
 
 **Secondary audiences :**
-- Program manager : to validate against the functional specification, and the client expectations.
-- QA : to aid in preparing the test-plan and to use for validating issues.
-- Project manager : to help identify risks and dependencies
+
+- Program manager: to validate against the functional specification and the client expectations.
+- QA: to assist in preparing the Test Plan and to use it for validating issues.
+- Project manager: to help identify risks and dependencies
 
 # Deliverable
 
-The team has to deliver a firmware to lock, unlock and ring the alarm of the SportShield alarm system.
+The team has to deliver firmware to lock, unlock and ring the alarm of the SportShield alarm system.
 
 ## Details
 
 The system is used for up to 6 hours a day.
-When not in use only the NFC can turn on the system
-It can be locked and unlocked using bluetooth or NFC.
-The alarm is trigger upon detecting movement.
+When not in use, only the NFC can turn the system on.
+It can be locked and unlocked using Bluetooth or NFC.
+The alarm is triggered upon detecting movement.
 
 ## Requirements
 
-- Should run for 7 day without charging
-- NFC should only accept one signal
+- Should run for 7 days without charging.
+- NFC should only accept one signal.
 - Bluetooth should only recognize a paired phone.
 - Has to run on a nRF52840 CPU.
-- Has to be programed in Arduino C++.
-- NFC should always be active
+- Has to be programmed in Arduino C++.
+- NFC should always be active.
 
 ## Nice to have
 
-- Battery should never go bellow 20 and above 80%
-- Should send battery status over GPRS
+- Battery should never go below 20% and above 80%.
+- Should send battery status over GPRS.
 
 ## Priorities
 
@@ -48,28 +50,28 @@ The alarm is trigger upon detecting movement.
 
 ### Hardware
 
-- Xiao BLE Sense nrf52840 (CPU & Bluetooth)
-- GSM/2G SIM800L Module (GPRS)
-- NFC antenna
-- 3.7V, 1100mAh lithium battery
-- 12V buzzer
-- 12V, 500mA Electromagnet
-- LSM6DS3 (Accelerometer)
+- Xiao BLE Sense nrf52840 (CPU & Bluetooth).
+- GSM/2G SIM800L Module (GPRS).
+- NFC antenna.
+- 3.7V, 1100mAh lithium battery.
+- 12V buzzer.
+- 12V, 500mA Electromagnet.
+- LSM6DS3 (Accelerometer).
 
 ### Software
-- C++ 11
-- nRF52 Assembly
-- Arduino IDE & Compiler v2.3.3
-- list of dependency :
-    - *NRF52_MBED_TimerInterrupt V1.4.1*
-    - *adafruit-nrfutil 0.5.3* (for linux)
-    - *ArduinoBLE V1.3.6*
-    - *Sim800L http connector V1.14.0*
-    - *Seeed Arduino LSM6DS3 V2.0.3*
-    - *OneWire V2.3.7*
-    - *FreeRTOS V11.0.1-5*
+- C++ 11.
+- nRF52 Assembly.
+- Arduino IDE & Compiler v2.3.3.
+- list of dependencies:
+    - *NRF52_MBED_TimerInterrupt V1.4.1.*
+    - *adafruit-nrfutil 0.5.3* (for Linux).
+    - *ArduinoBLE V1.3.6.*
+    - *Sim800L HTTP connector V1.14.0.*
+    - *Seeed Arduino LSM6DS3 V2.0.3.*
+    - *OneWire V2.3.7.*
+    - *FreeRTOS V11.0.1-5.*
     
-Those choices where made for hardware reason.
+Those choices were made for hardware reasons.
 
 ## Conventions
 
@@ -79,7 +81,7 @@ Those choices where made for hardware reason.
 
 All files and folders should be named in *camelCase*.
 
-##### *organization*
+##### *Organisation*
 
 - Images should be in an *./image* subfolder from where they are called.
 - Technical, Functional and Management documents should be in their own folder in a *./documents* folder.
@@ -91,49 +93,49 @@ All files and folders should be named in *camelCase*.
 
 GitHub branches should be named in *Pascal_Snake_Case*.
 
-##### *organization*
+##### *Organisation*
 
-- Working version of the project go to the *Release* branch.
+- The working version of the project goes into the *Release* branch.
 - The main should be updated at least once a week.
 - Release should be made from the main.
 - There can't be any direct push to the main.
 - A new branch should be made for each feature.
-- Only push code that compile (exception for Error related to the SIM800L)
+- Only push code that compiles (exception for Error related to the SIM800L).
 - Issues should only be opened for problems in the *main* or *Release* branches.
 
 ### Coding
 
-When in doubt follow [this document](https://google.github.io/styleguide/cppguide.html) as this part only highlight the most relevant parts.
+When in doubt follow [this document](https://google.github.io/styleguide/cppguide.html) as this document only highlights the most important parts.
 
 ##### *Naming*
 
-Use clear name that describe the purpose of the object. Avoid abbreviations. Everything should be done in english.
+Use clear names that describe the purpose of the object. Avoid abbreviations. Everything should be done in English.
 
-- Variables : 
-  - snake_case in a function. 
+- Variables:
+  - snake_case in a function.
   - snake_case_ with an underscore at the end when in the scope of a class.
-- Types and concepts (class, struct, alias, enum and type aliases) : PascalCase
-- Const and enum : prefixed with ``k`` then camelCase eg. ``kConstVariable``
-- Functions : camelCase
-- Namespaces : snake_case. Top level namespace should be the project name.
-- Macro : UPPERCASE_SNAKE
+- Types and concepts (class, struct, alias, enum and type aliases): PascalCase.
+- Const and enum: prefixed with ``k`` then camelCase eg. ``kConstVariable``
+- Functions: camelCase.
+- Namespaces: snake_case. The top-level namespace should be the project name.
+- Macro: UPPERCASE_SNAKE.
 
 ##### *Comments*
 
-Do not comment things that are obvious and easily readable. Focus more on the Why than the what.
+Do not make comments on things that are obvious and easily readable. Focus more on the Why than the what.
 
-All file should start with an overview of the abstraction provided in the file. 
-Class comments should describe when and how to use the class
-If a function use is not obvious it should explain it's use case. If the operation is not obvious it should be explained in the definition.
-Global variable should have an explanation.
+All files should start with an overview of the abstraction provided in the file. \
+Class comments should describe when and how to use the class. \
+If a function use is not obvious it should explain its use case. If the operation is not obvious it should be explained in the definition. \
+Global variables should have an explanation.
 
-##### *formatting*
+##### *Formatting*
 
-- tab are 4 spaces long
+- tabs are 4 spaces long.
 - lines should be at most 80 characters long.
-- avoid non ASCII character
-- If function parameter don't fit on a line they should wrap around
-- open curly brackets on the same line as you end parameter declaration
+- avoid non-ASCII characters.
+- If function parameters don't fit on a line, jump to the next line to finish declaring the parameters.
+- Open curly brackets on the same line as your end parameter declaration
 
 example :
 ```cpp
@@ -143,27 +145,28 @@ int example(string word, int number,
 }
 ```
 
-##### *misc*
+##### *Miscellaneous*
 
-- don't use use ``using std;`` instead do ``std::`` when needed to avoid naming conflict
-- always use namespace
-- create header files for module that can work on their own
-- all classes should follow encapsulation. 
-- avoid dynamic memory allocation if possible
-- never have two task write to the same object to avoid race condition
+- don't use ``using std;`` instead do ``std::`` when needed to avoid naming conflict.
+- always use namespace.
+- create header files for modules that can work on their own.
+- all classes should follow encapsulation.
+- avoid dynamic memory allocation if possible.
+- never have two tasks writing to the same object to avoid race conditions.
 
 ## Key Functionality
 
-Those key Functionality are independents from one an other and can be developed assuming the others works. Each part should be worked on as their separate classes.
+Those key functionalities are independent of one another and can be developed assuming the other works. \
+Each part should be worked on as separate classes.
 
 ### Motion Detection
 
-The LSM6DS3 motion detection module can be set to send data only when detecting movement that exceed a certain threshold thanks to it's interrupt control registers. The accelerometer should only return a signal to the GPIO pin if the movement go past a certain threshold. This way the CPU can be kept in sleep mode the rest of the time.
-The *LSM6DS3Core* class in the *Seeed Arduino LSM6DS3* library allow writing to the motion detection module's registers.
+The LSM6DS3 motion detection module can be set to send data only when detecting movement that exceeds a certain threshold thanks to its interrupt control registers. The accelerometer should only return a signal to the GPIO pin if the movement goes past a certain threshold. This way the CPU can be kept in sleep mode the rest of the time.
+The *LSM6DS3Core* class in the *Seeed Arduino LSM6DS3* library allows writing to the motion detection module's registers.
 
-##### *Organization*
+##### *Organisation*
 
-The class should follow this organization
+The class should follow this organisation:
 ```cpp
 class MotionDetection{
     float wakeup_threshold_;
@@ -197,31 +200,31 @@ public:
 
 use an enum to make it easier to maintain
 
-##### *initialization*
+##### *Initialization*
 
 The setup should be done at the initialization of the CPU and whenever the motion detector is being switched to passive.
 - The FIFO should be set in bypass with the ``FIFO_CTRL5`` <sub>[p.50](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=50) & [p.31](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=31)</sub> register.
 - ``INT2_CTRL``<sub>[p.53](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=53)</sub> should be set to 0
-- If the gyroscope ends up being ignored it should be turned off with by setting ``CTRL2_G``<sub>[p.55](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=55)</sub> to ``0b0000``
+- If the gyroscope ends up being ignored it should be turned off by setting ``CTRL2_G``<sub>[p.55](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=55)</sub> to ``0b0000``
 - The acceleration sensor should be set to a low power mode 26Hz with ``CTRL1_XL``<sub>[p.54](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=54)</sub>
 
 ##### *Threshold*
 
-A significant motion and til event can be read from the ``FUNC_SRC`` register. The ``SIGN_MOTION_IA`` read 1 when a large movement is detected.
-A large movement is defined in ``SM_THS``<sub>[p.91](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=91)</sub> register for the accelerometer. Tilt threshold can not be changed and if the sensitivity prove to high or too low, tilt detection should be ignored.
+A significant motion and til event can be read from the ``FUNC_SRC`` register. The ``SIGN_MOTION_IA`` reads 1 when a large movement is detected.
+A large movement is defined in the ``SM_THS``<sub>[p.91](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=91)</sub> register for the accelerometer. Tilt threshold can not be changed and if the sensitivity proves to be too high or too low, tilt detection should be ignored.
 
 ##### *Output*
 
 The output should be sent via the ``INT1`` pin. The interrupt 1 registers can be set to 0 for the bits we don't want to return and 1 for those we want to listen to.
-The ``INT1`` pin does a ``OR`` of the different output from ``MD1_CFG`` and ``INT1_CTRL`` to output a boolean.
+The ``INT1`` pin does an ``OR`` operation of the different output from ``MD1_CFG`` and ``INT1_CTRL`` to output a boolean.
 The only value we are interested in is ``INT1_TILT`` from the ``MD1_CFG``<sub>[p.80](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=80)</sub> register. So it should be set to ``0b00000010``. And ``INT1_SIGN_MOT`` from ``INT1_CTRL``<sub>[p.52](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=52)</sub> which should accordingly be set to ``0b01000000``.
 
-##### *get movement*
+##### *Get movement*
 
-When the CPU is active, it should constantly pull data from the motion detection module using the non core LSM6DS3 library.
-The motion detection module can be set to actively send data with ``LSM6DS3.begin()`` which change the read mode of motion sensor to be active.
+When the CPU is active, it should constantly pull data from the motion detection module using the non-core LSM6DS3 library.
+The motion detection module can be set to actively send data with ``LSM6DS3.begin()`` which changes the read mode of the motion sensor to be active.
 
-``readFloatAccelX()`` is used to read these acceleration data from the motion detector. X can be changed to Y or Z to get different axis. The axis are added together before being compared to the threshold. 
+``readFloatAccelX()`` is used to read these acceleration data from the motion detector. X can be changed to Y or Z to get different axis. The axis are added together before being compared to the threshold.
 
 ##### *reference and resources*
 
