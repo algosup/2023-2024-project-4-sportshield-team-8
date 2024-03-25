@@ -26,6 +26,8 @@ Created by: Quentin CLÉMENT <br> Creation Date: 18/03/2024 <br> Last update: 18
 
 ## 1. Overall project status summary
 
+11/03/2024 - 15/03/2024
+
 The first week allowed us to create a group dynamic. We have defined the project's scope and the first steps to take. Even if Monday was a bit chaotic, we managed to get back on track since Thursday and progressed a lot during the last two days.
 
 ## 2. Milestones met this week
@@ -82,7 +84,7 @@ The project's scope is defined in a project charter. The scope might evolve depe
 
 ## 7. Next steps
 
-- 📅 19/03/2024: Deliver functional specifications v1.0: **Maxime THIZEAU, Victor LEROY, Thibaud MARLIER**
+- 📅 18/03/2024: Deliver functional specifications v1.0: **Maxime THIZEAU, Victor LEROY, Thibaud MARLIER**
 - 📝 Start writing technical specifications: **Max BERNARD**
 - 📊 Write the RACI, the critical path, the risk management plan and the resource management plan: **Quentin CLÉMENT**
 
