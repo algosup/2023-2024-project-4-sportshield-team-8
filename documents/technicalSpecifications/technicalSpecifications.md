@@ -59,18 +59,19 @@ The alarm is triggered upon detecting movement.
 - LSM6DS3 (Accelerometer).
 
 ### Software
+
 - C++ 11.
 - nRF52 Assembly.
 - Arduino IDE & Compiler v2.3.3.
 - list of dependencies:
-    - *NRF52_MBED_TimerInterrupt V1.4.1.*
-    - *adafruit-nrfutil 0.5.3* (for Linux).
-    - *ArduinoBLE V1.3.6.*
-    - *Sim800L HTTP connector V1.14.0.*
-    - *Seeed Arduino LSM6DS3 V2.0.3.*
-    - *OneWire V2.3.7.*
-    - *FreeRTOS V11.0.1-5.*
-    
+  - *NRF52_MBED_TimerInterrupt V1.4.1.*
+  - *adafruit-nrfutil 0.5.3* (for Linux).
+  - *ArduinoBLE V1.3.6.*
+  - *Sim800L HTTP connector V1.14.0.*
+  - *Seeed Arduino LSM6DS3 V2.0.3.*
+  - *OneWire V2.3.7.*
+  - *FreeRTOS V11.0.1-5.*
+
 Those choices were made for hardware reasons.
 
 ## Conventions
@@ -138,6 +139,7 @@ Global variables should have an explanation.
 - Open curly brackets on the same line as your end parameter declaration
 
 example :
+
 ```cpp
 int example(string word, int number,
             Type parameter3){
@@ -167,6 +169,7 @@ The *LSM6DS3Core* class in the *Seeed Arduino LSM6DS3* library allows writing to
 ##### *Organisation*
 
 The class should follow this organisation:
+
 ```cpp
 class MotionDetection{
     float wakeup_threshold_;
@@ -194,6 +197,7 @@ public:
 ```
 
 ``getMovement`` returns are :
+
 - 0 for a movement smaller than the ``wakeup_threshold_``
 - 1 for a movement smaller than the ``large_movement_threshold_``
 - 2 for a movement larger than the ``large_movement_threshold_``
@@ -203,6 +207,7 @@ use an enum to make it easier to maintain
 ##### *Initialization*
 
 The setup should be done at the initialization of the CPU and whenever the motion detector is being switched to passive.
+
 - The FIFO should be set in bypass with the ``FIFO_CTRL5`` <sub>[p.50](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=50) & [p.31](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=31)</sub> register.
 - ``INT2_CTRL``<sub>[p.53](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=53)</sub> should be set to 0
 - If the gyroscope ends up being ignored it should be turned off by setting ``CTRL2_G``<sub>[p.55](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf#page=55)</sub> to ``0b0000``
@@ -224,25 +229,24 @@ The only value we are interested in is ``INT1_TILT`` from the ``MD1_CFG``<sub>[p
 When the CPU is active, it should constantly pull data from the motion detection module using the non-core LSM6DS3 library.
 The motion detection module can be set to actively send data with ``LSM6DS3.begin()`` which changes the read mode of the motion sensor to be active.
 
-``readFloatAccelX()`` is used to read these acceleration data from the motion detector. X can be changed to Y or Z to get different axis. The axis are added together before being compared to the threshold.
+``readFloatAccelX()`` is used to read these acceleration data from the motion detector. X can be changed to Y or Z to get a different axis. The axis are added together before being compared to the threshold.
 
-##### *reference and resources*
+##### *Reference and resources*
 
 - [LSM6DS3 documentation](https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf)
-- [Seeed Arduino LSM6DS3 Github](https://github.com/Seeed-Studio/Seeed_Arduino_LSM6DS3): Take inspiration from the low level example
+- [Seeed Arduino LSM6DS3 Github](https://github.com/Seeed-Studio/Seeed_Arduino_LSM6DS3): Take inspiration from the low-level example
 
 ### NFC
 
-Unfortunately [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per seed studio.
+Unfortunately, [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per Seed Studio.
 
 A solution would be to use assembly assembly registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work. This is not a priority.
 
-##### *reference and resources*
+##### *Reference and resources*
 
 - [nRF52840 Product Specification - NFC](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)
 - [Seeed Studio XIAO nRF52840 - Github Wiki](https://github.com/Seeed-Studio/wiki-documents/discussions/214)
 - [Seeed Studio XIAO nRF52840 - Seeed Studio Wiki](https://wiki.seeedstudio.com/XIAO-BLE-Sense-NFC-Usage/)
-
 
 ### Bluetooth
 
@@ -259,13 +263,14 @@ MODE=Ieee802154_250kbit
 
 The radio module will comply with the [IEEE 802.15.4-2006 standard](https://en.wikipedia.org/wiki/IEEE_802.15.4).
 
-##### *Linked to MAC adresses*
+##### *Linked to MAC addresses*
 
-After pairing two devices, the connectivity is made via linking the MAC adress of both devices, meaning that they are bound together. Such MAC adress can be queried by the and kept in memory by the hardware.
+After pairing two devices, the connectivity is made via linking the MAC address of both devices, meaning that they are bound together. Such MAC address can be queried by the and kept in memory by the hardware.
 
 ```
 bleDevice.address() // Query the Bluetooth® address of the Bluetooth® Low Energy device.
 ```
+
 And then can be stored into a variable.
 
 ##### *Security*
@@ -289,9 +294,9 @@ procedures.
 
 ### GPRS
 
-The GSM/2G SIM800L Module will be used to send messages over the 2G network in html. When not in use this module will be in power down mode to save battery. As we are unable to test this module's functionality for hardware reason we will reuse the existing code for 2G communication.
+The GSM/2G SIM800L Module will be used to send messages over the 2G network in HTML. When not in use this module will be in power down mode to save battery. As we are unable to test this module's functionality for hardware reasons we will reuse the existing code for 2G communication.
 
-##### *class organization*
+##### *Class organization*
 
 ```cpp
 class SIM{
@@ -345,19 +350,20 @@ public:
 }
 ```
 
-##### *power down/up*
+##### *Power down/up*
 
-The AT command ``AT+CPOWD=1``<sub>[p.24](https://datasheetspdf.com/pdf-down/S/I/M/SIM800H-SIMCom.pdf#page=24) & [p.146](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf#page=146)</sub> is used to power down the board when not in use. The module can then be turned back on by sending a 1 sec high, followed by 2 seconds low and then 1 second high on a GPIO pin.
+The AT command ``AT+CPOWD=1``<sub>[p.24](https://datasheetspdf.com/pdf-down/S/I/M/SIM800H-SIMCom.pdf#page=24) & [p.146](https://wiki.elecrow.com/images/2/20/SIM800_Series_AT_Command_Manual_V1.09.pdf#page=146)</sub> is used to power down the board when not in use. The module can then be turned back on by sending a 1-second high, followed by 2 2-second low and then a 1-second high on a GPIO pin.
 
-##### *communication*
+##### *Communication*
 
-When a large motion is detected the GPS position is sent over HTML. This message should be formatted as follow to be understood by the server ``{"latitude": LATITUDE, "longitude": LONGITUDE, "batterie": BATTERY LEVEL}``. ``LATITUDE`` and ``LONGITUDE`` are float we get from the GPS library. ``BATTERY LEVEL`` is a float between 0 & 1. This this should also be sent if the battery gets bellow 20%.
+When a large motion is detected the GPS position is sent over HTML. This message should be formatted as follows to be understood by the server ``{"latitude": LATITUDE, "longitude": LONGITUDE, "batterie": BATTERY LEVEL}``. ``LATITUDE`` and ``LONGITUDE`` are floats we get from the GPS library. ``BATTERY LEVEL`` is a float between 0 & 1. This should also be sent if the battery gets below 20%.
 
-"batterie" is not a typo, this is a french company that named their variable in french.
+"batterie" is not a typo, this is a French company that named their variable in French.
 
-We have no way to try the SIM800L as our hardware is non functional. as such we should mostly keep the original setup and protocol:
+We have no way to try the SIM800L as our hardware is non-functional. As such we should mostly keep the original setup and protocol:
 
 Setup
+
 ```cpp
 sim800l = new SIM800L((Stream*)&Serial2, SIM800_RST_PIN, 200, 512);
 pinMode(SIM800_DTR_PIN, OUTPUT);
@@ -367,6 +373,7 @@ Serial.println("SIM SETUP");
 ```
 
 Send a message
+
 ```cpp
 sim800l->setupGPRS("iot.1nce.net");
 sim800l->connectGPRS();
@@ -389,9 +396,9 @@ sim800l->doPost(directionCoord, "application/json", posbat, 10000, 10000);
 sim800l->disconnectGPRS();
 ```
 
-##### *parallel tasking*
+##### *Parallel tasking*
 
-While the nrf52 CPU does not support multithreading, the message should still be sent while other operation continue. This can be done using freeRTOS which is supported by the nrf52 SDK.
+While the nrf52 CPU does not support multithreading, the message should still be sent while other operations continue. This can be done using freeRTOS which is supported by the nrf52 SDK.
 
 The task should be handled following this pseudocode
 
@@ -415,7 +422,7 @@ sendMessageTask(){
 
 The notification value doesn't mater
 
-##### *reference and resources*
+##### *Reference and resources*
 
 - [GMS Library - Arduino docs](https://docs.arduino.cc/retired/archived-libraries/GSM/)
 - [SIM800H&SIM800L_Hardware Design_V2.02](https://www.scribd.com/document/700531402/SIM800L-datasheet)
@@ -423,23 +430,27 @@ The notification value doesn't mater
 
 ### Buzzer
 
-##### *small motion*
-If a small motion is detected (bigger than the wakeup threshold, lower than the large motion threshold), the buzzer should sound for 0.1s every 2s. This should stop on it's own if the movement stops for 10s.
+##### *Small motion*
 
-##### *large motion*
-When a large movement is detected, the alarm should bee for 0.1s ever 0.5s. This should not stop after 10s if no large or small movement is detected. The bluetooth should also have the option to stop the alarm by unlocking the device.
+If a small motion is detected (bigger than the wakeup threshold, lower than the large motion threshold), the buzzer should sound for 0.1 seconds every 2 seconds. This should stop on its own if the movement stops for 10 seconds.
 
-##### *class organization*
+##### *Large motion*
+
+When a large movement is detected, the alarm should be for 0.1 seconds every 0.5 seconds. This should stop after 10 seconds if no large or small movement is detected. The Bluetooth should also have the option to stop the alarm by unlocking the device.
+
+##### *Class organization*
 
 the input from the motion detection to soundControlTask looks like this :
-- small movement : ``0b01``
-- large movement : ``0b11``
-- no movement : no notification sent
+
+- small movement: ``0b01``
+- large movement: ``0b11``
+- no movement: no notification sent
 
 the input from soundControlTask to digitalWriteTask looks like :
-- small movement : ``0b00``
-- large movement : ``0b10``
-- no movement : ``0b01``
+
+- small movement: ``0b00``
+- large movement: ``0b10``
+- no movement: ``0b01``
 
 ```cpp
 class Buzzer{
@@ -472,10 +483,12 @@ public:
     void soundControlTask();
 }
 ```
-##### *sound loop*
+
+##### *Sound loop*
+
 The [electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png) the buzzer is wired to the D2 pin. ``digitalWrite()`` is used to set the pin to High or low.
 
-Making the time last 10s can be done using freeRTOS. This is a pseudocode of how this could be implemented:
+Making the time last 10 seconds can be done using freeRTOS. This is a pseudocode of how this could be implemented:
 
 ```cpp
 //the function loops the sound until it receive the notification to stop
@@ -543,32 +556,27 @@ void motionDetection(){
 }
 ```
 
-##### *reference and resources*
+##### *Reference and resources*
+
 - [nRF5 FreeRTOS support](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fsdk_nrf5_v17.0.2%2Ffreertos.html)
 - [FreeRTOS documentation](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
 - [SportShield's electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png)
 
-
 ### Battery
 
-
 <!-- LSM6DS3Core imu(I2C_MODE, 0x6A); 
-
 
 https://github.com/nfc-tools/libnfc
 https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf
 file:///home/max/Downloads/1462360001-AS.pdf
 
 The firmware should be efficient enough to let the battery run for at least 7 days.
-The system lock and and unlock feature should be accessible by bluetooth and NFC.
-When the device is locked the alarm should be trigger at low volume for a slight movement. 
+The system lock and unlock feature should be accessible by Bluetooth and NFC.
+When the device is locked the alarm should be triggered at low volume for slight movement. 
 When the device is locked the alarm should trigger at full volume when moving a lot.
 
-
-
 The firmware has to run on an nRF52840 chip. 
-
-Check how much amps the battery can take 
+Check how many amps the battery can take 
 
 Branch Name: Pascal_Snake_Case
 File/Folder Name: camelCase
