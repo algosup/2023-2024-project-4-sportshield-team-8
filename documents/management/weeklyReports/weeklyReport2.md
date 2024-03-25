@@ -28,7 +28,7 @@ Created by: Quentin CLÉMENT <br> Creation Date: 25/03/2024 <br> Last update: 25
 
 18/03/2024 - 22/03/2024
 
-The second week was disorganised. As we started to struggle with the hardware, we lost a lot of time and motivation. We managed to deliver the functional specifications v1.0 on time and seem to be on schedule for the next documents. However, we are worried about the software part because we don't know how to test if without a working hardware.
+The second week was disorganised. As we started to struggle with the hardware, we lost a lot of time and motivation. We managed to deliver the functional specifications v1.0 on time and seem to be on schedule for the next documents. However, we are worried about the software part because we don't know how to test it with weakened hardware.
 
 ## 2. Milestones met this week
 
@@ -36,16 +36,17 @@ The second week was disorganised. As we started to struggle with the hardware, w
 
 ## 3. Timeline status
 
-Considering the problems encountered this week leading to a general stagnation. We believe to be a bit late on the schedule. Anyway, we are waiting for the technical specifications to be delivered next tuesday to begin working on the software part at a 100%. 
+Considering the problems encountered this week leading to a general stagnation. We believe to be a bit late on the schedule. Anyway, we are waiting for the technical specifications to be delivered next Tuesday to begin working on the software at 100%.
 
 ## 4. Resources status
 
-We believe some hardware pieces are not working since the beginning ot the project. We are going to test them again next week to be sure. Here is the status of the hardware modules:
-- ❌ SIM Module: we don't succeed to make it work but we are not sure if it's a hardware or software problem
+We believe some hardware pieces have not been working since the beginning of the project. We are going to test them again next week to be sure. Here is the status of the hardware modules:
+
+- ❌ SIM Module: we don't succeed to make it work but we are not sure if it's a hardware or software problem.
 - ❌ PCB: we tested the PCB with a multimeter and we found voltage disparity between ports that is probably the symptom of a short circuit.
-- ❌ NFC: the NFC module is working on an hardware level but unfortunately there is no library compatible with our CPU architecture meaning that we can only use it as an emitter and it's making it useless.
+- ❌ NFC: the NFC module is working at the hardware level but unfortunately there is no library compatible with our CPU architecture meaning that we can only use it as an emitter and it's making it useless.
 - ✅ Battery
-- ✅ GPS 
+- ✅ GPS
 - ✅ Buzzer
 - ✅ Electro-magnet: the hardware in itself is working but we can't supply it with enough power to make it work properly.
 
@@ -55,7 +56,7 @@ The project's scope is still the same as last week. We are waiting to see the ev
 
 ## 6. Work accomplished
 
-➭ <ins> Documents<ins>:
+➭ <ins>Documents<ins>:
 
 - ✅ Functional Specifications: **Maxime THIZEAU, Victor LEROY, Thibaud MARLIER**
 - ✅ Technical Specifications v0.1: **Max BERNARD, Maxime THIZEAU, Thibaud MARLIER**
@@ -64,7 +65,7 @@ The project's scope is still the same as last week. We are waiting to see the ev
 
 <br>
 
-➭ <ins> Hardware<ins>:
+➭ <ins>Hardware<ins>:
 
 - ✅ Identify which hardware modules are working: **Max BERNARD, Thomas PLANCHARD**
 
@@ -82,5 +83,5 @@ The project's scope is still the same as last week. We are waiting to see the ev
 
 ## 9. Team feedback
 
-Even if we made good progresses on documents, we noticed a significant slowdown. We encountered a lot of difficulties and a lot of team members feel discouraged and fed up. We feel like we are stuck against a wall and we don't know how to get out of it. We need to find a solution to this problem as soon as possible.
+Even if we have made good progress on documents, we noticed a significant slowdown. We encountered a lot of difficulties and a lot of team members felt discouraged and fed up. We feel like we are stuck against a wall and we don't know how to get out of it. We need to find a solution to this problem as soon as possible.
 ```
