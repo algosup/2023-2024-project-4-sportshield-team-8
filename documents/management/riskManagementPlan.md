@@ -17,9 +17,9 @@ Created by: Quentin CLÉMENT <br> Creation Date: 20/03/2024 <br> Last update: 22
 - [3. Risk Identification](#3-risk-identification)
 - [4. Risk Analysis and Assessment](#4-risk-analysis-and-assessment)
 - [5. Risk Mitigation Strategies](#5-risk-mitigation-strategies)
-- [7. Operational Risk Management](#7-operational-risk-management)
-- [8. Continuous Monitoring and Reporting](#8-continuous-monitoring-and-reporting)
-- [9. Review and Update Process](#9-review-and-update-process)
+- [6. Operational Risk Management](#6-operational-risk-management)
+- [7. Continuous Monitoring and Reporting](#7-continuous-monitoring-and-reporting)
+- [8. Review and Update Process](#8-review-and-update-process)
 
 </details>
 
@@ -65,7 +65,7 @@ For each identified risk, a mitigation strategy will be developed between the fo
 - Transfer: transfer the risk to a third party.
 - Acceptance: accept the risk and develop a contingency plan.
 
-## 7. Operational Risk Management
+## 6. Operational Risk Management
 
 Operational risk encompasses a broad range of potential issues, from process failures to system outages. Managing these risks is critical to maintaining the integrity and continuity of project operations. \
 To address these risks, we have implemented the following measures:
@@ -75,7 +75,7 @@ We also pull from the repository at the start of each project session to ensure 
 
 - Project Privacy: even if the GitHub repository is public, this is a private project ordered by a company. It means that we have to be careful about the information we share outside of the repository. We can't talk about the project on social media or with people who are not part of the project.
 
-## 8. Continuous Monitoring and Reporting
+## 7. Continuous Monitoring and Reporting
 
 ➭ <ins> Monitoring Framework: <ins>
 
@@ -87,7 +87,7 @@ We also pull from the repository at the start of each project session to ensure 
 - **Incident Reporting**: Establish a protocol for immediate reporting of risk incidents to enable swift response and mitigation of potential impacts.
 - **Review Meetings**: Hold quarterly review meetings with the ROCC, project teams, and stakeholders to discuss the risk management plan’s effectiveness and make necessary adjustments.
 
-## 9. Review and Update Process
+## 8. Review and Update Process
 
 This document will be reviewed and updated every week to ensure that it remains relevant and effective in managing project risks. \
 The [risk matrix](https://docs.google.com/spreadsheets/d/15Px0PwHy_TG3o0VkdEeP_r_7hwcLDHzp/edit?usp=sharing&ouid=106192134047636225563&rtpof=true&sd=true) will be updated pretty frequently to reflect the current state of the project and the risks that have been identified.
