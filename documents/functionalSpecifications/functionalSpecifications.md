@@ -260,8 +260,8 @@ Four different modes are being set for the device:
 - The first mode is the locked mode, which will turn on the motion detector, the NFC and the Bluetooth, other modules could be activated depending on the situation such as the alarm if an impact has been detected;
 - The second one is the unlocked mode, which consists of switching on only the Bluetooth and the NFC, allowing us to economise energy in the battery;
 - The third one is called the trigger mode, which is the mode when the alarm is ringing. Depending on the kind of shock it will ring differently. At the end of the ringings, it will turn the locked mode again.
-  - For a small shock, it will have 3 ringings, 1 second each;
-  - For a big shock, it will have 5 ringings, 1 second each;
+  - For a small shock, it will last 10 seconds, 0.1 second each ringing separated by 2 seconds;
+  - For a big shock, it will last 10 seconds, 0.1 second each ringing separated by 0.5 seconds;
 - Finally, we would have the sleep mode which will be used when you don't need to use the device. \
 When using this mode, the motion sensor will be turned off as well as the alarm, only the NFC would be activated.
 

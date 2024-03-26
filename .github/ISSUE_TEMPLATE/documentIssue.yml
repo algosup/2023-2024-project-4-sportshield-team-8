@@ -13,7 +13,7 @@ body:
     id: description
     attributes:
       label: "description"
-      description: "Please provide a clear description of what you think should be changed/what you've noticed"
+      description: "Please provide a clear description of your intentions"
       placeholder: "Write a clear description of your issue..."
   - type: textarea
     id: proposed
