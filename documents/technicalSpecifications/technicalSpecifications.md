@@ -4,19 +4,19 @@
 
 # Audience
 
-**This document is primarily intended for :**
+**This document is primarily intended for:**
 
 - Software developer: to understand the user and technical requirements, and to guide decision-making and planning. Help them understand risks and challenges, customer requirements, additional technical requirements and choices made.
 
-**Secondary audiences :**
+**Secondary audiences:**
 
-- Program manager: to validate against the functional specification and the client expectations.
+- Program manager: to validate against the functional specification and the client's expectations.
 - QA: to assist in preparing the Test Plan and to use it for validating issues.
 - Project manager: to help identify risks and dependencies
 
 # Deliverable
 
-The team has to deliver firmware to lock, unlock and ring the alarm of the SportShield alarm system.
+The team is tasked with delivering firmware designed to facilitate the locking, unlocking, and alarm activation functions of the SportShield alarm system.
 
 ## Details
 
@@ -85,7 +85,7 @@ All files and folders should be named in *camelCase*.
 ##### *Organisation*
 
 - Images should be in an *./image* subfolder from where they are called.
-- Technical, Functional and Management documents should be in their own folder in a *./documents* folder.
+- Technical, Functional and Management documents should be in their folder in a *./documents* folder.
 - The code should be in an *./src* folder from the root.
 
 ### GitHub
@@ -157,7 +157,7 @@ int example(string word, int number,
 - all classes should follow encapsulation.
 - avoid dynamic memory allocation if possible.
 - never have two tasks writing to the same object to avoid race conditions.
-- never use ``sleep``, use ``vTaskDelay`` or ``vTaskDelayUntil`` in tasks. This program makes use of concurrent programming and sleep would block the CPU for all tasks.
+- never use ``sleep``, use ``vTaskDelay`` or ``vTaskDelayUntil`` in tasks. This program makes use of concurrent programming, putting the CPU to sleep will stop all the ongoing tasks and will prevent new ones from happening.
 
 ## Key Functionality
 
@@ -241,7 +241,7 @@ The motion detection module can be set to actively send data with ``LSM6DS3.begi
 
 ### NFC
 
-Unfortunately, [There is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per Seed Studio.
+Unfortunately, [there is no working library to interact with the NFC](https://github.com/Seeed-Studio/wiki-documents/discussions/214?sort=new) as of 19/03/2024 as per Seed Studio.
 
 A solution would be to use assembly and registers<sub>[p.208](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf#page=208)</sub> to make the NFC work. This is not a priority.
 
@@ -253,12 +253,12 @@ A solution would be to use assembly and registers<sub>[p.208](https://infocenter
 
 ### GPS
 
-There is a GPS module on the board. It can be turned on to give the user the position of the device in low battery situation or in cases of theft. Otherwise this module should be turned off as to minimize battery consumption.
-The provided GPS module is the [CD-PA1010D](https://www.mouser.com/pdfDocs/CD_PA1010D_Datasheet_v03.pdf) GNSS antenna. This antena is supported by the [Adafruit GPS library](https://github.com/adafruit/Adafruit_GPS).
+There is a GPS module on the board. It can be turned on to give the user the position of the device in low battery situations or cases of theft. Otherwise, this module should be turned off to minimize battery consumption.
+The provided GPS module is the [CD-PA1010D](https://www.mouser.com/pdfDocs/CD_PA1010D_Datasheet_v03.pdf) GNSS antenna. This antenna is supported by the [Adafruit GPS library](https://github.com/adafruit/Adafruit_GPS).
 
 ##### *Organization*
 
-Although the time to send a message could be reduced if the start up of the SIM and GPS query were done concurrently, this would be minimal as the CPU does concurrent programming through RTOS and there are already 3 or more task running on a single core CPU at that moment in the execution. Code simplicity is favored instead in this instance.
+Although the time to send a message could be reduced if the start up of the SIM and GPS query were done concurrently, this would be minimal as the CPU does concurrent programming through RTOS and there are already 3 or more tasks running on a single core CPU at that moment in the execution. Code simplicity is favored instead in this instance.
 
 ```cpp
 class GPS{
@@ -296,22 +296,24 @@ class GPS{
 ```
 
 ##### *re-used code*
-For the sake of simplicity, a large part of the existing GPS interface will be reused as is or with very little direct modification. Notably replacing the macro and global variable with private variable and putting all the GPS related function in the GPS class. The ISR related functionality are also removed as they are either no longer relevant or handled by *freeRTOS*
 
-the existing function from ``SS_05-03_anglais-batterycontrol.ino`` should be moved to GPS :
+For the sake of simplicity, a large part of the existing GPS interface will be reused as is or with very little direct modification. Notably replacing the macro and global variables with private variables and putting all the GPS related functions in the GPS class. The ISR related functionality is also removed as they are either no longer relevant or handled by *freeRTOS*
+
+the existing function from ``SS_05-03_anglais-batterycontrol.ino`` should be moved to GPS:
+
 - ``gps_setup()`` which becomes the constructor of the class.
-- ``activateGPS()`` which is called to wakeup the GPS module should be private
-- ``convertDMMtoDD()`` is used to translate GPS return into the corect format for the server. should be private
+- ``activateGPS()`` which is called to wake the GPS module up should be private
+- ``convertDMMtoDD()`` is used to translate GPS return into the correct format for the server. should be private
 
-The objects in this code snipet should be declared in private in the ``GPS`` class instead of as global variable as they are in the original code.
+The objects in this code snippet should be declared in private in the ``GPS`` class instead of as global variables as they are in the original code.
 ```cpp
 Adafruit_GPS GPS(&Serial1);
 #define GPS_WKUP_PIN D8
 ```
 
-The ``position_acquired`` and ``start_gps`` variables are removed as they are no longer relevant to the code organization. This means that the logic checking for them should be removed from the following snipets
+The ``position_acquired`` and ``start_gps`` variables are removed as they are no longer relevant to the code organization. This means that the logic checking for them should be removed from the following snippets
 
-this code snipet from the loop becomes the ``getGPSdata()`` private function. Note that the ``GPS`` object in this snipet and the one after is the ``Adafruit_GPS`` class.
+this code snippet from the loop becomes the ``getGPSdata()`` private function. Note that the ``GPS`` object in this snippet and the one after is the ``Adafruit_GPS`` class.
 
 This should become the ``updateCoordinate()`` function
 ```cpp
@@ -397,9 +399,9 @@ When a large motion is detected the GPS position is sent over HTML. This message
 
 ##### *re-using legacy code*
 
-We have no way to try the SIM800L as our hardware is non-functional. as such we should mostly keep the original setup and protocol:
+We have no way to try the SIM800L as our hardware is non-functional. As such we should mostly keep the original setup and protocol:
 
-This code snipet needs to be added at the start of the class constructor.
+This code snippet needs to be added at the start of the class constructor.
 ```cpp
 sim800l = new SIM800L((Stream*)&Serial2, SIM800_RST_PIN, 200, 512);
 pinMode(SIM800_DTR_PIN, OUTPUT);
@@ -431,7 +433,7 @@ sim800l->disconnectGPRS();
 
 ##### *Parallel tasking*
 
-While the nrf52 CPU does not support multithreading, the message should still be sent while other operation continue. This can be done using *freeRTOS* which is supported by the *nrf52 SDK*.
+While the nrf52 CPU does not support multithreading, the message should still be sent while other operations continue. This can be done using *freeRTOS* which is supported by the *nrf52 SDK*.
 
 The task should be handled following this pseudocode
 
@@ -459,7 +461,7 @@ sendMessageTask(){
 }
 ```
 
-The notification value doesn't mater.
+The notification value doesn't matter.
 
 ##### *Reference and resources*
 
@@ -607,15 +609,15 @@ void motionDetection(){
 - [FreeRTOS documentation](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
 - [SportShield's electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png)
 
-### Bluetooth and low energy 
+### Bluetooth and low energy
 
-The CPU should be in low energy and wakeup when the BLE module finds an attempt to pair. However since other part of the code are operating concurrently with freeRTOS, entering and exiting low energy mode will be a challenge.
+The CPU should be in low energy and wake up when the BLE module finds an attempt to pair. However, since other parts of the code are operating concurrently with freeRTOS, entering and exiting low energy mode will be a challenge.
 
-For power saving reason, low energy management also depend on the bluetooth task.
+For power saving reasons, low energy management also depends on the Bluetooth task.
 
 ##### *Organization*
 
-This is a simplified organization of the class as it does not take into account any bluetooth functions that need to be transferred from the legacy code.
+This is a simplified organization of the class as it does not take into account any Bluetooth functions that need to be transferred from the legacy code.
 ```cpp
 class Bluetooth{
 
@@ -697,33 +699,32 @@ void main_task(){
 ##### *setup*
 - RTOS:
   - set ``#define configUSE_TICKLESS_IDLE 1`` in ``FreeRTOSConfig.h`` as this is necessary to use tickless mode.
-  - use ``nrf_gpio_cfg_sense_input`` to setup the CPU to wakup on a ``HIGH`` from the motion detection module.
+  - use ``nrf_gpio_cfg_sense_input`` to set up the CPU to wake up on a ``HIGH`` from the motion detection module.
 - Bluetooth
-  - Use ``ble_gap_sec_params_t`` class to setup the security of the connection. Set encryption key parameter and enable "Man in the Middle" protection.
+  - Use the ``ble_gap_sec_params_t`` class to set up the security of the connection. Set encryption key parameter and enable "Man in the Middle" protection.
   - Then write ``ble_gap_sec_params_t`` in ``sd_ble_gap_sec_params_reply`` so that the BLE can use it.
-  - For the sake of simplicity everything else from the original bluetooth implementation should be kept. The setup should be in the constructor of the function
+  - For the sake of simplicity, everything else from the original Bluetooth implementation should be kept. The setup should be in the constructor of the function
 
 ##### *Receiving Message*
 
 Upon receiving a message, the lock should be opened by setting the PIN ``D3`` to high for 1s as it is the one controlling the locking mechanism.
 
-
 ##### *tickless mode*
-free RTOS implement a low energy consumption mode called tickless. When in tickless mode all task stop running and the CPU is no longer being periodically woken up. To avoid issue with stoping task mid execution, tickless mode shouldn't be activated until the ``sound_control_task`` and ``send_message_task`` both confirm that they are done running.
+
+free RTOS implements a low energy consumption mode called tickless. When in tickless mode all tasks stop running and the CPU is no longer being periodically woken up. To avoid issues by stopping tasks mid-execution, tickless mode shouldn't be activated until the ``sound_control_task`` and ``send_message_task`` both confirm that they are done running.
 
 This can be done simply by using ``xTaskNotifyWait()`` and reading the value sent :
 - ``0b0x`` for the message task
 - ``0b1x`` for the sound control task
 - ``0bx1`` if the task has ended
-- ``0bx0`` if the task is runing
+- ``0bx0`` if the task is running
 
 Once both tasks have returned the confirmation that they are done and the motion detector has been put in passive mode using ``setPassive()``, tickless mode can be activated with ``xTaskGlobalSetTickless()``
 
-Then send the ``__WFI()`` instruction in assembly to put the CPU in sleep.
-
+Then send the ``__WFI()`` instruction in assembly to put the CPU in sleep mode.
 
 ###### *waking up*
-Once the CPU is in sleep mode it needs to be woken up. Because it was put in sleep mode through ``__WFI()`` it should wake up on any GPIO interrupt sent by the motion detector. It should also wakeup on any interrupt from the BLE module. After the wakeup, the code restart from the ``__WFI()``. Run ``xTaskResumeTick()`` to exit tickless mode.
+Once the CPU is in sleep mode it needs to be woken up. Because it was put in sleep mode through ``__WFI()`` it should wake up on any GPIO interrupt sent by the motion detector. It should also wake up on any interrupt from the BLE module. After the wakeup, the code restarts from the ``__WFI()``. Run ``xTaskResumeTick()`` to exit tickless mode.
 
 
 
@@ -745,17 +746,17 @@ bluetooth protocole
 
 The standard when using free RTOS is to start the tasks in ``setup()``.
 
-from ``setup()`` create an object for each class. Their constructor should handle the module or function setup. 
+from ``setup()`` create an object for each class. Their constructor should handle the module or function setup.
 
-Create the tasks with ``xTaskCreate()``. 
+Create the tasks with ``xTaskCreate()``.
 
-start the code with ``vTaskStartScheduler()`` which will start all the class. The logic should be entirely operated in the ``mainTask()``
+start the code with ``vTaskStartScheduler()`` which will start all the classes. The logic should be entirely operated in the ``mainTask()``
 
-## Security 
+## Security
 
-As per the client requirement, the firmware doesn't need to be updated. The firmware also needs to be protected from external attack through it's USB port which should only enable charging.
-A solution to lock the firmware, **//!\\\\ Should only be done once a final version of the firmware is approved //!\\\\**, is to remove the USB stack from the nrf52840 SDK and from any library used in the firmware.
-As an added layer of security, the P0.13 and P0.15 Pins should set as GPIO pin in the program to make sure they can not be used as USB.
+As per the client's requirement, the firmware doesn't need to be updated. The firmware also needs to be protected from external attack through its USB port which should only enable charging.
+A solution to lock the firmware, **//!\\\\ Should only be done once a final version of the firmware is approved //!\\\\**, is to remove the USB stack from the nrf52840 SDK and any library used in the firmware.
+As an added layer of security, the P0.13 and P0.15 Pins should be set as GPIO pins in the program to make sure they can not be used as USB.
 This will completely lock anyone from using the USB port, as the USB communication protocol wouldn't exist anymore on the device. This can not be reverted.
 
-A reversible approach would be to create a password protection on the USB port.
+A reversible approach would be to create password protection on the USB port.
