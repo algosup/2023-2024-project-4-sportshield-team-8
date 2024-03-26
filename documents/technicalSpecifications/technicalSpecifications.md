@@ -251,50 +251,6 @@ A solution would be to use assembly and registers<sub>[p.208](https://infocenter
 - [Seeed Studio XIAO nRF52840 - Github Wiki](https://github.com/Seeed-Studio/wiki-documents/discussions/214)
 - [Seeed Studio XIAO nRF52840 - Seeed Studio Wiki](https://wiki.seeedstudio.com/XIAO-BLE-Sense-NFC-Usage/)
 
-### Bluetooth
-
-##### *Bluetooth Low Energy*
-
-To communicate, the hardware uses the Bluetooth Low Energy technology, which consumes 1/10th of the original Bluetooth's energy.
-The Bluetooth connection is always in sleep mode, except once a connection is established.
-
-To initialize the BLE, we use:
-
-```
-MODE=Ieee802154_250kbit 
-```
-
-The radio module will comply with the [IEEE 802.15.4-2006 standard](https://en.wikipedia.org/wiki/IEEE_802.15.4).
-
-##### *Linked to MAC addresses*
-
-After pairing two devices, the connectivity is made via linking the MAC address of both devices, meaning that they are bound together. Such MAC address can be queried by the and kept in memory by the hardware.
-
-```
-bleDevice.address() // Query the Bluetooth® address of the Bluetooth® Low Energy device.
-```
-
-And then can be stored into a variable.
-
-##### *Security*
-
-Security shall be initiated by the Security Manager in the device in the master
-role. The device in the slave role shall be the responding device. The slave
-device may request the master device to initiate pairing or other security
-procedures.
-
-<!-- Moreover, it is possible in some way (no clue how yet), to generate a password to pair two devices, we need to dig more into that to specify how it works.  -->
-
-##### *Sources*
-
-- [Arduino Blueprints](https://ecs-pw-facweb.ecs.csus.edu/~dahlquid/eee174/S2016/handouts/Labs/ArduinoLab/ArduinoInfo/Arduino%20Android%20Blueprints.pdf)
-- [Bluetooth Core Specs](https://books.google.fr/books?hl=fr&lr=&id=3nCuDgAAQBAJ&oi=fnd&pg=PR7&dq=Bluetooth+Core+specification+Version+4.0&ots=rNT4oZsbn9&sig=SK5aTwJ0tB2Mz4RHhEvGAyDLYtM&redir_esc=y#v=onepage&q&f=true)
-- [BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
-
-[Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
-
-[Bluetooth Documentation](https://github.com/fanqh/document/blob/master/Core_v5.0.pdf)
-
 ### GPS
 
 There is a GPS module on the board. It can be turned on to give the user the position of the device in low battery situation or in cases of theft. Otherwise this module should be turned off as to minimize battery consumption.
@@ -413,23 +369,18 @@ class SIM{
         //send AT command to turn off the SIM800 board
     };
 
-    TaskHandle_t digital_write_task_handle = NULL;
+    TaskHandle_t send_message_task_handle = NULL;
 
 public:
     SIM()
 
     //no setters
 
-    TaskHandle_t getDigitalWriteTaskHandle();
+    TaskHandle_t getSendMessageTaskHandle();
 
     //send a message
-    void sendMessageTask(){
-        turnOn();
-        writeMessage();
-
+    void sendMessageTask(TaskHandle_t mainTaskHandle){
         //send the formatted message
-
-        turnOff();
     }
 }
 ```
@@ -491,11 +442,17 @@ sendMessageTask(){
         if (xTaskNotifyWait(portMAX_DELAY) == true){
             //if a notification is recieved the condition is true
 
+            //tell the main task that a message is being sent
+            xTaskNotify(mainTaskHandle, 0b00)
+
             turnOn();
             setup();
             writeMessage();
             //send the formatted message
             turnOff();
+
+            //tell the main task that the message has been sent
+            xTaskNotify(mainTaskHandle, 0b01)
         }
         //if the xTaskNotifyWait times out, the loop restart
     }
@@ -562,7 +519,7 @@ public:
     getXTaskHandle()//...
 
     void digitalWriteTask();
-    void soundControlTask();
+    void soundControlTask(TaskHandle_t mainTaskHandle);
 }
 ```
 
@@ -615,6 +572,9 @@ void soundControlTask(){
         //check if there was movement
         uint32_t notification = xTaskNotifyWait(cycle_time_)
         if(notification & 0b01 == true){
+            //tell the main task that the buzzer has restarted 
+            xTaskNotify(mainTaskHandle, 0b10)
+
             //only send the 2nd bit as the 1st bit stop the loop
             uint32_t sentValue = notification & 0b10;
             xTaskNotify(digitalWriteTaskHandle, sentValue)
@@ -622,7 +582,10 @@ void soundControlTask(){
         }
 
         //if xTaskNotifyWait times out break, the digitalWriteTask loop
-        xTaskNotify(digitalWriteTaskHandle, 0b01)
+        xTaskNotify(digitalWriteTaskHandle, 0b01)*
+        
+        //tell the main task that the buzzer has stoped 
+        xTaskNotify(mainTaskHandle, 0b11)
     }
 }
 
@@ -644,22 +607,155 @@ void motionDetection(){
 - [FreeRTOS documentation](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
 - [SportShield's electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png)
 
+### Bluetooth and low energy 
 
-<!-- LSM6DS3Core imu(I2C_MODE, 0x6A); 
+The CPU should be in low energy and wakeup when the BLE module finds an attempt to pair. However since other part of the code are operating concurrently with freeRTOS, entering and exiting low energy mode will be a challenge.
 
-https://github.com/nfc-tools/libnfc
-https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf
-file:///home/max/Downloads/1462360001-AS.pdf
+For power saving reason, low energy management also depend on the bluetooth task.
 
-The firmware should be efficient enough to let the battery run for at least 7 days.
-The system lock and unlock feature should be accessible by Bluetooth and NFC.
-When the device is locked the alarm should be triggered at low volume for slight movement. 
-When the device is locked the alarm should trigger at full volume when moving a lot.
+##### *Organization*
 
-The firmware has to run on an nRF52840 chip. 
-Check how many amps the battery can take 
+This is a simplified organization of the class as it does not take into account any bluetooth functions that need to be transferred from the legacy code.
+```cpp
+class Bluetooth{
 
-Branch Name: Pascal_Snake_Case
-File/Folder Name: camelCase
+    TaskHandle_t main_task_handle_ = NULL;
+    
+    readBlueToothMessage();
 
-Install Arduino IDE -->
+public:
+    Bluetooth()
+
+    TaskHandle_t getMainTaskHandle();
+
+    void main_task(TaskHandle_t sound_control_task_handle,      
+        TaskHandle_t send_message_task_handle);
+}
+```
+
+This is what the ``main_task`` should look like
+
+```cpp
+void main_task(){
+    //store the status of the other task
+    //both need to be true
+    bool sound_control_ended = false;
+    bool send_message_ended = false;
+
+    //wether the device is locked or unlocked
+    bool locked = false
+
+    while(true){
+        if(sound_control_ended && send_message_ended){
+            //sleep all task and set module to passive
+            __WFI()//sleep CPU
+
+            //on CPU wakeup set module to active
+            //restart ticks
+            //task_ended = false;
+        }
+
+        //check if anything was sent over bluetooth
+        readBlueToothMessage();
+        if(lock){
+            //activate the electromagnet to lock/unlock the device
+            digitalWrite(HIGH, magnetPin)
+            vTaskDelay(1s) //locking the task here doesn't mater as the lock is the only this that is used here
+            digitalWrite(LOW, magnetPin)
+            locked = !locked
+        }
+
+        int movement()
+        //don't start the buzzer if the device isn't locked
+        if(large movement && locked){
+            //tell the buzzer to start or restart the loop
+            xTaskNotify(soundControlTaskHandle, large)
+
+            //if no message is being sent, send one
+            if(send_message_ended == true){
+                xTaskNotify(sendMessageTaskTaskHandle)
+                send_message_ended = false
+            }
+        }else if(small movement && locked){
+            //tell the buzzer to start or restart the loop
+            xTaskNotify(soundControlTaskHandle, small)
+        }
+
+        //constantly check task notify with 0 wait
+        if(xTaskNotifyWait(0) == true){
+            //if notification recieved go here
+
+            //one or the other depending on the value returned
+            send_message_ended = notification_value
+            sound_control_ended = notification_value
+        }
+    }
+}
+
+```
+
+##### *setup*
+- RTOS:
+  - set ``#define configUSE_TICKLESS_IDLE 1`` in ``FreeRTOSConfig.h`` as this is necessary to use tickless mode.
+  - use ``nrf_gpio_cfg_sense_input`` to setup the CPU to wakup on a ``HIGH`` from the motion detection module.
+- Bluetooth
+  - Use ``ble_gap_sec_params_t`` class to setup the security of the connection. Set encryption key parameter and enable "Man in the Middle" protection.
+  - Then write ``ble_gap_sec_params_t`` in ``sd_ble_gap_sec_params_reply`` so that the BLE can use it.
+  - For the sake of simplicity everything else from the original bluetooth implementation should be kept. The setup should be in the constructor of the function
+
+##### *Receiving Message*
+
+Upon receiving a message, the lock should be opened by setting the PIN ``D3`` to high for 1s as it is the one controlling the locking mechanism.
+
+
+##### *tickless mode*
+free RTOS implement a low energy consumption mode called tickless. When in tickless mode all task stop running and the CPU is no longer being periodically woken up. To avoid issue with stoping task mid execution, tickless mode shouldn't be activated until the ``sound_control_task`` and ``send_message_task`` both confirm that they are done running.
+
+This can be done simply by using ``xTaskNotifyWait()`` and reading the value sent :
+- ``0b0x`` for the message task
+- ``0b1x`` for the sound control task
+- ``0bx1`` if the task has ended
+- ``0bx0`` if the task is runing
+
+Once both tasks have returned the confirmation that they are done and the motion detector has been put in passive mode using ``setPassive()``, tickless mode can be activated with ``xTaskGlobalSetTickless()``
+
+Then send the ``__WFI()`` instruction in assembly to put the CPU in sleep.
+
+
+###### *waking up*
+Once the CPU is in sleep mode it needs to be woken up. Because it was put in sleep mode through ``__WFI()`` it should wake up on any GPIO interrupt sent by the motion detector. It should also wakeup on any interrupt from the BLE module. After the wakeup, the code restart from the ``__WFI()``. Run ``xTaskResumeTick()`` to exit tickless mode.
+
+
+
+<!--TODO :
+bluetooth protocole
+-->
+
+
+
+##### *Sources*
+
+- [Arduino Blueprints](https://ecs-pw-facweb.ecs.csus.edu/~dahlquid/eee174/S2016/handouts/Labs/ArduinoLab/ArduinoInfo/Arduino%20Android%20Blueprints.pdf)
+- [Bluetooth Core Specs](https://books.google.fr/books?hl=fr&lr=&id=3nCuDgAAQBAJ&oi=fnd&pg=PR7&dq=Bluetooth+Core+specification+Version+4.0&ots=rNT4oZsbn9&sig=SK5aTwJ0tB2Mz4RHhEvGAyDLYtM&redir_esc=y#v=onepage&q&f=true)
+- [BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
+- [Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
+- [Bluetooth Documentation](https://github.com/fanqh/document/blob/master/Core_v5.0.pdf)
+
+## Function Organization
+
+The standard when using free RTOS is to start the tasks in ``setup()``.
+
+from ``setup()`` create an object for each class. Their constructor should handle the module or function setup. 
+
+Create the tasks with ``xTaskCreate()``. 
+
+start the code with ``vTaskStartScheduler()`` which will start all the class. The logic should be entirely operated in the ``mainTask()``
+
+## Security 
+
+As per the client requirement, the firmware doesn't need to be updated. The firmware also needs to be protected from external attack through it's USB port which should only enable charging.
+A solution to lock the firmware, **//!\\\\ Should only be done once a final version of the firmware is approved //!\\\\**, is to remove the USB stack from the nrf52840 SDK and from any library used in the firmware.
+As an added layer of security, the P0.13 and P0.15 Pins should set as GPIO pin in the program to make sure they can not be used as USB.
+This will completely lock anyone from using the USB port, as the USB communication protocol wouldn't exist anymore on the device. This can not be reverted.
+
+A reversible approach would be to create a password protection on the USB port.
