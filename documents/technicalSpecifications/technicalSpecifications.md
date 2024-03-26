@@ -445,7 +445,7 @@ sendMessageTask(){
             //if a notification is recieved the condition is true
 
             //tell the main task that a message is being sent
-            xTaskNotify(mainTaskHandle, 0b00)
+            xTaskNotify(mainTaskHandle, 0b100)
 
             turnOn();
             setup();
@@ -454,7 +454,7 @@ sendMessageTask(){
             turnOff();
 
             //tell the main task that the message has been sent
-            xTaskNotify(mainTaskHandle, 0b01)
+            xTaskNotify(mainTaskHandle, 0b101)
         }
         //if the xTaskNotifyWait times out, the loop restart
     }
@@ -575,7 +575,7 @@ void soundControlTask(){
         uint32_t notification = xTaskNotifyWait(cycle_time_)
         if(notification & 0b01 == true){
             //tell the main task that the buzzer has restarted 
-            xTaskNotify(mainTaskHandle, 0b10)
+            xTaskNotify(mainTaskHandle, 0b010)
 
             //only send the 2nd bit as the 1st bit stop the loop
             uint32_t sentValue = notification & 0b10;
@@ -587,7 +587,7 @@ void soundControlTask(){
         xTaskNotify(digitalWriteTaskHandle, 0b01)*
         
         //tell the main task that the buzzer has stoped 
-        xTaskNotify(mainTaskHandle, 0b11)
+        xTaskNotify(mainTaskHandle, 0b011)
     }
 }
 
@@ -609,29 +609,82 @@ void motionDetection(){
 - [FreeRTOS documentation](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
 - [SportShield's electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png)
 
-### Bluetooth and low energy
 
-The CPU should be in low energy and wake up when the BLE module finds an attempt to pair. However, since other parts of the code are operating concurrently with freeRTOS, entering and exiting low energy mode will be a challenge.
+### Bluetooth
 
-For power saving reasons, low energy management also depends on the Bluetooth task.
+The program will mostly reuse the existing bluetooth code. It will be modified so that the pairing is password protected.
+
+##### Organization
+
+Bluetooth should be it's own task. 
+
+```cpp
+class Bluetooth{
+
+    TaskHandle_t bluetooth_handler_task_handle_ = NULL;
+
+public:
+    Bluetooth(){
+        //setup
+    }
+
+    TaskHandle_t getHandler();
+
+    bluetooth_handler_task(){
+
+        while(true){
+            if(xTaskNotifyWait()){
+                xTaskNotify(mainTaskHandle, task_not_ended)
+                //handle message
+
+                continue;
+            }
+
+            //send when the task end
+            xTaskNotify(mainTaskHandle, Value = ((message << 32) | task_ended))
+        }
+    }
+}
+```
+
+##### *setup*
+
+- Use ``ble_gap_sec_params_t`` class to setup the security of the connection. Set encryption key parameter and enable "Man in the Middle" protection.
+- For the sake of simplicity everything else from the original bluetooth implementation should be kept. The setup should be in the constructor of the class.
+
+##### *BLE event handler*
+
+Create an event handler that listen to ``p_ble_evt``. When the event is ``BLE_GAP_EVT_SEC_PARAMS_REQUEST`` send a reply with the security parameter. This should prompt the user to enter the pass-key.
+
+
+##### *Sources*
+
+- [Arduino Blueprints](https://ecs-pw-facweb.ecs.csus.edu/~dahlquid/eee174/S2016/handouts/Labs/ArduinoLab/ArduinoInfo/Arduino%20Android%20Blueprints.pdf)
+- [Bluetooth Core Specs](https://books.google.fr/books?hl=fr&lr=&id=3nCuDgAAQBAJ&oi=fnd&pg=PR7&dq=Bluetooth+Core+specification+Version+4.0&ots=rNT4oZsbn9&sig=SK5aTwJ0tB2Mz4RHhEvGAyDLYtM&redir_esc=y#v=onepage&q&f=true)
+- [BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
+- [Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
+- [Bluetooth Documentation](https://github.com/fanqh/document/blob/master/Core_v5.0.pdf)
+
+### Main task and low energy 
+
+The CPU should be in low energy and wakeup when the BLE module finds an attempt to pair or when a GPIO interrupt happens. However since other part of the code are operating concurrently with freeRTOS, entering and exiting low energy mode will be a challenge.
 
 ##### *Organization*
 
 This is a simplified organization of the class as it does not take into account any Bluetooth functions that need to be transferred from the legacy code.
 ```cpp
-class Bluetooth{
+class Main{
 
     TaskHandle_t main_task_handle_ = NULL;
-    
-    readBlueToothMessage();
 
 public:
-    Bluetooth()
+    Main()
 
     TaskHandle_t getMainTaskHandle();
 
     void main_task(TaskHandle_t sound_control_task_handle,      
-        TaskHandle_t send_message_task_handle);
+        TaskHandle_t send_message_task_handle,
+        TaskHandle_t bluetooth_handler_task_handle);
 }
 ```
 
@@ -643,12 +696,13 @@ void main_task(){
     //both need to be true
     bool sound_control_ended = false;
     bool send_message_ended = false;
+    bool read_bluetooth_ended = false;
 
     //wether the device is locked or unlocked
     bool locked = false
 
     while(true){
-        if(sound_control_ended && send_message_ended){
+        if(sound_control_ended && send_message_ended && read_bluetooth_ended){
             //sleep all task and set module to passive
             __WFI()//sleep CPU
 
@@ -657,9 +711,9 @@ void main_task(){
             //task_ended = false;
         }
 
-        //check if anything was sent over bluetooth
-        readBlueToothMessage();
-        if(lock){
+        //check if anything was sent over bluetooth.
+        //result of the message is stored in last bit
+        if(xTaskNotifyWait(0) & >> 31 == true){
             //activate the electromagnet to lock/unlock the device
             digitalWrite(HIGH, magnetPin)
             vTaskDelay(1s) //locking the task here doesn't mater as the lock is the only this that is used here
@@ -685,11 +739,12 @@ void main_task(){
 
         //constantly check task notify with 0 wait
         if(xTaskNotifyWait(0) == true){
-            //if notification recieved go here
+            //if notification received go here
 
-            //one or the other depending on the value returned
+            //either depending on the value returned
             send_message_ended = notification_value
             sound_control_ended = notification_value
+            read_bluetooth_ended  = notification_value
         }
     }
 }
@@ -697,13 +752,9 @@ void main_task(){
 ```
 
 ##### *setup*
-- RTOS:
-  - set ``#define configUSE_TICKLESS_IDLE 1`` in ``FreeRTOSConfig.h`` as this is necessary to use tickless mode.
-  - use ``nrf_gpio_cfg_sense_input`` to set up the CPU to wake up on a ``HIGH`` from the motion detection module.
-- Bluetooth
-  - Use the ``ble_gap_sec_params_t`` class to set up the security of the connection. Set encryption key parameter and enable "Man in the Middle" protection.
-  - Then write ``ble_gap_sec_params_t`` in ``sd_ble_gap_sec_params_reply`` so that the BLE can use it.
-  - For the sake of simplicity, everything else from the original Bluetooth implementation should be kept. The setup should be in the constructor of the function
+- set ``#define configUSE_TICKLESS_IDLE 1`` in ``FreeRTOSConfig.h`` as this is necessary to use tickless mode.
+- use ``nrf_gpio_cfg_sense_input`` to setup the CPU to wakup on a ``HIGH`` from the motion detection module.
+
 
 ##### *Receiving Message*
 
@@ -714,8 +765,9 @@ Upon receiving a message, the lock should be opened by setting the PIN ``D3`` to
 free RTOS implements a low energy consumption mode called tickless. When in tickless mode all tasks stop running and the CPU is no longer being periodically woken up. To avoid issues by stopping tasks mid-execution, tickless mode shouldn't be activated until the ``sound_control_task`` and ``send_message_task`` both confirm that they are done running.
 
 This can be done simply by using ``xTaskNotifyWait()`` and reading the value sent :
-- ``0b0x`` for the message task
-- ``0b1x`` for the sound control task
+- ``0b10x`` for the message task
+- ``0b01x`` for the sound control task
+- ``0b11x`` for the bluetooth task
 - ``0bx1`` if the task has ended
 - ``0bx0`` if the task is running
 
@@ -727,21 +779,6 @@ Then send the ``__WFI()`` instruction in assembly to put the CPU in sleep mode.
 Once the CPU is in sleep mode it needs to be woken up. Because it was put in sleep mode through ``__WFI()`` it should wake up on any GPIO interrupt sent by the motion detector. It should also wake up on any interrupt from the BLE module. After the wakeup, the code restarts from the ``__WFI()``. Run ``xTaskResumeTick()`` to exit tickless mode.
 
 
-
-<!--TODO :
-bluetooth protocole
--->
-
-
-
-##### *Sources*
-
-- [Arduino Blueprints](https://ecs-pw-facweb.ecs.csus.edu/~dahlquid/eee174/S2016/handouts/Labs/ArduinoLab/ArduinoInfo/Arduino%20Android%20Blueprints.pdf)
-- [Bluetooth Core Specs](https://books.google.fr/books?hl=fr&lr=&id=3nCuDgAAQBAJ&oi=fnd&pg=PR7&dq=Bluetooth+Core+specification+Version+4.0&ots=rNT4oZsbn9&sig=SK5aTwJ0tB2Mz4RHhEvGAyDLYtM&redir_esc=y#v=onepage&q&f=true)
-- [BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
-- [Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
-- [Bluetooth Documentation](https://github.com/fanqh/document/blob/master/Core_v5.0.pdf)
-
 ## Function Organization
 
 The standard when using free RTOS is to start the tasks in ``setup()``.
@@ -750,7 +787,7 @@ from ``setup()`` create an object for each class. Their constructor should handl
 
 Create the tasks with ``xTaskCreate()``.
 
-start the code with ``vTaskStartScheduler()`` which will start all the classes. The logic should be entirely operated in the ``mainTask()``
+start the code with ``vTaskStartScheduler()`` which will start all the classes. The logic should be entirely operated in the ``mainTask()`` from the ``Main`` class
 
 ## Security
 
