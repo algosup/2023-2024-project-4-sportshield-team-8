@@ -37,16 +37,17 @@ For each phase of the project, a meeting will be held to identify the risks that
 ## 3. Risk Identification
 
 To identify the risks that could occur during the project, we will use the following methods:
+
 - Brainstorming sessions with the ROCC and stakeholders.
 - Review of historical data from similar projects.
 - Research into market competitors.
 - Put ourselves in the potential customer's shoes by consulting forums or discussing the product with them.
 - Search for known previous problems with the hardware supplied.
 
-The risks will be classified into 
- categories:
+The risks will be classified:
+
 - School risks: risks related to the school.
-- Team members risks: risks related to the team members.
+- Team members' risks: risks related to the team members.
 - Communication risks: risks related to the communication with the client.
 - Confidentiality risks: risks related to information leaks about the project.
 - Technical risks: risks related to the technical aspect of the project.
@@ -60,7 +61,8 @@ A [risk matrix](https://docs.google.com/spreadsheets/d/15Px0PwHy_TG3o0VkdEeP_r_7
 ## 5. Risk Mitigation Strategies
 
 For each identified risk, a mitigation strategy will be developed between the four following strategies:
-- Avoidance: eliminate the risk by considering alternative that meet project requirements with lower risks.
+
+- Avoidance: eliminate the risk by considering alternatives that meet project requirements with lower risks.
 - Reduction: reduce the probability or impact of the risk.
 - Transfer: transfer the risk to a third party.
 - Acceptance: accept the risk and develop a contingency plan.
