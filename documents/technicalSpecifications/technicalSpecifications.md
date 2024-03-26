@@ -1,6 +1,83 @@
-# SportShield
+# SportShield Technical Specifications
 
-### Technical
+<details>
+<summary>
+
+## Table of Contents
+
+</summary>
+
+- [SportShield](#sportshield)
+  - [Table of Contents](#table-of-contents)
+    - [Technical](#technical)
+- [Audience](#audience)
+- [Deliverable](#deliverable)
+  - [Details](#details)
+  - [Requirements](#requirements)
+  - [Nice to have](#nice-to-have)
+  - [Priorities](#priorities)
+- [Technical Architecture](#technical-architecture)
+  - [Technology Used](#technology-used)
+    - [Hardware](#hardware)
+    - [Software](#software)
+  - [Conventions](#conventions)
+    - [Files \& Folder](#files--folder)
+      - [*Naming*](#naming)
+      - [*Organisation*](#organisation)
+    - [GitHub](#github)
+      - [*Naming*](#naming-1)
+      - [*Organisation*](#organisation-1)
+    - [Coding](#coding)
+      - [*Naming*](#naming-2)
+      - [*Comments*](#comments)
+      - [*Formatting*](#formatting)
+      - [*Miscellaneous*](#miscellaneous)
+  - [Key Functionality](#key-functionality)
+    - [Motion Detection](#motion-detection)
+      - [*Organisation*](#organisation-2)
+      - [*Initialization*](#initialization)
+      - [*Threshold*](#threshold)
+      - [*Output*](#output)
+      - [*Get movement*](#get-movement)
+      - [*Reference and resources*](#reference-and-resources)
+    - [NFC](#nfc)
+      - [*Reference and resources*](#reference-and-resources-1)
+    - [GPS](#gps)
+      - [*Organization*](#organization)
+      - [*re-used code*](#re-used-code)
+      - [*reference and resources*](#reference-and-resources-2)
+    - [GPRS](#gprs)
+      - [*Class organization*](#class-organization)
+      - [*Power down/up*](#power-downup)
+      - [*Communication*](#communication)
+      - [*Re-using legacy code*](#re-using-legacy-code)
+      - [*Parallel tasking*](#parallel-tasking)
+      - [*Reference and resources*](#reference-and-resources-3)
+    - [Buzzer](#buzzer)
+      - [*Small motion*](#small-motion)
+      - [*Large motion*](#large-motion)
+      - [*Class organization*](#class-organization-1)
+      - [*Sound loop*](#sound-loop)
+      - [*Reference and resources*](#reference-and-resources-4)
+    - [Bluetooth](#bluetooth)
+      - [Organization](#organization-1)
+      - [*setup*](#setup)
+      - [*BLE event handler*](#ble-event-handler)
+      - [*Sources*](#sources)
+    - [Main task and low energy](#main-task-and-low-energy)
+      - [*Organization*](#organization-2)
+      - [*Setup*](#setup-1)
+      - [*Receiving Message*](#receiving-message)
+      - [*Tickless mode*](#tickless-mode)
+        - [*Waking up*](#waking-up)
+      - [*Sources*](#sources-1)
+  - [Function Organization](#function-organization)
+  - [Security](#security)
+- [Glossary](#glossary)
+
+</details>
+
+# Technical
 
 # Audience
 
@@ -258,7 +335,7 @@ The provided GPS module is the [CD-PA1010D](https://www.mouser.com/pdfDocs/CD_PA
 
 ##### *Organization*
 
-Although the time to send a message could be reduced if the start up of the SIM and GPS query were done concurrently, this would be minimal as the CPU does concurrent programming through RTOS and there are already 3 or more tasks running on a single core CPU at that moment in the execution. Code simplicity is favored instead in this instance.
+Although the time to send a message could be reduced if the start-up of the SIM and GPS query were done concurrently, this would be minimal as the CPU does concurrent programming through RTOS and there are already 3 or more tasks running on a single core CPU at that moment in the execution. Code simplicity is favored instead in this instance.
 
 ```cpp
 class GPS{
@@ -306,6 +383,7 @@ the existing function from ``SS_05-03_anglais-batterycontrol.ino`` should be mov
 - ``convertDMMtoDD()`` is used to translate GPS return into the correct format for the server. should be private
 
 The objects in this code snippet should be declared in private in the ``GPS`` class instead of as global variables as they are in the original code.
+
 ```cpp
 Adafruit_GPS GPS(&Serial1);
 #define GPS_WKUP_PIN D8
@@ -316,6 +394,7 @@ The ``position_acquired`` and ``start_gps`` variables are removed as they are no
 this code snippet from the loop becomes the ``getGPSdata()`` private function. Note that the ``GPS`` object in this snippet and the one after is the ``Adafruit_GPS`` class.
 
 This should become the ``updateCoordinate()`` function
+
 ```cpp
 GPS.read();
 if (GPS.newNMEAreceived()) {
@@ -334,6 +413,7 @@ GPS.sendCommand("$PMTK225,4*2F");  // send to backup mode
 ```
 
 ##### *reference and resources*
+
 - [GNSS module Data Sheet](https://www.mouser.com/pdfDocs/CD_PA1010D_Datasheet_v03.pdf)
 - [Adafruit GPS library](https://github.com/adafruit/Adafruit_GPS)
 
@@ -397,11 +477,12 @@ When a large motion is detected the GPS position is sent over HTTP. This message
 
 "batterie" is not a typo, this is a French company that named their variable in French.
 
-##### *re-using legacy code*
+##### *Re-using legacy code*
 
 We have no way to try the SIM800L as our hardware is non-functional. As such we should mostly keep the original setup and protocol:
 
 This code snippet needs to be added at the start of the class constructor.
+
 ```cpp
 sim800l = new SIM800L((Stream*)&Serial2, SIM800_RST_PIN, 200, 512);
 pinMode(SIM800_DTR_PIN, OUTPUT);
@@ -410,6 +491,7 @@ pinMode(SIM800_DTR_PIN, OUTPUT);
 ``sim_setup()`` needs to be added after that in the constructor. The delay can be kept in place as the setup should be done before any RTOS task is scheduled.
 
 Sending a message looks like this in the original code and should be kept as is:
+
 ```cpp
 sim800l->setupGPRS("iot.1nce.net");
 sim800l->connectGPRS();
@@ -609,14 +691,13 @@ void motionDetection(){
 - [FreeRTOS documentation](https://www.freertos.org/Documentation/Mastering-the-FreeRTOS-Real-Time-Kernel.v1.0.pdf)
 - [SportShield's electronic diagram](./image/SportShield%20-%20Electronics%20diagram%20.png)
 
-
 ### Bluetooth
 
-The program will mostly reuse the existing bluetooth code. It will be modified so that the pairing is password protected.
+The program will mostly reuse the existing Bluetooth code. It will be modified so that the pairing is password-protected.
 
 ##### Organization
 
-Bluetooth should be it's own task. 
+Bluetooth should be its task.
 
 ```cpp
 class Bluetooth{
@@ -649,13 +730,12 @@ public:
 
 ##### *setup*
 
-- Use ``ble_gap_sec_params_t`` class to setup the security of the connection. Set encryption key parameter and enable "Man in the Middle" protection.
-- For the sake of simplicity everything else from the original bluetooth implementation should be kept. The setup should be in the constructor of the class.
+- Use the ``ble_gap_sec_params_t`` class to set up the security of the connection. Set encryption key parameter and enable "Man in the Middle" protection.
+- For the sake of simplicity, everything else from the original Bluetooth implementation should be kept. The setup should be in the constructor of the class.
 
 ##### *BLE event handler*
 
-Create an event handler that listen to ``p_ble_evt``. When the event is ``BLE_GAP_EVT_SEC_PARAMS_REQUEST`` send a reply with the security parameter. This should prompt the user to enter the pass-key.
-
+Create an event handler that listens to `p_ble_evt```. When the event is ``BLE_GAP_EVT_SEC_PARAMS_REQUEST`` send a reply with the security parameter. This should prompt the user to enter the passkey.
 
 ##### *Sources*
 
@@ -665,13 +745,14 @@ Create an event handler that listen to ``p_ble_evt``. When the event is ``BLE_GA
 - [Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
 - [Bluetooth Documentation](https://github.com/fanqh/document/blob/master/Core_v5.0.pdf)
 
-### Main task and low energy 
+### Main task and low energy
 
-The CPU should be in low energy and wakeup when the BLE module finds an attempt to pair or when a GPIO interrupt happens. However since other part of the code are operating concurrently with freeRTOS, entering and exiting low energy mode will be a challenge.
+The CPU should be in low energy and wake up when the BLE module finds an attempt to pair or when a GPIO interrupt happens. However, since other parts of the code are operating concurrently with freeRTOS, entering and exiting low energy mode will be a challenge.
 
 ##### *Organization*
 
 This is a simplified organization of the class as it does not take into account any Bluetooth functions that need to be transferred from the legacy code.
+
 ```cpp
 class Main{
 
@@ -751,23 +832,24 @@ void main_task(){
 
 ```
 
-##### *setup*
-- set ``#define configUSE_TICKLESS_IDLE 1`` in ``FreeRTOSConfig.h`` as this is necessary to use tickless mode.
-- use ``nrf_gpio_cfg_sense_input`` to setup the CPU to wakup on a ``HIGH`` from the motion detection module.
+##### *Setup*
 
+- set ``#define configUSE_TICKLESS_IDLE 1`` in ``FreeRTOSConfig.h`` as this is necessary to use tickless mode.
+- use `nrf_gpio_cfg_sense_input` to set up the CPU to wake up on a ``HIGH`` from the motion detection module.
 
 ##### *Receiving Message*
 
 Upon receiving a message, the lock should be opened by setting the PIN ``D3`` to high for 1s as it is the one controlling the locking mechanism.
 
-##### *tickless mode*
+##### *Tickless mode*
 
 free RTOS implements a low energy consumption mode called tickless. When in tickless mode all tasks stop running and the CPU is no longer being periodically woken up. To avoid issues by stopping tasks mid-execution, tickless mode shouldn't be activated until the ``sound_control_task`` and ``send_message_task`` both confirm that they are done running.
 
 This can be done simply by using ``xTaskNotifyWait()`` and reading the value sent :
+
 - ``0b10x`` for the message task
 - ``0b01x`` for the sound control task
-- ``0b11x`` for the bluetooth task
+- ``0b11x`` for the Bluetooth task
 - ``0bx1`` if the task has ended
 - ``0bx0`` if the task is running
 
@@ -775,9 +857,17 @@ Once both tasks have returned the confirmation that they are done and the motion
 
 Then send the ``__WFI()`` instruction in assembly to put the CPU in sleep mode.
 
-###### *waking up*
+###### *Waking up*
+
 Once the CPU is in sleep mode it needs to be woken up. Because it was put in sleep mode through ``__WFI()`` it should wake up on any GPIO interrupt sent by the motion detector. It should also wake up on any interrupt from the BLE module. After the wakeup, the code restarts from the ``__WFI()``. Run ``xTaskResumeTick()`` to exit tickless mode.
 
+##### *Sources*
+
+- [Arduino Blueprints](https://ecs-pw-facweb.ecs.csus.edu/~dahlquid/eee174/S2016/handouts/Labs/ArduinoLab/ArduinoInfo/Arduino%20Android%20Blueprints.pdf)
+- [Bluetooth Core Specs](https://books.google.fr/books?hl=fr&lr=&id=3nCuDgAAQBAJ&oi=fnd&pg=PR7&dq=Bluetooth+Core+specification+Version+4.0&ots=rNT4oZsbn9&sig=SK5aTwJ0tB2Mz4RHhEvGAyDLYtM&redir_esc=y#v=onepage&q&f=true)
+- [BLE introduction](https://elainnovation.com/en/what-is-bluetooth-low-energy/)
+- [Arduino BLE reference](https://www.arduino.cc/reference/en/libraries/arduinoble/)
+- [Bluetooth Documentation](https://github.com/fanqh/document/blob/master/Core_v5.0.pdf)
 
 ## Function Organization
 
@@ -798,9 +888,9 @@ This will completely lock anyone from using the USB port, as the USB communicati
 
 A reversible approach would be to create password protection on the USB port.
 
-# Glossary 
+# Glossary
 
-- **NFC (Near Field Communication)**: A communication protocol that enables two devices, such as a smartphone and a sensor, to communicate when they are placed close together, typically within a few centimetres.
+- **NFC (Near Field Communication)**: A communication protocol that enables two devices, such as a smartphone and a sensor, to communicate when they are placed close together, typically within a few centimeters.
 
 - **Bluetooth**: A wireless technology standard for exchanging data over short distances using short-wavelength radio waves.
 Firmware: Software that is embedded into hardware devices to control their functionality.
