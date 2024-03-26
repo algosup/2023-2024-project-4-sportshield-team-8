@@ -339,7 +339,7 @@ GPS.sendCommand("$PMTK225,4*2F");  // send to backup mode
 
 ### GPRS
 
-The GSM/2G SIM800L Module will be used to send messages over the 2G network in HTML. When not in use this module will be in power down mode to save battery. As we are unable to test this module's functionality for hardware reasons we will reuse the existing code for 2G communication.
+The GSM/2G SIM800L Module will be used to send messages over the 2G network in HTTP. When not in use this module will be in power down mode to save battery. As we are unable to test this module's functionality for hardware reasons we will reuse the existing code for 2G communication.
 
 ##### *Class organization*
 
@@ -393,7 +393,7 @@ The AT command ``AT+CPOWD=1``<sub>[p.24](https://datasheetspdf.com/pdf-down/S/I/
 
 ##### *Communication*
 
-When a large motion is detected the GPS position is sent over HTML. This message should be formatted as follows to be understood by the server ``{"latitude": LATITUDE, "longitude": LONGITUDE, "batterie": BATTERY LEVEL}``. ``LATITUDE`` and ``LONGITUDE`` are floats we get from the GPS library. ``BATTERY LEVEL`` is a float between 0 & 1. This should also be sent if the battery gets below 20%.
+When a large motion is detected the GPS position is sent over HTTP. This message should be formatted as follows to be understood by the server ``{"latitude": LATITUDE, "longitude": LONGITUDE, "batterie": BATTERY LEVEL}``. ``LATITUDE`` and ``LONGITUDE`` are floats we get from the GPS library. ``BATTERY LEVEL`` is a float between 0 & 1. This should also be sent if the battery gets below 20%.
 
 "batterie" is not a typo, this is a French company that named their variable in French.
 
@@ -760,3 +760,45 @@ As an added layer of security, the P0.13 and P0.15 Pins should be set as GPIO pi
 This will completely lock anyone from using the USB port, as the USB communication protocol wouldn't exist anymore on the device. This can not be reverted.
 
 A reversible approach would be to create password protection on the USB port.
+
+# Glossary 
+
+- **NFC (Near Field Communication)**: A communication protocol that enables two devices, such as a smartphone and a sensor, to communicate when they are placed close together, typically within a few centimetres.
+
+- **Bluetooth**: A wireless technology standard for exchanging data over short distances using short-wavelength radio waves.
+Firmware: Software that is embedded into hardware devices to control their functionality.
+
+- **CPU (Central Processing Unit)**: The main component of a computer or embedded system that performs most of the processing tasks.
+RTOS (Real-Time Operating System): An operating system that guarantees a certain capability within a specified time constraint, commonly used in embedded systems and applications that require real-time processing.
+
+- **GPRS (General Packet Radio Service)**: A packet-oriented mobile data service on the 2G and 3G cellular communication systems.
+
+- **GNSS (Global Navigation Satellite System)**: A satellite-based navigation system that provides location and time information anywhere on or near the Earth.
+
+- **GPS (Global Positioning System)**: A satellite-based navigation system that provides location and time information anywhere on or near the Earth.
+
+- **Interrupt**: A signal to the CPU that notifies it of an event that needs immediate attention, causing the CPU to temporarily suspend its current operation and execute a specified interrupt handler function.
+
+- **Tickless Mode**: A power-saving mode in real-time operating systems where the system timer (tick) is disabled during idle periods to reduce power consumption.
+
+- **GPIO (General Purpose Input/Output)**: A generic pin on a microcontroller that can be configured to either input or output digital signals.
+
+- **BLE**: Bluetooth Low Energy, a wireless communication technology designed for short-range communication with low power consumption.
+
+- **FreeRTOS**: A real-time operating system kernel for embedded devices, facilitating multitasking and task scheduling.
+
+- **RTOS**: Real-Time Operating System, an operating system designed for real-time tasks and applications.
+
+- **SDK**: Software Development Kit, a set of tools, libraries, and documentation for developing software applications.
+
+- **UART**: Universal Asynchronous Receiver-Transmitter, a hardware communication protocol used for serial communication.
+
+- **Encapsulation**: The bundling of data and methods that operate on that data into a single unit, typically a class in object-oriented programming.
+
+- **Race Condition**: A situation in concurrent programming where the outcome of execution depends on the timing or interleaving of multiple threads or processes.
+
+- **Man in the Middle (MITM) Attack**: A cyber attack where an attacker intercepts and possibly alters communication between two parties without their knowledge.
+
+- **FIFO**: First-In, First-Out, a data structure where the first elements added are the first to be removed.
+
+- **HTTP**: Hypertext Transfer Protocol, a protocol used for transferring hypertext requests and information on the World Wide Web.
