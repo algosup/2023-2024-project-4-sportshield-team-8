@@ -181,6 +181,8 @@ The test cases would follow the template described hereunder:
   {Name of the test case 2}{Failed/Passed}{Error Related}{Testing Status}{Priority}{Test Size}{Start Date}{End Date}
 ```
 
+![Test case example](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/Documents/documents/qualityAssurance/img/testCases.png)
+
 Moreover, when the name of the test case is clicked, a new window opens with more information such as:
 
 - Description of the test;
@@ -201,8 +203,6 @@ It would follow the next template:
   ## Expected Result
     *text*
 ```
-
-![Test case example](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/Documents/documents/qualityAssurance/img/testCases.png)
 
 The test cases are divided into many scroll-down menus and can be organised according to the one you want to see. The scroll-down menus are composed of labels, they are all defined in the table below.
 
