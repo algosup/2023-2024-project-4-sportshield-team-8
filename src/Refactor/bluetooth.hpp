@@ -7,8 +7,8 @@ private:
     BLEService lockService;
     BLECharacteristic lockCharacteristic;
 
-    Bluetooth() : lockService("1234-5678-9012-3456", BLERead | BLEWrite),
-                  lockCharacteristic("ABCD-5678-9012-EFGH", BLERead | BLEWrite, sizeof(int)) {
+    Bluetooth() : lockService("19B10000-E8F2-537E-4F6C-D104768A1213", BLERead | BLEWrite),
+                  lockCharacteristic("19B10000-E8F2-537E-4F6C-D104768A1213", BLERead | BLEWrite, sizeof(int)) {
         // Constructor is private for singleton implementation
     }
 
