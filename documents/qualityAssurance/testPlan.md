@@ -155,25 +155,23 @@ GitHub Issues serves as an integrated issue-tracking tool, facilitating the crea
 
 To ensure every feature and all possible bugs have been tested and mitigated, test cases are created and stored in GitHub Projects.
 
-![Test case example](testCases.png)
-
-The test cases are defined and classed on different feature names corresponding to the device and the project.
+They are defined and classed on different feature names corresponding to the device and the project.
 The different names are the following:
 
-- NFC;
-- Battery;
-- Bluetooth;
-- Trigger Mode;
-- Lock Mode;
-- Unlock Mode;
-- Software;
-- Alarm;
-- Low Battery Management;
-- Notifications;
-- GPRS;
-- Motion Detection;
-- GPS;
-- Security.
+- NFC
+- Battery
+- Bluetooth
+- Trigger Mode
+- Lock Mode
+- Unlock Mode
+- Software
+- Alarm
+- Low Battery Management
+- Notifications
+- GPRS
+- Motion Detection
+- GPS
+- Security
 
 The test cases would follow the template described hereunder:
 
@@ -181,8 +179,8 @@ The test cases would follow the template described hereunder:
 {Name Of The Feature}:
   {Name Of The Test Case 1}{Failed/Passed}{Error Related}{Testing Status}{Priority}{Test Size}{Start Date}{End Date}
   {Name of the test case 2}{Failed/Passed}{Error Related}{Testing Status}{Priority}{Test Size}{Start Date}{End Date}
-
 ```
+
 Moreover, when the name of the test case is clicked, a new window opens with more information such as:
 
 - Description of the test;
@@ -203,6 +201,9 @@ It would follow the next template:
   ## Expected Result
     *text*
 ```
+
+![Test case example](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/Documents/documents/qualityAssurance/img/testCases.png)
+
 The test cases are divided into many scroll-down menus and can be organised according to the one you want to see. The scroll-down menus are composed of labels, they are all defined in the table below.
 
 |Failed/Passed|Error Related|Testing Status|Priority|Test Size|
@@ -225,11 +226,12 @@ When a bug is identified by the Quality Assurance team, they will promptly gener
 This practice streamlines the developer's workflow by furnishing them with a comprehensive and articulate description of the bug. \
 From the title to the step-by-step instructions, clarity and precision are paramount to ensure the developer team fully grasps the nature of the issue and the necessary actions for resolution. \
 This meticulous approach aims to enhance the overall quality of the product. \
-To facilitate this process, a standardized template has been devised to optimize the quality and simplicity of bug reports. [Bug Report Template Here](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/.github/ISSUE_TEMPLATE/bugReport.yml)
+To facilitate this process, a standardised template has been devised to optimise the quality and simplicity of bug reports. \
+It can be found [here](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/.github/ISSUE_TEMPLATE/bugReport.yml).
 
 Here's what the template looks like when opening a new Bug report related issue:
 
-![Bug Report Template](bugReport.png)
+![Bug Report Template]([bugReport.png](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/Documents/documents/qualityAssurance/img/bugReport.png))
 
 After the resolution of the bug, the development team is responsible for updating the initial bug report to indicate that it has been fixed. \
 Following verification and confirmation of the bug fix's effectiveness, the issue will be closed. \
@@ -244,18 +246,25 @@ But is also a way to keep track of the progress and to ensure the quality of the
 
 ### c. Exit Criteria
 
-Exit criteria are the predefined conditions that signify when testing activities can be concluded. \ They serve as benchmarks to assess whether the testing objectives have been met and whether the software system is ready for the next phase or release. \
+Exit criteria are the predefined conditions that signify when testing activities can be concluded. \
+They serve as benchmarks to assess whether the testing objectives have been met and whether the software system is ready for the next phase or release. \
 By adhering to these criteria, we ensure that testing is terminated without compromising the quality or efficacy of the software.
 
-- Shock detection: 99% (1st most critical function)
-  o Accuracy of the detection itself, and accuracy of the detection level (small or major movement)
-- Unlock: 99% (2nd most critical function)
-- Alarm: 98% (perceived quality of the system)
+Before we can finalize the testing phase and prepare the product for distribution, certain critical objectives must be met.
+
+#### ➭ <ins> Client's Reliability Indicators </ins>
+
+- Shock detection accuracy: 99%
+- Detection level accuracy (small or major): 99%
+- Unlock: 99%
+- Alarm: 98%
 - Shock notification: 95%
 - GNSS position acquisition and transmission: 80%
-Battery operating time between two charges
-- 7 days operating duration (minimal requirement)
-- Considering 6 hours in activation mode + 18 hours in stand-by (not activated) mode per day
+
+**Battery operating time between two charges**
+
+- 7 days operating duration
+- Considering 6 hours in activation mode 
 
 ## IV. Plan Test Environment
 
