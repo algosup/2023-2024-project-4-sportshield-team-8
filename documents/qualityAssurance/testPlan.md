@@ -123,28 +123,39 @@ The main things that will be tested and quality checked during this project will
 - The documents
 - The software and how it behaves with the hardware
 
-It is necessary to check the quality of the document to ensure that the right message has been conveyed through the document, ensuring the communication is effective is paramount in such a project. \
-We will be checking the documents for grammatical and typographical mistakes, as well as their content.
-Such checking prevents us from missing important points and ensures the communication and understanding of the document will be effective. To gain time and prevent mistakes, errors and potential threats for the product.
+It is imperative to thoroughly assess the quality of the documentation to guarantee that it effectively conveys the intended message. Ensuring clear and effective communication is crucial in any project of this nature. \
+Our review process will encompass scrutinizing the documents for grammatical and typographical errors, as well as evaluating the content for accuracy and completeness. This meticulous examination helps mitigate the risk of overlooking essential points and ensures that the document facilitates effective communication and understanding. By proactively addressing errors and potential threats, we aim to optimize efficiency and safeguard the integrity of the product.
 
-Concerning the software and the hardware, we will be testing the features that have been defined and are featured in both functional and technical specifications. Such features will be tested to make sure that they comply with the client's requirements, and that they are working as expected. We will try to replicate as closely as possible the environment that the final product will be in.
+Regarding both the software and hardware components, our testing focus will be on the features outlined in the functional and technical specifications. \
+These features will undergo rigorous testing to ensure alignment with the client's requirements and to verify their functionality as intended. Our objective is to replicate the final product's environment as closely as feasible during testing.
 
 ### c. Testing Environment
 
-To prove that our solution is effective and respects the client's requirements, we have to put the device in the condition it will be in on the terrain. However, the anti-theft device is currently aimed at a mountain environment. The client wants to widen the range of use of the device, to a rural and more diverse audience. \
-We assume that the final environment of the device will be a rural environment in a temperate climate.
-We are lucky to be in such an environment here in France. Meaning that the testing environment will be easy to replicate.
-However, we cannot test the device in a mountain environment, so will assume that if it works in a temperate climate, it could be working in a mountain environment, but we cannot ensure it.
+To validate the effectiveness of our solution and ensure alignment with the client's requirements, our team must subject the device to conditions resembling its intended usage environment. \
+Presently, the anti-theft device is optimized for mountainous terrain. However, the client seeks to broaden its applicability to encompass a wider demographic, including rural areas. As such, we will transition the testing environment to simulate a rural setting within a temperate climate. \
+Fortunately, our team is situated in France, providing convenient access to such conditions for replication. While we may not be able to directly test the device in a mountainous environment, we will operate under the assumption that its performance in a temperate climate will correlate with functionality in mountainous regions, although this cannot be guaranteed.
 
 ### d. Test Tool
 
 #### ➭ 1. GitHub Actions
 
+GitHub Actions are employed for continuous integration and deployment, ensuring that tests are automatically executed with each push to the main branch. Additionally, during the development phase, the workflow is triggered on each push to the dev branch. \
+This setup enables us to identify any functional issues in the code, pinpoint when they occurred, and determine which changes led to them.
+
 #### ➭ 2. GitHub Projects
+
+GitHub Projects will be utilized to compile a comprehensive list of test cases along with their current status. This platform will act as a repository for unit tests, providing visibility into what requires testing, the methodologies involved, and the expected outcomes. \
+Leveraging GitHub Projects will significantly aid in streamlining the testing process and enhancing the overall quality of the product
 
 #### ➭ 3. GitHub Issues
 
+GitHub Issues serves as an integrated issue-tracking tool, facilitating the creation and management of issues while enabling assignment to team members. Primarily, Quality Assurance is responsible for generating GitHub Issues for every problem identified within the product.
+
 ### e. Test Cases
+
+To ensure every feature and all possible bugs have been tested and mitigated, test cases are created and stored in GitHub Projects.
+
+![Test case example](image.png)
 
 ### f. Unit Tests
 
