@@ -20,8 +20,8 @@ ___
     - [➭ Primary Audience](#-primary-audience)
     - [➭ Secondary Audience](#-secondary-audience)
   - [c. Hardware/Software Used](#c-hardwaresoftware-used)
-    - [➭  Hardware ](#--hardware-)
-    - [➭  Software ](#--software-)
+    - [➭  Hardware](#--hardware-)
+    - [➭  Software](#--software-)
 - [II. Test Strategy](#ii-test-strategy)
   - [a. Quality Assurance Team](#a-quality-assurance-team)
   - [b. Testing Scope](#b-testing-scope)
@@ -33,8 +33,8 @@ ___
   - [e. Test Cases](#e-test-cases)
   - [f. Unit Tests](#f-unit-tests)
   - [g. Bug Reports](#g-bug-reports)
-    - [➭  By Users ](#--by-users-)
-    - [➭  By QAs ](#--by-qas-)
+    - [➭  By Users](#--by-users-)
+    - [➭  By QAs](#--by-qas-)
 - [III. Test Criteria](#iii-test-criteria)
 - [IV. Plan Test Environment](#iv-plan-test-environment)
 - [V. Schedule](#v-schedule)
@@ -51,7 +51,7 @@ ___
 
 Our team was tasked with upgrading and maintaining an already existing prototype device. This device, made by CORIS Innovation, is an anti-theft connected device. \
 We were asked to bring our expertise to the device to improve the overall quality, security, and usability of the device. \
-We have to improve the battery's lifespan and optimise its performance, manage the device using the NFC technology, allow multi-threading, and improve the security of the device.
+We have to improve the battery's lifespan and optimize its performance, manage the device using the NFC technology, allow multi-threading, and improve the security of the device.
 
 This document will serve to set all the tools and define the strategy for testing the product to make sure that our refurbished device complies with the client's requirements.
 
@@ -155,10 +155,11 @@ GitHub Issues serves as an integrated issue-tracking tool, facilitating the crea
 
 To ensure every feature and all possible bugs have been tested and mitigated, test cases are created and stored in GitHub Projects.
 
-![Test case example](image.png)
+![Test case example](testCases.png)
 
 The test cases are defined and classed on different feature names corresponding to the device and the project.
 The different names are the following:
+
 - NFC;
 - Battery;
 - Bluetooth;
@@ -182,7 +183,8 @@ The test cases would follow the template described hereunder:
   {Name of the test case 2}{Failed/Passed}{Error Related}{Testing Status}{Priority}{Test Size}{Start Date}{End Date}
 
 ```
-Moreover, when the name of the test case is clicked, a new window opens with more information such as: 
+Moreover, when the name of the test case is clicked, a new window opens with more information such as:
+
 - Description of the test;
 - Pre-conditions;
 - steps to realise it;
@@ -219,7 +221,41 @@ The test cases are divided into many scroll-down menus and can be organised acco
 
 #### ➭ <ins> By QAs </ins>
 
+When a bug is identified by the Quality Assurance team, they will promptly generate a GitHub issue within the project's repository. \
+This practice streamlines the developer's workflow by furnishing them with a comprehensive and articulate description of the bug. \
+From the title to the step-by-step instructions, clarity and precision are paramount to ensure the developer team fully grasps the nature of the issue and the necessary actions for resolution. \
+This meticulous approach aims to enhance the overall quality of the product. \
+To facilitate this process, a standardized template has been devised to optimize the quality and simplicity of bug reports. [Bug Report Template Here](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/.github/ISSUE_TEMPLATE/bugReport.yml)
+
+Here's what the template looks like when opening a new Bug report related issue:
+
+![Bug Report Template](bugReport.png)
+
+After the resolution of the bug, the development team is responsible for updating the initial bug report to indicate that it has been fixed. \
+Following verification and confirmation of the bug fix's effectiveness, the issue will be closed. \
+This systematic approach ensures that all stakeholders are informed of the bug's status and promotes transparency throughout the resolution process. \
+But is also a way to keep track of the progress and to ensure the quality of the product.
+
 ## III. Test Criteria
+
+### a. Suspension Criteria
+
+### b. Entry Criteria
+
+### c. Exit Criteria
+
+Exit criteria are the predefined conditions that signify when testing activities can be concluded. \ They serve as benchmarks to assess whether the testing objectives have been met and whether the software system is ready for the next phase or release. \
+By adhering to these criteria, we ensure that testing is terminated without compromising the quality or efficacy of the software.
+
+- Shock detection: 99% (1st most critical function)
+  o Accuracy of the detection itself, and accuracy of the detection level (small or major movement)
+- Unlock: 99% (2nd most critical function)
+- Alarm: 98% (perceived quality of the system)
+- Shock notification: 95%
+- GNSS position acquisition and transmission: 80%
+Battery operating time between two charges
+- 7 days operating duration (minimal requirement)
+- Considering 6 hours in activation mode + 18 hours in stand-by (not activated) mode per day
 
 ## IV. Plan Test Environment
 
