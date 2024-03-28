@@ -157,6 +157,60 @@ To ensure every feature and all possible bugs have been tested and mitigated, te
 
 ![Test case example](image.png)
 
+The test cases are defined and classed on different feature names corresponding to the device and the project.
+The different names are the following:
+- NFC;
+- Battery;
+- Bluetooth;
+- Trigger Mode;
+- Lock Mode;
+- Unlock Mode;
+- Software;
+- Alarm;
+- Low Battery Management;
+- Notifications;
+- GPRS;
+- Motion Detection;
+- GPS;
+- Security.
+
+The test cases would follow the template described hereunder:
+
+```
+{Name Of The Feature}:
+  {Name Of The Test Case 1}{Failed/Passed}{Error Related}{Testing Status}{Priority}{Test Size}{Start Date}{End Date}
+  {Name of the test case 2}{Failed/Passed}{Error Related}{Testing Status}{Priority}{Test Size}{Start Date}{End Date}
+
+```
+Moreover, when the name of the test case is clicked, a new window opens with more information such as: 
+- Description of the test;
+- Pre-conditions;
+- steps to realise it;
+- Expected result.
+
+It would follow the next template:
+
+```
+{Name Of The Test Case}:
+  ## Description
+    *text*
+  ## Pre-conditions
+    *list*
+  ## Steps
+    *list*
+  ## Expected Result
+    *text*
+```
+The test cases are divided into many scroll-down menus and can be organised according to the one you want to see. The scroll-down menus are composed of labels, they are all defined in the table below.
+
+|Failed/Passed|Error Related|Testing Status|Priority|Test Size|
+|-------------|-------------|--------------|--------|---------|
+|- Testing    |- Syntax     |- Done        |- Low   |- S      |
+|- Passed     |- Hardware   |- Doing       |- Medium|- M      |
+|- Failed     |- Software   |- Will Do     |- High  |- L      |
+|             |- Hardware/Software|- Won't Do|- Critical|- XL |
+|             |- None       |- Pending     |        |- XXL    |
+
 ### f. Unit Tests
 
 ### g. Bug Reports
