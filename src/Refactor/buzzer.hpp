@@ -26,7 +26,7 @@ class Buzzer{
     TaskHandle_t sound_control_task_handle = NULL;
 
     // Movement type indicator
-    volatile bool largeMovement_ = false;
+    volatile uint8_t largeMovement_ = 0;
 
 public:
     //constructor
@@ -34,12 +34,10 @@ public:
         pinMode(buzzerPin_, OUTPUT);
     }
 
-  
-    //setter functions for movement_time and cycle_time
-    setX()//...
+    void setLargeMovement(unint8_t isLargeMovement) {
+        largeMovement_ = isLargeMovement;
+    }
 
-    //getter functions for the taskHandle
-    getXTaskHandle()//...
 
     static void digitalWriteTask(void *parameters) {
         Buzzer* buzzer = static_cast<Buzzer*>(parameters);
@@ -71,9 +69,6 @@ public:
             }
         }
     }
-
-
-    void soundControlTask(TaskHandle_t mainTaskHandle);
 
     void startBuzzerTask() {
         xTaskCreate(digitalWriteTask, "BuzzerTask", 1024, this, 1, &digitalWriteTaskHandle_);
