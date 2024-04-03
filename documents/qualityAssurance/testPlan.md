@@ -20,28 +20,43 @@ ___
     - [➭ Primary Audience](#-primary-audience)
     - [➭ Secondary Audience](#-secondary-audience)
   - [c. Hardware/Software Used](#c-hardwaresoftware-used)
-    - [➭  Hardware](#--hardware-)
-    - [➭  Software](#--software-)
+    - [➭  Hardware ](#--hardware-)
+    - [➭  Software ](#--software-)
 - [II. Test Strategy](#ii-test-strategy)
   - [a. Quality Assurance Team](#a-quality-assurance-team)
   - [b. Testing Scope](#b-testing-scope)
-  - [c. Testing Environment](#c-testing-environment)
-  - [d. Test Tool](#d-test-tool)
+  - [c. Testing Type](#c-testing-type)
+    - [1.Requirements Analysis](#1requirements-analysis)
+    - [2.System Design](#2system-design)
+    - [3.Implementation (Coding)](#3implementation-coding)
+    - [4.Integration Testing](#4integration-testing)
+    - [5.System Testing](#5system-testing)
+    - [6.User Acceptance Testing (UAT)](#6user-acceptance-testing-uat)
+    - [7.User Feedback](#7user-feedback)
+  - [d. Testing Environment](#d-testing-environment)
+  - [e. Test Tools](#e-test-tools)
     - [➭ 1. GitHub Actions](#-1-github-actions)
     - [➭ 2. GitHub Projects](#-2-github-projects)
     - [➭ 3. GitHub Issues](#-3-github-issues)
-  - [e. Test Cases](#e-test-cases)
-  - [f. Unit Tests](#f-unit-tests)
-  - [g. Bug Reports](#g-bug-reports)
-    - [➭  By Users](#--by-users-)
-    - [➭  By QAs](#--by-qas-)
+  - [f. Test Cases](#f-test-cases)
+  - [g. Unit Tests](#g-unit-tests)
+  - [h. Bug Reports](#h-bug-reports)
+    - [➭  By Users ](#--by-users-)
+    - [➭  By QAs ](#--by-qas-)
 - [III. Test Criteria](#iii-test-criteria)
+  - [a. Suspension Criteria](#a-suspension-criteria)
+  - [b. Entry Criteria](#b-entry-criteria)
+  - [c. Exit Criteria](#c-exit-criteria)
+    - [➭  Client's Reliability Indicators ](#--clients-reliability-indicators-)
 - [IV. Plan Test Environment](#iv-plan-test-environment)
 - [V. Schedule](#v-schedule)
 - [VI. Test Deliverables](#vi-test-deliverables)
-- [VII. Conclusion \& Acknowledgments](#vii-conclusion--acknowledgments)
-- [VIII. Glossary](#viii-glossary)
-- [IX. Sources](#ix-sources)
+    - [➭  Test plan/test strategy ](#--test-plantest-strategy-)
+    - [➭  Test cases ](#--test-cases-)
+    - [➭  Bug Reports  ](#--bug-reports--)
+    - [➭  Bug data report ](#--bug-data-report-)
+- [VII. Glossary](#vii-glossary)
+- [VII. Sources](#vii-sources)
 
 </details>
 
@@ -129,13 +144,50 @@ Our review process will encompass scrutinizing the documents for grammatical and
 Regarding both the software and hardware components, our testing focus will be on the features outlined in the functional and technical specifications. \
 These features will undergo rigorous testing to ensure alignment with the client's requirements and to verify their functionality as intended. Our objective is to replicate the final product's environment as closely as feasible during testing.
 
-### c. Testing Environment
+### c. Testing Type
+
+Our team has opted for the waterfall testing strategy, which follows a linear and sequential approach to software testing. This method is structured into distinct phases, with each phase being completed before progressing to the next. The waterfall model is best suited for projects with well-defined requirements and a fixed scope.
+Here's an overview of the phases:
+
+#### 1.Requirements Analysis
+
+Testing begins by thoroughly understanding the requirements outlined during the software development's requirements analysis phase. Testers carefully review these requirements to develop comprehensive test cases and test plans.
+
+#### 2.System Design
+
+During this phase, testers create test cases based on the system design documents. Additionally, they may formulate test data and plans for setting up the testing environment.
+
+#### 3.Implementation (Coding)
+
+Once the development team finishes coding, testing activities focus on unit testing. This involves testing individual components or modules in isolation. This part will principally be handled by the development team.
+
+#### 4.Integration Testing
+
+Testers verify that the individual modules integrate seamlessly and function correctly together. This ensures that interactions between different modules do not lead to unexpected behavior.
+
+#### 5.System Testing
+
+After integration testing, the entire system undergoes comprehensive testing. Testers assess whether the software meets the specified requirements and operates correctly across various scenarios.
+
+#### 6.User Acceptance Testing (UAT)
+
+In the final phase, users or stakeholders test the software in a real-world environment to validate that it fulfills their needs and expectations. This testing typically occurs before the software is released into production.
+
+#### 7.User Feedback
+
+Once the software is released, users provide feedback on its performance and usability. This feedback is crucial for identifying areas that require improvement and enhancing the software's overall quality.
+
+<br>
+
+This model then loops if a new bug is found or if a new feature is added to the software. The testing team will then have to go back to the requirements analysis phase and start the process again. It might be a long process but it is the most efficient way to ensure the quality of the product.
+
+### d. Testing Environment
 
 To validate the effectiveness of our solution and ensure alignment with the client's requirements, our team must subject the device to conditions resembling its intended usage environment. \
 Presently, the anti-theft device is optimized for mountainous terrain. However, the client seeks to broaden its applicability to encompass a wider demographic, including rural areas. As such, we will transition the testing environment to simulate a rural setting within a temperate climate. \
 Fortunately, our team is situated in France, providing convenient access to such conditions for replication. While we may not be able to directly test the device in a mountainous environment, we will operate under the assumption that its performance in a temperate climate will correlate with functionality in mountainous regions, although this cannot be guaranteed.
 
-### d. Test Tool
+### e. Test Tools
 
 #### ➭ 1. GitHub Actions
 
@@ -151,7 +203,7 @@ Leveraging GitHub Projects will significantly aid in streamlining the testing pr
 
 GitHub Issues serves as an integrated issue-tracking tool, facilitating the creation and management of issues while enabling assignment to team members. Primarily, Quality Assurance is responsible for generating GitHub Issues for every problem identified within the product.
 
-### e. Test Cases
+### f. Test Cases
 
 To ensure every feature and all possible bugs have been tested and mitigated, test cases are created and stored in GitHub Projects.
 
@@ -214,11 +266,23 @@ The test cases are divided into many scroll-down menus and can be organised acco
 |             |- Hardware/Software|- Won't Do|- Critical|- XL |
 |             |- None       |- Pending     |        |- XXL    |
 
-### f. Unit Tests
+### g. Unit Tests
 
-### g. Bug Reports
+Unit tests play a crucial role in validating the functionality of individual components or modules within the software. These tests are conducted in isolation to confirm that each unit behaves as expected.
+
+In our project, unit tests are developed using C++ and executed using the Arduino IDE, which aligns with the language and platform driving the project forward.
+
+### h. Bug Reports
 
 #### ➭ <ins> By Users </ins>
+
+Once the product hits the market, one of the most crucial testing phases kicks off. The product will face real-world conditions, potentially revealing bugs or issues that our team might have missed during development. \
+To address these challenges, we'll provide a link to our GitHub repository in the User Manual. This link will grant users access to the "Issues" section, where they can review known issues and submit new ones if necessary. \
+We've prepared a bug report template, which we'll outline in detail later in this document. \
+Gathering extensive feedback from users once the product is launched is of utmost importance. This feedback will play a crucial role in identifying and rectifying errors within the product, ultimately enhancing its efficiency for future iterations.
+
+Communication between bug reporters and our QA team will be facilitated through the comments section within each issue. This allows our team to request additional information if necessary, expanding our troubleshooting capabilities. \
+Once the bug and its solution have been clearly defined by both the user and the QA team, it becomes the responsibility of the development team to rectify and eliminate bugs from the program.
 
 #### ➭ <ins> By QAs </ins>
 
@@ -264,16 +328,44 @@ Before we can finalize the testing phase and prepare the product for distributio
 **Battery operating time between two charges**
 
 - 7 days operating duration
-- Considering 6 hours in activation mode 
+- Considering 6 hours in activation mode
+
+### d. Bug Data Report
 
 ## IV. Plan Test Environment
 
 ## V. Schedule
 
+| Task                              | Start date     | End date       | Estimated duration |
+| --------------------------------- | -------------- | -------------- | ------------------ |
+| Issue and pull request templates  | March 11, 2024 | March 11, 2024 | 1 day              |
+| Functional Specifications review  | March 15, 202  | March 18, 2024 | 2 days             |
+| Technical Specifications review   | March 21, 2024 | March 26, 2024 | 3 days             |
+| Test Plan Creation                | March 22,2024  | April 10, 2024 |  19 days           |
+| Github Actions                    | March 26, 2024 | April 4, 2024  | 9 days             |
+| Test Cases Definition             | March 26, 2024 | March 29, 2024 | 3 days             |
+| First meeting with team 5 & 7 QA  | April 2, 2024  | April 2, 2024  | 1 day              |
+| Second meeting with team 5 & 7 QA | April 8, 2024  | April 8, 2024  | 1 day              |
+| User Manual review                | March 8, 2024  | March 10, 2024 | 2 days             |
+
 ## VI. Test Deliverables
 
-## VII. Conclusion & Acknowledgments
+#### ➭ <ins> Test Plan</ins>
 
-## VIII. Glossary
+define the testing strategy and how the tests will be done.
 
-## IX. Sources
+#### ➭ <ins> Test Cases </ins>
+
+define all the test that will be done to be sure that the game works as intended.
+
+#### ➭ <ins> Bug Reports  </ins>
+
+Bug reports: report all the bugs that have been found during the tests.
+
+#### ➭ <ins> Bug Data Report </ins>
+
+Bug data report: to have a global view of the bugs that have been found during the tests.
+
+## VII. Glossary
+
+## VII. Sources
