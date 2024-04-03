@@ -295,7 +295,7 @@ It can be found [here](https://github.com/algosup/2023-2024-project-4-sportshiel
 
 Here's what the template looks like when opening a new Bug report related issue:
 
-![Bug Report Template]([bugReport.png](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/Documents/documents/qualityAssurance/img/bugReport.png))
+![Bug Report Template](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/Documents/documents/qualityAssurance/img/bugReport.png)
 
 After the resolution of the bug, the development team is responsible for updating the initial bug report to indicate that it has been fixed. \
 Following verification and confirmation of the bug fix's effectiveness, the issue will be closed. \
