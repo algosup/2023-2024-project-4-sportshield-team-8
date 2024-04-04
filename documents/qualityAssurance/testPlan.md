@@ -26,25 +26,25 @@ ___
   - [a. Quality Assurance Team](#a-quality-assurance-team)
   - [b. Testing Scope](#b-testing-scope)
   - [c. Testing Type](#c-testing-type)
-  - [d. Assumptions](#d-assumptions)
-    - [1.Requirements Analysis](#1requirements-analysis)
+    - [1. Requirements Analysis](#1-requirements-analysis)
     - [2.System Design](#2system-design)
     - [3.Implementation (Coding)](#3implementation-coding)
-    - [4.Integration Testing](#4integration-testing)
+    - [4. Integration Testing](#4-integration-testing)
     - [5.System Testing](#5system-testing)
     - [6.User Acceptance Testing (UAT)](#6user-acceptance-testing-uat)
     - [7.User Feedback](#7user-feedback)
-  - [d. Testing Environment](#d-testing-environment)
-  - [e. Test Tools](#e-test-tools)
+  - [d. Assumptions](#d-assumptions)
+  - [e. Testing Environment](#e-testing-environment)
+  - [f. Test Tools](#f-test-tools)
     - [➭ 1. GitHub Actions](#-1-github-actions)
     - [➭ 2. GitHub Projects](#-2-github-projects)
     - [➭ 3. GitHub Issues](#-3-github-issues)
-  - [f. Test Cases](#f-test-cases)
-  - [g. Unit Tests](#g-unit-tests)
-  - [h. Bug Reports](#h-bug-reports)
+  - [g. Test Cases](#g-test-cases)
+  - [h. Unit Tests](#h-unit-tests)
+  - [i. Bug Reports](#i-bug-reports)
     - [➭  By Users ](#--by-users-)
     - [➭  By QAs ](#--by-qas-)
-  - [i. Bug Data Report](#i-bug-data-report)
+  - [j. Bug Data Report](#j-bug-data-report)
 - [III. Test Criteria](#iii-test-criteria)
   - [a. Suspension Criteria](#a-suspension-criteria)
     - [➭  Critical Path Incomplete Tasks ](#--critical-path-incomplete-tasks-)
@@ -57,6 +57,13 @@ ___
     - [➭  Client's Reliability Indicators ](#--clients-reliability-indicators-)
     - [➭  Document's Completion and Quality ](#--documents-completion-and-quality-)
 - [IV. Plan Test Environment](#iv-plan-test-environment)
+  - [Desktop](#desktop)
+    - [➭  Windows ](#--windows-)
+    - [➭  Mac ](#--mac-)
+    - [➭  Linux ](#--linux-)
+  - [Software](#software)
+  - [Hardware](#hardware)
+  - [SportShield Mobile Application](#sportshield-mobile-application)
 - [V. Schedule](#v-schedule)
 - [VI. Test Deliverables](#vi-test-deliverables)
     - [➭  Test Plan](#--test-plan)
@@ -73,8 +80,8 @@ ___
 ### a. Overview
 
 Our team was tasked with upgrading and maintaining an already existing prototype device. This device, made by CORIS Innovation, is an anti-theft connected device. \
-We were asked to bring our expertise to the device to improve the overall quality, security, and usability of the device. \
-We have to improve the battery's lifespan and optimize its performance, manage the device using the NFC technology, allow multi-threading, and improve the security of the device.
+Our team was asked to bring our expertise to the device to improve the overall quality, security, and usability of the device. \
+We have to improve the battery's lifespan and optimise its performance, manage the device using the NFC technology, allow multi-threading, and improve the security of the device.
 
 This document will serve to set all the tools and define the strategy for testing the product to make sure that our refurbished device complies with the client's requirements.
 
@@ -84,11 +91,11 @@ This document will serve to set all the tools and define the strategy for testin
 
 This document is primarily intended for:
 
-- **Quality Assurance**: to comprehend what should be tested, how, the expected result and why. To make sure that the device complies with the client's requirements. To define the stakes of testing and guide the team through tests. To then improve the quality of the final product.
+- **Quality Assurance**: to comprehend what should be tested, the expected result, how to get expected result and why. To make sure that the device complies with the client's requirements. To define the stakes of testing and guide the team through tests. To then improve the quality of the final product.
 
 #### ➭ Secondary Audience
 
-- **Future testers**: to understand our team's testing strategy, what we have tested, how, and the final result. To apply our testing strategy if it complies with what they are testing. To have an insight into our testing strategies to keep on upgrading the product.
+- **Future testers**: to understand our team's testing strategy, what our QA team have tested, how, and the final result. To apply our testing strategy if it complies with what they are testing. To have an insight into our testing strategies to keep on upgrading the product.
 
 ### c. Hardware/Software Used
 
@@ -137,11 +144,11 @@ Team Five's QA:
 
 - PREVOST Antoine (Windows)
 
-However, we have the possibility of having a Linux environment as BERNARD Max has such an Operating System. It will be useful to widen the range of the testing environment.
+However, our team has the possibility of having a Linux environment as BERNARD Max has such an Operating System. It will be useful to widen the range of the testing environment.
 
-Each team will run their own Testing Strategies and will use their own Test Plan document while testing.
-Whenever a product is tested by a team their own strategy will be applied for testing.
-I'd recommend you to check [Team 5's](https://github.com/algosup/2023-2024-project-4-sportshield-team-5/blob/main/documents/quality-assurance/test-plan.md) and [Team 7's]() Test Plan
+Each team will run their Testing Strategies and will use their own Test Plan document while testing.
+Whenever a product is tested by a team their strategy will be applied for testing.
+I'd recommend you to check [Team 5's](https://github.com/algosup/2023-2024-project-4-sportshield-team-5/blob/main/documents/quality-assurance/test-plan.md) and [Team 7's]() Test Plan.
 
 ### b. Testing Scope
 
@@ -151,7 +158,7 @@ The main things that will be tested and quality checked during this project will
 - The software and how it behaves with the hardware
 
 It is imperative to thoroughly assess the quality of the documentation to guarantee that it effectively conveys the intended message. Ensuring clear and effective communication is crucial in any project of this nature. \
-Our review process will encompass scrutinizing the documents for grammatical and typographical errors, as well as evaluating the content for accuracy and completeness. This meticulous examination helps mitigate the risk of overlooking essential points and ensures that the document facilitates effective communication and understanding. By proactively addressing errors and potential threats, we aim to optimize efficiency and safeguard the integrity of the product.
+Our review process will encompass scrutinising the documents for grammatical and typographical errors, as well as evaluating the content for accuracy and completeness. This meticulous examination helps mitigate the risk of overlooking essential points and ensures that the document facilitates effective communication and understanding. By proactively addressing errors and potential threats, we aim to optimise efficiency and safeguard the integrity of the product.
 
 Regarding both the software and hardware components, our testing focus will be on the features outlined in the functional and technical specifications. \
 These features will undergo rigorous testing to ensure alignment with the client's requirements and to verify their functionality as intended. Our objective is to replicate the final product's environment as closely as feasible during testing.
@@ -161,16 +168,7 @@ These features will undergo rigorous testing to ensure alignment with the client
 Our team has opted for the waterfall testing strategy, which follows a linear and sequential approach to software testing. This method is structured into distinct phases, with each phase being completed before progressing to the next. The waterfall model is best suited for projects with well-defined requirements and a fixed scope.
 Here's an overview of the phases:
 
-### d. Assumptions
-
-For this project, we depend on the hardware provided by the client, which has undergone testing prior to the commencement of our project and has been confirmed to be in a functional state. \
-Consequently, we operate under the assumption that the hardware does not introduce any issues, as we have confidence in its reliability based on the client's assurances.
-
-In the event that problems arise, any bugs or issues can only be attributed to our team's actions, as we acknowledge our responsibility for the software's performance. \
-Additionally, we recognize that any potential hardware malfunctions could result from mishandling on our part. \
-Therefore, we are committed to ensuring the integrity of both the software and the hardware throughout the project's lifecycle.
-
-#### 1.Requirements Analysis
+#### 1. Requirements Analysis
 
 Testing begins by thoroughly understanding the requirements outlined during the software development's requirements analysis phase. \
 Testers carefully review these requirements to develop comprehensive test cases and test plans.
@@ -184,9 +182,9 @@ Additionally, they may formulate test data and plans for setting up the testing 
 
 Once the development team finishes coding, testing activities focus on unit testing. This involves testing individual components or modules in isolation. This part will principally be handled by the development team.
 
-#### 4.Integration Testing
+#### 4. Integration Testing
 
-Testers verify that the individual modules integrate seamlessly and function correctly together. This ensures that interactions between different modules do not lead to unexpected behavior.
+Testers verify that the individual modules integrate seamlessly and function correctly together. This ensures that interactions between different modules do not lead to unexpected behaviour.
 
 #### 5.System Testing
 
@@ -194,7 +192,7 @@ After integration testing, the entire system undergoes comprehensive testing. Te
 
 #### 6.User Acceptance Testing (UAT)
 
-In the final phase, users or stakeholders test the software in a real-world environment to validate that it fulfills their needs and expectations. This testing typically occurs before the software is released into production.
+In the final phase, users or stakeholders test the software in a real-world environment to validate that it fulfils their needs and expectations. This testing typically occurs before the software is released into production.
 
 #### 7.User Feedback
 
@@ -204,13 +202,22 @@ Once the software is released, users provide feedback on its performance and usa
 
 This model then loops if a new bug is found or if a new feature is added to the software. The testing team will then have to go back to the requirements analysis phase and start the process again. It might be a long process but it is the most efficient way to ensure the quality of the product.
 
-### d. Testing Environment
+### d. Assumptions
+
+For this project, our team depends on the hardware provided by the client, which has undergone testing before the commencement of our project and has been confirmed to be in a functional state. \
+Consequently, we operate under the assumption that the hardware does not introduce any issues, as we have confidence in its reliability based on the client's assurances.
+
+If problems arise, any bugs or issues can only be attributed to our team's actions, as the team acknowledges our responsibility for the software's performance. \
+Additionally, we recognise that any potential hardware malfunctions could result from mishandling on our part. \
+Therefore, our team is committed to ensuring the integrity of both the software and the hardware throughout the project's lifecycle.
+
+### e. Testing Environment
 
 To validate the effectiveness of our solution and ensure alignment with the client's requirements, our team must subject the device to conditions resembling its intended usage environment. \
-Presently, the anti-theft device is optimized for mountainous terrain. However, the client seeks to broaden its applicability to encompass a wider demographic, including rural areas. As such, we will transition the testing environment to simulate a rural setting within a temperate climate. \
-Fortunately, our team is situated in France, providing convenient access to such conditions for replication. While we may not be able to directly test the device in a mountainous environment, we will operate under the assumption that its performance in a temperate climate will correlate with functionality in mountainous regions, although this cannot be guaranteed.
+Presently, the anti-theft device is optimised for mountainous terrain. However, the client seeks to broaden its applicability to encompass a wider demographic, including rural areas. As such, we will transition the testing environment to simulate a rural setting within a temperate climate. \
+Fortunately, our team is situated in France, providing convenient access to such conditions for replication. While our team may not be able to directly test the device in a mountainous environment, we will operate under the assumption that its performance in a temperate climate will correlate with functionality in mountainous regions, although this cannot be guaranteed.
 
-### e. Test Tools
+### f. Test Tools
 
 #### ➭ 1. GitHub Actions
 
@@ -219,14 +226,14 @@ This setup enables us to identify any functional issues in the code, pinpoint wh
 
 #### ➭ 2. GitHub Projects
 
-GitHub Projects will be utilized to compile a comprehensive list of test cases along with their current status. This platform will act as a repository for unit tests, providing visibility into what requires testing, the methodologies involved, and the expected outcomes. \
-Leveraging GitHub Projects will significantly aid in streamlining the testing process and enhancing the overall quality of the product
+GitHub Projects will be utilised to compile a comprehensive list of test cases along with their current status. This platform will act as a repository for unit tests, providing visibility into what requires testing, the methodologies involved, and the expected outcomes. \
+Leveraging GitHub Projects will significantly aid in streamlining the testing process and enhancing the overall quality of the product.
 
 #### ➭ 3. GitHub Issues
 
 GitHub Issues serves as an integrated issue-tracking tool, facilitating the creation and management of issues while enabling assignment to team members. Primarily, Quality Assurance is responsible for generating GitHub Issues for every problem identified within the product.
 
-### f. Test Cases
+### g. Test Cases
 
 To ensure every feature and all possible bugs have been tested and mitigated, test cases are created and stored in GitHub Projects.
 
@@ -289,18 +296,18 @@ The test cases are divided into many scroll-down menus and can be organised acco
 |             |- Hardware/Software|- Won't Do|- Critical|- XL |
 |             |- None       |- Pending     |        |- XXL    |
 
-### g. Unit Tests
+### h. Unit Tests
 
 Unit tests play a crucial role in validating the functionality of individual components or modules within the software. These tests are conducted in isolation to confirm that each unit behaves as expected.
 
 In our project, unit tests are developed using C++ and executed using the Arduino IDE, which aligns with the language and platform driving the project forward.
 
-### h. Bug Reports
+### i. Bug Reports
 
 #### ➭ <ins> By Users </ins>
 
 Once the product hits the market, one of the most crucial testing phases kicks off. The product will face real-world conditions, potentially revealing bugs or issues that our team might have missed during development. \
-To address these challenges, we'll provide a link to our GitHub repository in the User Manual. This link will grant users access to the "Issues" section, where they can review known issues and submit new ones if necessary. \
+To address these challenges, our Technical Writer will provide a link to our GitHub repository in the User Manual. This link will grant users access to the "Issues" section, where they can review known issues and submit new ones if necessary. \
 We've prepared a bug report template, which we'll outline in detail later in this document. \
 Gathering extensive feedback from users once the product is launched is of utmost importance. This feedback will play a crucial role in identifying and rectifying errors within the product, ultimately enhancing its efficiency for future iterations.
 
@@ -325,8 +332,7 @@ Following verification and confirmation of the bug fix's effectiveness, the issu
 This systematic approach ensures that all stakeholders are informed of the bug's status and promotes transparency throughout the resolution process. \
 But is also a way to keep track of the progress and to ensure the quality of the product.
 
-### i. Bug Data Report
-
+### j. Bug Data Report
 
 ## III. Test Criteria
 
@@ -358,9 +364,9 @@ The specified criteria include:
 
 Exit criteria are the predefined conditions that signify when testing activities can be concluded. \
 They serve as benchmarks to assess whether the testing objectives have been met and whether the software system is ready for the next phase or release. \
-By adhering to these criteria, we ensure that testing is terminated without compromising the quality or efficacy of the software.
+By adhering to these criteria, our team ensures that testing is terminated without compromising the quality or efficacy of the software.
 
-Before we can finalize the testing phase and prepare the product for distribution, certain critical objectives must be met.
+Before we can finalise the testing phase and prepare the product for distribution, certain critical objectives must be met.
 
 #### ➭ <ins> Client's Reliability Indicators </ins>
 
@@ -387,30 +393,87 @@ Before we can finalize the testing phase and prepare the product for distributio
 
 - The documentation should be clear and concise, comprehensible to external parties involved in and out of the project, whether technical or non-technical. Furthermore, the document should maintain consistency in terms of format throughout.
 
-
-
 ## IV. Plan Test Environment
 
-1. OS WINDOWS MAC LINUX
-2. SERVEUR voir doc d'Antoine
-3. IDE ARDUINO VERSION
-4. Language + librairies
-5. HARDWARE
-6. App SportShield + my phone spec
+### Desktop
+
+#### ➭ <ins> Windows </ins>
+
+- [Lenovo Thinkbook 14](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkbook-series/thinkbook-14-iil/20sl)
+  - Windows 11 Pro
+  - 14-inch (1920 x 1080)
+  - Processor: Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz
+  - RAM: 16.0 GB
+  - System type: 64-bit operating system, x64-based processor
+
+#### ➭ <ins> Mac </ins>
+
+- [MacBook Air 2020](https://www.apple.com/fr/macbook-air-m1/)
+  - 13.3 inch (2560 x 1600)
+  - macOS Ventura 13.0
+  - Apple M1 Chip
+
+#### ➭ <ins> Linux </ins>
+
+- [Lenovo Thinkbook 14](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkbook-series/thinkbook-14-iil/20sl)
+  - Linux 6.1.0-18, Debian 12
+  - 14-inch (1920 x 1080)
+  - Processor: Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz
+  - RAM: 16.0 GB
+  - System type: 64-bit operating system, x64-based processor
+
+- [Lenovo Ideapad Slim 1-14AST-05](https://www.lenovo.com/fr/fr/p/laptops/ideapad/ideapad-100/ideapad-slim-1-14ast-05/88ips101358?orgRef=https%253A%252F%252Fwww.google.com%252F)
+  - Ubuntu 22.04.4 LTS x64
+  - Processor: AMD® A4-9120e Radeon R3
+  - RAM: 4.0 GB
+  
+### Software
+
+- C++ 11.
+- nRF52 Assembly.
+- Arduino IDE & Compiler v2.3.3.
+  list of dependencies:
+  - NRF52_MBED_TimerInterrupt V1.4.1.
+  - adafruit-nrfutil 0.5.3 (for Linux).
+  - ArduinoBLE V1.3.6.
+  - Sim800L HTTP connector V1.14.0.
+  - Seeed Arduino LSM6DS3 V2.0.3.
+  - OneWire V2.3.7.
+  - FreeRTOS V11.0.1-5.
+
+### Hardware
+
+- Xiao BLE Sense nrf52840.
+- GSM/2G SIM800L Module.
+- NFC antenna.
+- 3.7V, 1100mAh lithium battery.
+- 12V buzzer.
+- 12V, 500mA Electromagnet.
+- LSM6DS3 (Accelerometer).
+
+### SportShield Mobile Application
+
+- SportShield App:
+  - Version 1.0
+
+- [Redmi 10](https://www.mi.com/fr/product/redmi-10-2022/specs/)
+  - Android 11, MIUI 12.5
+  - Processor: MediaTek Helio G88
+  - RAM: 4.0 GB
 
 ## V. Schedule
 
 | Task                              | Start date     | End date       | Estimated duration |
 | --------------------------------- | -------------- | -------------- | ------------------ |
 | Issue and pull request templates  | March 11, 2024 | March 11, 2024 | 1 day              |
-| Functional Specifications review  | March 15, 202  | March 18, 2024 | 2 days             |
+| Functional Specifications review  | March 15, 2024 | March 18, 2024 | 2 days             |
 | Technical Specifications review   | March 21, 2024 | March 26, 2024 | 3 days             |
-| Test Plan Creation                | March 22,2024  | April 10, 2024 |  19 days           |
+| Test Plan Creation                | March 22, 2024 | April 10, 2024 |  19 days           |
 | Github Actions                    | March 26, 2024 | April 4, 2024  | 9 days             |
 | Test Cases Definition             | March 26, 2024 | March 29, 2024 | 3 days             |
 | First meeting with team 5 & 7 QA  | April 2, 2024  | April 2, 2024  | 1 day              |
 | Second meeting with team 5 & 7 QA | April 8, 2024  | April 8, 2024  | 1 day              |
-| User Manual review                | March 8, 2024  | March 10, 2024 | 2 days             |
+| User Manual review                | April 8, 2024  | April 10, 2024 | 2 days             |
 
 ## VI. Test Deliverables
 
@@ -420,7 +483,7 @@ define the testing strategy and how the tests will be done.
 
 #### ➭ <ins> Test Cases </ins>
 
-define all the test that will be done to be sure that the game works as intended.
+define all the tests that will be done to be sure that the game works as intended.
 
 #### ➭ <ins> Bug Reports  </ins>
 
