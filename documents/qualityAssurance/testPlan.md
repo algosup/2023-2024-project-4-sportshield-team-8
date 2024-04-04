@@ -26,6 +26,7 @@ ___
   - [a. Quality Assurance Team](#a-quality-assurance-team)
   - [b. Testing Scope](#b-testing-scope)
   - [c. Testing Type](#c-testing-type)
+  - [d. Assumptions](#d-assumptions)
     - [1.Requirements Analysis](#1requirements-analysis)
     - [2.System Design](#2system-design)
     - [3.Implementation (Coding)](#3implementation-coding)
@@ -43,18 +44,25 @@ ___
   - [h. Bug Reports](#h-bug-reports)
     - [➭  By Users ](#--by-users-)
     - [➭  By QAs ](#--by-qas-)
+  - [i. Bug Data Report](#i-bug-data-report)
 - [III. Test Criteria](#iii-test-criteria)
   - [a. Suspension Criteria](#a-suspension-criteria)
+    - [➭  Critical Path Incomplete Tasks ](#--critical-path-incomplete-tasks-)
+    - [➭  Critical Bug Incidents ](#--critical-bug-incidents-)
+    - [➭  High Volume of Bugs ](#--high-volume-of-bugs-)
+    - [➭  Environmental Challenges ](#--environmental-challenges-)
+    - [➭  Stakeholder Directives ](#--stakeholder-directives-)
   - [b. Entry Criteria](#b-entry-criteria)
   - [c. Exit Criteria](#c-exit-criteria)
     - [➭  Client's Reliability Indicators ](#--clients-reliability-indicators-)
+    - [➭  Document's Completion and Quality ](#--documents-completion-and-quality-)
 - [IV. Plan Test Environment](#iv-plan-test-environment)
 - [V. Schedule](#v-schedule)
 - [VI. Test Deliverables](#vi-test-deliverables)
-    - [➭  Test plan/test strategy ](#--test-plantest-strategy-)
-    - [➭  Test cases ](#--test-cases-)
+    - [➭  Test Plan](#--test-plan)
+    - [➭  Test Cases ](#--test-cases-)
     - [➭  Bug Reports  ](#--bug-reports--)
-    - [➭  Bug data report ](#--bug-data-report-)
+    - [➭  Bug Data Report ](#--bug-data-report-)
 - [VII. Glossary](#vii-glossary)
 - [VII. Sources](#vii-sources)
 
@@ -131,6 +139,10 @@ Team Five's QA:
 
 However, we have the possibility of having a Linux environment as BERNARD Max has such an Operating System. It will be useful to widen the range of the testing environment.
 
+Each team will run their own Testing Strategies and will use their own Test Plan document while testing.
+Whenever a product is tested by a team their own strategy will be applied for testing.
+I'd recommend you to check [Team 5's](https://github.com/algosup/2023-2024-project-4-sportshield-team-5/blob/main/documents/quality-assurance/test-plan.md) and [Team 7's]() Test Plan
+
 ### b. Testing Scope
 
 The main things that will be tested and quality checked during this project will be:
@@ -149,13 +161,24 @@ These features will undergo rigorous testing to ensure alignment with the client
 Our team has opted for the waterfall testing strategy, which follows a linear and sequential approach to software testing. This method is structured into distinct phases, with each phase being completed before progressing to the next. The waterfall model is best suited for projects with well-defined requirements and a fixed scope.
 Here's an overview of the phases:
 
+### d. Assumptions
+
+For this project, we depend on the hardware provided by the client, which has undergone testing prior to the commencement of our project and has been confirmed to be in a functional state. \
+Consequently, we operate under the assumption that the hardware does not introduce any issues, as we have confidence in its reliability based on the client's assurances.
+
+In the event that problems arise, any bugs or issues can only be attributed to our team's actions, as we acknowledge our responsibility for the software's performance. \
+Additionally, we recognize that any potential hardware malfunctions could result from mishandling on our part. \
+Therefore, we are committed to ensuring the integrity of both the software and the hardware throughout the project's lifecycle.
+
 #### 1.Requirements Analysis
 
-Testing begins by thoroughly understanding the requirements outlined during the software development's requirements analysis phase. Testers carefully review these requirements to develop comprehensive test cases and test plans.
+Testing begins by thoroughly understanding the requirements outlined during the software development's requirements analysis phase. \
+Testers carefully review these requirements to develop comprehensive test cases and test plans.
 
 #### 2.System Design
 
-During this phase, testers create test cases based on the system design documents. Additionally, they may formulate test data and plans for setting up the testing environment.
+During this phase, testers create test cases based on the system design documents. \
+Additionally, they may formulate test data and plans for setting up the testing environment.
 
 #### 3.Implementation (Coding)
 
@@ -302,11 +325,34 @@ Following verification and confirmation of the bug fix's effectiveness, the issu
 This systematic approach ensures that all stakeholders are informed of the bug's status and promotes transparency throughout the resolution process. \
 But is also a way to keep track of the progress and to ensure the quality of the product.
 
+### i. Bug Data Report
+
+
 ## III. Test Criteria
 
 ### a. Suspension Criteria
 
+#### ➭ <ins> Critical Path Incomplete Tasks </ins>
+
+#### ➭ <ins> Critical Bug Incidents </ins>
+
+#### ➭ <ins> High Volume of Bugs </ins>
+
+#### ➭ <ins> Environmental Challenges </ins>
+
+#### ➭ <ins> Stakeholder Directives </ins>
+
 ### b. Entry Criteria
+
+Entry criteria are prerequisites that must be fulfilled before testing commencement. They guarantee the testing process's effectiveness and efficiency. \
+These criteria necessitate clear definition, team consensus, and understanding among testers to ensure seamless execution.
+
+The specified criteria include:
+
+- Conclusion of the coding phase (for a feature);
+- Development, implementation, and execution of unit tests;
+- Establishment of a functional and specified test environment and strategy;
+- Defined and clear test cases.
 
 ### c. Exit Criteria
 
@@ -330,9 +376,27 @@ Before we can finalize the testing phase and prepare the product for distributio
 - 7 days operating duration
 - Considering 6 hours in activation mode
 
-### d. Bug Data Report
+#### ➭ <ins> Document's Completion and Quality </ins>
+
+- Documents: 100% completion
+  - Functional Specifications
+  - Technical Specifications
+  - User Manual
+  - Test Plan
+  - Management Documents
+
+- The documentation should be clear and concise, comprehensible to external parties involved in and out of the project, whether technical or non-technical. Furthermore, the document should maintain consistency in terms of format throughout.
+
+
 
 ## IV. Plan Test Environment
+
+1. OS WINDOWS MAC LINUX
+2. SERVEUR voir doc d'Antoine
+3. IDE ARDUINO VERSION
+4. Language + librairies
+5. HARDWARE
+6. App SportShield + my phone spec
 
 ## V. Schedule
 
