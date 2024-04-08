@@ -20,8 +20,8 @@ ___
     - [➭ Primary Audience](#-primary-audience)
     - [➭ Secondary Audience](#-secondary-audience)
   - [c. Hardware/Software Used](#c-hardwaresoftware-used)
-    - [➭  Hardware ](#--hardware-)
-    - [➭  Software ](#--software-)
+    - [➭  Hardware](#--hardware-)
+    - [➭  Software](#--software-)
 - [II. Test Strategy](#ii-test-strategy)
   - [a. Quality Assurance Team](#a-quality-assurance-team)
   - [b. Testing Scope](#b-testing-scope)
@@ -42,34 +42,34 @@ ___
   - [g. Test Cases](#g-test-cases)
   - [h. Unit Tests](#h-unit-tests)
   - [i. Bug Reports](#i-bug-reports)
-    - [➭  By Users ](#--by-users-)
-    - [➭  By QAs ](#--by-qas-)
+    - [➭  By Users](#--by-users-)
+    - [➭  By QAs](#--by-qas-)
 - [III. Test Criteria](#iii-test-criteria)
   - [a. Suspension Criteria](#a-suspension-criteria)
-    - [➭  Critical Path Incomplete Tasks ](#--critical-path-incomplete-tasks-)
-    - [➭  Critical Bug Incidents ](#--critical-bug-incidents-)
-    - [➭  High Volume Of Bugs ](#--high-volume-of-bugs-)
-    - [➭  Environmental Challenges ](#--environmental-challenges-)
-    - [➭  Stakeholder Directives ](#--stakeholder-directives-)
+    - [➭  Critical Path Incomplete Tasks](#--critical-path-incomplete-tasks-)
+    - [➭  Critical Bug Incidents](#--critical-bug-incidents-)
+    - [➭  High Volume Of Bugs](#--high-volume-of-bugs-)
+    - [➭  Environmental Challenges](#--environmental-challenges-)
+    - [➭  Stakeholder Directives](#--stakeholder-directives-)
   - [b. Entry Criteria](#b-entry-criteria)
   - [c. Exit Criteria](#c-exit-criteria)
-    - [➭  Client's Reliability Indicators ](#--clients-reliability-indicators-)
-    - [➭  Specifications Compliance ](#--specifications-compliance-)
-    - [➭  Document's Completion and Quality ](#--documents-completion-and-quality-)
+    - [➭  Client's Reliability Indicators](#--clients-reliability-indicators-)
+    - [➭  Specifications Compliance](#--specifications-compliance-)
+    - [➭  Document's Completion and Quality](#--documents-completion-and-quality-)
 - [IV. Plan Test Environment](#iv-plan-test-environment)
   - [Desktop](#desktop)
-    - [➭  Windows ](#--windows-)
-    - [➭  Mac ](#--mac-)
-    - [➭  Linux ](#--linux-)
+    - [➭  Windows](#--windows-)
+    - [➭  Mac](#--mac-)
+    - [➭  Linux](#--linux-)
   - [Software](#software)
   - [Hardware](#hardware)
   - [SportShield Mobile Application](#sportshield-mobile-application)
 - [V. Schedule](#v-schedule)
 - [VI. Test Deliverables](#vi-test-deliverables)
-    - [➭  Test Plan ](#--test-plan-)
-    - [➭  Test Cases ](#--test-cases-)
-    - [➭  Bug Reports  ](#--bug-reports--)
-    - [➭  Bug Data Report ](#--bug-data-report-)
+  - [➭  Test Plan](#--test-plan-)
+  - [➭  Test Cases](#--test-cases-)
+  - [➭  Bug Reports](#--bug-reports--)
+  - [➭  Bug Data Report](#--bug-data-report-)
 - [VII. Glossary](#vii-glossary)
 
 </details>
@@ -346,7 +346,7 @@ But is also a way to keep track of the progress and to ensure the quality of the
 ### a. Suspension Criteria
 
 These criteria define when testing activities should be halted. \
-These criteria are established to ensure that testing resources are effectively utilized and that potential risks or issues are addressed before proceeding further.
+These criteria are established to ensure that testing resources are effectively utilised and that potential risks or issues are addressed before proceeding further.
 
 #### ➭ <ins> Critical Path Incomplete Tasks </ins>
 
@@ -368,7 +368,7 @@ Once the development team has resolved the bugs, testing activities can resume. 
 #### ➭ <ins> Environmental Challenges </ins>
 
 If significant challenges arise within the testing environment, such as hardware malfunctions or software compatibility issues, testing activities will be temporarily suspended until these challenges are addressed and resolved. \
-If any issues arise with the Arduino IDE or other software utilized by the QA team, testing activities will be halted until these issues are effectively resolved.
+If any issues arise with the Arduino IDE or other software utilised by the QA team, testing activities will be halted until these issues are effectively resolved.
 
 #### ➭ <ins> Stakeholder Directives </ins>
 
@@ -411,7 +411,7 @@ Before we can finalise the testing phase and prepare the product for distributio
 #### ➭ <ins> Specifications Compliance </ins>
 
 The software is required to adhere to both the functional and technical specifications as outlined in the project documentation. \
-In order to deem a feature as complete, it must not only meet the specified technical requirements but also fulfill the client's expectations. \
+To deem a feature as complete, it must not only meet the specified technical requirements but also fulfill the client's expectations. \
 During the testing phase, our team will consistently reference the specifications to verify that the software aligns with the client's needs and requirements. \
 The testing phase will only be concluded once all specifications have been successfully met.
 
@@ -534,13 +534,13 @@ Bug Data Reports will be stored in a Markdown file within the project's reposito
 
 - **UAT**: User Acceptance Testing. The final phase of testing in which the software is tested in a real-world environment by the end users.
 
-- **NFC**: Near Field Communication. A technology that enables two devices to communicate with each other when they are in close proximity.
+- **NFC**: Near Field Communication. A technology that enables two devices to communicate with each other when they are nearby.
 
 - **BLE**: Bluetooth Low Energy. A wireless communication technology that allows devices to communicate over short distances.
 
 - **GitHub Actions**: A feature of GitHub that enables automated workflows for software development tasks, such as continuous integration and deployment.
 
-- **GitHub Projects**: A project management tool integrated into GitHub for organizing and prioritizing tasks, issues, and pull requests.
+- **GitHub Projects**: A project management tool integrated into GitHub for organising and prioritising tasks, issues, and pull requests.
 
 - **GitHub Issues**: A built-in issue-tracking tool in GitHub used for reporting, tracking, and resolving bugs, enhancements, and other tasks.
 
