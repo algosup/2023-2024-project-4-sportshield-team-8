@@ -234,7 +234,7 @@ GitHub Issues serves as an integrated issue-tracking tool, facilitating the crea
 Moreover, multiples templates have been created by our team to simplifies the QA job as well as the developers' and the users' one. These templates are the following: Bug Report, Document Issue. \
 Bug report will have its part hereunder. \
 
-Document Issue template can be found here: ![](documentIssue.png)
+Document Issue template can be found here: ![Document issue]([documentIssue.png](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/Documents/documents/qualityAssurance/img/documentIssue.png))
 
 ### g. Test Cases
 
