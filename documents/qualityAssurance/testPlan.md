@@ -44,7 +44,6 @@ ___
   - [i. Bug Reports](#i-bug-reports)
     - [➭  By Users ](#--by-users-)
     - [➭  By QAs ](#--by-qas-)
-  - [j. Bug Data Report](#j-bug-data-report)
 - [III. Test Criteria](#iii-test-criteria)
   - [a. Suspension Criteria](#a-suspension-criteria)
     - [➭  Critical Path Incomplete Tasks ](#--critical-path-incomplete-tasks-)
@@ -55,6 +54,7 @@ ___
   - [b. Entry Criteria](#b-entry-criteria)
   - [c. Exit Criteria](#c-exit-criteria)
     - [➭  Client's Reliability Indicators ](#--clients-reliability-indicators-)
+    - [➭  Specifications Compliance ](#--specifications-compliance-)
     - [➭  Document's Completion and Quality ](#--documents-completion-and-quality-)
 - [IV. Plan Test Environment](#iv-plan-test-environment)
   - [Desktop](#desktop)
@@ -66,12 +66,11 @@ ___
   - [SportShield Mobile Application](#sportshield-mobile-application)
 - [V. Schedule](#v-schedule)
 - [VI. Test Deliverables](#vi-test-deliverables)
-    - [➭  Test Plan](#--test-plan)
+    - [➭  Test Plan ](#--test-plan-)
     - [➭  Test Cases ](#--test-cases-)
     - [➭  Bug Reports  ](#--bug-reports--)
     - [➭  Bug Data Report ](#--bug-data-report-)
 - [VII. Glossary](#vii-glossary)
-- [VII. Sources](#vii-sources)
 
 </details>
 
@@ -300,7 +299,13 @@ The test cases are divided into many scroll-down menus and can be organised acco
 
 Unit tests play a crucial role in validating the functionality of individual components or modules within the software. These tests are conducted in isolation to confirm that each unit behaves as expected.
 
-In our project, unit tests are developed using C++ and executed using the Arduino IDE, which aligns with the language and platform driving the project forward.
+In our project, unit tests are developed using C++ and executed using the Arduino IDE, which aligns with the language and platform driving the project forward. They would be created by the software engineer of the team with the quality assurance.
+
+There will be no peticular template for the unit tests due to their originality and suitably to their own modules. An example of these could be represented as the one hereunder:
+
+```cpp
+
+```
 
 ### i. Bug Reports
 
@@ -332,21 +337,38 @@ Following verification and confirmation of the bug fix's effectiveness, the issu
 This systematic approach ensures that all stakeholders are informed of the bug's status and promotes transparency throughout the resolution process. \
 But is also a way to keep track of the progress and to ensure the quality of the product.
 
-### j. Bug Data Report
-
 ## III. Test Criteria
 
 ### a. Suspension Criteria
 
+These criteria define when testing activities should be halted. \
+These criteria are established to ensure that testing resources are effectively utilized and that potential risks or issues are addressed before proceeding further.
+
 #### ➭ <ins> Critical Path Incomplete Tasks </ins>
+
+If a task essential to the critical path remains incomplete, testing activities will be suspended until the task is successfully executed. \
+The critical path, as its name implies, represents the most crucial tasks in the project. Failure to complete these tasks halts the entire project's progress. Therefore, if a critical path task is not finished, the project as a whole cannot be completed.
 
 #### ➭ <ins> Critical Bug Incidents </ins>
 
+In the event of identifying a critical bug during testing, all other testing activities must be paused to prioritize resolution of this issue. A critical bug is one that can lead to software crashes or severe malfunctions, significantly impacting user experience. \
+Prompt resolution is imperative to maintain the integrity of the software. \
+If a critical bug is detected, the testing team must dedicate their efforts to addressing and rectifying it before resuming any further testing. Failure to resolve such issues could compromise the software's stability and render it unsuitable for release.
+Once the critical bug has been resolved, testing activities can resume.
+
 #### ➭ <ins> High Volume of Bugs </ins>
+
+If a substantial number of bugs are discovered in the software, testing operations will be paused, and the QA team will promptly notify the development team. During this period, the QA team will refrain from altering any code, enabling the development team to address these issues. \
+Once the development team has resolved the bugs, testing activities can resume. This approach ensures that the software is thoroughly tested and that all identified issues are resolved before proceeding to the next phase.
 
 #### ➭ <ins> Environmental Challenges </ins>
 
+If significant challenges arise within the testing environment, such as hardware malfunctions or software compatibility issues, testing activities will be temporarily suspended until these challenges are addressed and resolved. \
+If any issues arise with the Arduino IDE or other software utilized by the QA team, testing activities will be halted until these issues are effectively resolved.
+
 #### ➭ <ins> Stakeholder Directives </ins>
+
+If stakeholder (client) directs the QA team or the team to suspend any activities for any given reason, our team will team will comply with these directives. \
 
 ### b. Entry Criteria
 
@@ -381,6 +403,13 @@ Before we can finalise the testing phase and prepare the product for distributio
 
 - 7 days operating duration
 - Considering 6 hours in activation mode
+
+#### ➭ <ins> Specifications Compliance </ins>
+
+The software is required to adhere to both the functional and technical specifications as outlined in the project documentation. \
+In order to deem a feature as complete, it must not only meet the specified technical requirements but also fulfill the client's expectations. \
+During the testing phase, our team will consistently reference the specifications to verify that the software aligns with the client's needs and requirements. \
+The testing phase will only be concluded once all specifications have been successfully met.
 
 #### ➭ <ins> Document's Completion and Quality </ins>
 
@@ -477,22 +506,46 @@ Before we can finalise the testing phase and prepare the product for distributio
 
 ## VI. Test Deliverables
 
-#### ➭ <ins> Test Plan</ins>
+#### ➭ <ins> Test Plan </ins>
 
-define the testing strategy and how the tests will be done.
+The initial deliverable, the Test Plan document, will delineate the testing strategy, scope, and criteria for the project. \
+This document will function as a comprehensive guide for the QA team, as well as for future iterations, ensuring that all testing activities align with the established strategy.
 
 #### ➭ <ins> Test Cases </ins>
 
-define all the tests that will be done to be sure that the game works as intended.
+The second deliverable, Test Cases, will be stored in GitHub Projects. These documents will offer an exhaustive compilation of test cases corresponding to each feature.
 
 #### ➭ <ins> Bug Reports  </ins>
 
-Bug reports: report all the bugs that have been found during the tests.
+Bug Reports, the third deliverable, will be generated by the QA team upon receiving reports of bugs. These reports will be documented in the GitHub Issues section, furnishing comprehensive descriptions of the bugs and the required steps for resolution. \
+Each report will encapsulate the bug's summary, its underlying cause, and the steps necessary to replicate it. This approach ensures a streamlined and lucid overview of the bugs encountered during testing.
 
 #### ➭ <ins> Bug Data Report </ins>
 
-Bug data report: to have a global view of the bugs that have been found during the tests.
+Bug Data Reports will be stored in a Markdown file within the project's repository. These reports will provide a detailed overview of the bugs identified during testing, including their severity, resolution status, and the steps taken to rectify them. \
 
 ## VII. Glossary
 
-## VII. Sources
+- **QA**: Quality Assurance. The process of ensuring that a product or service meets specified quality standards and requirements.
+
+- **UAT**: User Acceptance Testing. The final phase of testing in which the software is tested in a real-world environment by the end-users.
+
+- **NFC**: Near Field Communication. A technology that enables two devices to communicate with each other when they are in close proximity.
+
+- **BLE**: Bluetooth Low Energy. A wireless communication technology that allows devices to communicate over short distances.
+
+- **GitHub Actions**: A feature of GitHub that enables automated workflows for software development tasks, such as continuous integration and deployment.
+
+- **GitHub Projects**: A project management tool integrated into GitHub for organizing and prioritizing tasks, issues, and pull requests.
+
+- **GitHub Issues**: A built-in issue-tracking tool in GitHub used for reporting, tracking, and resolving bugs, enhancements, and other tasks.
+
+- **Test case**: A set of conditions or variables under which a tester will determine whether a system under test satisfies requirements or works correctly.
+
+- **Client's Reliability Indicators**: Specific metrics or benchmarks defined by the client to evaluate the reliability and performance of the software.
+  
+- **Test deliverables**: Documents or artifacts produced as a result of the testing process, such as test plans, test cases, and bug reports.
+  
+- **Integrated Development Environment (IDE)**: is a software application that provides comprehensive tools and features for software development, typically including a source code editor, build automation tools, debugger, and other utilities, all integrated into a single user interface.
+  
+- **Arduino**: An open-source electronics platform based on easy-to-use hardware and software. It is used to create interactive objects or environments.
