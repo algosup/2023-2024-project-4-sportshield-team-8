@@ -1,7 +1,7 @@
 <h1 align="center"> SportShield - Test Plan </h1>
 
 <p align="center">
-Created by: Thibaud MARLIER <br> Creation Date: 25/03/2024 <br> Last update: 25/03/2024
+Created by: Thibaud MARLIER <br> Creation Date: 25/03/2024 <br> Last update: 08/04/2024
 </p>
 
 ___
@@ -9,30 +9,30 @@ ___
 <details>
 <summary>
 
-## Table of Contents
+## Table Of Contents
 
 </summary>
 
-- [Table of Contents](#table-of-contents)
+- [Table Of Contents](#table-of-contents)
 - [I. Introduction](#i-introduction)
   - [a. Overview](#a-overview)
   - [b. Targeted Audience](#b-targeted-audience)
     - [➭ Primary Audience](#-primary-audience)
     - [➭ Secondary Audience](#-secondary-audience)
   - [c. Hardware/Software Used](#c-hardwaresoftware-used)
-    - [➭  Hardware](#--hardware-)
-    - [➭  Software](#--software-)
+    - [➭  Hardware ](#--hardware-)
+    - [➭  Software ](#--software-)
 - [II. Test Strategy](#ii-test-strategy)
   - [a. Quality Assurance Team](#a-quality-assurance-team)
   - [b. Testing Scope](#b-testing-scope)
   - [c. Testing Type](#c-testing-type)
     - [1. Requirements Analysis](#1-requirements-analysis)
-    - [2.System Design](#2system-design)
-    - [3.Implementation (Coding)](#3implementation-coding)
+    - [2. System Design](#2-system-design)
+    - [3. Implementation (Coding)](#3-implementation-coding)
     - [4. Integration Testing](#4-integration-testing)
-    - [5.System Testing](#5system-testing)
-    - [6.User Acceptance Testing (UAT)](#6user-acceptance-testing-uat)
-    - [7.User Feedback](#7user-feedback)
+    - [5. System Testing](#5-system-testing)
+    - [6. User Acceptance Testing (UAT)](#6-user-acceptance-testing-uat)
+    - [7. User Feedback](#7-user-feedback)
   - [d. Assumptions](#d-assumptions)
   - [e. Testing Environment](#e-testing-environment)
   - [f. Test Tools](#f-test-tools)
@@ -42,34 +42,34 @@ ___
   - [g. Test Cases](#g-test-cases)
   - [h. Unit Tests](#h-unit-tests)
   - [i. Bug Reports](#i-bug-reports)
-    - [➭  By Users](#--by-users-)
-    - [➭  By QAs](#--by-qas-)
+    - [➭  By Users ](#--by-users-)
+    - [➭  By QAs ](#--by-qas-)
 - [III. Test Criteria](#iii-test-criteria)
   - [a. Suspension Criteria](#a-suspension-criteria)
-    - [➭  Critical Path Incomplete Tasks](#--critical-path-incomplete-tasks-)
-    - [➭  Critical Bug Incidents](#--critical-bug-incidents-)
-    - [➭  High Volume of Bugs](#--high-volume-of-bugs-)
-    - [➭  Environmental Challenges](#--environmental-challenges-)
-    - [➭  Stakeholder Directives](#--stakeholder-directives-)
+    - [➭  Critical Path Incomplete Tasks ](#--critical-path-incomplete-tasks-)
+    - [➭  Critical Bug Incidents ](#--critical-bug-incidents-)
+    - [➭  High Volume Of Bugs ](#--high-volume-of-bugs-)
+    - [➭  Environmental Challenges ](#--environmental-challenges-)
+    - [➭  Stakeholder Directives ](#--stakeholder-directives-)
   - [b. Entry Criteria](#b-entry-criteria)
   - [c. Exit Criteria](#c-exit-criteria)
-    - [➭  Client's Reliability Indicators](#--clients-reliability-indicators-)
-    - [➭  Specifications Compliance](#--specifications-compliance-)
-    - [➭  Document's Completion and Quality](#--documents-completion-and-quality-)
+    - [➭  Client's Reliability Indicators ](#--clients-reliability-indicators-)
+    - [➭  Specifications Compliance ](#--specifications-compliance-)
+    - [➭  Document's Completion and Quality ](#--documents-completion-and-quality-)
 - [IV. Plan Test Environment](#iv-plan-test-environment)
   - [Desktop](#desktop)
-    - [➭  Windows](#--windows-)
-    - [➭  Mac](#--mac-)
-    - [➭  Linux](#--linux-)
+    - [➭  Windows ](#--windows-)
+    - [➭  Mac ](#--mac-)
+    - [➭  Linux ](#--linux-)
   - [Software](#software)
   - [Hardware](#hardware)
   - [SportShield Mobile Application](#sportshield-mobile-application)
 - [V. Schedule](#v-schedule)
 - [VI. Test Deliverables](#vi-test-deliverables)
-  - [➭  Test Plan](#--test-plan-)
-  - [➭  Test Cases](#--test-cases-)
-  - [➭  Bug Reports](#--bug-reports--)
-  - [➭  Bug Data Report](#--bug-data-report-)
+    - [➭  Test Plan ](#--test-plan-)
+    - [➭  Test Cases ](#--test-cases-)
+    - [➭  Bug Reports  ](#--bug-reports--)
+    - [➭  Bug Data Report ](#--bug-data-report-)
 - [VII. Glossary](#vii-glossary)
 
 </details>
@@ -90,11 +90,11 @@ This document will serve to set all the tools and define the strategy for testin
 
 This document is primarily intended for:
 
-- **Quality Assurance**: to comprehend what should be tested, the expected result, how to get expected result and why. To make sure that the device complies with the client's requirements. To define the stakes of testing and guide the team through tests. To then improve the quality of the final product.
+- **Quality Assurance**: to comprehend what should be tested, the expected result, how to get the expected result, and why. To make sure that the device complies with the client's requirements. To define the stakes of testing and guide the team through tests. To then improve the quality of the final product.
 
 #### ➭ Secondary Audience
 
-- **Future testers**: to understand our team's testing strategy, what our QA team have tested, how, and the final result. To apply our testing strategy if it complies with what they are testing. To have an insight into our testing strategies to keep on upgrading the product.
+- **Future testers**: to understand our team's testing strategy, what our QA team has tested, how, and the final result. To apply our testing strategy if it complies with what they are testing. To have an insight into our testing strategies to keep on upgrading the product.
 
 ### c. Hardware/Software Used
 
@@ -147,7 +147,7 @@ However, our team has the possibility of having a Linux environment as BERNARD M
 
 Each team will run their Testing Strategies and will use their own Test Plan document while testing.
 Whenever a product is tested by a team their strategy will be applied for testing.
-I'd recommend you to check [Team 5's](https://github.com/algosup/2023-2024-project-4-sportshield-team-5/blob/main/documents/quality-assurance/test-plan.md) and [Team 7's]() Test Plan.
+I'd recommend you check [Team 5's](https://github.com/algosup/2023-2024-project-4-sportshield-team-5/blob/main/documents/quality-assurance/test-plan.md) and [Team 7's]() Test Plans.
 
 ### b. Testing Scope
 
@@ -172,12 +172,12 @@ Here's an overview of the phases:
 Testing begins by thoroughly understanding the requirements outlined during the software development's requirements analysis phase. \
 Testers carefully review these requirements to develop comprehensive test cases and test plans.
 
-#### 2.System Design
+#### 2. System Design
 
 During this phase, testers create test cases based on the system design documents. \
 Additionally, they may formulate test data and plans for setting up the testing environment.
 
-#### 3.Implementation (Coding)
+#### 3. Implementation (Coding)
 
 Once the development team finishes coding, testing activities focus on unit testing. This involves testing individual components or modules in isolation. This part will principally be handled by the development team.
 
@@ -185,15 +185,15 @@ Once the development team finishes coding, testing activities focus on unit test
 
 Testers verify that the individual modules integrate seamlessly and function correctly together. This ensures that interactions between different modules do not lead to unexpected behaviour.
 
-#### 5.System Testing
+#### 5. System Testing
 
 After integration testing, the entire system undergoes comprehensive testing. Testers assess whether the software meets the specified requirements and operates correctly across various scenarios.
 
-#### 6.User Acceptance Testing (UAT)
+#### 6. User Acceptance Testing (UAT)
 
-In the final phase, users or stakeholders test the software in a real-world environment to validate that it fulfils their needs and expectations. This testing typically occurs before the software is released into production.
+In the final phase, users or stakeholders test the software in a real-world environment to validate that it fulfills their needs and expectations. This testing typically occurs before the software is released into production.
 
-#### 7.User Feedback
+#### 7. User Feedback
 
 Once the software is released, users provide feedback on its performance and usability. This feedback is crucial for identifying areas that require improvement and enhancing the software's overall quality.
 
@@ -230,7 +230,11 @@ Leveraging GitHub Projects will significantly aid in streamlining the testing pr
 
 #### ➭ 3. GitHub Issues
 
-GitHub Issues serves as an integrated issue-tracking tool, facilitating the creation and management of issues while enabling assignment to team members. Primarily, Quality Assurance is responsible for generating GitHub Issues for every problem identified within the product.
+GitHub Issues serves as an integrated issue-tracking tool, facilitating the creation and management of issues while enabling assignment to team members. Primarily, Quality Assurance is responsible for generating GitHub Issues for every problem identified within the product. \
+Moreover, multiples templates have been created by our team to simplifies the QA job as well as the developers' and the users' one. These templates are the following: Bug Report, Document Issue. \
+Bug report will have its part hereunder. \
+
+Document Issue template can be found here: ![](documentIssue.png)
 
 ### g. Test Cases
 
@@ -299,9 +303,9 @@ The test cases are divided into many scroll-down menus and can be organised acco
 
 Unit tests play a crucial role in validating the functionality of individual components or modules within the software. These tests are conducted in isolation to confirm that each unit behaves as expected.
 
-In our project, unit tests are developed using C++ and executed using the Arduino IDE, which aligns with the language and platform driving the project forward. They would be created by the software engineer of the team with the quality assurance.
+In our project, unit tests are developed using C++ and executed using the Arduino IDE, which aligns with the language and platform driving the project forward. They would be created by the software engineer of the team with quality assurance.
 
-There will be no peticular template for the unit tests due to their originality and suitably to their own modules. An example of these could be represented as the one hereunder:
+There will be no particular template for the unit tests due to their originality and suitability to their own modules. An example of these could be represented as the one hereunder:
 
 ```cpp
 
@@ -351,12 +355,12 @@ The critical path, as its name implies, represents the most crucial tasks in the
 
 #### ➭ <ins> Critical Bug Incidents </ins>
 
-In the event of identifying a critical bug during testing, all other testing activities must be paused to prioritize resolution of this issue. A critical bug is one that can lead to software crashes or severe malfunctions, significantly impacting user experience. \
+In the event of identifying a critical bug during testing, all other testing activities must be paused to prioritise the resolution of this issue. A critical bug can lead to software crashes or severe malfunctions, significantly impacting user experience. \
 Prompt resolution is imperative to maintain the integrity of the software. \
 If a critical bug is detected, the testing team must dedicate their efforts to addressing and rectifying it before resuming any further testing. Failure to resolve such issues could compromise the software's stability and render it unsuitable for release.
 Once the critical bug has been resolved, testing activities can resume.
 
-#### ➭ <ins> High Volume of Bugs </ins>
+#### ➭ <ins> High Volume Of Bugs </ins>
 
 If a substantial number of bugs are discovered in the software, testing operations will be paused, and the QA team will promptly notify the development team. During this period, the QA team will refrain from altering any code, enabling the development team to address these issues. \
 Once the development team has resolved the bugs, testing activities can resume. This approach ensures that the software is thoroughly tested and that all identified issues are resolved before proceeding to the next phase.
@@ -368,7 +372,7 @@ If any issues arise with the Arduino IDE or other software utilized by the QA te
 
 #### ➭ <ins> Stakeholder Directives </ins>
 
-If stakeholder (client) directs the QA team or the team to suspend any activities for any given reason, our team will team will comply with these directives. \
+If the stakeholder (client) directs the QA team or the team to suspend any activities for any given reason, our team will comply with these directives.
 
 ### b. Entry Criteria
 
@@ -494,15 +498,15 @@ The testing phase will only be concluded once all specifications have been succe
 
 | Task                              | Start date     | End date       | Estimated duration |
 | --------------------------------- | -------------- | -------------- | ------------------ |
-| Issue and pull request templates  | March 11, 2024 | March 11, 2024 | 1 day              |
-| Functional Specifications review  | March 15, 2024 | March 18, 2024 | 2 days             |
-| Technical Specifications review   | March 21, 2024 | March 26, 2024 | 3 days             |
+| Issue/ Pull Request Templates     | March 11, 2024 | March 11, 2024 | 1 day              |
+| Functional Specifications Review  | March 15, 2024 | March 18, 2024 | 2 days             |
+| Technical Specifications Review   | March 21, 2024 | March 26, 2024 | 3 days             |
 | Test Plan Creation                | March 22, 2024 | April 10, 2024 |  19 days           |
-| Github Actions                    | March 26, 2024 | April 4, 2024  | 9 days             |
+| GitHub Actions                    | March 26, 2024 | April 4, 2024  | 9 days             |
 | Test Cases Definition             | March 26, 2024 | March 29, 2024 | 3 days             |
-| First meeting with team 5 & 7 QA  | April 2, 2024  | April 2, 2024  | 1 day              |
-| Second meeting with team 5 & 7 QA | April 8, 2024  | April 8, 2024  | 1 day              |
-| User Manual review                | April 8, 2024  | April 10, 2024 | 2 days             |
+| First meeting With Team 5 & 7 QA  | April 2, 2024  | April 2, 2024  | 1 day              |
+| Second meeting With Team 5 & 7 QA | April 8, 2024  | April 8, 2024  | 1 day              |
+| User Manual Review                | April 8, 2024  | April 10, 2024 | 2 days             |
 
 ## VI. Test Deliverables
 
@@ -528,7 +532,7 @@ Bug Data Reports will be stored in a Markdown file within the project's reposito
 
 - **QA**: Quality Assurance. The process of ensuring that a product or service meets specified quality standards and requirements.
 
-- **UAT**: User Acceptance Testing. The final phase of testing in which the software is tested in a real-world environment by the end-users.
+- **UAT**: User Acceptance Testing. The final phase of testing in which the software is tested in a real-world environment by the end users.
 
 - **NFC**: Near Field Communication. A technology that enables two devices to communicate with each other when they are in close proximity.
 
