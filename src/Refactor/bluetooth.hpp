@@ -9,18 +9,16 @@ private:
 
     Bluetooth() : lockService("19B10000-E8F2-537E-4F6C-D104768A1213", BLERead | BLEWrite),
                   lockCharacteristic("19B10000-E8F2-537E-4F6C-D104768A1213", BLERead | BLEWrite, sizeof(int)) {
-        // Constructor is private for singleton implementation
     }
 
     // Static method for handling BLE device events
     static void bleDeviceEvent(BLEDevice central, BLECharacteristic characteristic) {
-        // Example: Handle lock/unlock characteristic changes
         if (characteristic.uuid() == lockCharacteristic.uuid()) {
             int lockState = characteristic.value();
             if (lockState == 1) {
-                // Handle locking logic
+                //  locking logic
             } else if (lockState == 0) {
-                // Handle unlocking logic
+                //  unlocking logic
             }
         }
     }
@@ -46,7 +44,9 @@ public:
     void processEvents() {
         BLEDevice central = BLE.central();
         if (central) {
-            // Can extend to handle multiple events
+            // A central has connected
+            Serial.print("Connected to central: ");
+            Serial.println(central.address());
         }
     }
 };

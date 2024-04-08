@@ -9,7 +9,7 @@ class Buzzer{
     const uint8_t buzzerPin_ = D2;
 
     static const uint32_t LARGE_MOVEMENT_MASK = 0x01; 
-    static const uint32_t STOP_MASK = 0x02; 
+    static const uint32_t STOP_MASK = 0x03; 
 
 
   // Durations for buzzer signals for different movement intensities
@@ -27,6 +27,8 @@ class Buzzer{
 
     // Movement type indicator
     volatile uint8_t largeMovement_ = 0;
+    volatile uint8_t stop_ = 0;
+    volatile uint8_t smallMovement_ = 0;
 
 public:
     //constructor
@@ -36,6 +38,14 @@ public:
 
     void setLargeMovement(unint8_t isLargeMovement) {
         largeMovement_ = isLargeMovement;
+    }
+
+    void setSmallMovement(unint8_t isSmallMovement) {
+        smallMovement_ = isSmallMovement;
+    }
+
+    void setStop(unint8_t isStop) {
+        stop_ = isStop;
     }
 
 
@@ -55,9 +65,9 @@ public:
                     // If a stop notification is received, simply continue waiting for the next notification
                     continue;
                 }
-
                 uint32_t highTime = (notificationValue & buzzer->LARGE_MOVEMENT_MASK) ? buzzer->largeMovementHighTime_ : buzzer->smallMovementHighTime_;
                 uint32_t lowTime = (notificationValue & buzzer->LARGE_MOVEMENT_MASK) ? buzzer->largeMovementLowTime_ : buzzer->smallMovementLowTime_;
+
 
                 // Activate buzzer
                 digitalWrite(buzzer->buzzerPin_, HIGH);
