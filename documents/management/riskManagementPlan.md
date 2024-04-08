@@ -1,7 +1,7 @@
 <h1 align="center"> Risk Management Plan </h1>
 
 <p align="center">
-Created by: Quentin CLÉMENT <br> Creation Date: 20/03/2024 <br> Last update: 22/03/2024
+Created by: Quentin CLÉMENT <br> Creation Date: 20/03/2024 <br> Last update: 27/03/2024
 </p>
 
 <details>
@@ -51,7 +51,7 @@ The risks will be classified:
 - Communication risks: risks related to the communication with the client.
 - Confidentiality risks: risks related to information leaks about the project.
 - Technical risks: risks related to the technical aspect of the project.
-- Security risks: risks related to the security of the product.
+- Security risks: risks associated with the product's safety performance.
 - Financial risks: risks related to the purchase of hardware aspect of the project.
 
 ## 4. Risk Analysis and Assessment
