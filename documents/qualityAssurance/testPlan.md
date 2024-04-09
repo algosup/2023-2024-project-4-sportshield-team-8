@@ -20,8 +20,8 @@ ___
     - [➭ Primary Audience](#-primary-audience)
     - [➭ Secondary Audience](#-secondary-audience)
   - [c. Hardware/Software Used](#c-hardwaresoftware-used)
-    - [➭  Hardware](#--hardware-)
-    - [➭  Software](#--software-)
+    - [➭  Hardware ](#--hardware-)
+    - [➭  Software ](#--software-)
 - [II. Test Strategy](#ii-test-strategy)
   - [a. Quality Assurance Team](#a-quality-assurance-team)
   - [b. Testing Scope](#b-testing-scope)
@@ -42,34 +42,34 @@ ___
   - [g. Test Cases](#g-test-cases)
   - [h. Unit Tests](#h-unit-tests)
   - [i. Bug Reports](#i-bug-reports)
-    - [➭  By Users](#--by-users-)
-    - [➭  By QAs](#--by-qas-)
+    - [➭  By Users ](#--by-users-)
+    - [➭  By QAs ](#--by-qas-)
 - [III. Test Criteria](#iii-test-criteria)
   - [a. Suspension Criteria](#a-suspension-criteria)
-    - [➭  Critical Path Incomplete Tasks](#--critical-path-incomplete-tasks-)
-    - [➭  Critical Bug Incidents](#--critical-bug-incidents-)
-    - [➭  High Volume Of Bugs](#--high-volume-of-bugs-)
-    - [➭  Environmental Challenges](#--environmental-challenges-)
-    - [➭  Stakeholder Directives](#--stakeholder-directives-)
+    - [➭  Critical Path Incomplete Tasks ](#--critical-path-incomplete-tasks-)
+    - [➭  Critical Bug Incidents ](#--critical-bug-incidents-)
+    - [➭  High Volume Of Bugs ](#--high-volume-of-bugs-)
+    - [➭  Environmental Challenges ](#--environmental-challenges-)
+    - [➭  Stakeholder Directives ](#--stakeholder-directives-)
   - [b. Entry Criteria](#b-entry-criteria)
   - [c. Exit Criteria](#c-exit-criteria)
-    - [➭  Client's Reliability Indicators](#--clients-reliability-indicators-)
-    - [➭  Specifications Compliance](#--specifications-compliance-)
-    - [➭  Document's Completion and Quality](#--documents-completion-and-quality-)
+    - [➭  Client's Reliability Indicators ](#--clients-reliability-indicators-)
+    - [➭  Specifications Compliance ](#--specifications-compliance-)
+    - [➭  Document's Completion and Quality ](#--documents-completion-and-quality-)
 - [IV. Plan Test Environment](#iv-plan-test-environment)
   - [Desktop](#desktop)
-    - [➭  Windows](#--windows-)
-    - [➭  Mac](#--mac-)
-    - [➭  Linux](#--linux-)
+    - [➭  Windows ](#--windows-)
+    - [➭  Mac ](#--mac-)
+    - [➭  Linux ](#--linux-)
   - [Software](#software)
   - [Hardware](#hardware)
   - [SportShield Mobile Application](#sportshield-mobile-application)
 - [V. Schedule](#v-schedule)
 - [VI. Test Deliverables](#vi-test-deliverables)
-  - [➭  Test Plan](#--test-plan-)
-  - [➭  Test Cases](#--test-cases-)
-  - [➭  Bug Reports](#--bug-reports--)
-  - [➭  Bug Data Report](#--bug-data-report-)
+    - [➭  Test Plan ](#--test-plan-)
+    - [➭  Test Cases ](#--test-cases-)
+    - [➭  Bug Reports  ](#--bug-reports--)
+    - [➭  Bug Data Report ](#--bug-data-report-)
 - [VII. Glossary](#vii-glossary)
 
 </details>
@@ -82,7 +82,7 @@ Our team was tasked with upgrading and maintaining an already existing prototype
 Our team was asked to bring our expertise to the device to improve the overall quality, security, and usability of the device. \
 We have to improve the battery's lifespan and optimise its performance, manage the device using the NFC technology, allow multi-threading, and improve the security of the device.
 
-This document will serve to set all the tools and define the strategy for testing the product to make sure that our refurbished device complies with the client's requirements.
+This document will serve to prepare all the tools and define the testing strategy of the product to make sure that our refurbished device complies with the client's requirements.
 
 ### b. Targeted Audience
 
@@ -106,7 +106,7 @@ This document is primarily intended for:
 | **GNSS PA1010D**           | GPS Module with a built-in antenna. <br> Gives real-time location. <br> **Power Supply:** VCC：3.0V to 4.3V；VBACKUP：2.0V to 4.3V,  <br> **Consumption:** Acquisition: 36mA, Tracking: 28mA                      |<img src="https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/documents/images/hardware/GNSSPA1010D.png" alt="drawing" width="90"/>|
 | **GSM/2G SIM800L Module**   | Mini GSM Module. <br> Provides 2G data.                                                 |<img src="https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/documents/images/hardware/SIM800L.png" alt="drawing" width="100"/>|
 | **1NCE SIM Card**           | Multi-network and multi-mode SIM card. <br>                                             |<img src="https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/documents/images/hardware/SIMCard.png" alt="drawing" width="100"/>|
-| **Electromagnet**           | Is used to unlock the device.                                                           |<img src="https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/documents/images/hardware/electromagnet.png" alt="drawing" width="75"/>|
+| **Electromagnet**           | Used to unlock the device.                                                           |<img src="https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/documents/images/hardware/electromagnet.png" alt="drawing" width="75"/>|
 | **Piezoelectric buzzer**    | Buzzer with an oscillator control circuit.                                                 |<img src="https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/documents/images/hardware/piezoelectricBuzzerCircuit.png" alt="drawing" width="100"/>|
 | **Lithium-Polymer battery** | A 3.7V, 1100mAh, 4.1Wh Lithium-Polymer powered battery. It has an estimated lifespan of around 300 to 500 charge cycles.|<img src="https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/documents/images/hardware/lithiumPolymerBattery.png" alt="drawing" width="100"/>
 | **NFC Antenna**             | NFC module. Provides NFC compatibility.                                                 |<img src="https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/documents/images/hardware/NFCAntennaCompatibility.png" alt="drawing" width="75"/>|
@@ -147,7 +147,7 @@ However, our team has the possibility of having a Linux environment as BERNARD M
 
 Each team will run their Testing Strategies and will use their own Test Plan document while testing.
 Whenever a product is tested by a team their strategy will be applied for testing.
-I'd recommend you check [Team 5's](https://github.com/algosup/2023-2024-project-4-sportshield-team-5/blob/main/documents/quality-assurance/test-plan.md) and [Team 7's]() Test Plans.
+I'd recommend you check [Team 5](https://github.com/algosup/2023-2024-project-4-sportshield-team-5/blob/main/documents/quality-assurance/test-plan.md) and [Team 7]() Test Plans.
 
 ### b. Testing Scope
 
@@ -199,7 +199,8 @@ Once the software is released, users provide feedback on its performance and usa
 
 <br>
 
-This model then loops if a new bug is found or if a new feature is added to the software. The testing team will then have to go back to the requirements analysis phase and start the process again. It might be a long process but it is the most efficient way to ensure the quality of the product.
+This model then loops if a new bug is found or if a new feature is added to the software. The testing team will then have to go back to the requirements analysis phase and start the process again. \
+It might be a long process but it is the most efficient way to ensure the quality of the product.
 
 ### d. Assumptions
 
@@ -231,8 +232,8 @@ Leveraging GitHub Projects will significantly aid in streamlining the testing pr
 #### ➭ 3. GitHub Issues
 
 GitHub Issues serves as an integrated issue-tracking tool, facilitating the creation and management of issues while enabling assignment to team members. Primarily, Quality Assurance is responsible for generating GitHub Issues for every problem identified within the product. \
-Moreover, multiples templates have been created by our team to simplifies the QA job as well as the developers' and the users' one. These templates are the following: Bug Report, Document Issue. \
-Bug report will have its part hereunder. \
+Moreover, multiple templates have been created by our team to simplify the jobs of the QA as well as the developers and the users. These templates are the following: Bug Report, Document Issue. \
+Bug reports will be mentioned hereunder.
 
 Document Issue template can be found here: ![documentIssue.png](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/Documents/documents/qualityAssurance/img/documentIssue.png)
 
@@ -240,7 +241,7 @@ Document Issue template can be found here: ![documentIssue.png](https://github.c
 
 To ensure every feature and all possible bugs have been tested and mitigated, test cases are created and stored in GitHub Projects.
 
-They are defined and classed on different feature names corresponding to the device and the project.
+They are defined and classed by different feature names corresponding to the device and the project.
 The different names are the following:
 
 - NFC
@@ -272,7 +273,7 @@ Moreover, when the name of the test case is clicked, a new window opens with mor
 
 - Description of the test;
 - Pre-conditions;
-- steps to realise it;
+- Steps to realise it;
 - Expected result.
 
 It would follow the next template:
@@ -303,13 +304,9 @@ The test cases are divided into many scroll-down menus and can be organised acco
 
 Unit tests play a crucial role in validating the functionality of individual components or modules within the software. These tests are conducted in isolation to confirm that each unit behaves as expected.
 
-In our project, unit tests are developed using C++ and executed using the Arduino IDE, which aligns with the language and platform driving the project forward. They would be created by the software engineer of the team with quality assurance.
+In our project, unit tests are developed using C++ and executed using the Arduino IDE, which aligns with the language and platform driving the project forward. They are created by the software engineer of the team with quality assurance.
 
-There will be no particular template for the unit tests due to their originality and suitability to their own modules. An example of these could be represented as the one hereunder:
-
-```cpp
-
-```
+There will be no particular template for the unit tests due to their originality and suitability to their own modules.
 
 ### i. Bug Reports
 
@@ -326,9 +323,9 @@ Once the bug and its solution have been clearly defined by both the user and the
 #### ➭ <ins> By QAs </ins>
 
 When a bug is identified by the Quality Assurance team, they will promptly generate a GitHub issue within the project's repository. \
-This practice streamlines the developer's workflow by furnishing them with a comprehensive and articulate description of the bug. \
+This practice streamlines the developer's workflow by providing them with a comprehensive and articulate description of the bug. \
 From the title to the step-by-step instructions, clarity and precision are paramount to ensure the developer team fully grasps the nature of the issue and the necessary actions for resolution. \
-This meticulous approach aims to enhance the overall quality of the product. \
+This meticulous approach enhances the overall quality of the product. \
 To facilitate this process, a standardised template has been devised to optimise the quality and simplicity of bug reports. \
 It can be found [here](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/blob/main/.github/ISSUE_TEMPLATE/bugReport.yml).
 
@@ -526,7 +523,7 @@ Each report will encapsulate the bug's summary, its underlying cause, and the st
 
 #### ➭ <ins> Bug Data Report </ins>
 
-Bug Data Reports will be stored in a Markdown file within the project's repository. These reports will provide a detailed overview of the bugs identified during testing, including their severity, resolution status, and the steps taken to rectify them. \
+Bug Data Reports will be stored in a Markdown file within the project's repository. These reports will provide a detailed overview of the bugs identified during testing, including their severity, resolution status, and the steps taken to rectify them.
 
 ## VII. Glossary
 
