@@ -47,6 +47,7 @@ BLEDescriptor MACDescriptor("2901", "MAC Address");
 
 bool BLE_activated = true;  //true if the bluetooth is activated
 uint32_t tim_connec = 0;    // time in ms or we start to activate the bluetooth following a detection of movement
+BLEDevice userDevice;      // device that connects to the bluetooth
 
 
 //IMU : LSM6DS3
@@ -93,6 +94,9 @@ float BigRT = 125.0;   //     BigRotationThreshold
 
 float MotionData;
 float RotationData;
+
+float previousLatitude = 0;
+float previousLongitude = 0;
 
 unsigned long StartCoolDown = 0;  //check point for millis aided cooldown
 

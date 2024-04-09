@@ -51,28 +51,6 @@ void ble_setup(void) {
   BLE.advertise();
 }
 
-void checkMotionDetection(){
-    MotionDetect = true;
-    if ((MotionData > SmallMT) || (RotationData > SmallRT)) {
-        if (MotionData > SmallMT) {
-            Serial.print("WAKE UP : ");
-            Serial.println(MotionData);
-        } else {
-            Serial.print("WAKE UP Rota: ");
-            Serial.println(RotationData);
-        }
-    }
-
-    if ((BLE_activated == true) || (Config.isActivate)) {
-        BLE.poll();  //communication autorisé
-    }
-
-    if ((millis() - tim_connec > TIME_OUT_MS_BLE_ACT) && (BLE_activated == true) && (Config.isActivate != 1)) {
-        BLE_activated = false;
-        Serial.println("timeout->BLE_END");
-        BLE.end();
-    }
-}
 
 void onConnect(BLEDevice central) {
     Serial.print("Connected to ");
@@ -85,33 +63,27 @@ void onDisconnect(BLEDevice central) {
     Serial.print(F("Disconnected from central: "));
     Serial.println(central.address());
     isAuthenticate = false;
+    userDevice = BLEDevice();
     digitalWrite(LEDB, HIGH);
 }
 
 void onWritePassword(BLEDevice central, BLECharacteristic characteristic) {
-    const int motDePasseAttendu = 13330;
-    short int value = PasswordCharacteristic.value();
-    Conversion(value);
-    isAuthenticate = (value == motDePasseAttendu);
-    Serial.println(isAuthenticate ? "successful authentication" : "wrong password");
+    String password = "13330";
+    String value = PasswordCharacteristic.value();
+    isAuthenticate = (password.compareTo(value) == 0);
+    if(isAuthenticate){
+      Serial.println("Authenticated");
+      userDevice = central;
+    }
+    else{
+      Serial.println("Wrong password");
+    }
 }
 
-char Conversion(unsigned short int data) {
-  char mdphexadecimal[5];
-  sprintf(mdphexadecimal, "%04X", data);
 
-  for (int i = 0; i < 2; ++i) {
-    char temp = mdphexadecimal[i];
-    mdphexadecimal[i] = mdphexadecimal[2 + i];
-    mdphexadecimal[2 + i] = temp;
-  }
-  //Serial.println("Mot de passe : " + String(valeur) + " ");  //used to see the value in decimal
-  Serial.print("Written password  = ");
-  Serial.println(mdphexadecimal);
-}
 
 void onWriteName(BLEDevice central, BLECharacteristic characteristic) {
-  if (isAuthenticate) {
+  if (isAuthenticate && (userDevice.address().compareTo(central.address()) == 0)) {
     Config.Name = NameCharacteristic.value();
     String value = NameCharacteristic.value();
     Serial.print("Written name : ");
@@ -124,7 +96,7 @@ void onWriteName(BLEDevice central, BLECharacteristic characteristic) {
 void onReadName(BLEDevice central, BLECharacteristic characteristic) {
   Serial.println("CALLBACK READ");
   Serial.println(isAuthenticate);
-  if (isAuthenticate) {
+  if (isAuthenticate && (userDevice.address().compareTo(central.address()) == 0)){
     NameCharacteristic.writeValue(Config.Name);
   } else {
     NameCharacteristic.writeValue("\n");
@@ -134,7 +106,7 @@ void onReadName(BLEDevice central, BLECharacteristic characteristic) {
 
 
 void onWriteActivation(BLEDevice central, BLECharacteristic characteristic) {
-  if (isAuthenticate) {
+  if (isAuthenticate && (userDevice.address().compareTo(central.address()) == 0)){
     Config.isActivate = ActivationCharacteristic.value();
     if (Config.isActivate != 0) {
       Serial.println("Alarme enabled");
@@ -142,7 +114,7 @@ void onWriteActivation(BLEDevice central, BLECharacteristic characteristic) {
       delay(100);
       sim800l->setPowerMode(NORMAL);  // set normal functionnality mode
     } else {
-      Serial.print("Désactivation");
+      Serial.print("Alarme disabled");
       sim800l->setPowerMode(MINIMUM);      // set minimum functionnality mode
       digitalWrite(SIM800_DTR_PIN, HIGH);  // put in sleep mode
     }
@@ -158,7 +130,7 @@ void onReadActivation(BLEDevice central, BLECharacteristic characteristic) {
 }
 
 void onWriteUnlock(BLEDevice central, BLECharacteristic characteristic) {
-  if (isAuthenticate) {
+  if (isAuthenticate && (userDevice.address().compareTo(central.address()) == 0)) {
     // activate electromagnet
     Serial.println("Unlock");
     digitalWrite(aimantPin, HIGH);

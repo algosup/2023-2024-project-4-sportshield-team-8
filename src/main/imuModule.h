@@ -39,7 +39,7 @@ float getRotationData() {
   return fabs(RotationDataerence);
 }
 
-void checkIfaMovementisEitherLargeOrSmall(float MotionData, float RotationData){
+void checkIfaMovementIsEitherLargeOrSmall(float MotionData, float RotationData){
   if (MotionData > BigMT || RotationData > BigRT) {  //Big motion detection
       if (MotionData > BigMT) {
         Serial.print("Motion detected : ");
@@ -63,6 +63,7 @@ void checkIfaMovementisEitherLargeOrSmall(float MotionData, float RotationData){
       MotionSmall = true;
     }
 }
+
 
 
 

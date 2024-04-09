@@ -12,6 +12,10 @@ void TimerHandler() {
   ISR_Timer.run();
 }
 
+
+// --------------------------- OBJECTS -------------------------------
+BatteryManager batteryManager;
+
 //-------------------------------- SETUP ----------------------------------------
 void setup() {
   pinMode(buzzerPin, OUTPUT);  // setup for buzzer
@@ -20,7 +24,7 @@ void setup() {
   digitalWrite(buzzerPin, LOW);
   Serial.println(" buzzer");
 
-  pinMode(aimantPin, OUTPUT);  //setup electro-aimant
+  pinMode(aimantPin, OUTPUT);  //setup electro-magnet
   digitalWrite(aimantPin, HIGH);
   delay(1000);
   digitalWrite(aimantPin, LOW);
@@ -69,7 +73,7 @@ void setup() {
   Serial.println("SIM SETUP");
 
   analogReadResolution(ADC_RESOLUTION);  //setup battery reading
-  pinMode(PIN_VBAT, INPUT);
+  batteryManager.setup();
   pinMode(VBAT_ENABLE, OUTPUT);
   digitalWrite(VBAT_ENABLE, LOW);
 
@@ -85,32 +89,55 @@ void loop() {
   MotionData = getMotionData();
   RotationData = getRotationData();
 
+  batteryManager.checkVoltage();
+
   if (Config.isActivate) {  //alarm enalbled
     activateGPS();
-    checkIfaMovementisEitherLargeOrSmall(MotionData, RotationData);
+    checkIfaMovementIsEitherLargeOrSmall(MotionData, RotationData);
   }
 
   if (MotionBig) {
     pulseBuzzer(5, 500, 1000);  // repetitions, DurationOn , DurationOff
-    //sending positions & shock notif via SIM module
   }
 
   if (MotionSmall) {
     pulseBuzzer(3, 100, 100);  // repetitions, DurationOn , DurationOff
   }
-
+    
   MotionDetect = true;
   if ((MotionData > SmallMT) || (RotationData > SmallRT)) {
     if (MotionData > SmallMT) {
-      Serial.print("WAKE UP : ");
-      Serial.println(MotionData);
+        Serial.print("WAKE UP : ");
+        Serial.println(MotionData);
     } else {
-      Serial.print("WAKE UP Rota: ");
-      Serial.println(RotationData);
+        Serial.print("WAKE UP Rota: "); 
+        Serial.println(RotationData);
+      }
     }
-  }
-  
-  checkMotionDetection();
+
+    //if a mvt is detected and bluetooth is disabled bluetooth activation
+    if (MotionDetect == true) {
+      tim_connec = millis();
+      MotionDetect = false;
+      if (BLE_activated == false) {
+        BLE_activated = true;
+        Serial.println("BLE_START");
+        ble_setup();
+      }
+    }
+
+    // if the lock is activated and the bluetooth is activated, the communication is authorized
+    if ((BLE_activated == true) || (Config.isActivate)) {
+      BLE.poll();  // authorized communication
+    }
+
+    // if the bluetooth is activated and the time is exceeded, the bluetooth is deactivated
+    if ((millis() - tim_connec > TIME_OUT_MS_BLE_ACT) && (BLE_activated == true) && (Config.isActivate != 1)) {
+      BLE_activated = false;
+      Serial.println("TIMEOUT -> BLE STOP");
+      BLE.end();
+    }
+
 
   //capture clocked GPS data
   GPS.read();
@@ -118,16 +145,24 @@ void loop() {
     Serial.print(GPS.lastNMEA());    // this also sets the newNMEAreceived() flag to false
     if (!GPS.parse(GPS.lastNMEA()))  // this also sets the newNMEAreceived() flag to false
       Serial.println("fail to parse");
-    ;  // we can fail to parse a   sentence in which case we should just wait for another
+    ;  // we can fail to parse a sentence in which case we should just wait for another
   }
 
-  if (GPS.fix && position_acquired == false) {  // if location detected
-    Serial.println("fix + false");
-    position_acquired = true;
-    GPS.fix = 0;
-    digitalWrite(GPS_WKUP_PIN, LOW);
-    GPS.sendCommand("$PMTK225,4*2F");  // send to backup mode
+ //after capturing and verifying the GPS data
+  if (GPS.fix && position_acquired == false) {
+     float currentLatitude = convertDMMtoDD(String(float(GPS.latitude), 4)).toFloat();
+    float currentLongitude = convertDMMtoDD(String(float(GPS.longitude), 4)).toFloat();
+    if(abs(currentLatitude - previousLatitude) > 0.0001 || abs(currentLongitude - previousLongitude) > 0.0001){
+      previousLatitude = currentLatitude;
+      previousLongitude = currentLongitude;
+      GPS.fix = 0;
+      digitalWrite(GPS_WKUP_PIN, LOW);
+      GPS.sendCommand("$PMTK225,4*2F");  // send to backup mode
+    }
   }
+   
+
+
 
   if (send_move) {  //sending of positions via SIM module
     Serial.println("Envoi detection mouvement");
