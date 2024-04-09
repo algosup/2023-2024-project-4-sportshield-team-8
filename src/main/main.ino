@@ -1,12 +1,10 @@
 #include "global.h"
+#include "buzzerModule.h"
 
 //-------------------------------- SETUP ----------------------------------------
 void setup() {
-  pinMode(buzzerPin, OUTPUT);  // setup for buzzer
-  digitalWrite(buzzerPin, HIGH);
-  delay(1000);
-  digitalWrite(buzzerPin, LOW);
-  Serial.println(" buzzer");
+  //buzzer initialization
+  setupBuzzer();
 
   pinMode(aimantPin, OUTPUT);  //setup electro-aimant
   digitalWrite(aimantPin, HIGH);
@@ -250,13 +248,7 @@ void ble_setup(void) {
   BLE.advertise();
 }
 
-void imu_setup(void) {
-  if (imu.begin() != 0) {
-    Serial.println("Device error");
-  } else {
-    Serial.println("Accelerometer launched");
-  }
-}
+
 
 void gps_setup(void) {
   pinMode(GPS_WKUP_PIN, OUTPUT);
@@ -309,68 +301,6 @@ float getBatteryVoltage() {
   return adcVoltage;
 }
 
-// provides the absolute difference in acceleration between consecutive calls, helping to monitor changes in motion over time.
-float getMotionData() {
-  static float previousAcceleration = 0;
-  //r
-  float accelX = imu.readFloatAccelX();
-  float accelY = imu.readFloatAccelY();
-  float accelZ = imu.readFloatAccelZ();
-
-  float currentAcceleration = sqrt(accelX * accelX + accelY * accelY + accelZ * accelZ) * 100;
-  float MotionDataerence = currentAcceleration - previousAcceleration;  // Calculate the acceleration difference
-  previousAcceleration = currentAcceleration;
-
-  return fabs(MotionDataerence);  //returns a value always positive
-}
-
-float getRotationData() {
-  static float previousRotation = 0;
-
-  // Read gyroscope values
-  float gyroX = imu.readFloatGyroX();
-  float gyroY = imu.readFloatGyroY();
-  float gyroZ = imu.readFloatGyroZ();
-
-  float currentRotation = sqrt(gyroX * gyroX + gyroY * gyroY + gyroZ * gyroZ);  // Calculate the current rotation based on gyroscope readings
-  float RotationDataerence = currentRotation - previousRotation;                // Calculate the difference in rotation
-  previousRotation = currentRotation;                                           // Update the previous rotation value
-
-  return fabs(RotationDataerence);
-}
-
-void Temps(void) {
-  unsigned long millisPassed = millis();
-  unsigned int seconds = (millisPassed / 1000) % 60;
-  unsigned int minutes = (millisPassed / (1000 * 60)) % 60;
-  unsigned int hours = (millisPassed / (1000 * 60 * 60)) % 24;
-  Serial.print("Détecté a : ");
-  Serial.print(hours);
-  Serial.print("h");
-  Serial.print(minutes);
-  Serial.print("mn");
-  Serial.print(seconds);
-  Serial.println("s");
-}
-
-void PulseBuzzer(int repetitions, unsigned long durationOn, unsigned long durationOff) {
-  static int buzzerState = LOW;
-  unsigned long currentMillis = millis();
-
-  if (currentRep < repetitions) {
-    if (currentMillis - previousMillis >= (buzzerState == LOW ? durationOn : durationOff)) {
-      digitalWrite(buzzerPin, buzzerState = !buzzerState);
-      previousMillis = currentMillis;
-      if (!buzzerState) currentRep++;
-    }
-  } else {
-    // Reset variables after performing all repetitions
-    currentRep = 0;
-    previousMillis = 0;
-    MotionSmall = false;
-    MotionBig = false;
-  }
-}
 
 void GPS_ISR() {
   if (Config.isActivate != 0) {
