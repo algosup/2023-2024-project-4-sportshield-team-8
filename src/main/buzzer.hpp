@@ -1,15 +1,17 @@
 #pragma once
 #include <cstddef>
 #include <Arduino.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
+
+
+
 
 
 class Buzzer{
+private:
     const uint8_t buzzerPin_ = D2;
 
     static const uint32_t LARGE_MOVEMENT_MASK = 0x01; 
-    static const uint32_t STOP_MASK = 0x03; 
+    static const uint32_t NOTHING_MASK = 0x10;
 
 
   // Durations for buzzer signals for different movement intensities
@@ -26,26 +28,14 @@ class Buzzer{
     TaskHandle_t sound_control_task_handle = NULL;
 
     // Movement type indicator
-    volatile uint8_t largeMovement_ = 0;
-    volatile uint8_t stop_ = 0;
-    volatile uint8_t smallMovement_ = 0;
+    const uint8_t largeMovement_ = 0;
+    const uint8_t stop_ = 0;
+    const uint8_t smallMovement_ = 0;
 
 public:
     //constructor
-    Buzzer( uint8_t buzzeerPin): buzzerPin_(buzzeerPin){
+    Buzzer(){
         pinMode(buzzerPin_, OUTPUT);
-    }
-
-    void setLargeMovement(unint8_t isLargeMovement) {
-        largeMovement_ = isLargeMovement;
-    }
-
-    void setSmallMovement(unint8_t isSmallMovement) {
-        smallMovement_ = isSmallMovement;
-    }
-
-    void setStop(unint8_t isStop) {
-        stop_ = isStop;
     }
 
 
@@ -61,22 +51,23 @@ public:
                                 portMAX_DELAY)) { // Wait indefinitely
 
                 // Determine behavior based on the notification received
-                if (notificationValue & buzzer->STOP_MASK) {
+                if (notificationValue & buzzer->NOTHING_MASK) {
                     // If a stop notification is received, simply continue waiting for the next notification
                     continue;
                 }
-                uint32_t highTime = (notificationValue & buzzer->LARGE_MOVEMENT_MASK) ? buzzer->largeMovementHighTime_ : buzzer->smallMovementHighTime_;
-                uint32_t lowTime = (notificationValue & buzzer->LARGE_MOVEMENT_MASK) ? buzzer->largeMovementLowTime_ : buzzer->smallMovementLowTime_;
+                // Determine the duration of the high and low periods based on the movement intensity
+                    uint32_t highTime = (notificationValue & buzzer->LARGE_MOVEMENT_MASK) ? buzzer->largeMovementHighTime_ : buzzer->smallMovementHighTime_;
+                    uint32_t lowTime = (notificationValue & buzzer->LARGE_MOVEMENT_MASK) ? buzzer->largeMovementLowTime_ : buzzer->smallMovementLowTime_;
 
 
-                // Activate buzzer
-                digitalWrite(buzzer->buzzerPin_, HIGH);
-                vTaskDelay(pdMS_TO_TICKS(highTime)); // Wait for the high period
+                    // Activate buzzer
+                    digitalWrite(buzzer->buzzerPin_, HIGH);
+                    vTaskDelay(pdMS_TO_TICKS(highTime)); // Wait for the high period
 
-                // Deactivate buzzer
-                digitalWrite(buzzer->buzzerPin_, LOW);
-                vTaskDelay(pdMS_TO_TICKS(lowTime)); // Wait for the low period
-            }
+                    // Deactivate buzzer
+                    digitalWrite(buzzer->buzzerPin_, LOW);
+                    vTaskDelay(pdMS_TO_TICKS(lowTime)); // Wait for the low period
+          }
         }
     }
 

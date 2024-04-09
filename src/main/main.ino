@@ -1,15 +1,25 @@
+#pragma once
 #include "NRF52_MBED_TimerInterrupt.h"
 #include "NRF52_MBED_ISR_Timer.h"
 #include <Arduino.h>
 #include <ArduinoBLE.h>
 #include "buzzer.hpp"
 #include "bluetooth.hpp"
+#include "motionDetection.hpp"
+
+
+Buzzer myBuzzer;
+Bluetooth myBluetooth;
+MotionDetection myMotionDetection;
+
+
 
 void BluetoothTask(void *pvParameters);
 void SensorTask(void *pvParameters);
 void MainTask(void *pvParameters);
 
 void setup() {
+
 class Main{
 
     TaskHandle_t main_task_handle_ = NULL;
@@ -22,8 +32,6 @@ class Main{
         TaskHandle_t send_message_task_handle,
         TaskHandle_t bluetooth_handler_task_handle);
     };
-
-    
 
     // Create tasks
     xTaskCreate(
