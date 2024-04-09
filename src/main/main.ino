@@ -1,76 +1,30 @@
 #pragma once
-#include "NRF52_MBED_TimerInterrupt.h"
-#include "NRF52_MBED_ISR_Timer.h"
 #include <Arduino.h>
-#include <ArduinoBLE.h>
-#include "buzzer.hpp"
-#include "bluetooth.hpp"
-#include "motionDetection.hpp"
-
-
-Buzzer myBuzzer;
-Bluetooth myBluetooth;
-MotionDetection myMotionDetection;
+#include "bleModule.h"
+#include "gpsModule.h"
+#include "imuModule.h"
+#include "simModule.h"
+#include "batteryManager.h"
+#include "buzzerModule.h"
+#include "struct.h"
 
 
 
-void BluetoothTask(void *pvParameters);
-void SensorTask(void *pvParameters);
-void MainTask(void *pvParameters);
+BLEModule bleModule;
+GPSModule gpsModule;
+IMUModule imuModule;
+SIMModule simModule;
+BatteryManager batteryManager( A0, 3.3, 2.0, 3.4);  // Example values: analog pin A0, 3.3V reference, 2:1 voltage divider, 3.4V low battery threshold
+
 
 void setup() {
-
-class Main{
-
-    TaskHandle_t main_task_handle_ = NULL;
-
-    public:
-        Main();
-        Taskhandle_t getMainTaskHandle();
-        void main_task(
-        TaskHandle_t sound_control_task_handle,      
-        TaskHandle_t send_message_task_handle,
-        TaskHandle_t bluetooth_handler_task_handle);
-    };
-
-    // Create tasks
-    xTaskCreate(
-        BluetoothTask,  // Task function
-        "Bluetooth",    // Name of the task (for debugging)
-        1024,           // Stack size (bytes)
-        NULL,           // Task input parameter
-        1,              // Priority
-        NULL            // Task handle
-    );
-
-    xTaskCreate(SensorTask, "Sensor", 1024, NULL, 1, NULL);
-    xTaskCreate(MainTask, "Main", 2048, NULL, 2, NULL); // Higher priority for MainTask
-
-    // Start the scheduler - this function will not return
-    vTaskStartScheduler();
-
-    void BluetoothTask(void *pvParameters) {
-    for (;;) {
-        myBluetooth.handleEvents();
-        vTaskDelay(pdMS_TO_TICKS(100)); // Delay to prevent task from monopolizing CPU
-        }
-    }
-
-    void SensorTask(void *pvParameters) {
-        for (;;) {
-            mySensor.readSensors();
-            vTaskDelay(pdMS_TO_TICKS(100));
-        }
-    }
-
-    void MainTask(void *pvParameters) {
-        for (;;) {
-            myMain.main_task(sound_control_task_handle, send_message_task_handle, bluetooth_handler_task_handle);
-            vTaskDelay(pdMS_TO_TICKS(100));
-        }
-    }
-
-};
+  Serial.begin(115200);
+  bleModule.setup();
+  gpsModule.setup();
+  imuModule.setup();
+  simModule.setup();
+}
 
 void loop() {
+  // Implement logic to interact with each module using their methods
 }
