@@ -39,6 +39,34 @@ float getRotationData() {
   return fabs(RotationDataerence);
 }
 
+void checkIfaMovementisEitherLargeOrSmall(float MotionData, float RotationData){
+  if (MotionData > BigMT || RotationData > BigRT) {  //Big motion detection
+      if (MotionData > BigMT) {
+        Serial.print("Motion detected : ");
+        Serial.println(MotionData);
+      } else {
+        Serial.print("Rotation detected : ");
+        Serial.println(RotationData);
+      }
+      MotionBig = true;
+      MotionSmall = false;
+      send_move = true;
+
+    } else if ((MotionBig == false) && (MotionData > SmallMT || RotationData > SmallRT)) {  //Small motion detection
+      if (MotionData > SmallMT) {
+        Serial.print(" Small motion: ");
+        Serial.println(MotionData);
+      } else {
+        Serial.print("Small rota : ");
+        Serial.println(RotationData);
+      }
+      MotionSmall = true;
+    }
+}
+
+
+
+
 // ----------SETUP the IMU module----------
 
 void imu_setup(void) {

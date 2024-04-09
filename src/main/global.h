@@ -98,7 +98,7 @@ unsigned long StartCoolDown = 0;  //check point for millis aided cooldown
 
 
 // Time function 
-void Time(void) {
+void time(void) {
   unsigned long millisPassed = millis();
   unsigned int seconds = (millisPassed / 1000) % 60;
   unsigned int minutes = (millisPassed / (1000 * 60)) % 60;

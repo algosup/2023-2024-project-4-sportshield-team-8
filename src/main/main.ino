@@ -13,10 +13,12 @@ void TimerHandler() {
 }
 
 //-------------------------------- SETUP ----------------------------------------
-
 void setup() {
-  //buzzer initialization
-  setupBuzzer();
+  pinMode(buzzerPin, OUTPUT);  // setup for buzzer
+  digitalWrite(buzzerPin, HIGH);
+  delay(1000);
+  digitalWrite(buzzerPin, LOW);
+  Serial.println(" buzzer");
 
   pinMode(aimantPin, OUTPUT);  //setup electro-aimant
   digitalWrite(aimantPin, HIGH);
@@ -63,20 +65,20 @@ void setup() {
   sim800l = new SIM800L((Stream*)&Serial2, SIM800_RST_PIN, 200, 512);
   pinMode(SIM800_DTR_PIN, OUTPUT);
   delay(1000);
-  sim_setup();
+  //sim_setup();
   Serial.println("SIM SETUP");
 
-  battery_setup();
+  analogReadResolution(ADC_RESOLUTION);  //setup battery reading
+  pinMode(PIN_VBAT, INPUT);
+  pinMode(VBAT_ENABLE, OUTPUT);
+  digitalWrite(VBAT_ENABLE, LOW);
 
   Serial.println("fin setup ");
   digitalWrite(LEDR, HIGH);
   digitalWrite(LEDG, LOW);
-  time();
+  Temps();
 
-  Serial.print("V Bat: ");
-  Serial.println(getBatteryVoltage());
 }
-
 //-------------------------------- LOOP ----------------------------------------
 void loop() {
 
@@ -85,29 +87,7 @@ void loop() {
 
   if (Config.isActivate) {  //alarm enalbled
     activateGPS();
-
-    if (MotionData > BigMT || RotationData > BigRT) {  //Big motion detection
-      if (MotionData > BigMT) {
-        Serial.print("Motion detected : ");
-        Serial.println(MotionData);
-      } else {
-        Serial.print("Rotation detected : ");
-        Serial.println(RotationData);
-      }
-      MotionBig = true;
-      MotionSmall = false;
-      send_move = true;
-
-    } else if ((MotionBig == false) && (MotionData > SmallMT || RotationData > SmallRT)) {  //Small motion detection
-      if (MotionData > SmallMT) {
-        Serial.print(" Small motion: ");
-        Serial.println(MotionData);
-      } else {
-        Serial.print("Small rota : ");
-        Serial.println(RotationData);
-      }
-      MotionSmall = true;
-    }
+    checkIfaMovementisEitherLargeOrSmall(MotionData, RotationData);
   }
 
   if (MotionBig) {
