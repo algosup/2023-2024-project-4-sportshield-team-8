@@ -9,7 +9,7 @@
 
 
 
-void PulseBuzzer(int repetitions, unsigned long durationOn, unsigned long durationOff) {
+void pulseBuzzer(int repetitions, unsigned long durationOn, unsigned long durationOff) {
   static int buzzerState = LOW;
   unsigned long currentMillis = millis();
 
