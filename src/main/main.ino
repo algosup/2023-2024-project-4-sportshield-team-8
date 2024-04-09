@@ -1,8 +1,19 @@
 #include "global.h"
 #include "bleModule.h"
+#include "imuModule.h"
 #include "buzzerModule.h"
+#include "gpsModule.h"
+#include "buzzerModule.h"
+#include "simModule.h"
+#include "batteryManager.h"
+
+//--------------------------- ADDITIONAL FUNCTIONS -------------------------------
+void TimerHandler() {
+  ISR_Timer.run();
+}
 
 //-------------------------------- SETUP ----------------------------------------
+
 void setup() {
   //buzzer initialization
   setupBuzzer();
@@ -55,15 +66,12 @@ void setup() {
   sim_setup();
   Serial.println("SIM SETUP");
 
-  analogReadResolution(ADC_RESOLUTION);  //setup battery reading
-  pinMode(PIN_VBAT, INPUT);
-  pinMode(VBAT_ENABLE, OUTPUT);
-  digitalWrite(VBAT_ENABLE, LOW);
+  battery_setup();
 
   Serial.println("fin setup ");
   digitalWrite(LEDR, HIGH);
   digitalWrite(LEDG, LOW);
-  Temps();
+  time();
 
   Serial.print("V Bat: ");
   Serial.println(getBatteryVoltage());
@@ -103,12 +111,12 @@ void loop() {
   }
 
   if (MotionBig) {
-    PulseBuzzer(5, 500, 1000);  // repetitions, DurationOn , DurationOff
+    pulseBuzzer(5, 500, 1000);  // repetitions, DurationOn , DurationOff
     //sending positions & shock notif via SIM module
   }
 
   if (MotionSmall) {
-    PulseBuzzer(3, 100, 100);  // repetitions, DurationOn , DurationOff
+    pulseBuzzer(3, 100, 100);  // repetitions, DurationOn , DurationOff
   }
 
   MotionDetect = true;
