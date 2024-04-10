@@ -104,7 +104,6 @@ void loop() {
   MotionData = imuManager.getMotionData();
   RotationData = imuManager.getRotationData();
 
-  batteryManager.checkVoltage();
 
   if (Config.isActivate) {  //alarm enalbled
     gps.activateGPS();
