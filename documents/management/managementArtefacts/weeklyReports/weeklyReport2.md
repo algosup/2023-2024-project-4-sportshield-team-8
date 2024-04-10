@@ -1,4 +1,4 @@
-<h1 align="center"> Weekly Report 1 </h1>
+<h1 align="center"> Weekly Report 3 </h1>
 
 <p align="center">
 Created by: Quentin CLÉMENT <br> Creation Date: 25/03/2024 <br> Last update: 25/03/2024
@@ -46,6 +46,7 @@ We believe some hardware pieces have not been working since the beginning of the
 - ❌ PCB: we tested the PCB with a multimeter and we found voltage disparity between ports that is probably the symptom of a short circuit.
 - ❌ NFC: the NFC module is working at the hardware level but unfortunately there is no library compatible with our CPU architecture meaning that we can only use it as an emitter and it's making it useless.
 - ✅ Battery
+- ✅ Bluetooth
 - ✅ GPS
 - ✅ Buzzer
 - ✅ Electro-magnet: the hardware in itself is working but we can't supply it with enough power to make it work properly.
@@ -84,4 +85,3 @@ The project's scope is still the same as last week. We are waiting to see the ev
 ## 9. Team feedback
 
 Even if we have made good progress on documents, we noticed a significant slowdown. We encountered a lot of difficulties and a lot of team members felt discouraged and fed up. We feel like we are stuck against a wall and we don't know how to get out of it. We need to find a solution to this problem as soon as possible.
-```

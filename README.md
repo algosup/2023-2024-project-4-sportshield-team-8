@@ -18,11 +18,12 @@ Our focus will be on:
 ## Important Links and Docs
 
 - [Project Charter](./documents/projectCharter.md)
-- [Functional Specifications](./documents/functionalSpecifications.md)
+- [Functional Specifications](./documents/functionalSpecifications/functionalSpecifications.md)
 - [User Manual](./documents/userManual.md)
 - [Technical Specifications](./documents/technicalSpecifications.md)
 - [Test Plan](./documents/testPlan.md)
 - [Management Artefacts](./documents/management/)
+
 
 ## Contributors
 
