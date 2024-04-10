@@ -101,19 +101,6 @@ float previousLongitude = 0;
 unsigned long StartCoolDown = 0;  //check point for millis aided cooldown
 
 
-// Time function 
-void time(void) {
-  unsigned long millisPassed = millis();
-  unsigned int seconds = (millisPassed / 1000) % 60;
-  unsigned int minutes = (millisPassed / (1000 * 60)) % 60;
-  unsigned int hours = (millisPassed / (1000 * 60 * 60)) % 24;
-  Serial.print("Détecté a : ");
-  Serial.print(hours);
-  Serial.print("h");
-  Serial.print(minutes);
-  Serial.print("mn");
-  Serial.print(seconds);
-  Serial.println("s");
-}
+
 
 #endif // GLOBALS_H

@@ -12,6 +12,21 @@ void TimerHandler() {
   ISR_Timer.run();
 }
 
+// Time function 
+void time(void) {
+  unsigned long millisPassed = millis();
+  unsigned int seconds = (millisPassed / 1000) % 60;
+  unsigned int minutes = (millisPassed / (1000 * 60)) % 60;
+  unsigned int hours = (millisPassed / (1000 * 60 * 60)) % 24;
+  Serial.print("Détecté a : ");
+  Serial.print(hours);
+  Serial.print("h");
+  Serial.print(minutes);
+  Serial.print("mn");
+  Serial.print(seconds);
+  Serial.println("s");
+}
+
 
 // --------------------------- OBJECTS -------------------------------
 BatteryManager batteryManager;
@@ -56,7 +71,7 @@ void setup() {
     Serial.print(F("Starting ITimer OK, millis() = "));
     Serial.println(millis());
   }
-  ISR_Timer.setInterval(TIMER_INTERVAL_120S, gps.GPS_ISR);
+  ISR_Timer.setInterval(TIMER_INTERVAL_120S, GPSManager::GPS_ISR_Static);
 
   ble.setup();
   Serial.println(" ble_setup");
@@ -80,7 +95,7 @@ void setup() {
   Serial.println("fin setup ");
   digitalWrite(LEDR, HIGH);
   digitalWrite(LEDG, LOW);
-  Temps();
+  time();
 
 }
 //-------------------------------- LOOP ----------------------------------------

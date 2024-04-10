@@ -19,7 +19,9 @@
 class BluetoothManager {
 public:
     // Default constructor.
-    BluetoothManager() {}
+    BluetoothManager() {
+        instance = this;
+    }
 
     /*
      * Initializes the BLE module with predefined services and characteristics.
@@ -56,14 +58,14 @@ public:
         UnlockCharacteristic.writeValue(false);
         MACCharacteristic.writeValue(BLE.address());
         //set event handler
-        BLE.setEventHandler(BLEConnected, [this](BLEDevice central),{this->onConnect(central)});
-        BLE.setEventHandler(BLEDisconnected, [this](BLEDevice central),{this->onDisconnect(central)});
-        PasswordCharacteristic.setEventHandler(BLEWritten, [this](BLEDevice central, BLECharacteristic characteristic),{this->onWritePassword(central, characteristic)});
-        NameCharacteristic.setEventHandler(BLEWritten, [this](BLEDevice central, BLECharacteristic characteristic),{this->onWriteName(central, characteristic)});
-        NameCharacteristic.setEventHandler(BLERead, [this](BLEDevice central, BLECharacteristic characteristic),{this->onReadName(central, characteristic)});
-        ActivationCharacteristic.setEventHandler(BLEWritten, [this](BLEDevice central, BLECharacteristic characteristic),{this->onWriteActivation(central, characteristic)});
-        ActivationCharacteristic.setEventHandler(BLERead, [this](BLEDevice central, BLECharacteristic characteristic),{this->onReadActivation(central, characteristic)});
-        UnlockCharacteristic.setEventHandler(BLEWritten, [this](BLEDevice central, BLECharacteristic characteristic),{this->onWriteUnlock(central, characteristic)});
+        BLE.setEventHandler(BLEConnected, onConnectStatic);
+        BLE.setEventHandler(BLEDisconnected, onDisconnectStatic);
+        PasswordCharacteristic.setEventHandler(BLEWritten, onWritePasswordStatic);
+        NameCharacteristic.setEventHandler(BLEWritten, onWriteNameStatic);
+        NameCharacteristic.setEventHandler(BLERead, onReadNameStatic);
+        ActivationCharacteristic.setEventHandler(BLEWritten, onWriteActivationStatic);
+        ActivationCharacteristic.setEventHandler(BLERead, onReadActivationStatic);
+        UnlockCharacteristic.setEventHandler(BLEWritten, onWriteUnlockStatic);
         // start advertising
         BLE.advertise();
     }
@@ -78,6 +80,11 @@ public:
         digitalWrite(LEDB, LOW); // Optionally, update an LED status to indicate a connection.
     }
 
+     // Static event handler that forwards to the instance method
+    static void onConnectStatic(BLEDevice central) {
+        if (instance) instance->onConnect(central);
+    }
+
     // Handles disconnection events with central devices.
     void onDisconnect(BLEDevice central) {
         Serial.print("Disconnected from central: ");
@@ -87,10 +94,14 @@ public:
         digitalWrite(LEDB, HIGH); // Optionally, update an LED status to indicate a disconnection.
     }
 
+    static void onDisconnectStatic(BLEDevice central) {
+        if (instance) instance->onDisconnect(central);
+    }
+
     // Event handler for writing to the password characteristic.
     void onWritePassword(BLEDevice central, BLECharacteristic characteristic) {
         String password = "13330"; // Predefined password "13330
-        String value = PasswordCharacteristic.value();
+        String value = String(PasswordCharacteristic.value());
         isAuthenticate = (password.compareTo(value) == 0); // Compare the received password with the predefined password.
         if (isAuthenticate) {
             userDevice = central; // Store the authenticated device.
@@ -98,6 +109,10 @@ public:
         } else {
             Serial.println("Authentication failed");
         }
+    }
+
+    static void onWritePasswordStatic(BLEDevice central, BLECharacteristic characteristic) {
+        if (instance) instance->onWritePassword(central, characteristic);
     }
 
     // Event handler for writing to the name characteristic.
@@ -112,6 +127,10 @@ public:
       }
     }
 
+    static void onWriteNameStatic(BLEDevice central, BLECharacteristic characteristic) {
+        if (instance) instance->onWriteName(central, characteristic);
+    }
+
     // Event handler for reading the name characteristic.
     void onReadName(BLEDevice central, BLECharacteristic characteristic) {
       Serial.println("CALLBACK READ");
@@ -122,6 +141,13 @@ public:
         NameCharacteristic.writeValue("\n");
       }
     }
+
+
+    static void onReadNameStatic(BLEDevice central, BLECharacteristic characteristic) {
+        if (instance) instance->onReadName(central, characteristic);
+    }
+
+
     // Event handler for writing to the activation characteristic.
     void onWriteActivation(BLEDevice central, BLECharacteristic characteristic) {
       if (isAuthenticated(central)) {
@@ -141,9 +167,18 @@ public:
       }
    }
 
+    static void onWriteActivationStatic(BLEDevice central, BLECharacteristic characteristic) {
+        if (instance) instance->onWriteActivation(central, characteristic);
+    }
+
     // Event handler for reading the activation characteristic.
     void onReadActivation(BLEDevice central, BLECharacteristic characteristic) {
       ActivationCharacteristic.writeValue(Config.isActivate);
+    }
+
+
+    static void onReadActivationStatic(BLEDevice central, BLECharacteristic characteristic) {
+        if (instance) instance->onReadActivation(central, characteristic);
     }
 
    // Event handler for writing to the unlock characteristic.
@@ -158,10 +193,19 @@ public:
     }
 
 
+    static void onWriteUnlockStatic(BLEDevice central, BLECharacteristic characteristic) {
+        if (instance) instance->onWriteUnlock(central, characteristic);
+    }
+
+
 
 private:
     // Verifies if the connected central device is the authenticated device.
     bool isAuthenticated(BLEDevice& central) {
         return isAuthenticate && (userDevice.address() == central.address());
     }
+    static BluetoothManager* instance; 
 };
+
+// Initialize the static instance pointer
+BluetoothManager* BluetoothManager::instance = nullptr;

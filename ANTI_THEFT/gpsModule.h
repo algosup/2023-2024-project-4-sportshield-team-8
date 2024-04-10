@@ -12,7 +12,9 @@
 class GPSManager {
 public:
     // Constructor
-    GPSManager() {}
+    GPSManager() {
+      instance = this;
+    }
 
     // Initializes the GPS module with predefined settings.
     void setup() {
@@ -71,7 +73,19 @@ public:
         }
     }
 
+      // Static method that acts as a wrapper
+    static void GPS_ISR_Static() {
+        instance->GPS_ISR(); // Call the non-static member function
+    }
+
+
 private:
     bool start_gps = false; // Control flag to determine GPS module activation.
     // Other private members can be added as necessary.
+    static GPSManager* instance; // Static instance pointer
 };
+
+
+
+// Define the static instance pointer somewhere in your .cpp file
+GPSManager* GPSManager::instance = nullptr;
