@@ -15,14 +15,14 @@ void TimerHandler() {
 
 // --------------------------- OBJECTS -------------------------------
 BatteryManager batteryManager;
+GPSManager gps;
+BluetoothManager ble;
+Buzzer buzzer;
+IMUManager imuManager;
+SIMModuleManager simModuleManager;
 
 //-------------------------------- SETUP ----------------------------------------
 void setup() {
-  pinMode(buzzerPin, OUTPUT);  // setup for buzzer
-  digitalWrite(buzzerPin, HIGH);
-  delay(1000);
-  digitalWrite(buzzerPin, LOW);
-  Serial.println(" buzzer");
 
   pinMode(aimantPin, OUTPUT);  //setup electro-magnet
   digitalWrite(aimantPin, HIGH);
@@ -56,20 +56,20 @@ void setup() {
     Serial.print(F("Starting ITimer OK, millis() = "));
     Serial.println(millis());
   }
-  ISR_Timer.setInterval(TIMER_INTERVAL_120S, GPS_ISR);
+  ISR_Timer.setInterval(TIMER_INTERVAL_120S, gps.GPS_ISR);
 
-  ble_setup();
+  ble.setup();
   Serial.println(" ble_setup");
-  imu_setup();
+  imuManager.setup();
   Serial.println(" imu_setup");
-  gps_setup();
+  gps.setup();
   Serial.println(" gps_setup");
   Serial2.begin(9600);
   delay(100);
   sim800l = new SIM800L((Stream*)&Serial2, SIM800_RST_PIN, 200, 512);
   pinMode(SIM800_DTR_PIN, OUTPUT);
   delay(1000);
-  //sim_setup();
+  //simManager.setup();
   Serial.println("SIM SETUP");
 
   analogReadResolution(ADC_RESOLUTION);  //setup battery reading
@@ -86,22 +86,22 @@ void setup() {
 //-------------------------------- LOOP ----------------------------------------
 void loop() {
 
-  MotionData = getMotionData();
-  RotationData = getRotationData();
+  MotionData = imuManager.getMotionData();
+  RotationData = imuManager.getRotationData();
 
   batteryManager.checkVoltage();
 
   if (Config.isActivate) {  //alarm enalbled
-    activateGPS();
-    checkIfaMovementIsEitherLargeOrSmall(MotionData, RotationData);
+    gps.activateGPS();
+    imuManager.analyzeMovement(MotionData, RotationData);
   }
 
   if (MotionBig) {
-    pulseBuzzer(5, 500, 1000);  // repetitions, DurationOn , DurationOff
+    buzzer.pulseBuzzer(5, 500, 1000);  // repetitions, DurationOn , DurationOff
   }
 
   if (MotionSmall) {
-    pulseBuzzer(3, 100, 100);  // repetitions, DurationOn , DurationOff
+    buzzer.pulseBuzzer(3, 100, 100);  // repetitions, DurationOn , DurationOff
   }
     
   MotionDetect = true;
@@ -122,7 +122,7 @@ void loop() {
       if (BLE_activated == false) {
         BLE_activated = true;
         Serial.println("BLE_START");
-        ble_setup();
+        ble.setup();
       }
     }
 
@@ -150,8 +150,8 @@ void loop() {
 
  //after capturing and verifying the GPS data
   if (GPS.fix && position_acquired == false) {
-     float currentLatitude = convertDMMtoDD(String(float(GPS.latitude), 4)).toFloat();
-    float currentLongitude = convertDMMtoDD(String(float(GPS.longitude), 4)).toFloat();
+     float currentLatitude = gps.convertDMMtoDD(String(float(GPS.latitude), 4)).toFloat();
+    float currentLongitude = gps.convertDMMtoDD(String(float(GPS.longitude), 4)).toFloat();
     if(abs(currentLatitude - previousLatitude) > 0.0001 || abs(currentLongitude - previousLongitude) > 0.0001){
       previousLatitude = currentLatitude;
       previousLongitude = currentLongitude;
@@ -170,8 +170,8 @@ void loop() {
     sim800l->connectGPRS();
     String Route = "http://141.94.244.11:2000/sendNotfication/" + BLE.address();
     String RouteCoord = "http://141.94.244.11:2000/updateCoordinate/" + BLE.address();
-    String str = "{\"latitude\": \" " + convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + convertDMMtoDD(String(float(GPS.longitude), 4)) + "\"}";
-    String bat = "{\"latitude\": \" " + convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + convertDMMtoDD(String(float(GPS.longitude), 4)) + "\", \"batterie\":\"" + String(getBatteryVoltage()) + "\"}";
+    String str = "{\"latitude\": \" " + gps.convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + gps.convertDMMtoDD(String(float(GPS.longitude), 4)) + "\"}";
+    String bat = "{\"latitude\": \" " + gps.convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + gps.convertDMMtoDD(String(float(GPS.longitude), 4)) + "\", \"batterie\":\"" + String(batteryManager.getVoltage()) + "\"}";
     char position[200];
     char posbat[200];
     str.toCharArray(position, str.length() + 1);
@@ -193,7 +193,7 @@ void loop() {
     sim800l->setupGPRS("iot.1nce.net");
     sim800l->connectGPRS();
     String RouteCoord = "http://141.94.244.11:2000/updateCoordinate/" + BLE.address();
-    String bat = "{\"latitude\": \" " + convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + convertDMMtoDD(String(float(GPS.longitude), 4)) + "\", \"batterie\":\"" + String(getBatteryVoltage()) + "\"}";
+    String bat = "{\"latitude\": \" " + gps.convertDMMtoDD(String(float(GPS.latitude), 4)) + "\", \"longitude\":\"" + gps.convertDMMtoDD(String(float(GPS.longitude), 4)) + "\", \"batterie\":\"" + String(batteryManager.getVoltage()) + "\"}";
     char posbat[200];
     bat.toCharArray(posbat, bat.length() + 1);
     Serial.println(posbat);
