@@ -28,7 +28,7 @@ Created by: Quentin CLÉMENT <br> Creation Date: 05/04/2024 <br> Last update: 08
 
 25/03/2024 - 29/03/2024
 
-During this first week, we started to dig deeper into the development of the project. We are finally finding a constant rythm even though we are still struggling with the hardware. The technical specifications v1.0 were delivered on Tuesday the 26th and we are now working on the software part. We are a bit late on the schedule but we are confident that we will catch up.
+During this week, we started to dig deeper into the development of the project. We are finally finding a constant rythm even though we are still struggling with the hardware. The technical specifications v1.0 were delivered on Tuesday the 26th and we are now working on the software part. We are a bit late on the schedule but we are confident that we will catch up.
 
 ## 2. Milestones met this week
 

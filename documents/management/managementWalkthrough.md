@@ -27,7 +27,7 @@ In this walkthrough, we will guide you through the management of our project, pr
 
 As we are already using GitHub as a common platform for our project, we decided to use it for our management documents as well. \
 [GitHub Issues](https://github.com/algosup/2023-2024-project-4-sportshield-team-8/issues) will be used to track tasks and assign them to team members. An issue will be similar to a ticket and each issue will be associated with a milestone. \
-The [GitHub Projects](https://github.com/orgs/algosup/projects/24/views/1) feature will be used to create boards that will help us track the progress of the project.
+The [GitHub Project](https://github.com/orgs/algosup/projects/24/views/1) feature will be used to create boards that will help us track the progress of the project.
 
 ## 2. Recommended Reading Order
 
